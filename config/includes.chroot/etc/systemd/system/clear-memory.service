@@ -1,0 +1,11 @@
+[Unit]
+Description=Clear memory on shutdown
+DefaultDependencies=no
+Before=shutdown.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/sh -c 'swapoff -a'
+
+[Install]
+WantedBy=shutdown.target

@@ -1,0 +1,5 @@
+#!/bin/bash
+case "$1" in
+  start) systemctl start tor; nft add table inet tor_anonymizer; nft add chain inet tor_anonymizer output { type filter hook output priority 0 \; policy drop \; }; nft add rule inet tor_anonymizer output oif "lo" accept; nft add rule inet tor_anonymizer output meta skgid "debian-tor" accept; nft add rule inet tor_anonymizer output tcp dport 9040 redirect to :9040; echo "Anonymity: ON" ;;
+  stop) nft delete table inet tor_anonymizer; systemctl stop tor; echo "Anonymity: OFF" ;;
+esac

@@ -1,0 +1,5 @@
+#!/bin/bash
+# Set the default plymouth theme
+plymouth-set-default-theme -R spinner
+update-initramfs -u
+update-initramfs -u

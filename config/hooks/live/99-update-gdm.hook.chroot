@@ -1,0 +1,3 @@
+#!/bin/bash
+# Update the dconf database for GDM to apply login screen settings
+dconf update /etc/dconf/db/gdm.d/

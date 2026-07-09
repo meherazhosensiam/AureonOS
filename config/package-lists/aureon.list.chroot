@@ -1,0 +1,247 @@
+### ============================
+### AUREON OS Core
+### ============================
+
+# Desktop
+gnome-core
+gdm3
+gnome-shell
+gnome-session
+gnome-control-center
+gnome-tweaks
+gnome-software
+gnome-software-plugin-flatpak
+network-manager
+network-manager-gnome
+
+### ============================
+### GNOME Extensions
+### ============================
+
+gnome-shell-extension-appindicator
+gnome-shell-extension-blur-my-shell
+gnome-shell-extension-dash-to-dock
+gnome-shell-extension-desktop-icons-ng
+gnome-shell-extension-user-theme
+gnome-shell-extension-manager
+gnome-shell-extension-arcmenu
+gnome-shell-extension-caffeine
+gnome-shell-extension-clipboard-indicator
+gnome-shell-extension-just-perfection
+gnome-shell-extension-no-overview
+gnome-shell-extension-drive-menu
+gnome-shell-extension-system-monitor
+gnome-shell-extension-weather
+gnome-shell-extension-window-list
+gnome-shell-extension-launch-new-instance
+gnome-shell-extension-places-menu
+
+### ============================
+### Themes
+### ============================
+
+papirus-icon-theme
+adwaita-icon-theme
+arc-theme
+materia-gtk-theme
+gnome-themes-extra
+
+### ============================
+### Fonts
+### ============================
+
+fonts-cantarell
+fonts-dejavu
+fonts-firacode
+fonts-noto
+fonts-noto-color-emoji
+fonts-liberation
+
+### ============================
+### Terminal
+### ============================
+
+zsh
+bash-completion
+curl
+wget
+git
+nano
+vim
+neovim
+htop
+btop
+fastfetch
+tree
+bat
+eza
+ripgrep
+fd-find
+fzf
+tmux
+
+### ============================
+### Development
+### ============================
+
+build-essential
+gcc
+g++
+make
+cmake
+python3
+python3-pip
+python3-venv
+python3-dev
+nodejs
+npm
+golang
+rustc
+cargo
+
+### ============================
+### Networking
+### ============================
+
+net-tools
+openssh-client
+openssh-server
+wireguard
+wireguard-tools
+openvpn
+nmap
+tcpdump
+traceroute
+dnsutils
+whois
+
+### ============================
+### Compression
+### ============================
+
+zip
+unzip
+p7zip-full
+rar
+unrar
+xz-utils
+
+### ============================
+### Disk Utilities
+### ============================
+
+gparted
+parted
+dosfstools
+ntfs-3g
+exfatprogs
+smartmontools
+
+### ============================
+### File Managers
+### ============================
+
+nautilus
+nautilus-admin
+file-roller
+
+### ============================
+### Multimedia
+### ============================
+
+vlc
+ffmpeg
+pipewire
+pipewire-pulse
+wireplumber
+gstreamer1.0-libav
+gstreamer1.0-plugins-good
+gstreamer1.0-plugins-bad
+gstreamer1.0-plugins-ugly
+
+### ============================
+### Internet
+### ============================
+
+firefox-esr
+
+### ============================
+### Documents
+### ============================
+
+evince
+
+### ============================
+### Images
+### ============================
+
+loupe
+
+### ============================
+### Bluetooth
+### ============================
+
+bluez
+blueman
+
+### ============================
+### Printing
+### ============================
+
+cups
+system-config-printer
+
+### ============================
+### Firmware
+### ============================
+
+firmware-linux
+firmware-linux-free
+firmware-linux-nonfree
+firmware-realtek
+firmware-iwlwifi
+firmware-amd-graphics
+firmware-misc-nonfree
+
+### ============================
+### Virtualization
+### ============================
+
+open-vm-tools
+spice-vdagent
+qemu-guest-agent
+
+### ============================
+### Security
+### ============================
+
+gnupg
+openssl
+ca-certificates
+
+### ============================
+### Utilities
+### ============================
+
+rsync
+cron
+sudo
+policykit-1
+udisks2
+gvfs
+gvfs-backends
+gvfs-fuse
+xdg-user-dirs
+xdg-utils
+plymouth
+plymouth-themes
+apparmor
+apparmor-profiles
+apparmor-profiles-extra
+nftables
+usbguard
+cryptsetup
+cryptsetup-initramfs
+gnupg
+selinux-basics
+selinux-policy-default

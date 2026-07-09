@@ -1,0 +1,17 @@
+#!/bin/sh
+set -e
+
+mkdir -p /etc/dconf/db/local.d
+
+cat >/etc/dconf/db/local.d/00-aureon-extensions <<'EOF'
+[org/gnome/shell]
+enabled-extensions=[
+'blur-my-shell@aunetx',
+'dash-to-dock@micxgx.gmail.com',
+'arcmenu@arcmenu.com',
+'user-theme@gnome-shell-extensions.gcampax.github.com',
+'appindicatorsupport@rgcjonas.gmail.com'
+]
+EOF
+
+dconf update

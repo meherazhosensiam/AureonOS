@@ -1,0 +1,6 @@
+[Unit]
+Description=AureonOS Monthly Junk Cleanup
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/aureon-cleanup.sh

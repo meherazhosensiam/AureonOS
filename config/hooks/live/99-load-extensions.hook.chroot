@@ -1,0 +1,3 @@
+#!/bin/bash
+# Load the extension settings for every user upon login
+dconf load /org/gnome/shell/extensions/ < /etc/dconf/db/local.d/extensions-settings

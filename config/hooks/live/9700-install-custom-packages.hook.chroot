@@ -1,0 +1,26 @@
+#!/bin/bash
+set -e
+
+PKGDIR="/usr/local/share/aureon/packages"
+
+if [ -d "$PKGDIR" ]; then
+    echo "Installing custom AUREON packages..."
+
+    apt-get update
+
+    # Install all .deb packages in the directory
+    find "$PKGDIR" -type f -name "*.deb" -print0 | \
+    xargs -0 -r dpkg -i || true
+
+    # Resolve dependencies
+    apt-get -f install -y
+
+    # Retry in case some packages initially failed
+    find "$PKGDIR" -type f -name "*.deb" -print0 | \
+    xargs -0 -r dpkg -i || true
+
+    apt-get clean
+    rm -rf /var/lib/apt/lists/*
+fi
+
+exit 0

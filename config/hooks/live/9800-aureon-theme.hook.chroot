@@ -1,0 +1,66 @@
+#!/bin/bash
+set -e
+
+export DEBIAN_FRONTEND=noninteractive
+
+apt-get update
+
+# Dependencies
+apt-get install -y \
+    git \
+    wget \
+    curl \
+    unzip \
+    sassc \
+    libglib2.0-dev-bin \
+    gnome-shell-extensions
+
+cd /tmp
+
+########################################
+# Fluent GTK Theme
+########################################
+
+git clone --depth=1 https://github.com/vinceliuice/Fluent-gtk-theme.git
+
+cd Fluent-gtk-theme
+
+./install.sh --all --tweaks blur
+
+cd ..
+
+########################################
+# Fluent Icon Theme
+########################################
+
+git clone --depth=1 https://github.com/vinceliuice/Fluent-icon-theme.git
+
+cd Fluent-icon-theme
+
+./install.sh --all
+
+cd ..
+
+########################################
+# Fluent Cursor Theme
+########################################
+
+git clone --depth=1 https://github.com/vinceliuice/Fluent-icon-theme.git fluent-cursor
+
+cd fluent-cursor
+
+./install.sh
+
+cd ..
+
+########################################
+# Cleanup
+########################################
+
+rm -rf \
+    Fluent-gtk-theme \
+    Fluent-icon-theme \
+    fluent-cursor
+
+apt-get clean
+rm -rf /var/lib/apt/lists/*

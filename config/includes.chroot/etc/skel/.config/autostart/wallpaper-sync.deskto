@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Exec=gsettings set org.gnome.desktop.background picture-uri 'file:///usr/share/backgrounds/aureon/light.png'
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name=Wallpaper-Sync

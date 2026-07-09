@@ -1,0 +1,16 @@
+#!/bin/bash
+# Automatically create .desktop files for all your tools
+# This ensures they appear in Arc Menu instantly
+TOOLS=("nmap" "wireshark" "burpsuite" "sqlmap")
+
+for tool in "${TOOLS[@]}"; do
+    cat <<EOF > /usr/share/applications/custom-${tool}.desktop
+[Desktop Entry]
+Name=${tool^^}
+Exec=gnome-terminal -- bash -c "${tool}; exec bash"
+Icon=utilities-terminal
+Terminal=false
+Type=Application
+Categories=Security;
+EOF
+done

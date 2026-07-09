@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Enter your operating system name here
+NEW_HOSTNAME="AureonOS"
+
+# Update the hostname file
+echo "$NEW_HOSTNAME" > /etc/hostname
+
+# Update the /etc/hosts file (to avoid conflicts with localhost)
+sed -i "s/127.0.1.1.*/127.0.1.1\t$NEW_HOSTNAME/g" /etc/hosts

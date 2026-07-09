@@ -1,0 +1,4 @@
+#!/bin/bash
+# Remove unnecessary startup items that consume RAM
+rm -f /etc/xdg/autostart/gnome-software-service.desktop
+rm -f /etc/xdg/autostart/evolution-data-server.desktop

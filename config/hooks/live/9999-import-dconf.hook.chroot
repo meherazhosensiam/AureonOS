@@ -1,0 +1,2 @@
+mkdir -p config/hooks/live
+nano config/hooks/live/9999-import-dconf.hook.chroot

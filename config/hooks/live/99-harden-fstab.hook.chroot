@@ -1,0 +1,4 @@
+#!/bin/bash
+# Harden /tmp and /dev/shm for security
+echo "tmpfs /tmp tmpfs defaults,noexec,nosuid,nodev 0 0" >> /etc/fstab
+echo "tmpfs /dev/shm tmpfs defaults,noexec,nosuid,nodev 0 0" >> /etc/fstab
