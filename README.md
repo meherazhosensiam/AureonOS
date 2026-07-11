@@ -6,6 +6,12 @@
 ![License](https://img.shields.io/badge/License-GPLv3-green.svg)
 ![Platform](https://img.shields.io/badge/Platform-Linux-success)
 ![Base](https://img.shields.io/badge/Base-Debian-red)
+![GNOME](https://img.shields.io/badge/Desktop-GNOME-4A86CF?logo=gnome&logoColor=white)
+![Calamares](https://img.shields.io/badge/Installer-Calamares-00AEEF)
+![Architecture](https://img.shields.io/badge/Architecture-x86__64-blue)
+![ISO](https://img.shields.io/badge/Image-ISO-orange)
+![Live Build](https://img.shields.io/badge/Built%20With-Live%20Build-red)
+![Open Source](https://img.shields.io/badge/Open%20Source-Yes-brightgreen?logo=opensourceinitiative&logoColor=white)
 ![Status](https://img.shields.io/badge/Status-Active%20Development-orange)
 
 ---
