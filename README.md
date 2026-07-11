@@ -118,10 +118,13 @@ Bug reports, suggestions, and contributions are welcome. If you would like to im
 
 ## License
 
-The source code in this repository is licensed under the license provided with this project.
+AUREON OS is licensed under the GNU General Public License v3.0 (GPL-3.0).
 
-Individual software packages included in AUREON OS remain under their own respective licenses.
+The source code, build scripts, and original project files in this repository are distributed under the terms of the GNU GPL v3.0.
 
+Third-party software included in or used to build AUREON OS, such as Debian, the Linux kernel, GNOME, GNU utilities, Calamares, and other open-source components, remains subject to its own respective licenses. Those licenses are not replaced or modified by this project.
+
+For the complete license text, see the [LICENSE](LICENSE) file.
 ---
 
 ## Acknowledgements
