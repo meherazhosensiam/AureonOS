@@ -10,11 +10,9 @@
 
 ---
 
-# <p align="center">
-
-  <img src="config/includes.chroot/usr/share/aureonos/assets/logo.png" alt="AUREON OS Logo" width="180">
+<p align="center">
+  <img src="assets/logo.png" alt="AUREON OS Logo" width="180">
 </p>
-
 <h1 align="center">AUREON OS</h1>
 
 <p align="center">
