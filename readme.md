@@ -10,230 +10,128 @@
 
 ---
 
-## Overview
+# <p align="center">
 
-**AUREON OS** is a custom Linux distribution built on **Debian Stable** using **live-build**. It delivers a clean, modern desktop experience while remaining stable, lightweight, and highly customizable.
+  <img src="assets/logo.png" alt="AUREON OS Logo" width="180">
+</p>
 
-The project aims to provide an elegant operating system with carefully selected software, polished visual design, and a reproducible build system that allows anyone to generate the same ISO from source.
+<h1 align="center">AUREON OS</h1>
+
+<p align="center">
+A Debian-based Linux distribution with a modern GNOME desktop.
+</p>
+
+---
+
+## About
+
+AUREON OS is a personal open-source Linux distribution based on Debian. The project is focused on providing a clean, consistent, and easy-to-use desktop while keeping the flexibility and reliability of Debian.
+
+The desktop is built around GNOME with custom branding, themes, wallpapers, icons, and system configuration to create a unified experience. The goal is not to change how Linux works, but to provide a polished environment that is ready to use and easy to customize.
+
+This repository contains the source files, build scripts, configuration, and assets used to develop AUREON OS.
+
+---
+
+## Current Status
+
+**Project Stage:** Pre-release
+
+The project is currently under active development.
+
+**The installation ISO has not been released yet.** This repository contains the development source code and build configuration only. It is intended for development, testing, and contributions while the operating system is being prepared for its first public build.
 
 ---
 
 ## Features
 
-* Debian Stable foundation
+* Debian-based system
 * GNOME desktop environment
-* Modern AUREON branding
+* Custom branding and visual design
 * Custom wallpapers and themes
-* Customized GRUB and Plymouth boot experience
-* Zsh-powered terminal environment
-* Developer-friendly toolset
-* Reproducible ISO builds using Debian Live Build
-* Modular project structure
+* Customized desktop configuration
+* Live-build based build system
 * Open-source development
+* Modular project structure for easier maintenance
 
 ---
 
-## Screenshots
-
-> Screenshots will be added soon.
+## Repository Contents
 
 ---
-
-## Project Structure
-
-```text
-AureonOS/
-├── auto/
 ├── config/
-│   ├── includes.chroot/
-│   ├── package-lists/
-│   ├── hooks/
-│   ├── archives/
-│   └── ...
-├── scripts/
+├── hooks/
+├── includes/
+├── package-lists/
 ├── assets/
-├── docs/
-├── build.sh
-├── clean.sh
+├── scripts/
 └── README.md
 ```
 
----
-
-## Requirements
-
-* Debian 13 (Recommended)
-* Debian Live Build
-* Git
-* Root or sudo privileges
-* At least 25 GB of free disk space
-* Internet connection for package downloads
+The directory structure may change as development continues.
 
 ---
 
-## Installation
+## Building
 
-Clone the repository:
+The operating system is built using Debian's **live-build** tools.
 
-```bash
-git clone https://github.com/meherazhosensiam/AureonOS.git
-cd AureonOS
-```
-
-Install the required dependencies:
-
-```bash
-sudo apt update
-sudo apt install live-build debootstrap git
-```
-
----
-
-## Building the ISO
-
-Configure the build environment:
-
-```bash
-lb config
-```
-
-Build the ISO:
-
-```bash
-sudo lb build
-```
-
-After the build completes, the generated ISO will be available in the project directory.
-
----
-
-## Cleaning the Build
-
-To remove previous build artifacts:
-
-```bash
-sudo lb clean
-```
-
----
-
-## Customization
-
-AUREON OS is designed to be easy to customize.
-
-You can modify:
-
-* Installed packages
-* Desktop themes
-* Icons
-* Wallpapers
-* GNOME extensions
-* Plymouth splash screen
-* GRUB theme
-* System branding
-* Default applications
-* Configuration files
-
-Most customizations can be found under:
-
-```text
-config/
-```
+Development documentation and build instructions will be expanded as the project matures.
 
 ---
 
 ## Roadmap
 
-* [ ] Stable ISO release
-* [ ] Automated build script
-* [ ] GitHub Actions CI/CD
-* [ ] Custom installer improvements
-* [ ] Enhanced branding
-* [ ] AUREON Wallpapers Pack
-* [ ] Documentation website
-* [ ] Release management
-* [ ] Automatic update infrastructure
+* Complete the first installable ISO
+* Improve desktop customization
+* Refine installer configuration
+* Expand documentation
+* Improve system stability
+* Continue polishing the user experience
+
+---
+
+## Open Source Projects Used
+
+AUREON OS is made possible by the work of many open-source communities and projects, including:
+
+* Debian
+* Linux Kernel
+* GNOME
+* GNU Project
+* systemd
+* Calamares Installer
+* live-build
+* GRUB
+* Plymouth
+* GTK
+* Mesa
+* NetworkManager
+
+Each of these projects is developed and maintained by its respective community and contributors.
 
 ---
 
 ## Contributing
 
-Contributions are welcome.
-
-If you would like to improve AUREON OS:
-
-1. Fork the repository
-2. Create a new branch
-
-```bash
-git checkout -b feature/my-feature
-```
-
-3. Commit your changes
-
-```bash
-git commit -m "Add new feature"
-```
-
-4. Push the branch
-
-```bash
-git push origin feature/my-feature
-```
-
-5. Open a Pull Request
-
-Please ensure your changes follow the project's coding style and are tested before submission.
-
----
-
-## Issues
-
-Found a bug or have a feature request?
-
-Please open an Issue describing:
-
-* Operating system
-* Build logs
-* Steps to reproduce
-* Expected behavior
-* Actual behavior
+Bug reports, suggestions, and contributions are welcome. If you would like to improve the project, feel free to open an issue or submit a pull request.
 
 ---
 
 ## License
 
-This project is licensed under the **MIT License**.
+The source code in this repository is licensed under the license provided with this project.
 
-See the `LICENSE` file for details.
-
----
-
-## Author
-
-**Meheraz Hosen Siam**
-
-GitHub:
-https://github.com/meherazhosensiam
+Individual software packages included in AUREON OS remain under their own respective licenses.
 
 ---
 
 ## Acknowledgements
 
-AUREON OS is built using:
-
-* Debian
-* Debian Live Build
-* GNOME
-* Linux Kernel
-* Open Source Community
-
-A sincere thank you to everyone who contributes to the Linux ecosystem.
+This project builds upon the work of the Debian Project and the wider free and open-source software community. Their continued efforts make projects like AUREON OS possible.
 
 ---
 
-# Star the Project
-
-If you find AUREON OS interesting or useful, consider giving the repository a ⭐ on GitHub.
-
-Your support helps the project grow and reach more users.
+<p align="center">
+AUREON OS • Pre-release
+</p>
