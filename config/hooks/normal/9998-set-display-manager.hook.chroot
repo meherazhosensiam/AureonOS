@@ -1,0 +1,9 @@
+#!/bin/sh
+set -e
+
+# This script runs inside the build (chroot)
+# It tells Debian to use GDM3 as the default login screen
+echo "/usr/sbin/gdm3" > /etc/X11/default-display-manager
+
+# Ensure the system knows GDM3 is the enabled service
+systemctl enable gdm3

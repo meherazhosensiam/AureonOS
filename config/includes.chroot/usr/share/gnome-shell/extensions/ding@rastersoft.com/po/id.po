@@ -1,0 +1,995 @@
+# Indonesian translation for desktop-icons.
+# Copyright (C) 2018 desktop-icons's COPYRIGHT HOLDER
+# This file is distributed under the same license as the desktop-icons package.
+# Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2018, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: desktop-icons master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-11-24 20:44+0100\n"
+"PO-Revision-Date: 2019-07-11 13:57+0700\n"
+"Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
+"Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.3\n"
+
+#: app/askRenamePopup.js:50
+#, fuzzy
+msgid "Folder name"
+msgstr "Nama folder baru"
+
+#: app/askRenamePopup.js:50
+#, fuzzy
+msgid "File name"
+msgstr "Ganti Nama…"
+
+#: app/askRenamePopup.js:59 app/autoAr.js:305 app/desktopManager.js:1091
+msgid "OK"
+msgstr "OK"
+
+#: app/askRenamePopup.js:59
+#, fuzzy
+msgid "Rename"
+msgstr "Ganti Nama…"
+
+#: app/autoAr.js:88
+msgid "AutoAr is not installed"
+msgstr ""
+
+#: app/autoAr.js:89
+msgid ""
+"To be able to work with compressed files, install file-roller and/or gir-1.2-"
+"gnomeAutoAr"
+msgstr ""
+
+#: app/autoAr.js:224
+#, fuzzy
+msgid "Extracting files"
+msgstr "Ekstrak Di Sini"
+
+#: app/autoAr.js:241
+msgid "Compressing files"
+msgstr ""
+
+#: app/autoAr.js:297 app/autoAr.js:636 app/desktopManager.js:1093
+#: app/fileItemMenu.js:474
+msgid "Cancel"
+msgstr "Batal"
+
+#: app/autoAr.js:318 app/autoAr.js:619
+msgid "Enter a password here"
+msgstr ""
+
+#: app/autoAr.js:359
+msgid "Removing partial file '${outputFile}'"
+msgstr ""
+
+#: app/autoAr.js:378
+msgid "Creating destination folder"
+msgstr ""
+
+#: app/autoAr.js:410
+msgid "Extracting files into '${outputPath}'"
+msgstr ""
+
+#: app/autoAr.js:442
+#, fuzzy
+msgid "Extraction completed"
+msgstr "Ekstrak Di Sini"
+
+#: app/autoAr.js:443
+msgid "Extracting '${fullPathFile}' has been completed."
+msgstr ""
+
+#: app/autoAr.js:449
+#, fuzzy
+msgid "Extraction cancelled"
+msgstr "Ekstrak Di Sini"
+
+#: app/autoAr.js:450
+msgid "Extracting '${fullPathFile}' has been cancelled by the user."
+msgstr ""
+
+#: app/autoAr.js:460
+msgid "Passphrase required for ${filename}"
+msgstr ""
+
+#: app/autoAr.js:463
+msgid "Error during extraction"
+msgstr ""
+
+#: app/autoAr.js:492
+msgid "Compressing files into '${outputFile}'"
+msgstr ""
+
+#: app/autoAr.js:505
+msgid "Compression completed"
+msgstr ""
+
+#: app/autoAr.js:506
+msgid "Compressing files into '${outputFile}' has been completed."
+msgstr ""
+
+#: app/autoAr.js:510 app/autoAr.js:517
+msgid "Cancelled compression"
+msgstr ""
+
+#: app/autoAr.js:511
+msgid "The output file '${outputFile}' already exists."
+msgstr ""
+
+#: app/autoAr.js:518
+msgid "Compressing files into '${outputFile}' has been cancelled by the user."
+msgstr ""
+
+#: app/autoAr.js:521
+msgid "Error during compression"
+msgstr ""
+
+#: app/autoAr.js:554
+#, fuzzy
+msgid "Create archive"
+msgstr "Buat"
+
+#: app/autoAr.js:579
+#, fuzzy
+msgid "Archive name"
+msgstr "Ganti Nama…"
+
+#: app/autoAr.js:614
+msgid "Password"
+msgstr ""
+
+#: app/autoAr.js:633
+msgid "Create"
+msgstr "Buat"
+
+#: app/autoAr.js:712
+msgid "Compatible with all operating systems."
+msgstr ""
+
+#: app/autoAr.js:718
+msgid "Password protected .zip, must be installed on Windows and Mac."
+msgstr ""
+
+#: app/autoAr.js:724
+msgid "Smaller archives but Linux and Mac only."
+msgstr ""
+
+#: app/autoAr.js:730
+msgid "Smaller archives but must be installed on Windows and Mac."
+msgstr ""
+
+#: app/dbusUtils.js:69
+msgid "\"${programName}\" is needed for Desktop Icons"
+msgstr ""
+
+#: app/dbusUtils.js:70
+msgid ""
+"For this functionality to work in Desktop Icons, you must install \"$"
+"{programName}\" in your system."
+msgstr ""
+
+#: app/desktopIconsUtil.js:157
+msgid "Command not found"
+msgstr "Perintah tidak ditemukan"
+
+#: app/desktopManager.js:264
+msgid "Nautilus File Manager not found"
+msgstr ""
+
+#: app/desktopManager.js:265
+msgid "The Nautilus File Manager is mandatory to work with Desktop Icons NG."
+msgstr ""
+
+#: app/desktopManager.js:271
+msgid "GLibUnix GIR file not found"
+msgstr ""
+
+#: app/desktopManager.js:272
+msgid ""
+"GLibUnix-2.0.gir file is missing. Please, install the required package in "
+"your system."
+msgstr ""
+
+#: app/desktopManager.js:1050
+msgid "Clear Current Selection before New Search"
+msgstr ""
+
+#: app/desktopManager.js:1095
+msgid "Find Files on Desktop"
+msgstr ""
+
+#: app/desktopManager.js:1163 app/desktopManager.js:1875
+msgid "New Folder"
+msgstr "Folder Baru"
+
+#: app/desktopManager.js:1167
+msgid "New Document"
+msgstr "Dokumen Baru"
+
+#: app/desktopManager.js:1172
+msgid "Paste"
+msgstr "Tempel"
+
+#: app/desktopManager.js:1176
+msgid "Undo"
+msgstr "Tak Jadi"
+
+#: app/desktopManager.js:1180
+msgid "Redo"
+msgstr "Jadi Lagi"
+
+#: app/desktopManager.js:1186
+#, fuzzy
+msgid "Select All"
+msgstr "Pilih semua"
+
+#: app/desktopManager.js:1194
+msgid "Show Desktop in Files"
+msgstr "Tampilkan Destop pada Berkas"
+
+#: app/desktopManager.js:1198 app/fileItemMenu.js:365
+msgid "Open in Terminal"
+msgstr "Buka dalam Terminal"
+
+#: app/desktopManager.js:1204
+msgid "Change Background…"
+msgstr "Ubah Latar Belakang…"
+
+#: app/desktopManager.js:1215
+#, fuzzy
+msgid "Desktop Icons Settings"
+msgstr "Pengaturan Tampilan"
+
+#: app/desktopManager.js:1228
+msgid "Display Settings"
+msgstr "Pengaturan Tampilan"
+
+#: app/desktopManager.js:1888
+#, fuzzy
+msgid "Folder Creation Failed"
+msgstr "Nama folder baru"
+
+#: app/desktopManager.js:1889
+msgid "Error while trying to create a Folder"
+msgstr ""
+
+#: app/desktopManager.js:1925
+msgid "Template Creation Failed"
+msgstr ""
+
+#: app/desktopManager.js:1926
+msgid "Error while trying to create a Document"
+msgstr ""
+
+#: app/desktopManager.js:1934
+msgid "Arrange Icons"
+msgstr ""
+
+#: app/desktopManager.js:1938
+msgid "Arrange By..."
+msgstr ""
+
+#: app/desktopManager.js:1947
+msgid "Keep Arranged..."
+msgstr ""
+
+#: app/desktopManager.js:1951
+msgid "Keep Stacked by type..."
+msgstr ""
+
+#: app/desktopManager.js:1956
+msgid "Sort Home/Drives/Trash..."
+msgstr ""
+
+#: app/desktopManager.js:1962
+msgid "Sort by Name"
+msgstr ""
+
+#: app/desktopManager.js:1964
+msgid "Sort by Name Descending"
+msgstr ""
+
+#: app/desktopManager.js:1967
+msgid "Sort by Modified Time"
+msgstr ""
+
+#: app/desktopManager.js:1970
+msgid "Sort by Type"
+msgstr ""
+
+#: app/desktopManager.js:1973
+msgid "Sort by Size"
+msgstr ""
+
+#. * TRANSLATORS: when using a screen reader, this is the text read when the user's personal folder is
+#. * highlighted.
+#. TRANSLATORS: "Home" is the text that will be shown in the user's personal folder
+#: app/fileItem.js:120 app/fileItem.js:255
+msgid "Home"
+msgstr "Rumah"
+
+#. * TRANSLATORS: when using a screen reader, this is the text read when the user's personal folder is
+#. * highlighted and selected.
+#: app/fileItem.js:123
+#, fuzzy
+msgid "Home Selected"
+msgstr "Pilih"
+
+#. * TRANSLATORS: when using a screen reader, this is the text read when the trash folder is
+#. * highlighted.
+#: app/fileItem.js:128
+#, fuzzy
+msgid "Trash"
+msgstr "Kosongkan Tong Sampah"
+
+#. * TRANSLATORS: when using a screen reader, this is the text read when the trash folder is
+#. * highlighted and selected.
+#: app/fileItem.js:131
+#, fuzzy
+msgid "Trash Selected"
+msgstr "Pilih"
+
+#. * TRANSLATORS: when using a screen reader, this is the role used when an external drive is
+#. * highlighted. Example: if a USB stick named "my_portable" is highlighted, it will say "my_portable Drive".
+#. * It is mandatory to say the file name first and the role after.
+#: app/fileItem.js:137
+msgid "${VisibleName} Drive"
+msgstr ""
+
+#. * TRANSLATORS: when using a screen reader, this is the role used when an external drive is
+#. * highlighted and selected. Example: if a USB stick named "my_portable" is highlighted and selected, it
+#. * will say "my_portable Drive Selected". It is mandatory to say the file name first, then the role, and
+#. * finally "Selected".
+#: app/fileItem.js:142
+msgid "${VisibleName} Drive Selected"
+msgstr ""
+
+#. * TRANSLATORS: when using a screen reader, this is the role used when a stack is
+#. * highlighted. Example: if a stack named "pictures" is selected, it will say "pictures Stack".
+#. * It is mandatory to say the file name first and the role after.
+#: app/fileItem.js:148
+msgid "${VisibleName} Stack"
+msgstr ""
+
+#. * TRANSLATORS: when using a screen reader, this is the role used when a stack is highlighted and
+#. * selected. Example: if a stack named "pictures" is highlighted and selected, it will say "pictures Stack Selected".
+#. * It is mandatory to say the file name first, then the role, and finally "Selected".
+#: app/fileItem.js:152
+msgid "${VisibleName} Stack Selected"
+msgstr ""
+
+#. * TRANSLATORS: when using a screen reader, this is the role used when a folder is
+#. * highlighted. Example: if a folder named "things" is highlighted, it will say "things Folder".
+#. * It is mandatory to say the file name first and the role after.
+#: app/fileItem.js:158
+msgid "${VisibleName} Folder"
+msgstr ""
+
+#. * TRANSLATORS: when using a screen reader, this is the role used when a folder is
+#. * highlighted and selected. Example: if a folder named "things" is highlighted and selected, it will say
+#. * "things Folder Selected". It is mandatory to say the file name first, then the role, and finally "Selected".
+#: app/fileItem.js:162
+msgid "${VisibleName} Folder Selected"
+msgstr ""
+
+#. * TRANSLATORS: when using a screen reader, this is the role used when a trusted desktop file is
+#. * highlighted. Example: if a desktop file named "My App" is highlighted and it is trusted, it will
+#. * say "My App Application". It is mandatory to say the file name first and the role after.
+#: app/fileItem.js:168
+msgid "${VisibleName} Application"
+msgstr ""
+
+#. * TRANSLATORS: when using a screen reader, this is the role used when a trusted desktop file is
+#. * highlighted. Example: if a desktop file named "My App" is highlighted and selected and it is trusted, it will
+#. * say "My App Application Selected". It is mandatory to say the file name first and the role after.
+#: app/fileItem.js:172
+msgid "${VisibleName} Application Selected"
+msgstr ""
+
+#. * TRANSLATORS: when using a screen reader, this is the text read when a normal file is
+#. * highlighted. Example: if a file named "my_picture.jpg" is highlighted, it will say "my_picture.jpg File"
+#: app/fileItem.js:178
+msgid "${VisibleName} File"
+msgstr ""
+
+#. * TRANSLATORS: when using a screen reader, this is the text read when a normal file is highlighted and
+#. * selected. Example: if a file named "my_picture.jpg" is highlighted and selected, it will say
+#. * "my_picture.jpg File Selected". It is mandatory to say the file name first and the role after.
+#: app/fileItem.js:182
+msgid "${VisibleName} File Selected"
+msgstr ""
+
+#: app/fileItem.js:348
+#, fuzzy
+msgid "Error while reading Desktop file"
+msgstr "Tampilkan Destop pada Berkas"
+
+#: app/fileItem.js:390
+msgid "Broken Link"
+msgstr ""
+
+#: app/fileItem.js:391
+msgid "Can not open this File because it is a Broken Symlink"
+msgstr ""
+
+#: app/fileItem.js:423
+msgid "Can't open the file"
+msgstr ""
+
+#: app/fileItem.js:449
+#, fuzzy
+msgid "Broken Desktop File"
+msgstr "Tampilkan Destop pada Berkas"
+
+#: app/fileItem.js:450
+msgid ""
+"This .desktop file has errors or points to a program without permissions. It "
+"can not be executed.\n"
+"\n"
+"\t<b>Edit the file to set the correct executable Program.</b>"
+msgstr ""
+
+#: app/fileItem.js:456
+msgid "Invalid Permissions on Desktop File"
+msgstr ""
+
+#: app/fileItem.js:457
+msgid ""
+"This .desktop File has incorrect Permissions. Right Click to edit "
+"Properties, then:\n"
+msgstr ""
+
+#: app/fileItem.js:459
+msgid ""
+"\n"
+"<b>Set Permissions, in \"Others Access\", \"Read Only\" or \"None\"</b>"
+msgstr ""
+
+#: app/fileItem.js:462
+msgid ""
+"\n"
+"<b>Enable option, \"Allow Executing File as a Program\"</b>"
+msgstr ""
+
+#: app/fileItem.js:470
+msgid ""
+"This .desktop file is not trusted, it can not be launched. To enable "
+"launching, right-click, then:\n"
+"\n"
+"<b>Enable \"Allow Launching\"</b>"
+msgstr ""
+
+#: app/fileItem.js:669
+msgid "Failed to set execution flag"
+msgstr ""
+
+#: app/fileItem.js:681 app/fileItem.js:688
+msgid "Could not apply discrete GPU environment"
+msgstr ""
+
+#: app/fileItem.js:717
+msgid "Could not find discrete GPU data"
+msgstr ""
+
+#: app/fileItem.js:842
+msgid "Failed to set metadata::trusted flag"
+msgstr ""
+
+#: app/fileItemMenu.js:143
+msgid "Open All..."
+msgstr ""
+
+#: app/fileItemMenu.js:143
+msgid "Open"
+msgstr "Buka"
+
+#: app/fileItemMenu.js:160
+msgid "Stack This Type"
+msgstr ""
+
+#: app/fileItemMenu.js:160
+msgid "Unstack This Type"
+msgstr ""
+
+#: app/fileItemMenu.js:173
+msgid "Scripts"
+msgstr ""
+
+#: app/fileItemMenu.js:178
+#, fuzzy
+msgid "Open All With Other Application..."
+msgstr "Buka Dengan Aplikasi Lain"
+
+#: app/fileItemMenu.js:178
+msgid "Open With Other Application"
+msgstr "Buka Dengan Aplikasi Lain"
+
+#: app/fileItemMenu.js:184
+msgid "Launch using Dedicated Graphics Card"
+msgstr ""
+
+#: app/fileItemMenu.js:195
+msgid "Run as a program"
+msgstr ""
+
+#: app/fileItemMenu.js:203
+msgid "Cut"
+msgstr "Potong"
+
+#: app/fileItemMenu.js:210
+msgid "Copy"
+msgstr "Salin"
+
+#: app/fileItemMenu.js:218
+msgid "Rename…"
+msgstr "Ganti Nama…"
+
+#: app/fileItemMenu.js:228
+msgid "Move to Trash"
+msgstr "Pindahkan ke Tong Sampah"
+
+#: app/fileItemMenu.js:236
+msgid "Delete permanently"
+msgstr "Hapus permanen"
+
+#: app/fileItemMenu.js:246
+#, fuzzy
+msgid "Don't Allow Launching"
+msgstr "Jangan Izinkan Peluncuran"
+
+#: app/fileItemMenu.js:246
+msgid "Allow Launching"
+msgstr "Izinkan Peluncuran"
+
+#: app/fileItemMenu.js:259
+msgid "Empty Trash"
+msgstr "Kosongkan Tong Sampah"
+
+#: app/fileItemMenu.js:272
+msgid "Eject"
+msgstr "Keluarkan Media"
+
+#: app/fileItemMenu.js:280
+msgid "Unmount"
+msgstr "Lepas Kaitan"
+
+#: app/fileItemMenu.js:294 app/fileItemMenu.js:301
+msgid "Extract Here"
+msgstr "Ekstrak Di Sini"
+
+#: app/fileItemMenu.js:308
+msgid "Extract To..."
+msgstr "Ekstrak ke…"
+
+#: app/fileItemMenu.js:317
+msgid "Send to..."
+msgstr "Kirim ke…"
+
+#: app/fileItemMenu.js:325
+msgid "Compress {0} folder"
+msgid_plural "Compress {0} folders"
+msgstr[0] ""
+msgstr[1] ""
+
+#: app/fileItemMenu.js:332
+msgid "Compress {0} file"
+msgid_plural "Compress {0} files"
+msgstr[0] ""
+msgstr[1] ""
+
+#: app/fileItemMenu.js:340
+msgid "New Folder with {0} item"
+msgid_plural "New Folder with {0} items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: app/fileItemMenu.js:351
+#, fuzzy
+msgid "Common Properties"
+msgstr "Properti"
+
+#: app/fileItemMenu.js:351
+msgid "Properties"
+msgstr "Properti"
+
+#: app/fileItemMenu.js:358
+#, fuzzy
+msgid "Show All in Files"
+msgstr "Tampilkan pada Berkas"
+
+#: app/fileItemMenu.js:358
+msgid "Show in Files"
+msgstr "Tampilkan pada Berkas"
+
+#: app/fileItemMenu.js:449
+#, fuzzy
+msgid "No Extraction Folder"
+msgstr "Ekstrak Di Sini"
+
+#: app/fileItemMenu.js:450
+msgid "Unable to extract File, extraction Folder Does not Exist"
+msgstr ""
+
+#: app/fileItemMenu.js:470
+msgid "Select Extract Destination"
+msgstr ""
+
+#: app/fileItemMenu.js:475
+msgid "Select"
+msgstr "Pilih"
+
+#: app/fileItemMenu.js:516
+msgid "Can not email a Directory"
+msgstr ""
+
+#: app/fileItemMenu.js:517
+msgid "Selection includes a Directory, compress the directory to a file first."
+msgstr ""
+
+#: app/notifyX11UnderWayland.js:37
+msgid "Desktop Icons NG is running under X11Wayland"
+msgstr ""
+
+#: app/notifyX11UnderWayland.js:38
+msgid ""
+"It seems that you have your system configured to force GTK to use X11. This "
+"works, but it's suboptimal. You should check your system configuration to "
+"fix this."
+msgstr ""
+
+#: app/notifyX11UnderWayland.js:39 app/showErrorPopup.js:39
+msgid "Close"
+msgstr ""
+
+#: app/notifyX11UnderWayland.js:47
+msgid "Don't show this message anymore."
+msgstr ""
+
+#: app/preferences.js:91
+msgid "Settings"
+msgstr "Pengaturan"
+
+#: app/prefswindow.js:64
+msgid "Size for the desktop icons"
+msgstr "Ukuran untuk ikon destop"
+
+#: app/prefswindow.js:64
+msgid "Tiny"
+msgstr ""
+
+#: app/prefswindow.js:64
+msgid "Small"
+msgstr "Kecil"
+
+#: app/prefswindow.js:64
+msgid "Standard"
+msgstr "Standar"
+
+#: app/prefswindow.js:64
+msgid "Large"
+msgstr "Besar"
+
+#: app/prefswindow.js:65
+msgid "Show the personal folder in the desktop"
+msgstr "Tampilkan folder pribadi di destop"
+
+#: app/prefswindow.js:66
+msgid "Show the trash icon in the desktop"
+msgstr "Tampilkan ikon tong sampah di destop"
+
+#: app/prefswindow.js:67 schemas/org.gnome.shell.extensions.ding.gschema.xml:45
+#, fuzzy
+msgid "Show external drives in the desktop"
+msgstr "Tampilkan folder pribadi di destop"
+
+#: app/prefswindow.js:68 schemas/org.gnome.shell.extensions.ding.gschema.xml:50
+#, fuzzy
+msgid "Show network drives in the desktop"
+msgstr "Tampilkan folder pribadi di destop."
+
+#: app/prefswindow.js:71
+#, fuzzy
+msgid "New icons alignment"
+msgstr "Ukuran ikon"
+
+#: app/prefswindow.js:73
+msgid "Top-left corner"
+msgstr ""
+
+#: app/prefswindow.js:74
+msgid "Top-right corner"
+msgstr ""
+
+#: app/prefswindow.js:75
+msgid "Bottom-left corner"
+msgstr ""
+
+#: app/prefswindow.js:76
+msgid "Bottom-right corner"
+msgstr ""
+
+#: app/prefswindow.js:78 schemas/org.gnome.shell.extensions.ding.gschema.xml:55
+msgid "Add new drives to the opposite side of the screen"
+msgstr ""
+
+#: app/prefswindow.js:79
+msgid "Highlight the drop place during Drag'n'Drop"
+msgstr ""
+
+#: app/prefswindow.js:80 schemas/org.gnome.shell.extensions.ding.gschema.xml:90
+msgid "Use Nemo to open folders"
+msgstr ""
+
+#: app/prefswindow.js:82
+msgid "Add an emblem to soft links"
+msgstr ""
+
+#: app/prefswindow.js:84
+msgid "Use dark text in icon labels"
+msgstr ""
+
+#: app/prefswindow.js:91
+msgid "Settings shared with Nautilus"
+msgstr ""
+
+#: app/prefswindow.js:113
+msgid "Click type for open files"
+msgstr ""
+
+#: app/prefswindow.js:113
+msgid "Single click"
+msgstr ""
+
+#: app/prefswindow.js:113
+msgid "Double click"
+msgstr ""
+
+#: app/prefswindow.js:114
+#, fuzzy
+msgid "Show hidden files"
+msgstr "Tampilkan pada Berkas"
+
+#: app/prefswindow.js:115
+msgid "Show a context menu item to delete permanently"
+msgstr ""
+
+#: app/prefswindow.js:120
+msgid "Action to do when launching a program from the desktop"
+msgstr ""
+
+#: app/prefswindow.js:121
+msgid "Display the content of the file"
+msgstr ""
+
+#: app/prefswindow.js:122
+msgid "Launch the file"
+msgstr ""
+
+#: app/prefswindow.js:123
+msgid "Ask what to do"
+msgstr ""
+
+#: app/prefswindow.js:129
+msgid "Show image thumbnails"
+msgstr ""
+
+#: app/prefswindow.js:130
+msgid "Never"
+msgstr ""
+
+#: app/prefswindow.js:131
+msgid "Local files only"
+msgstr ""
+
+#: app/prefswindow.js:132
+msgid "Always"
+msgstr ""
+
+#: app/thumbnails.js:38
+msgid "GnomeDesktop-3.0 GIR file not found"
+msgstr ""
+
+#: app/thumbnails.js:39
+msgid ""
+"GnomeDesktop-3.0.gir file is missing. Please, install the required package "
+"in your system."
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:25
+msgid "Icon size"
+msgstr "Ukuran ikon"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:26
+msgid "Set the size for the desktop icons."
+msgstr "Set ukuran untuk ikon destop."
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:30
+msgid "Show personal folder"
+msgstr "Tampilkan folder pribadi"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:31
+msgid "Show the personal folder in the desktop."
+msgstr "Tampilkan folder pribadi di destop."
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:35
+msgid "Show trash icon"
+msgstr "Tampilkan ikon tong sampah"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:36
+msgid "Show the trash icon in the desktop."
+msgstr "Tampilkan ikon tong sampah di destop."
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:40
+#, fuzzy
+msgid "New icons start corner"
+msgstr "Ukuran ikon"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:41
+msgid "Set the corner from where the icons will start to be placed."
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:46
+msgid "Show the disk drives connected to the computer."
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:51
+#, fuzzy
+msgid "Show mounted network volumes in the desktop."
+msgstr "Tampilkan folder pribadi di destop."
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:56
+msgid ""
+"When adding drives and volumes to the desktop, add them to the opposite side "
+"of the screen."
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:60
+msgid "Shows a rectangle in the destination place during DnD"
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:61
+msgid ""
+"When doing a Drag'n'Drop operation, marks the place in the grid where the "
+"icon will be put with a semitransparent rectangle."
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:65
+msgid "Sort Special Folders - Home/Trash Drives."
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:66
+msgid ""
+"When arranging Icons on desktop, to sort and change the position of the "
+"Home, Trash and mounted Network or External Drives"
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:70
+msgid "Keep Icons Arranged"
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:71
+msgid "Always keep Icons Arranged by the last arranged order"
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:75
+msgid "Arrange Order"
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:76
+msgid "Icons Arranged by this property"
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:80
+msgid "Keep Icons Stacked"
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:81
+msgid "Always keep Icons Stacked, Similar types are grouped"
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:85
+msgid "Type of Files to not Stack"
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:86
+msgid "An Array of strings types, Don't Stack these types of files"
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:91
+msgid "Use Nemo instead of Nautilus to open folders."
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:95
+msgid "Add an emblem to links"
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:96
+msgid "Add an emblem to allow to identify soft links."
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:100
+msgid "Use black for label text"
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:101
+msgid ""
+"Paint the label text in black instead of white. Useful when using light "
+"backgrounds."
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:105
+msgid "Show a popup if running on X11Wayland"
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:106
+msgid ""
+"Whether DING should show a popup if it is running on X11Wayland, or the user "
+"decided to not show it anymore."
+msgstr ""
+
+#, fuzzy
+#~ msgid "Folder"
+#~ msgstr "Folder Baru"
+
+#, fuzzy
+#~ msgid "Desktop icons"
+#~ msgstr "Pengaturan Tampilan"
+
+#~ msgid "Do you want to run “{0}”, or display its contents?"
+#~ msgstr "Anda ingin menjalankan “{0}” atau hanya melihat isinya?"
+
+#~ msgid "“{0}” is an executable text file."
+#~ msgstr "“{0}” adalah berkas teks yang dapat dieksekusi."
+
+#, fuzzy
+#~ msgid "Execute in a terminal"
+#~ msgstr "Buka dalam Terminal"
+
+#, fuzzy
+#~ msgid "New folder"
+#~ msgstr "Folder Baru"
+
+#~ msgid "Delete"
+#~ msgstr "Hapus"
+
+#~ msgid "If you delete an item, it will be permanently lost."
+#~ msgstr "Jika dihapus, maka akan dihapus permanen."
+
+#, fuzzy
+#~ msgid "Show external disk drives in the desktop"
+#~ msgstr "Tampilkan folder pribadi di destop"
+
+#, fuzzy
+#~ msgid "Show the external drives"
+#~ msgstr "Tampilkan folder pribadi di destop"
+
+#, fuzzy
+#~ msgid "Show network volumes"
+#~ msgstr "Tampilkan pada Berkas"
+
+#~ msgid "Enter file name…"
+#~ msgstr "Masukkan nama berkas…"
+
+#~ msgid "Folder names cannot contain “/”."
+#~ msgstr "Nama folder tak boleh memuat \"/\"."
+
+#~ msgid "A folder cannot be called “.”."
+#~ msgstr "Sebuah folder tak bisa dinamai \".\"."
+
+#~ msgid "A folder cannot be called “..”."
+#~ msgstr "Sebuah folder tak bisa dinamai \"..\"."
+
+#~ msgid "Folders with “.” at the beginning of their name are hidden."
+#~ msgstr "Folder dengan \".\" di awal nama mereka disembunyikan."
+
+#~ msgid "There is already a file or folder with that name."
+#~ msgstr "Folder dengan nama itu sudah ada."
+
+#~ msgid "Huge"
+#~ msgstr "Sangat besar"

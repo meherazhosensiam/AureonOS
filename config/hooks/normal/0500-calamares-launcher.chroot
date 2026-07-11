@@ -1,0 +1,4 @@
+#!/bin/bash
+set -e
+
+chmod 644 /usr/share/applications/install-aureon.desktop

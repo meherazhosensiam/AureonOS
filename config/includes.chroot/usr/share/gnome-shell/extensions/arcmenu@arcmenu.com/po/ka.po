@@ -1,0 +1,1896 @@
+# Georgian translation for ArcMenu.
+# Copyright (C) 2026 ArcMenu's authors.
+# This file is distributed under the same license as the ArcMenu package.
+# Ekaterine Papava <papava.e@gtu.ge>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ArcMenu\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-11 08:27-0400\n"
+"PO-Revision-Date: 2026-03-18 04:11+0100\n"
+"Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
+"Language-Team: Georgian <(nothing)>\n"
+"Language: ka\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.9\n"
+
+#: src/appMenu.js:63 src/appMenu.js:285
+msgid "Pin to ArcMenu"
+msgstr "ArcMenu-ში ამაგრება"
+
+#: src/appMenu.js:92 src/appMenu.js:239
+msgid "Create Desktop Shortcut"
+msgstr "სამუშაო მაგიდის მალსახმობის შექმნა"
+
+#: src/appMenu.js:238
+msgid "Delete Desktop Shortcut"
+msgstr "სამუშაო მაგიდის მალსახმობის წაშლა"
+
+#: src/appMenu.js:248 src/appMenu.js:285
+msgid "Unpin from ArcMenu"
+msgstr "ArcMenu-დან მოხსნა"
+
+#: src/appMenu.js:324
+msgid "Open Folder Location"
+msgstr "საქაღალდის მდებარეობის გახსნა"
+
+#: src/constants.js:83
+msgid "Favorites"
+msgstr "რჩეულები"
+
+#: src/constants.js:84 src/menulayouts/runner.js:188
+#: src/menulayouts/windows.js:340
+#: src/settings/menuSettings/layoutTweaksPage.js:336
+#: src/settings/menuSettings/layoutTweaksPage.js:638
+#: src/settings/menuSettings/layoutTweaksPage.js:908
+msgid "Frequent Apps"
+msgstr "ხშირი აპები"
+
+#: src/constants.js:85 src/menuWidgets.js:1195 src/menulayouts/az.js:69
+#: src/menulayouts/az.js:78 src/menulayouts/eleven.js:55
+#: src/menulayouts/eleven.js:64 src/menulayouts/redmond.js:79
+#: src/menulayouts/redmond.js:82 src/menulayouts/redmond.js:86
+#: src/menulayouts/sleek.js:74 src/menulayouts/sleek.js:77
+msgid "All Apps"
+msgstr "ყველა აპი"
+
+#: src/constants.js:86 src/menulayouts/insider.js:290
+#: src/menulayouts/runner.js:175 src/settings/menuPage.js:101
+#: src/settings/menuSettings/layoutTweaksPage.js:335
+#: src/settings/menuSettings/layoutTweaksPage.js:637
+#: src/settings/menuSettings/layoutTweaksPage.js:796
+#: src/settings/menuSettings/layoutTweaksPage.js:906
+msgid "Pinned Apps"
+msgstr "ამაგრებული აპები"
+
+#: src/constants.js:87 src/menulayouts/raven.js:296
+#: src/menulayouts/unity.js:364 src/searchProviders/recentFiles.js:29
+#: src/searchProviders/recentFiles.js:30
+msgid "Recent Files"
+msgstr "უახლესი ფაილები"
+
+#: src/constants.js:258 src/menuButton.js:844
+#: src/settings/menuSettings/listPinnedPage.js:399
+msgid "Log Out..."
+msgstr "გამოსვლა..."
+
+#: src/constants.js:259 src/menuButton.js:843
+#: src/settings/menuSettings/listPinnedPage.js:398
+msgid "Lock"
+msgstr "ჩაკეტვა"
+
+#: src/constants.js:260 src/menuButton.js:838
+#: src/settings/menuSettings/listPinnedPage.js:401
+msgid "Restart..."
+msgstr "გადატვირთვა..."
+
+#: src/constants.js:261 src/menuButton.js:839
+#: src/settings/menuSettings/listPinnedPage.js:400
+msgid "Power Off..."
+msgstr "გამორთვა..."
+
+#: src/constants.js:262 src/menuButton.js:835
+#: src/settings/menuSettings/listPinnedPage.js:402
+msgid "Suspend"
+msgstr "ძილი"
+
+#: src/constants.js:263 src/settings/menuSettings/listPinnedPage.js:403
+msgid "Hybrid Sleep"
+msgstr "ჰიბრიდული ძილი"
+
+#: src/constants.js:264 src/settings/menuSettings/listPinnedPage.js:405
+msgid "Hibernate"
+msgstr "პროგრამული ძილი"
+
+#: src/constants.js:265 src/menuButton.js:845
+#: src/settings/menuSettings/listPinnedPage.js:406
+msgid "Switch User"
+msgstr "მომხმარებლის გადართვა"
+
+#: src/constants.js:400 src/settings/aboutPage.js:33
+#: src/settings/donatePage.js:17 src/settings/generalPage.js:643
+#: src/settings/menuButtonPage.js:211
+msgid "ArcMenu"
+msgstr "ArcMenu"
+
+#: src/constants.js:405
+msgid "Brisk"
+msgstr "Brisk"
+
+#: src/constants.js:410
+msgid "Whisker"
+msgstr "Whisker"
+
+#: src/constants.js:415
+msgid "GNOME Menu"
+msgstr "GNOME-ის მენიუ"
+
+#: src/constants.js:420
+msgid "Mint"
+msgstr "პიტნა"
+
+#: src/constants.js:425
+msgid "Budgie"
+msgstr "Budgie"
+
+#: src/constants.js:433
+msgid "Unity"
+msgstr "Unity"
+
+#: src/constants.js:438
+msgid "Plasma"
+msgstr "Plasma"
+
+#: src/constants.js:443
+msgid "tognee"
+msgstr "tognee"
+
+#: src/constants.js:448
+msgid "Insider"
+msgstr "Insider"
+
+#: src/constants.js:453
+msgid "Redmond"
+msgstr "რედმონდი"
+
+#: src/constants.js:458
+msgid "Windows"
+msgstr "ფანჯრები"
+
+#: src/constants.js:463
+msgid "11"
+msgstr "11"
+
+#: src/constants.js:468
+msgid "a.z."
+msgstr "a.z."
+
+#: src/constants.js:473
+msgid "Enterprise"
+msgstr "კომპანიის"
+
+#: src/constants.js:478
+msgid "Pop"
+msgstr "პოპი"
+
+#: src/constants.js:483
+msgid "Sleek"
+msgstr "Sleek"
+
+#: src/constants.js:488
+msgid "Zest"
+msgstr "Zest"
+
+#: src/constants.js:496
+msgid "Elementary"
+msgstr "Elementary"
+
+#: src/constants.js:501
+msgid "Chromebook"
+msgstr "Chromebook"
+
+#: src/constants.js:509 src/settings/generalPage.js:233
+msgid "Runner"
+msgstr "გამშვები"
+
+#: src/constants.js:514
+msgid "GNOME Overview"
+msgstr "GNOME-ის მიმოხილვა"
+
+#: src/constants.js:522
+msgid "Raven"
+msgstr "Raven"
+
+#: src/constants.js:530
+msgid "Traditional"
+msgstr "ტრადიციული"
+
+#: src/constants.js:535
+msgid "Modern"
+msgstr "თანამედროვე"
+
+#: src/constants.js:540
+msgid "Touch"
+msgstr "შეხება"
+
+#: src/constants.js:545
+msgid "Launcher"
+msgstr "გამშვები"
+
+#: src/constants.js:550
+msgid "Alternative"
+msgstr "ალტერნატივა"
+
+#: src/constants.js:557
+msgid "Settings"
+msgstr "მორგება"
+
+#: src/constants.js:557
+msgid "Software"
+msgstr "პროგრამები"
+
+#: src/constants.js:557
+msgid "Terminal"
+msgstr "ტერმინალი"
+
+#: src/constants.js:557
+msgid "Tweaks"
+msgstr "მცირე ცვლილებები"
+
+#: src/constants.js:558 src/menuButton.js:788 src/menuWidgets.js:577
+#: src/settings/menuSettings/listPinnedPage.js:366
+#: src/settings/menuSettings/listPinnedPage.js:388
+msgid "Activities Overview"
+msgstr "აქტივობების მიმოხილვა"
+
+#: src/constants.js:558 src/menuButton.js:774
+#: src/settings/menuSettings/listPinnedPage.js:352
+#: src/settings/menuSettings/listPinnedPage.js:363
+#: src/settings/menuSettings/listPinnedPage.js:375
+msgid "ArcMenu Settings"
+msgstr "ArcMenu-ის მორგება"
+
+#: src/constants.js:558
+msgid "Files"
+msgstr "ფაილები"
+
+#: src/menuButton.js:38 src/menulayouts/plasma.js:128
+#: src/menulayouts/plasma.js:576
+msgid "Apps"
+msgstr "აპები"
+
+#: src/menuButton.js:219
+msgid "Loading Menu Layout..."
+msgstr "მენიუს განლაგების ჩატვირთვა..."
+
+#: src/menuButton.js:819 src/settings/menuSettings/listPinnedPage.js:391
+msgid "Show Desktop"
+msgstr "სამუშაო მაგიდის ჩვენება"
+
+#: src/menuButton.js:833 src/menuWidgets.js:874 src/menuWidgets.js:891
+msgid "Power Off"
+msgstr "გამორთვა"
+
+#: src/menuButton.js:874
+msgid "Dash to Panel Settings"
+msgstr "Dash to Panel-ის მორგება"
+
+#: src/menuButton.js:878
+msgid "App Icons Taskbar Settings"
+msgstr "აპის ხატულების ამოცანათა პანელის მორგება"
+
+#: src/menuWidgets.js:928 src/menulayouts/plasma.js:328
+msgid "Session"
+msgstr "სესია"
+
+#: src/menuWidgets.js:932 src/menulayouts/plasma.js:332
+#: src/settings/iconChooserDialog.js:192
+msgid "System"
+msgstr "სისტემა"
+
+#: src/menuWidgets.js:1119 src/menuWidgets.js:1140 src/menulayouts/az.js:70
+#: src/menulayouts/eleven.js:56 src/menulayouts/redmond.js:80
+#: src/menulayouts/redmond.js:85 src/menulayouts/sleek.js:75
+msgid "Back"
+msgstr "უკან"
+
+#: src/menuWidgets.js:2393 src/menulayouts/pop.js:364
+msgid "Unnamed Folder"
+msgstr "უსახელო საქაღალდე"
+
+#: src/menuWidgets.js:2492 src/menulayouts/pop.js:1084
+msgid "New"
+msgstr "ახალი"
+
+#: src/menuWidgets.js:3045 src/menulayouts/az.js:77 src/menulayouts/az.js:231
+#: src/menulayouts/eleven.js:63 src/menulayouts/insider.js:188
+#: src/menulayouts/plasma.js:123 src/menulayouts/raven.js:62
+#: src/menulayouts/raven.js:233 src/menulayouts/raven.js:274
+#: src/menulayouts/redmond.js:81 src/menulayouts/redmond.js:84
+#: src/menulayouts/redmond.js:87 src/menulayouts/sleek.js:76
+#: src/menulayouts/unity.js:41 src/menulayouts/unity.js:272
+#: src/menulayouts/unity.js:342 src/menulayouts/windows.js:418
+msgid "Pinned"
+msgstr "მიმაგრებულია"
+
+#: src/menuWidgets.js:3215
+msgid "Unmount Drive"
+msgstr "დისკის მოხსნა"
+
+#: src/menuWidgets.js:3217
+msgid "Eject Drive"
+msgstr "დისკის ამოღება"
+
+#: src/menuWidgets.js:3261
+msgid "Remove from Recent"
+msgstr "უახლესებიდან წაშლა"
+
+#: src/menuWidgets.js:3341
+msgid "Search…"
+msgstr "ძებნა…"
+
+#: src/menulayouts/az.js:234 src/menulayouts/eleven.js:71
+msgid "Frequent"
+msgstr "ხშირი"
+
+#: src/menulayouts/baseMenuLayout.js:502
+msgid "More Recent Files..."
+msgstr "მეტი უახლესი ფაილი..."
+
+#: src/menulayouts/plasma.js:132 src/placeDisplay.js:133
+#: src/placeDisplay.js:156 src/settings/menuSettings/listPinnedPage.js:422
+msgid "Computer"
+msgstr "კომპიუტერი"
+
+#: src/menulayouts/plasma.js:136
+msgid "Leave"
+msgstr "გასვლა"
+
+#: src/menulayouts/plasma.js:276 src/menulayouts/windows.js:275
+#: src/settings/menuPage.js:123
+msgid "Application Shortcuts"
+msgstr "აპლიკაციის მალსახმობები"
+
+#: src/menulayouts/plasma.js:281 src/menulayouts/windows.js:279
+msgid "Places"
+msgstr "ადგილები"
+
+#: src/menulayouts/plasma.js:296 src/menulayouts/windows.js:208
+#: src/settings/menuSettings/layoutTweaksPage.js:842
+#: src/settings/menuSettings/layoutTweaksPage.js:994
+msgid "Bookmarks"
+msgstr "სანიშნეები"
+
+#: src/menulayouts/plasma.js:298 src/menulayouts/windows.js:210
+msgid "Devices"
+msgstr "მოწყობილობები"
+
+#: src/menulayouts/plasma.js:300 src/menulayouts/windows.js:212
+#: src/settings/menuSettings/listPinnedPage.js:423
+msgid "Network"
+msgstr "ქსელი"
+
+#: src/menulayouts/pop.js:260 src/menulayouts/pop.js:763
+msgid "Library Home"
+msgstr "სახლის ბიბლიოთეკა"
+
+#: src/menulayouts/pop.js:853
+msgid "New Folder"
+msgstr "ახალი საქაღალდე"
+
+#: src/menulayouts/pop.js:941
+msgid "Rename Folder"
+msgstr "საქაღალდის სახელის შეცვლა"
+
+#: src/menulayouts/pop.js:942
+msgid "Delete Folder"
+msgstr "საქაღალდის წაშლა"
+
+#: src/menulayouts/pop.js:952
+#, javascript-format
+msgid "Permanently delete %s folder?"
+msgstr "წაიშალოს სამუდამოდ საქაღალდე %s?"
+
+#: src/menulayouts/pop.js:957
+msgid "No"
+msgstr "არა"
+
+#: src/menulayouts/pop.js:965
+msgid "Yes"
+msgstr "დიახ"
+
+#: src/menulayouts/pop.js:980
+#, javascript-format
+msgid "Rename %s folder"
+msgstr "საქაღალდის %s სახელის გადარქმევა"
+
+#: src/menulayouts/pop.js:1014 src/prefsWidgets.js:94
+#: src/settings/aboutPage.js:404 src/settings/generalPage.js:320
+#: src/settings/iconChooserDialog.js:265
+#: src/settings/menuSettings/themingDialog.js:269
+msgid "Cancel"
+msgstr "გაუქმება"
+
+#: src/menulayouts/pop.js:1022 src/prefsWidgets.js:82
+#: src/settings/generalPage.js:306
+#: src/settings/menuSettings/listPinnedPage.js:583
+#: src/settings/menuSettings/visualSettings.js:372
+msgid "Apply"
+msgstr "გადატარება"
+
+#: src/menulayouts/raven.js:62 src/menulayouts/raven.js:239
+#: src/menulayouts/unity.js:41 src/menulayouts/unity.js:276
+#: src/settings/menuSettings/layoutTweaksPage.js:662
+#: src/settings/menuSettings/layoutTweaksPage.js:689
+#: src/settings/menuSettings/layoutTweaksPage.js:795
+#: src/settings/menuSettings/layoutTweaksPage.js:884
+#: src/settings/menuSettings/layoutTweaksPage.js:909
+#: src/settings/menuSettings/layoutTweaksPage.js:949
+msgid "All Programs"
+msgstr "ყველა პროგრამა"
+
+#: src/menulayouts/raven.js:280 src/menulayouts/unity.js:347
+#: src/settings/menuSettings/visualSettings.js:231
+msgid "Shortcuts"
+msgstr "მალსახმობები"
+
+#: src/menulayouts/runner.js:295
+msgid "Configure Runner"
+msgstr "Runner-ის მორგება"
+
+#: src/menulayouts/unity.js:412
+msgid "Categories"
+msgstr "კატეგორიები"
+
+#: src/menulayouts/windows.js:443
+msgid "Extras"
+msgstr "დამატებით"
+
+#: src/placeDisplay.js:56
+#, javascript-format
+msgid "Failed to launch “%s”"
+msgstr "%s-ის გაშვების შეცდომა"
+
+#: src/placeDisplay.js:71
+#, javascript-format
+msgid "Failed to mount volume for “%s”"
+msgstr "%s-თვის დისკის მიმაგრების შეცდომა"
+
+#: src/placeDisplay.js:119 src/placeDisplay.js:340
+#: src/settings/menuSettings/layoutTweaksPage.js:661
+#: src/settings/menuSettings/layoutTweaksPage.js:688
+#: src/settings/menuSettings/listPinnedPage.js:414 src/utils.js:307
+msgid "Home"
+msgstr "საწყისი"
+
+#: src/placeDisplay.js:223
+#, javascript-format
+msgid "Ejecting drive “%s” failed:"
+msgstr "დისკ %s-ის გამოგდების შეცდომა:"
+
+#: src/prefsWidgets.js:352
+msgid "Modify"
+msgstr "ჩასწორება"
+
+#: src/prefsWidgets.js:367
+msgid "Move Up"
+msgstr "აწევა"
+
+#: src/prefsWidgets.js:374
+msgid "Move Down"
+msgstr "ჩამოწევა"
+
+#: src/prefsWidgets.js:381
+msgid "Remove"
+msgstr "წაშლა"
+
+#: src/search.js:484
+msgid "Try a different search"
+msgstr "სცადეთ სხვა ძებნა"
+
+#: src/search.js:794
+msgid "No Results Found"
+msgstr "შედეგების გარეშე"
+
+#: src/search.js:794
+msgid "Searching"
+msgstr "ძებნა"
+
+#: src/search.js:881
+#, javascript-format
+msgid "+%d more"
+msgstr "+%d -ით მეტი"
+
+#: src/searchProviders/openWindows.js:31
+msgid "List of open windows across all workspaces"
+msgstr "ყველა ღია ფანჯრის სია ყველა სამუშაო სივრცეში"
+
+#: src/searchProviders/openWindows.js:32
+msgid "Open Windows"
+msgstr "ფანჯრების გახსნა"
+
+#: src/searchProviders/openWindows.js:46
+#, javascript-format
+msgid "'%s' on Workspace %d"
+msgstr "'%s' სამუშაო სივრცეში %d"
+
+#: src/searchProviders/recentFiles.js:90
+#, javascript-format
+msgid "Failed to open “%s”"
+msgstr "'%s'-ის გახსნის შეცდომა"
+
+#: src/settings/aboutPage.js:28 src/settings/menuSettings/listPinnedPage.js:385
+msgid "About"
+msgstr "შესახებ"
+
+#: src/settings/aboutPage.js:34
+msgid "Application Menu Extension for GNOME"
+msgstr "აპლიკაციის მენიუს გაფართოება GNOME-ისთვის"
+
+#. TRANSLATORS: 'PROJECT_NAME' Version
+#: src/settings/aboutPage.js:79
+#, javascript-format
+msgid "%s Version"
+msgstr "%s-ის ვერსია"
+
+#. TRANSLATORS: 'PROJECT_NAME' - Release Notes
+#: src/settings/aboutPage.js:88
+#, javascript-format
+msgid "%s - Release Notes"
+msgstr "%s - რელიზის შენიშვნები"
+
+#: src/settings/aboutPage.js:90
+msgid "What's New"
+msgstr "რა არის ახალი"
+
+#: src/settings/aboutPage.js:139
+msgid "Message Tray Update Notification"
+msgstr "განახლების შეტყობინების ჩვენება სისტემურ საათთან"
+
+#: src/settings/aboutPage.js:140
+#, javascript-format
+msgid "Show a notification when %s receives an update."
+msgstr "გაფრთხილების ჩვენება, როცა ხელმისაწვდომია %s-ის განახლება."
+
+#: src/settings/aboutPage.js:148
+msgid "Git Commit"
+msgstr "Git: გადაცემა"
+
+#: src/settings/aboutPage.js:158
+msgid "GNOME Version"
+msgstr "GNOME-ის ვერსია"
+
+#: src/settings/aboutPage.js:167
+msgid "OS Name"
+msgstr "ოს-ის სახელი"
+
+#: src/settings/aboutPage.js:180
+msgid "Windowing System"
+msgstr "ფანჯრული სისტემა"
+
+#. TRANSLATORS: 'PROJECT_NAME' on GitLab
+#: src/settings/aboutPage.js:191
+#, javascript-format
+msgid "%s on GitLab"
+msgstr "%s GitLab-ზე"
+
+#: src/settings/aboutPage.js:194
+msgid "Report an Issue"
+msgstr "პრობლემის ანგარიში"
+
+#. TRANSLATORS: 'PROJECT_NAME' Settings
+#: src/settings/aboutPage.js:204
+#, javascript-format
+msgid "%s Settings"
+msgstr "%s-ის მორგება"
+
+#: src/settings/aboutPage.js:207 src/settings/menuSettings/themingDialog.js:70
+#: src/settings/menuSettings/themingDialog.js:75
+msgid "Load"
+msgstr "ჩატვირთვა"
+
+#: src/settings/aboutPage.js:212
+msgid "Load Settings"
+msgstr "პარამეტრების ჩატვირთვა"
+
+#: src/settings/aboutPage.js:214 src/settings/menuSettings/themingDialog.js:77
+msgid "Open"
+msgstr "გახსნა"
+
+#: src/settings/aboutPage.js:237 src/settings/aboutPage.js:244
+#: src/settings/menuSettings/themingDialog.js:128
+#: src/settings/menuSettings/themingDialog.js:141
+#: src/settings/menuSettings/themingDialog.js:143
+msgid "Save"
+msgstr "შენახვა"
+
+#: src/settings/aboutPage.js:242
+msgid "Save Settings"
+msgstr "პარამეტრების შენახვა"
+
+#: src/settings/aboutPage.js:264 src/settings/aboutPage.js:265
+msgid "Credits"
+msgstr "კრედიტები"
+
+#: src/settings/aboutPage.js:269
+msgid "Brought to you by"
+msgstr "ქმნილების ავტორია"
+
+#: src/settings/aboutPage.js:280
+msgid "History"
+msgstr "ისტორია"
+
+#: src/settings/aboutPage.js:298
+msgid "Contributions by"
+msgstr "მოხალისეები"
+
+#: src/settings/aboutPage.js:301
+msgid "Contributors"
+msgstr "შემომწირავები"
+
+#: src/settings/aboutPage.js:303
+msgid "Translators"
+msgstr "მთარგმნელები"
+
+#: src/settings/aboutPage.js:307
+msgid "Artwork by"
+msgstr "დიზაინის ავტორი"
+
+#: src/settings/aboutPage.js:315 src/settings/aboutPage.js:316
+msgid "Legal"
+msgstr "იურიდიული ინფორმაცია"
+
+#: src/settings/aboutPage.js:322
+msgid "This program comes with absolutely no warranty."
+msgstr "ამ პროგრამას გარანტია არ მოჰყვება."
+
+#: src/settings/aboutPage.js:324
+msgid "GNU General Public License, version 2 or later"
+msgstr "GNU Lesser General Public License Version 2"
+
+#. TRANSLATORS: this is the program license url; the string contains the name of the license as link text.
+#: src/settings/aboutPage.js:324
+#, javascript-format
+msgid "See the <a href=\"%s\">%s</a> for details."
+msgstr "დეტალებისთვის იხილეთ <a href=\"%s\">%s</a>."
+
+#: src/settings/donatePage.js:12 src/updateNotifier.js:87
+msgid "Donate"
+msgstr "შემოწირულობა"
+
+#: src/settings/donatePage.js:22
+#, javascript-format
+msgid "Help Support %s"
+msgstr "დაგვეხმარეთ %s-ის მხარდაჭერაში"
+
+#: src/settings/donatePage.js:23 src/updateNotifier.js:75
+#, javascript-format
+msgid ""
+"Thank you for using %s! If you enjoy it and would like to help support its "
+"continued development, please consider making a donation."
+msgstr ""
+"მადლობა, რომ იყენებთ %s-ს! თუ მოგწონთ ის და გნებავთ, დაეხმაროთ მის "
+"განვითარებას, იფიქრეთ, შემოგვწიროთ."
+
+#: src/settings/donatePage.js:27
+msgid "Donate via PayPal"
+msgstr "შეწირვა PayPal-ის საშუალებით"
+
+#: src/settings/donatePage.js:30
+msgid "Donate via Buy Me a Coffee"
+msgstr "შემოგვწირეთ By Me a Coffe-ით"
+
+#: src/settings/donatePage.js:42
+#, javascript-format
+msgid ""
+"A huge thank you to everyone who has supported %s! Your support helps keep "
+"%s going. It is truly appreciated!"
+msgstr ""
+"დიდი მადლობა, ვინც შესწირა %s-ს! თქვენი მხარდაჭერა %s-ის განვითარებას ხელს "
+"უწყობს. ჩვენ მართლა ვაფასებთ მას!"
+
+#: src/settings/generalPage.js:33
+msgid "General"
+msgstr "ზოგადი"
+
+#: src/settings/generalPage.js:41
+msgid "Panel Display Options"
+msgstr "პანელის ჩვენების მორგება"
+
+#: src/settings/generalPage.js:54
+msgid "Show Activities Button"
+msgstr "აქტივობების ღილაკის ჩვენება"
+
+#: src/settings/generalPage.js:55
+msgid "Dash to Panel may conflict with this setting"
+msgstr "Dash to Panel-ს შეიძლება, ეს პარამეტრი არ მოეწონოს"
+
+#: src/settings/generalPage.js:63 src/settings/generalPage.js:89
+#: src/settings/menuSettings/layoutTweaksPage.js:716
+msgid "Left"
+msgstr "მარცხენა"
+
+#: src/settings/generalPage.js:64 src/settings/generalPage.js:90
+msgid "Center"
+msgstr "ცენტრი"
+
+#: src/settings/generalPage.js:65 src/settings/generalPage.js:91
+#: src/settings/menuSettings/layoutTweaksPage.js:717
+msgid "Right"
+msgstr "მარჯვენა"
+
+#: src/settings/generalPage.js:67 src/settings/menuButtonPage.js:123
+msgid "Position in Panel"
+msgstr "მდებარეობა პანელზე"
+
+#: src/settings/generalPage.js:97
+msgid "Menu Alignment"
+msgstr "მენიუს სწორება"
+
+#: src/settings/generalPage.js:115
+msgid "Display ArcMenu on all Panels"
+msgstr "ArcMenu-ის ჩვენება ყველა პანელზე"
+
+#: src/settings/generalPage.js:116
+msgid "Dash to Panel or App Icons Taskbar extension required"
+msgstr "საჭიროა გაფართოებები Dash to Panel, ან App Icons Taskbar"
+
+#: src/settings/generalPage.js:132
+msgid "Always Prefer Top Panel"
+msgstr "უპირატესობა ზედა პანელს"
+
+#: src/settings/generalPage.js:133
+msgid "Useful with Dash to Panel setting 'Keep original gnome-shell top panel'"
+msgstr ""
+"სასარგებლოა Dash to Panel-ის პარამეტრთან 'ორიგინალი gnome-shell-ის ზედა "
+"პანელის შენარჩუნების' პარამეტრთან ერთად"
+
+#: src/settings/generalPage.js:147
+msgid "General Settings"
+msgstr "ზოგადი პარამეტრები"
+
+#: src/settings/generalPage.js:151
+msgid "ArcMenu Hotkey"
+msgstr "ArcMenu-ის კლავიატურის მალსახმობი"
+
+#: src/settings/generalPage.js:152
+msgid "Standalone Runner Menu"
+msgstr "Runner-ის ცალკე მენიუ"
+
+#: src/settings/generalPage.js:165
+msgid "Hide Overview on Startup"
+msgstr "გადახედვის დამალვა გაშვებისას"
+
+#: src/settings/generalPage.js:179
+msgid "Hide Overview when ArcMenu Opens"
+msgstr "გადახედვის დამალვა ArcMenu-ის გახსნისას"
+
+#: src/settings/generalPage.js:233 src/settings/menuPage.js:49
+#: src/settings/menuPage.js:91 src/settings/menuSettings/layoutTweaksPage.js:26
+#, javascript-format
+msgid "%s Layout Tweaks"
+msgstr "%s-ის განლაგების მორგება"
+
+#: src/settings/generalPage.js:247 src/settings/generalPage.js:408
+msgid "Disabled"
+msgstr "გამორთულია"
+
+#: src/settings/generalPage.js:268
+msgid "ArcMenu Hotkeys"
+msgstr "ArcMenu-ის კლავიატურის მალსახმობები"
+
+#: src/settings/generalPage.js:268
+msgid "Standalone Runner Hotkeys"
+msgstr "Runner-ის ცალკე მენიუები"
+
+#: src/settings/generalPage.js:341
+msgid "Active Hotkeys"
+msgstr "აქტიური კლავიატურის მალსახმობები"
+
+#: src/settings/generalPage.js:347
+msgid "Hotkey Options"
+msgstr "კლავიატურის მალსახმობების მორგება"
+
+#: src/settings/generalPage.js:360
+msgid "Super Hotkeys Override GNOME Overview Hotkey"
+msgstr ""
+"სუპერმალსახმობები GNOME-ის მიმოხილვის კლავიატურის მალსახმობს გადაფარავენ"
+
+#: src/settings/generalPage.js:374
+msgid "Open on Primary Monitor"
+msgstr "გახსნა ძირითად ეკრანზე"
+
+#: src/settings/generalPage.js:385
+msgid "Type on your keyboard to add a new hotkey."
+msgstr "ახალი კლავიატურის მალსახმობის დასამატებლად აკრიფეთ ის კლავიატურაზე."
+
+#: src/settings/generalPage.js:420
+msgid "Add Hotkey"
+msgstr "კლავიატურის მალსახმობების დამატება"
+
+#: src/settings/generalPage.js:491
+#, javascript-format
+msgid "Conflict with <b>%s</b> hotkey"
+msgstr "კონფლიქტშია <b>%s</b>-ის კლავიატურის მალსახმობთან"
+
+#: src/settings/generalPage.js:639
+msgid "Standlone Runner"
+msgstr "ცალკე Runner"
+
+#: src/settings/iconChooserDialog.js:43 src/settings/iconChooserDialog.js:266
+msgid "Select"
+msgstr "არჩევა"
+
+#: src/settings/iconChooserDialog.js:43 src/settings/iconChooserDialog.js:260
+msgid "Select an Icon"
+msgstr "აირჩიეთ ხატულა"
+
+#: src/settings/iconChooserDialog.js:57
+msgid "Search icons…"
+msgstr "ხატულების ძებნა…"
+
+#: src/settings/iconChooserDialog.js:101
+msgid "Browse Files..."
+msgstr "ფაილის არჩევა…"
+
+#: src/settings/iconChooserDialog.js:183 src/settings/iconChooserDialog.js:189
+msgid "All"
+msgstr "ყველა"
+
+#: src/settings/iconChooserDialog.js:184
+#: src/settings/menuSettings/fineTunePage.js:87
+msgid "Symbolic"
+msgstr "სიმბოლური"
+
+#: src/settings/iconChooserDialog.js:185
+#: src/settings/menuSettings/fineTunePage.js:86
+msgid "Full Color"
+msgstr "სრულფერიანი"
+
+#: src/settings/iconChooserDialog.js:186
+msgid "Type"
+msgstr "ტიპი"
+
+#: src/settings/iconChooserDialog.js:190
+msgid "Extension"
+msgstr "გაფართოება"
+
+#: src/settings/iconChooserDialog.js:191
+msgid "Distros"
+msgstr "დისტრიბუტივები"
+
+#: src/settings/iconChooserDialog.js:193
+msgid "Category"
+msgstr "კატეგორია"
+
+#: src/settings/iconChooserDialog.js:207
+msgid "Filter"
+msgstr "ფილტრი"
+
+#: src/settings/menuButtonPage.js:16
+msgid "Menu Button"
+msgstr "მენიუს ღილაკი"
+
+#: src/settings/menuButtonPage.js:26 src/settings/menuSettings/subPage.js:44
+msgid "Reset settings"
+msgstr "პარამეტრების ნაგულისხმებ მნიშვნელობაზე დაბრუნება"
+
+#: src/settings/menuButtonPage.js:34 src/settings/menuSettings/subPage.js:49
+#, javascript-format
+msgid "Reset all %s settings?"
+msgstr "მოხდეს %s-ის ყველა პარამეტრის ჩამოყრა?"
+
+#: src/settings/menuButtonPage.js:35 src/settings/menuSettings/subPage.js:50
+#, javascript-format
+msgid "All %s settings will be reset to the default value."
+msgstr "%s-ის ყველა პარამეტრი ჩამოყრილი იქნება ნაგულისხმევ მნიშვნელობაზე."
+
+#: src/settings/menuButtonPage.js:51
+msgid "Appearance"
+msgstr "გარეგნობა"
+
+#: src/settings/menuButtonPage.js:56 src/settings/menuButtonPage.js:153
+#: src/settings/menuSettings/listPinnedPage.js:601
+msgid "Icon"
+msgstr "ხატულა"
+
+#: src/settings/menuButtonPage.js:57 src/settings/menuButtonPage.js:140
+msgid "Text"
+msgstr "ტექსტი"
+
+#: src/settings/menuButtonPage.js:58
+msgid "Icon and Text"
+msgstr "ხატულა და ტექსტი"
+
+#: src/settings/menuButtonPage.js:59
+msgid "Text and Icon"
+msgstr "ტექსტი და ხატულა"
+
+#: src/settings/menuButtonPage.js:60
+#: src/settings/menuSettings/visualSettings.js:286
+msgid "Hidden"
+msgstr "დამალული"
+
+#: src/settings/menuButtonPage.js:62
+#: src/settings/menuSettings/listOtherPage.js:38
+msgid "Display Style"
+msgstr "ჩვენების სტილი"
+
+#: src/settings/menuButtonPage.js:99
+msgid "Padding"
+msgstr "შევსება"
+
+#: src/settings/menuButtonPage.js:100
+#: src/settings/menuSettings/layoutTweaksPage.js:626
+#, javascript-format
+msgid "%d Default Theme Value"
+msgstr "%d-ის ნაგულისხმევი თემის მნიშვნელობა"
+
+#: src/settings/menuButtonPage.js:156
+#: src/settings/menuSettings/listPinnedPage.js:608
+msgid "Browse..."
+msgstr "პოვნა..."
+
+#: src/settings/menuButtonPage.js:170
+msgid "Choose a New Icon"
+msgstr "აირჩიეთ ახალი ხატულა"
+
+#: src/settings/menuButtonPage.js:193
+#: src/settings/menuSettings/visualSettings.js:353
+msgid "Icon Size"
+msgstr "ხატულების ზომა"
+
+#: src/settings/menuButtonPage.js:206
+msgid "Click Options"
+msgstr "წკაპის მორგება"
+
+#: src/settings/menuButtonPage.js:212
+msgid "Context Menu"
+msgstr "კონტექსტური მენიუ"
+
+#: src/settings/menuButtonPage.js:213
+msgid "None"
+msgstr "არცერთი"
+
+#: src/settings/menuButtonPage.js:216
+msgid "Left Click"
+msgstr "მარცხენა-წკაპი"
+
+#: src/settings/menuButtonPage.js:226
+msgid "Right Click"
+msgstr "მარჯვენა-წკაპი"
+
+#: src/settings/menuButtonPage.js:236
+msgid "Middle Click"
+msgstr "შუა-წკაპი"
+
+#: src/settings/menuButtonPage.js:248
+msgid "Styling"
+msgstr "სტილი"
+
+#: src/settings/menuButtonPage.js:249 src/settings/menuSettings/themePage.js:40
+msgid "Results may vary with third party themes"
+msgstr "შედეგები მესამე პირების თემებთან ერთად განსხვავებული იქნება"
+
+#: src/settings/menuButtonPage.js:253 src/settings/menuButtonPage.js:262
+#: src/settings/menuButtonPage.js:268
+#: src/settings/menuSettings/themePage.js:185
+#: src/settings/menuSettings/themePage.js:211
+#: src/settings/menuSettings/themePage.js:217
+msgid "Foreground Color"
+msgstr "წინა პლანის ფერი"
+
+#: src/settings/menuButtonPage.js:256 src/settings/menuButtonPage.js:259
+#: src/settings/menuButtonPage.js:265
+#: src/settings/menuSettings/themePage.js:182
+#: src/settings/menuSettings/themePage.js:208
+#: src/settings/menuSettings/themePage.js:214
+msgid "Background Color"
+msgstr "ფონის ფერი"
+
+#: src/settings/menuButtonPage.js:259 src/settings/menuButtonPage.js:262
+#: src/settings/menuSettings/themePage.js:208
+#: src/settings/menuSettings/themePage.js:211
+msgid "Hover"
+msgstr "გადატარება"
+
+#: src/settings/menuButtonPage.js:265 src/settings/menuButtonPage.js:268
+#: src/settings/menuSettings/themePage.js:214
+#: src/settings/menuSettings/themePage.js:217
+msgid "Active"
+msgstr "აქტიური"
+
+#: src/settings/menuButtonPage.js:271
+#: src/settings/menuSettings/themePage.js:194
+msgid "Border Radius"
+msgstr "საზღვრის რადიუსი"
+
+#: src/settings/menuButtonPage.js:275
+#: src/settings/menuSettings/themePage.js:191
+msgid "Border Width"
+msgstr "საზღვრის სიგანე"
+
+#: src/settings/menuButtonPage.js:276
+msgid "Background colors required if set to 0"
+msgstr "თუ დაყენებულია 0-ზე, აუცილებელია ფონის ფერები"
+
+#: src/settings/menuButtonPage.js:279
+#: src/settings/menuSettings/themePage.js:188
+msgid "Border Color"
+msgstr "საზღვრის ფერი"
+
+#: src/settings/menuPage.js:24
+msgid "Menu"
+msgstr "მენიუ"
+
+#: src/settings/menuPage.js:32
+msgid "How should the menu look?"
+msgstr "როგორ უნდა გამოიყურებოდეს მენიუ?"
+
+#: src/settings/menuPage.js:39
+msgid "Menu Layout"
+msgstr "მენიუს განლაგება"
+
+#: src/settings/menuPage.js:40
+msgid "Choose a layout style for the menu"
+msgstr "აირჩიეთ მენიუს განლაგების სტილი"
+
+#: src/settings/menuPage.js:55
+msgid "Menu Theme"
+msgstr "მენიუს თემა"
+
+#: src/settings/menuPage.js:56
+msgid "Modify menu colors, font size, and border"
+msgstr "მენიუს ფერების, ფონტის ზომისა და საზღვრის შეცვლა"
+
+#: src/settings/menuPage.js:65
+msgid "Menu Visual Appearance"
+msgstr "მენიუს ვიზუალური გარეგნობა"
+
+#: src/settings/menuPage.js:66
+msgid "Change menu height, width, location, and icon sizes"
+msgstr "მენიუს სიმაღლის, სიგანის, მდებარეობის და ხატულას ზომების შეცვლა"
+
+#: src/settings/menuPage.js:75
+msgid "Fine Tune"
+msgstr "ზუსტი მორგება"
+
+#: src/settings/menuPage.js:76
+msgid "Adjust less commonly used settings"
+msgstr "ნაკლებად ხშირად გამოყენებული პარამეტრების მორგება"
+
+#: src/settings/menuPage.js:85
+msgid "What should show on the menu?"
+msgstr "რა უნდა იყოს ნაჩვენები მენიუში?"
+
+#: src/settings/menuPage.js:92
+msgid "Settings specific to the current menu layout"
+msgstr "მიმდინარე მენიუს განლაგების სპეციფიკური პარამეტრები"
+
+#: src/settings/menuPage.js:112
+msgid "Directory Shortcuts"
+msgstr "საქაღალდის მალსახმობები"
+
+#: src/settings/menuPage.js:134
+#: src/settings/menuSettings/searchOptionsPage.js:16
+msgid "Search Options"
+msgstr "ძებნის მორგება"
+
+#: src/settings/menuPage.js:144 src/settings/menuSettings/listPinnedPage.js:390
+msgid "Power Options"
+msgstr "კვების მორგება"
+
+#: src/settings/menuPage.js:145
+msgid "Choose which power options to show and the display style"
+msgstr ""
+"აირჩიეთ, კვების რომელი პარამეტრები იქნება ნაჩვენები და მათი ჩვენების სტილი"
+
+#: src/settings/menuPage.js:156
+msgid "Extra Categories"
+msgstr "დამატებითი კატეგორიები"
+
+#: src/settings/menuPage.js:158
+msgid "Add or remove additional custom categories"
+msgstr "დამატებითი მორგებული კატეგორიების დამატება, ან წაშლა"
+
+#: src/settings/menuPage.js:168
+msgid "What should show on the context menu?"
+msgstr "რა უნდა გამოჩნდეს კონტექსტურ მენიუში?"
+
+#: src/settings/menuPage.js:173
+msgid "Modify ArcMenu Context Menu"
+msgstr "ArcMenu-ის კონტექსტური მენიუს შეცვლა"
+
+#: src/settings/menuSettings/fineTunePage.js:29
+msgid "Show Category Sub Menus"
+msgstr "კატეგორიის ქვემენიუების ჩვენება"
+
+#: src/settings/menuSettings/fineTunePage.js:32
+msgid "Show Application Descriptions"
+msgstr "აპლიკაციის აღწერების ჩვენება"
+
+#: src/settings/menuSettings/fineTunePage.js:35
+msgid "Show Generic Application Names"
+msgstr "ზოგადი აპლიკაციის სახელების ჩვენება"
+
+#: src/settings/menuSettings/fineTunePage.js:38
+msgid "Show Hidden Recent Files"
+msgstr "დამალული უახლესი ფაილების ჩვენება"
+
+#: src/settings/menuSettings/fineTunePage.js:42
+msgid "Allow application labels to span multiple lines on grid style layouts"
+msgstr ""
+"აპლიკაციის ჭდეებისთვის ბადისებრი სტილის განლაგებებში ერთზე მეტი ხაზის "
+"დაკავების დაშვება"
+
+#: src/settings/menuSettings/fineTunePage.js:42
+msgid "Show Multi Lined Labels"
+msgstr "მრავალხაზიანი ჭდეების ჩვენება"
+
+#: src/settings/menuSettings/fineTunePage.js:45
+msgid "Show Tooltips"
+msgstr "მინიშნებების ჩვენება"
+
+#: src/settings/menuSettings/fineTunePage.js:49
+#: src/settings/menuSettings/fineTunePage.js:53
+msgid "For All Apps sections"
+msgstr "ყველა აპის სექციისთვის"
+
+#: src/settings/menuSettings/fineTunePage.js:49
+msgid "Group Apps Alphabetically on List Views"
+msgstr "აპების ანბანის მიხედვით დალაგება სიისებრ ხედებზე"
+
+#: src/settings/menuSettings/fineTunePage.js:53
+msgid "Group Apps Alphabetically on Grid Views"
+msgstr "აპების ანბანის მიხედვით დალაგება ბადისებრ ხედებზე"
+
+#: src/settings/menuSettings/fineTunePage.js:56
+msgid "Activate App Window on Launch"
+msgstr "აპის ფანჯრის გააქტიურება გაშვებისას"
+
+#: src/settings/menuSettings/fineTunePage.js:57
+msgid ""
+"Launching an app activates its existing window if one is open; otherwise, it "
+"launches a new instance. Hold Ctrl while launching or middle-click to open a "
+"new window."
+msgstr ""
+"აპლიკაციის გაშვება გაააქტიურებს მის არსებულ ფანჯარას, თუ ის ღიაა. თუ არაა, "
+"ის ახალ გაშვებულ ასლს შექმნის. ახალი ფანჯრის გასახსნელად გაშვებისას ან Ctrl "
+"ღილაკი გეჭიროთ, ან შუა ღილაკით დააწკაპუნეთ."
+
+#: src/settings/menuSettings/fineTunePage.js:61
+msgid "Scrollview Options"
+msgstr "Scrollview-ის მორგება"
+
+#: src/settings/menuSettings/fineTunePage.js:65
+msgid "Scrollview Fade Effects"
+msgstr "Scrollview-ის მინავლების ეფექტები"
+
+#: src/settings/menuSettings/fineTunePage.js:70
+msgid "Show Scrollbars"
+msgstr "ჩოჩიების ჩვენება"
+
+#: src/settings/menuSettings/fineTunePage.js:77
+msgid "Overlay Scrollbars"
+msgstr "ჩოჩიების განლაგება"
+
+#: src/settings/menuSettings/fineTunePage.js:81
+msgid "Icon Style"
+msgstr "ხატულას სტილი"
+
+#: src/settings/menuSettings/fineTunePage.js:89
+msgid "Category Icon Type"
+msgstr "კატეგორიების ხატულას ტიპი"
+
+#: src/settings/menuSettings/fineTunePage.js:90
+#: src/settings/menuSettings/fineTunePage.js:106
+msgid "Some icon themes may not include selected icon type"
+msgstr "ზოგიერთი ხატულას თემა, შეიძლება, არ შეიცავდეს მონიშნული ხატულას ტიპს"
+
+#: src/settings/menuSettings/fineTunePage.js:105
+msgid "Shortcuts Icon Type"
+msgstr "მალსახმობების ხატულას ტიპი"
+
+#: src/settings/menuSettings/fineTunePage.js:121
+msgid "New Apps Tracker"
+msgstr "ახალი აპების დევნება"
+
+#: src/settings/menuSettings/fineTunePage.js:125
+msgid "Enable"
+msgstr "ჩართვა"
+
+#: src/settings/menuSettings/fineTunePage.js:130
+msgid "Clear All"
+msgstr "ყველას გასუფთავება"
+
+#: src/settings/menuSettings/layoutTweaksPage.js:117
+#: src/settings/menuSettings/layoutTweaksPage.js:122
+#: src/settings/menuSettings/layoutTweaksPage.js:816
+#: src/settings/menuSettings/layoutTweaksPage.js:969
+msgid "Extra Shortcuts"
+msgstr "დამატებითი მალსახმობები"
+
+#: src/settings/menuSettings/layoutTweaksPage.js:142
+msgid "Vertical Separator"
+msgstr "ვერტიკალური გამყოფი"
+
+#: src/settings/menuSettings/layoutTweaksPage.js:151
+msgid "Mouse Click"
+msgstr "თაგუნას წკაპი"
+
+#: src/settings/menuSettings/layoutTweaksPage.js:152
+msgid "Mouse Hover"
+msgstr "თაგუნას ზედ გაჩერება"
+
+#: src/settings/menuSettings/layoutTweaksPage.js:155
+msgid "Category Activation"
+msgstr "კატეგორიის აქტივაცია"
+
+#: src/settings/menuSettings/layoutTweaksPage.js:178
+msgid "Round"
+msgstr "მრგვალი"
+
+#: src/settings/menuSettings/layoutTweaksPage.js:179
+#: src/settings/menuSettings/visualSettings.js:185
+#: src/settings/menuSettings/visualSettings.js:186
+#: src/settings/menuSettings/visualSettings.js:187
+msgid "Square"
+msgstr "კვადრატი"
+
+#: src/settings/menuSettings/layoutTweaksPage.js:181
+msgid "Avatar Shape"
+msgstr "ავატარის ფორმა"
+
+#: src/settings/menuSettings/layoutTweaksPage.js:197
+#: src/settings/menuSettings/layoutTweaksPage.js:539
+#: src/settings/menuSettings/layoutTweaksPage.js:1015
+msgid "Bottom"
+msgstr "ქვემო"
+
+#: src/settings/menuSettings/layoutTweaksPage.js:198
+#: src/settings/menuSettings/layoutTweaksPage.js:511
+#: src/settings/menuSettings/layoutTweaksPage.js:540
+#: src/settings/menuSettings/layoutTweaksPage.js:1016
+msgid "Top"
+msgstr "ზედა"
+
+#: src/settings/menuSettings/layoutTweaksPage.js:201
+#: src/settings/menuSettings/layoutTweaksPage.js:543
+msgid "Searchbar Location"
+msgstr "ძებნის პანელის მდებარეობა"
+
+#: src/settings/menuSettings/layoutTweaksPage.js:222
+msgid "Flip Layout Horizontally"
+msgstr "განლაგების ჰორიზონტალური გადაბრუნება"
+
+#: src/settings/menuSettings/layoutTweaksPage.js:231
+msgid "Show User Avatar"
+msgstr "მომხმარებლის ავატარის ჩვენება"
+
+#: src/settings/menuSettings/layoutTweaksPage.js:275
+#: src/settings/menuSettings/layoutTweaksPage.js:339
+#: src/settings/menuSettings/layoutTweaksPage.js:640
+#: src/settings/menuSettings/layoutTweaksPage.js:664
+#: src/settings/menuSettings/layoutTweaksPage.js:691
+#: src/settings/menuSettings/layoutTweaksPage.js:799
+#: src/settings/menuSettings/layoutTweaksPage.js:886
+#: src/settings/menuSettings/layoutTweaksPage.js:912
+msgid "Default View"
+msgstr "ნაგულისხმები ხედი"
+
+#: src/settings/menuSettings/layoutTweaksPage.js:302
+#: src/settings/menuSettings/layoutTweaksPage.js:408
+msgid "Show Frequent Apps"
+msgstr "ხშირი აპების ჩვენება"
+
+#: src/settings/menuSettings/layoutTweaksPage.js:328
+msgid "Merge Top and Bottom Panels"
+msgstr "ზედა და ქვედა პანელების შერწყმა"
+
+#: src/settings/menuSettings/layoutTweaksPage.js:366
+#: src/settings/menuSettings/layoutTweaksPage.js:939
+msgid "Max Frequent Apps"
+msgstr "მაქს. ხშირი აპები"
+
+#: src/settings/menuSettings/layoutTweaksPage.js:389
+msgid "Show Apps Grid"
+msgstr "აპების ბადის ჩვენება"
+
+#: src/settings/menuSettings/layoutTweaksPage.js:422
+msgid "Show Pinned Apps"
+msgstr "ამაგრებული აპების ჩვენება"
+
+#: src/settings/menuSettings/layoutTweaksPage.js:448
+msgid "Activate on Hover"
+msgstr "გააქტიურება ზედ გაჩერებისას"
+
+#: src/settings/menuSettings/layoutTweaksPage.js:498
+msgid "Enable Activities Overview Shortcut"
+msgstr "აქტივობების გადახედვის მალსახმობის ჩართვა"
+
+#: src/settings/menuSettings/layoutTweaksPage.js:512
+msgid "Centered"
+msgstr "შუაზე გასწორებული"
+
+#: src/settings/menuSettings/layoutTweaksPage.js:514
+msgid "Position"
+msgstr "პოზიცია"
+
+#: src/settings/menuSettings/layoutTweaksPage.js:525
+#: src/settings/menuSettings/layoutTweaksPage.js:702
+msgid "List"
+msgstr "ჩამონათვალი"
+
+#: src/settings/menuSettings/layoutTweaksPage.js:526
+#: src/settings/menuSettings/layoutTweaksPage.js:703
+msgid "Grid"
+msgstr "ბადე"
+
+#: src/settings/menuSettings/layoutTweaksPage.js:528
+#: src/settings/menuSettings/layoutTweaksPage.js:705
+msgid "Search Results Display Style"
+msgstr "ძებნის შედეგების ჩვენების სტილი"
+
+#: src/settings/menuSettings/layoutTweaksPage.js:573
+#: src/settings/menuSettings/visualSettings.js:315
+msgid "Width"
+msgstr "სიგანე"
+
+#: src/settings/menuSettings/layoutTweaksPage.js:596
+#: src/settings/menuSettings/visualSettings.js:36
+#: src/settings/menuSettings/visualSettings.js:334
+msgid "Height"
+msgstr "სიმაღლე"
+
+#: src/settings/menuSettings/layoutTweaksPage.js:604
+msgid "Static Height"
+msgstr "სტატიკური სიმაღლე"
+
+#: src/settings/menuSettings/layoutTweaksPage.js:625
+#: src/settings/menuSettings/themePage.js:197
+msgid "Font Size"
+msgstr "ფონტის ზომა"
+
+#: src/settings/menuSettings/layoutTweaksPage.js:636
+msgid "Default"
+msgstr "ნაგულისხმევი"
+
+#: src/settings/menuSettings/layoutTweaksPage.js:651
+msgid "Show Configure Runner Button"
+msgstr "Runner-ის მორგების ღილაკის ჩვენება"
+
+#: src/settings/menuSettings/layoutTweaksPage.js:719
+msgid "Position on Monitor"
+msgstr "მდებარეობა ეკრანზე"
+
+#: src/settings/menuSettings/layoutTweaksPage.js:781
+#: src/settings/menuSettings/layoutTweaksPage.js:1056
+msgid "Extra Shortcuts Panel Width"
+msgstr "დამატებითი მალსახმობების პანელის სიგანე"
+
+#: src/settings/menuSettings/layoutTweaksPage.js:828
+#: src/settings/menuSettings/layoutTweaksPage.js:980
+msgid "External Devices"
+msgstr "გარე მოწყობილობები"
+
+#: src/settings/menuSettings/layoutTweaksPage.js:873
+msgid "Nothing Yet!"
+msgstr "ჯერ არაფერი!"
+
+#: src/settings/menuSettings/layoutTweaksPage.js:883
+#: src/settings/menuSettings/layoutTweaksPage.js:907
+#: src/settings/menuSettings/layoutTweaksPage.js:948
+msgid "Categories List"
+msgstr "კატეგორიების სია"
+
+#: src/settings/menuSettings/layoutTweaksPage.js:910
+msgid "Pinned and Frequent Apps"
+msgstr "ამაგრებული და ხშირად გამოყენებული აპები"
+
+#: src/settings/menuSettings/layoutTweaksPage.js:952
+msgid "'All Apps' Button Action"
+msgstr "'ყველა აპის' ღილაკის მედება"
+
+#: src/settings/menuSettings/layoutTweaksPage.js:1002
+msgid "Category Quick Links"
+msgstr "კატეგორიის სწრაფი ბმულები"
+
+#: src/settings/menuSettings/layoutTweaksPage.js:1003
+msgid ""
+"Display quick links of extra categories on the home page\n"
+"Must also be enabled in 'Menu -> Extra Categories' section"
+msgstr ""
+"დამატებითი კატეგორიების სწრაფი ბმულების ჩვენება საწყის ეკრანზე\n"
+"ასევე ჩართული უნდა იყოს 'მენიუში -> დამატებითი კატეგორიების' სექციაში"
+
+#: src/settings/menuSettings/layoutTweaksPage.js:1018
+msgid "Quick Links Location"
+msgstr "სწრაფი ბმულების მდებარეობა"
+
+#: src/settings/menuSettings/layoutTweaksPage.js:1087
+msgid "Enable Weather Widget"
+msgstr "ამინდის ვიჯეტის ჩართვა"
+
+#: src/settings/menuSettings/layoutTweaksPage.js:1101
+msgid "Enable Clock Widget"
+msgstr "საათის ვიჯეტის ჩართვა"
+
+#: src/settings/menuSettings/layoutsPage.js:23
+msgid "Current Menu Layout"
+msgstr "მენიუს მიმდინარე განლაგება"
+
+#: src/settings/menuSettings/layoutsPage.js:37
+msgid "Choose a new menu layout?"
+msgstr "აირჩევთ მენიუს ახალ განლაგებას?"
+
+#: src/settings/menuSettings/layoutsPage.js:43
+#, javascript-format
+msgid "%s Menu Layouts"
+msgstr "%s-ის მენიუს განლაგებები"
+
+#: src/settings/menuSettings/listOtherPage.js:34
+msgid "Actions will be hidden from ArcMenu if not available on your system."
+msgstr ""
+"ქმედებები დამალული იქნება ArcMenu-დან, თუ ისინი თქვენს სისტემაში "
+"ხელმისაწვდომი არაა."
+
+#: src/settings/menuSettings/listOtherPage.js:41
+#: src/settings/menuSettings/visualSettings.js:111
+#: src/settings/menuSettings/visualSettings.js:184
+#: src/settings/menuSettings/visualSettings.js:278
+msgid "Off"
+msgstr "გამორთ"
+
+#: src/settings/menuSettings/listOtherPage.js:42
+msgid "Power Buttons"
+msgstr "კვების ღილაკები"
+
+#: src/settings/menuSettings/listOtherPage.js:43
+msgid "Power Menu"
+msgstr "კვების მენიუ"
+
+#: src/settings/menuSettings/listOtherPage.js:45
+msgid "Override Display Style"
+msgstr "ჩვენების სტილის გადაფარვა"
+
+#: src/settings/menuSettings/listPinnedPage.js:78
+#: src/settings/menuSettings/listPinnedPage.js:81
+#: src/settings/menuSettings/listPinnedPage.js:87
+#: src/settings/menuSettings/listPinnedPage.js:92
+msgid "Add More Apps"
+msgstr "მეტი აპის დამატება"
+
+#: src/settings/menuSettings/listPinnedPage.js:84
+msgid "Add Default User Directories"
+msgstr "ნაგულისხმევი მომხმარებლის საქაღალდეების დმატება"
+
+#: src/settings/menuSettings/listPinnedPage.js:90
+msgid "Add More Shortcuts"
+msgstr "მეტი მალსახმობის დამატება"
+
+#: src/settings/menuSettings/listPinnedPage.js:156
+msgid "Add Custom Shortcut"
+msgstr "საკუთარი მალსახმობის დამატება"
+
+#: src/settings/menuSettings/listPinnedPage.js:246
+msgid "Invalid Shortcut"
+msgstr "არასწორი მალსახმობი"
+
+#: src/settings/menuSettings/listPinnedPage.js:338
+msgid "Add to your Pinned Apps"
+msgstr "დამატება თქვენს ამაგრებულ აპებში"
+
+#: src/settings/menuSettings/listPinnedPage.js:340
+msgid "Add to your Extra Shortcuts"
+msgstr "დამატება თქვენს დამატებით მალსახმობებში"
+
+#: src/settings/menuSettings/listPinnedPage.js:342
+msgid "Select Application Shortcuts"
+msgstr "მონიშნეთ აპლიკაციის მალსახმობები"
+
+#: src/settings/menuSettings/listPinnedPage.js:344
+msgid "Select Directory Shortcuts"
+msgstr "მონიშნეთ საქაღალდის მალსახმობები"
+
+#: src/settings/menuSettings/listPinnedPage.js:346
+msgid "Add to the Context Menu"
+msgstr "ჩამატება ტექსტურ მენიუში"
+
+#: src/settings/menuSettings/listPinnedPage.js:358
+#: src/settings/menuSettings/listPinnedPage.js:369
+#: src/settings/menuSettings/listPinnedPage.js:392
+#: src/settings/menuSettings/listPinnedPage.js:397
+msgid "Separator"
+msgstr "გამყოფი"
+
+#: src/settings/menuSettings/listPinnedPage.js:359
+#: src/settings/menuSettings/listPinnedPage.js:370
+msgid "Spacer"
+msgstr "დაშორება"
+
+#: src/settings/menuSettings/listPinnedPage.js:365
+msgid "Run Command..."
+msgstr "ბრძანების გაშვება..."
+
+#: src/settings/menuSettings/listPinnedPage.js:368
+msgid "Show All Apps"
+msgstr "ყველა აპლიკაციის ჩვენება"
+
+#: src/settings/menuSettings/listPinnedPage.js:377
+msgid "Menu Settings"
+msgstr "მენიუს მორგება"
+
+#: src/settings/menuSettings/listPinnedPage.js:379
+msgid "Menu Theming"
+msgstr "მენიუს თემა"
+
+#: src/settings/menuSettings/listPinnedPage.js:381
+msgid "Change Menu Layout"
+msgstr "მენიუს განლაგების შეცვლა"
+
+#: src/settings/menuSettings/listPinnedPage.js:383
+msgid "Menu Button Settings"
+msgstr "მენიუს ღილაკის მორგება"
+
+#: src/settings/menuSettings/listPinnedPage.js:386
+msgid "Panel Extension Settings"
+msgstr "პანელის გაფართოების მორგება"
+
+#: src/settings/menuSettings/listPinnedPage.js:415
+msgid "Documents"
+msgstr "დოკუმენტები"
+
+#: src/settings/menuSettings/listPinnedPage.js:417
+msgid "Downloads"
+msgstr "გადმოწერები"
+
+#: src/settings/menuSettings/listPinnedPage.js:419
+msgid "Music"
+msgstr "მუსიკა"
+
+#: src/settings/menuSettings/listPinnedPage.js:420
+msgid "Pictures"
+msgstr "სურათები"
+
+#: src/settings/menuSettings/listPinnedPage.js:421
+msgid "Videos"
+msgstr "ვიდეოები"
+
+#: src/settings/menuSettings/listPinnedPage.js:424
+msgid "Recent"
+msgstr "უახლესი"
+
+#: src/settings/menuSettings/listPinnedPage.js:451
+msgid "Dash to Panel or App Icons Taskbar"
+msgstr "Dash to Panel ან App Icons Taskbar"
+
+#: src/settings/menuSettings/listPinnedPage.js:532
+#, javascript-format
+msgid "%s has been added"
+msgstr "%s დაემატა"
+
+#: src/settings/menuSettings/listPinnedPage.js:543
+#, javascript-format
+msgid "%s has been removed"
+msgstr "%s წაიშალა"
+
+#: src/settings/menuSettings/listPinnedPage.js:567
+msgid "Add a Custom Shortcut"
+msgstr "მორგებული მალსახმობის დამატება"
+
+#: src/settings/menuSettings/listPinnedPage.js:577
+msgid "Edit Pinned App"
+msgstr "მიმაგრებული აპის ჩასწორება"
+
+#: src/settings/menuSettings/listPinnedPage.js:579
+msgid "Edit Shortcut"
+msgstr "მალსახმობის ჩასწორება"
+
+#: src/settings/menuSettings/listPinnedPage.js:583
+msgid "Add"
+msgstr "დამატება"
+
+#: src/settings/menuSettings/listPinnedPage.js:590
+msgid "Title"
+msgstr "სათაური"
+
+#: src/settings/menuSettings/listPinnedPage.js:618
+msgid "Clear Icon"
+msgstr "ხატულის გასუფთავება"
+
+#: src/settings/menuSettings/listPinnedPage.js:635
+msgid "Command"
+msgstr "ბრძანება"
+
+#: src/settings/menuSettings/listPinnedPage.js:635
+msgid "Directory"
+msgstr "საქაღალდე"
+
+#: src/settings/menuSettings/searchOptionsPage.js:27
+msgid "Hide Search Bar"
+msgstr "ძებნის პანელის დამალვა"
+
+#: src/settings/menuSettings/searchOptionsPage.js:28
+msgid "The search bar hides when empty and appears when typing."
+msgstr ""
+"ძებნის ზოლი დამალულია, როცა ცარიელია და გამოჩნდება, როცა კრეფას დაიწყებთ."
+
+#: src/settings/menuSettings/searchOptionsPage.js:42
+msgid "Show Search Result Descriptions"
+msgstr "აჩვენებს ძებნის შედეგის აღწერებს"
+
+#: src/settings/menuSettings/searchOptionsPage.js:57
+msgid "Highlight search result terms"
+msgstr "ძებნის პირობების გამოკვეთა შედეგებში"
+
+#: src/settings/menuSettings/searchOptionsPage.js:76
+msgid "Max Search Results"
+msgstr "ძებნის მაქს. შედეგები"
+
+#: src/settings/menuSettings/searchOptionsPage.js:120
+msgid "Search Box Border Radius"
+msgstr "ძებნის ველის საზღვრის რადიუსი"
+
+#: src/settings/menuSettings/searchOptionsPage.js:134
+msgid "Extra Search Providers"
+msgstr "გარე საძიებო სისტემები"
+
+#: src/settings/menuSettings/searchOptionsPage.js:145
+msgid "Search for open windows across all workspaces"
+msgstr "ღია ფანჯრების ძებნა ყველა სამუშაო სივრცეში"
+
+#: src/settings/menuSettings/searchOptionsPage.js:159
+msgid "Search for recent files"
+msgstr "უახლესი ფაილების ძებნა"
+
+#: src/settings/menuSettings/themePage.js:39
+msgid "Override Theme"
+msgstr "თემის გადაფარვა"
+
+#: src/settings/menuSettings/themePage.js:47
+#: src/settings/menuSettings/themingDialog.js:67
+#: src/settings/menuSettings/themingDialog.js:75
+#: src/settings/menuSettings/themingDialog.js:141
+msgid "Menu Themes"
+msgstr "მენიუს თემები"
+
+#: src/settings/menuSettings/themePage.js:119
+msgid "Current Theme"
+msgstr "მიმდინარე თემა"
+
+#: src/settings/menuSettings/themePage.js:147
+msgid "Save as Theme"
+msgstr "შენახვა თემის სახით"
+
+#: src/settings/menuSettings/themePage.js:177
+msgid "Menu Styling"
+msgstr "მენიუს დასტილვა"
+
+#: src/settings/menuSettings/themePage.js:200
+msgid "Separator Color"
+msgstr "გამყოფის ფერი"
+
+#: src/settings/menuSettings/themePage.js:204
+msgid "Menu Items Styling"
+msgstr "მენიუს პუნქტების სტილი"
+
+#: src/settings/menuSettings/themingDialog.js:15
+msgid "Save Theme As..."
+msgstr "თემის შენახვა, როგორც..."
+
+#: src/settings/menuSettings/themingDialog.js:27
+msgid "Theme Name"
+msgstr "თემის სახელი"
+
+#: src/settings/menuSettings/themingDialog.js:44
+msgid "Save Theme"
+msgstr "თემის შენახვა"
+
+#: src/settings/menuSettings/themingDialog.js:60
+msgid "Manage Themes"
+msgstr "თემების მართვა"
+
+#: src/settings/menuSettings/themingDialog.js:322
+msgid "Save Themes"
+msgstr "თემების შენახვა"
+
+#: src/settings/menuSettings/themingDialog.js:324
+msgid "Load Themes"
+msgstr "თემების ჩატვირთვა"
+
+#: src/settings/menuSettings/themingDialog.js:377
+#, javascript-format
+msgid "%s has been selected"
+msgstr "%s მონიშნულია"
+
+#: src/settings/menuSettings/themingDialog.js:389
+#, javascript-format
+msgid "%s has been unselected"
+msgstr "%s მონიშვნა მოიხსნა"
+
+#: src/settings/menuSettings/visualSettings.js:18
+msgid "Menu Size"
+msgstr "მენიუს ზომა"
+
+#: src/settings/menuSettings/visualSettings.js:56
+msgid "Left-Panel Width"
+msgstr "მარცხენა პანელის სიგანე"
+
+#: src/settings/menuSettings/visualSettings.js:57
+#: src/settings/menuSettings/visualSettings.js:78
+msgid "Traditional Layouts"
+msgstr "ტრადიციული განლაგებები"
+
+#: src/settings/menuSettings/visualSettings.js:77
+msgid "Right-Panel Width"
+msgstr "მარჯვენა პანელის სიგანე"
+
+#: src/settings/menuSettings/visualSettings.js:98
+msgid "Width Offset"
+msgstr "სიგანის წანაცვლება"
+
+#: src/settings/menuSettings/visualSettings.js:99
+#: src/settings/menuSettings/visualSettings.js:193
+msgid "Non-Traditional Layouts"
+msgstr "არატრადიციული განლაგებები"
+
+#: src/settings/menuSettings/visualSettings.js:106
+msgid "Menu Location"
+msgstr "მენიუს მდებარეობა"
+
+#: src/settings/menuSettings/visualSettings.js:112
+msgid "Top Centered"
+msgstr "ზედა ცენტრში"
+
+#: src/settings/menuSettings/visualSettings.js:113
+msgid "Top Left"
+msgstr "ზედა მარცხენა"
+
+#: src/settings/menuSettings/visualSettings.js:114
+msgid "Top Right"
+msgstr "ზედა მარჯვენა"
+
+#: src/settings/menuSettings/visualSettings.js:115
+msgid "Bottom Centered"
+msgstr "ქვედა ცენტრში"
+
+#: src/settings/menuSettings/visualSettings.js:116
+msgid "Bottom Left"
+msgstr "ქვედა მარცხენა"
+
+#: src/settings/menuSettings/visualSettings.js:117
+msgid "Bottom Right"
+msgstr "ქვედა მარჯვენა"
+
+#: src/settings/menuSettings/visualSettings.js:118
+msgid "Left Centered"
+msgstr "მარცხნივ ცენტრში"
+
+#: src/settings/menuSettings/visualSettings.js:119
+msgid "Right Centered"
+msgstr "მარჯვნივ ცენტრში"
+
+#: src/settings/menuSettings/visualSettings.js:120
+msgid "Monitor Centered"
+msgstr "მონიტორის ცენტრში"
+
+#: src/settings/menuSettings/visualSettings.js:122
+msgid "Override Menu Location"
+msgstr "მენიუს მდებარეობის გადაფარვა"
+
+#: src/settings/menuSettings/visualSettings.js:163
+msgid "Override Menu Rise"
+msgstr "მენიუს ამოწევის გადაფარვა"
+
+#: src/settings/menuSettings/visualSettings.js:164
+msgid "Menu Distance from Panel and Screen Edge"
+msgstr "მენიუს დაშორება პანელიდან და ეკრანის წიბოდან"
+
+#: src/settings/menuSettings/visualSettings.js:178
+msgid "Override Icon Sizes"
+msgstr "ხატულას ზომების გადაფარვა"
+
+#: src/settings/menuSettings/visualSettings.js:179
+msgid "Override the icon size of various menu items"
+msgstr "სხვადასხვა მენიუს პუნქტების ხატუნას ზომების გადაფარვა"
+
+#: src/settings/menuSettings/visualSettings.js:185
+#: src/settings/menuSettings/visualSettings.js:188
+#: src/settings/menuSettings/visualSettings.js:280
+msgid "Small"
+msgstr "პატარა"
+
+#: src/settings/menuSettings/visualSettings.js:186
+#: src/settings/menuSettings/visualSettings.js:189
+#: src/settings/menuSettings/visualSettings.js:281
+msgid "Medium"
+msgstr "საშუალო"
+
+#: src/settings/menuSettings/visualSettings.js:187
+#: src/settings/menuSettings/visualSettings.js:190
+#: src/settings/menuSettings/visualSettings.js:282
+msgid "Large"
+msgstr "დიდი"
+
+#: src/settings/menuSettings/visualSettings.js:188
+#: src/settings/menuSettings/visualSettings.js:189
+#: src/settings/menuSettings/visualSettings.js:190
+msgid "Wide"
+msgstr "ფართო"
+
+#: src/settings/menuSettings/visualSettings.js:191
+msgid "Custom"
+msgstr "ხელით"
+
+#: src/settings/menuSettings/visualSettings.js:193
+msgid "Grid Menu Items"
+msgstr "ბადის მენიუს ელემენტები"
+
+#: src/settings/menuSettings/visualSettings.js:194
+msgid "Apps, Pinned Apps, Shortcuts, Grid Search Results"
+msgstr "აპები, ამაგრებული აპები, მალსახმობები, ძებნის შედეგების ბადე"
+
+#: src/settings/menuSettings/visualSettings.js:224
+msgid "Applications"
+msgstr "აპლიკაციები"
+
+#: src/settings/menuSettings/visualSettings.js:225
+msgid "Apps, Pinned Apps, Items within Category, List Search Results"
+msgstr "აპები, ამაგრებული აპები, ელემენტები კატეგორიაში, ძებნის შედეგების სია"
+
+#: src/settings/menuSettings/visualSettings.js:232
+msgid "Directory / Application / Other Shortcuts, Power Menu"
+msgstr "საქაღალდე / აპლიკაცია / სხვა მალსახმობები, კვების მენიუ"
+
+#: src/settings/menuSettings/visualSettings.js:238
+msgid "Application Categories"
+msgstr "აპლიკაციების კატეგორები"
+
+#: src/settings/menuSettings/visualSettings.js:244
+msgid "Button Widgets"
+msgstr "ღილაკის ვიჯეტები"
+
+#: src/settings/menuSettings/visualSettings.js:245
+msgid "Power Buttons, Unity Bottom Bar, Mint Side Bar, etc"
+msgstr "კვების ღილაკები, Unity-ის ქვედა ზოლი, Mint-ის გვერდითი ზოლი და ა.შ"
+
+#: src/settings/menuSettings/visualSettings.js:251
+msgid "Miscellaneous"
+msgstr "სხვადასხვა"
+
+#: src/settings/menuSettings/visualSettings.js:252
+msgid "Avatar, Search, Navigation Icons"
+msgstr "ავატარი, ძებნა, ნავიგაციის ხატულები"
+
+#: src/settings/menuSettings/visualSettings.js:279
+msgid "Extra Small"
+msgstr "ძალიან პატარა"
+
+#: src/settings/menuSettings/visualSettings.js:283
+msgid "Extra Large"
+msgstr "ძალიან დიდი"
+
+#: src/settings/menuSettings/visualSettings.js:305
+msgid "Custom Grid Icon Size"
+msgstr "მორგებული ბადის ხატულას ზომა"
+
+#. TRANSLATORS: This will display as "ProjectName v21 Released!" as an example.
+#: src/updateNotifier.js:70
+#, javascript-format
+msgid "%s v%s Released!"
+msgstr "გამოვიდა %s v%s!"
+
+#: src/updateNotifier.js:73
+msgid "Check out what's new."
+msgstr "შეამოწმეთ რა არის ახალი."
+
+#: src/updateNotifier.js:90
+msgid "What's new?"
+msgstr "რა არის ახალი?"
+
+#: src/updateNotifier.js:91
+msgid "Dismiss"
+msgstr "მოცილება"

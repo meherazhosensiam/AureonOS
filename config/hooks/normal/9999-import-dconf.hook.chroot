@@ -1,0 +1,17 @@
+#!/bin/sh
+set -e
+
+# Instead of using 'dconf write' (which requires a display), 
+# use dconf's ability to load from a database file.
+# Make sure your custom settings are placed in a file here:
+# /etc/dconf/db/local.d/00-aureon-settings
+
+# Example:
+mkdir -p /etc/dconf/db/local.d/
+cat <<EOF > /etc/dconf/db/local.d/00-aureon-settings
+[org/gnome/desktop/interface]
+gtk-theme='Adwaita'
+EOF
+
+# Update the dconf databases
+dconf update

@@ -1,0 +1,959 @@
+# Arabic translation for ding.
+# Copyright (C) 2025 ding's COPYRIGHT HOLDER
+# This file is distributed under the same license as the ding package.
+# Ahmed Najmawi <iramosu@protonmail.com>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: ding\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-11-24 20:44+0100\n"
+"PO-Revision-Date: 2025-07-08 02:36+0300\n"
+"Last-Translator: Ahmed Najmawi <iramosu@protonmail.com>\n"
+"Language-Team: \n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
+"X-Generator: Poedit 3.6\n"
+
+#: app/askRenamePopup.js:50
+msgid "Folder name"
+msgstr "اسم المجلَّد"
+
+#: app/askRenamePopup.js:50
+msgid "File name"
+msgstr "اسم الملف"
+
+#: app/askRenamePopup.js:59 app/autoAr.js:305 app/desktopManager.js:1091
+msgid "OK"
+msgstr "حسنًا"
+
+#: app/askRenamePopup.js:59
+msgid "Rename"
+msgstr "أعِد التسمية"
+
+#: app/autoAr.js:88
+msgid "AutoAr is not installed"
+msgstr "الأداة AutoAr غير منصَّبة"
+
+#: app/autoAr.js:89
+msgid ""
+"To be able to work with compressed files, install file-roller and/or gir-1.2-"
+"gnomeAutoAr"
+msgstr ""
+"لتتمكن من التعامل مع الملفات المضغوطة، نصِّب file-roller و/أو gir-1.2-"
+"gnomeAutoAr"
+
+#: app/autoAr.js:224
+msgid "Extracting files"
+msgstr "تُستخرج الملفات"
+
+#: app/autoAr.js:241
+msgid "Compressing files"
+msgstr "تُضغط الملفات"
+
+#: app/autoAr.js:297 app/autoAr.js:636 app/desktopManager.js:1093
+#: app/fileItemMenu.js:474
+msgid "Cancel"
+msgstr "ألغِ"
+
+#: app/autoAr.js:318 app/autoAr.js:619
+msgid "Enter a password here"
+msgstr "أدخل كلمة السر هنا"
+
+#: app/autoAr.js:359
+msgid "Removing partial file '${outputFile}'"
+msgstr "تُزال بقايا الملف '${outputFile}'"
+
+#: app/autoAr.js:378
+msgid "Creating destination folder"
+msgstr "يُنشئ مجلَّد الوجهة"
+
+#: app/autoAr.js:410
+msgid "Extracting files into '${outputPath}'"
+msgstr "تُستخرج الملفات إلى '${outputPath}'"
+
+#: app/autoAr.js:442
+msgid "Extraction completed"
+msgstr "اكتمل الاستخراج"
+
+#: app/autoAr.js:443
+msgid "Extracting '${fullPathFile}' has been completed."
+msgstr "اكتمل استخراج '${fullPathFile}'."
+
+#: app/autoAr.js:449
+msgid "Extraction cancelled"
+msgstr "أُلغي الاستخراج"
+
+#: app/autoAr.js:450
+msgid "Extracting '${fullPathFile}' has been cancelled by the user."
+msgstr "ألغى المستخدم استخراج '${fullPathFile}'."
+
+#: app/autoAr.js:460
+msgid "Passphrase required for ${filename}"
+msgstr "كلمة السر مطلوبة لِـ${filename}"
+
+#: app/autoAr.js:463
+msgid "Error during extraction"
+msgstr "خطأ أثناء الاستخراج"
+
+#: app/autoAr.js:492
+msgid "Compressing files into '${outputFile}'"
+msgstr "تُضغط الملفات في '${outputFile}'"
+
+#: app/autoAr.js:505
+msgid "Compression completed"
+msgstr "اكتمل الضغط"
+
+#: app/autoAr.js:506
+msgid "Compressing files into '${outputFile}' has been completed."
+msgstr "اكتمل ضغط الملفات في '${outputFile}'."
+
+#: app/autoAr.js:510 app/autoAr.js:517
+msgid "Cancelled compression"
+msgstr "أُلغي الضغط"
+
+#: app/autoAr.js:511
+msgid "The output file '${outputFile}' already exists."
+msgstr "الملف الناتج '${outputFile}' موجود بالفعل."
+
+#: app/autoAr.js:518
+msgid "Compressing files into '${outputFile}' has been cancelled by the user."
+msgstr "ألغى المستخدم ضغط الملفات في '${outputFile}'."
+
+#: app/autoAr.js:521
+msgid "Error during compression"
+msgstr "خطأ أثناء الضغط"
+
+#: app/autoAr.js:554
+msgid "Create archive"
+msgstr "أنشئ أرشيفًا"
+
+#: app/autoAr.js:579
+msgid "Archive name"
+msgstr "اسم الأرشيف"
+
+#: app/autoAr.js:614
+msgid "Password"
+msgstr "كلمة السر"
+
+#: app/autoAr.js:633
+msgid "Create"
+msgstr "أنشئ"
+
+#: app/autoAr.js:712
+msgid "Compatible with all operating systems."
+msgstr "متوافق مع جميع أنظمة التشغيل."
+
+#: app/autoAr.js:718
+msgid "Password protected .zip, must be installed on Windows and Mac."
+msgstr "ملف .zip محمي بكلمة سر، ويجب تنصيبه على ويندوز وماك."
+
+#: app/autoAr.js:724
+msgid "Smaller archives but Linux and Mac only."
+msgstr "أراشيف أصغر حجمًا ولكن للينكس وماك فقط."
+
+#: app/autoAr.js:730
+msgid "Smaller archives but must be installed on Windows and Mac."
+msgstr "أراشيف أصغر حجمًا ولكن يجب تنصيبها على ويندوز وماك."
+
+#: app/dbusUtils.js:69
+msgid "\"${programName}\" is needed for Desktop Icons"
+msgstr "أيقونات سطح المكتب بحاجة إلى \"${programName}\""
+
+#: app/dbusUtils.js:70
+msgid ""
+"For this functionality to work in Desktop Icons, you must install \"$"
+"{programName}\" in your system."
+msgstr ""
+"لكي تعمل هذه الوظيفة في أيقونات سطح المكتب، يجب أن تنصِّب \"${programName}\" "
+"على نظامك."
+
+#: app/desktopIconsUtil.js:157
+msgid "Command not found"
+msgstr "الأمر غير موجود"
+
+#: app/desktopManager.js:264
+msgid "Nautilus File Manager not found"
+msgstr "مدير الملفات نوتلس غير موجود"
+
+#: app/desktopManager.js:265
+msgid "The Nautilus File Manager is mandatory to work with Desktop Icons NG."
+msgstr "مدير الملفات نوتلس إلزامي لعمل امتداد «أيقونات سطح المكتب NG»."
+
+#: app/desktopManager.js:271
+msgid "GLibUnix GIR file not found"
+msgstr ""
+
+#: app/desktopManager.js:272
+msgid ""
+"GLibUnix-2.0.gir file is missing. Please, install the required package in "
+"your system."
+msgstr ""
+
+#: app/desktopManager.js:1050
+msgid "Clear Current Selection before New Search"
+msgstr "امحُ التحديد الحالي قبل البحث الجديد"
+
+#: app/desktopManager.js:1095
+msgid "Find Files on Desktop"
+msgstr "ابحث عن ملفات على سطح المكتب"
+
+#: app/desktopManager.js:1163 app/desktopManager.js:1875
+msgid "New Folder"
+msgstr "مجلَّد جديد"
+
+#: app/desktopManager.js:1167
+msgid "New Document"
+msgstr "مستند جديد"
+
+#: app/desktopManager.js:1172
+msgid "Paste"
+msgstr "ألصِق"
+
+#: app/desktopManager.js:1176
+msgid "Undo"
+msgstr "تراجع"
+
+#: app/desktopManager.js:1180
+msgid "Redo"
+msgstr "أعِد"
+
+#: app/desktopManager.js:1186
+msgid "Select All"
+msgstr "حدِّد الكل"
+
+#: app/desktopManager.js:1194
+msgid "Show Desktop in Files"
+msgstr "اعرض سطح المكتب في مدير الملفات"
+
+#: app/desktopManager.js:1198 app/fileItemMenu.js:365
+msgid "Open in Terminal"
+msgstr "افتح في الطرفية"
+
+#: app/desktopManager.js:1204
+msgid "Change Background…"
+msgstr "غيِّر الخلفية…"
+
+#: app/desktopManager.js:1215
+msgid "Desktop Icons Settings"
+msgstr "إعدادات أيقونات سطح المكتب"
+
+#: app/desktopManager.js:1228
+msgid "Display Settings"
+msgstr "إعدادات العرض"
+
+#: app/desktopManager.js:1888
+msgid "Folder Creation Failed"
+msgstr "تعذَّر إنشاء المجلَّد"
+
+#: app/desktopManager.js:1889
+msgid "Error while trying to create a Folder"
+msgstr "خطأ أثناء محاولة إنشاء مجلَّد"
+
+#: app/desktopManager.js:1925
+msgid "Template Creation Failed"
+msgstr "تعذَّر إنشاء القالب"
+
+#: app/desktopManager.js:1926
+msgid "Error while trying to create a Document"
+msgstr "خطأ أثناء محاولة إنشاء مستند"
+
+#: app/desktopManager.js:1934
+msgid "Arrange Icons"
+msgstr "رتِّب الأيقونات"
+
+#: app/desktopManager.js:1938
+msgid "Arrange By..."
+msgstr "رتِّب حسب..."
+
+#: app/desktopManager.js:1947
+msgid "Keep Arranged..."
+msgstr "أبقِها مرتَّبة..."
+
+#: app/desktopManager.js:1951
+msgid "Keep Stacked by type..."
+msgstr "أبقِها مكدَّسة حسب النوع..."
+
+#: app/desktopManager.js:1956
+msgid "Sort Home/Drives/Trash..."
+msgstr "افرز المنزل\\محركات الأقراص\\المهملات..."
+
+#: app/desktopManager.js:1962
+msgid "Sort by Name"
+msgstr "افرز حسب الاسم"
+
+#: app/desktopManager.js:1964
+msgid "Sort by Name Descending"
+msgstr "افرز حسب الاسم (تنازليًا)"
+
+#: app/desktopManager.js:1967
+msgid "Sort by Modified Time"
+msgstr "افرز حسب تاريخ التعديل"
+
+#: app/desktopManager.js:1970
+msgid "Sort by Type"
+msgstr "افرز حسب النوع"
+
+#: app/desktopManager.js:1973
+msgid "Sort by Size"
+msgstr "افرز حسب الحجم"
+
+#. * TRANSLATORS: when using a screen reader, this is the text read when the user's personal folder is
+#. * highlighted.
+#. TRANSLATORS: "Home" is the text that will be shown in the user's personal folder
+#: app/fileItem.js:120 app/fileItem.js:255
+msgid "Home"
+msgstr "المنزل"
+
+#. * TRANSLATORS: when using a screen reader, this is the text read when the user's personal folder is
+#. * highlighted and selected.
+#: app/fileItem.js:123
+#, fuzzy
+msgid "Home Selected"
+msgstr "حدِّد"
+
+#. * TRANSLATORS: when using a screen reader, this is the text read when the trash folder is
+#. * highlighted.
+#: app/fileItem.js:128
+msgid "Trash"
+msgstr "المهملات"
+
+#. * TRANSLATORS: when using a screen reader, this is the text read when the trash folder is
+#. * highlighted and selected.
+#: app/fileItem.js:131
+#, fuzzy
+msgid "Trash Selected"
+msgstr "حدِّد"
+
+#. * TRANSLATORS: when using a screen reader, this is the role used when an external drive is
+#. * highlighted. Example: if a USB stick named "my_portable" is highlighted, it will say "my_portable Drive".
+#. * It is mandatory to say the file name first and the role after.
+#: app/fileItem.js:137
+msgid "${VisibleName} Drive"
+msgstr "محرك أقراص ${VisibleName}"
+
+#. * TRANSLATORS: when using a screen reader, this is the role used when an external drive is
+#. * highlighted and selected. Example: if a USB stick named "my_portable" is highlighted and selected, it
+#. * will say "my_portable Drive Selected". It is mandatory to say the file name first, then the role, and
+#. * finally "Selected".
+#: app/fileItem.js:142
+#, fuzzy
+msgid "${VisibleName} Drive Selected"
+msgstr "محرك أقراص ${VisibleName}"
+
+#. * TRANSLATORS: when using a screen reader, this is the role used when a stack is
+#. * highlighted. Example: if a stack named "pictures" is selected, it will say "pictures Stack".
+#. * It is mandatory to say the file name first and the role after.
+#: app/fileItem.js:148
+msgid "${VisibleName} Stack"
+msgstr "كدسة ${VisibleName}"
+
+#. * TRANSLATORS: when using a screen reader, this is the role used when a stack is highlighted and
+#. * selected. Example: if a stack named "pictures" is highlighted and selected, it will say "pictures Stack Selected".
+#. * It is mandatory to say the file name first, then the role, and finally "Selected".
+#: app/fileItem.js:152
+#, fuzzy
+msgid "${VisibleName} Stack Selected"
+msgstr "كدسة ${VisibleName}"
+
+#. * TRANSLATORS: when using a screen reader, this is the role used when a folder is
+#. * highlighted. Example: if a folder named "things" is highlighted, it will say "things Folder".
+#. * It is mandatory to say the file name first and the role after.
+#: app/fileItem.js:158
+msgid "${VisibleName} Folder"
+msgstr "مجلَّد ${VisibleName}"
+
+#. * TRANSLATORS: when using a screen reader, this is the role used when a folder is
+#. * highlighted and selected. Example: if a folder named "things" is highlighted and selected, it will say
+#. * "things Folder Selected". It is mandatory to say the file name first, then the role, and finally "Selected".
+#: app/fileItem.js:162
+#, fuzzy
+msgid "${VisibleName} Folder Selected"
+msgstr "مجلَّد ${VisibleName}"
+
+#. * TRANSLATORS: when using a screen reader, this is the role used when a trusted desktop file is
+#. * highlighted. Example: if a desktop file named "My App" is highlighted and it is trusted, it will
+#. * say "My App Application". It is mandatory to say the file name first and the role after.
+#: app/fileItem.js:168
+#, fuzzy
+msgid "${VisibleName} Application"
+msgstr "ملف ${VisibleName}"
+
+#. * TRANSLATORS: when using a screen reader, this is the role used when a trusted desktop file is
+#. * highlighted. Example: if a desktop file named "My App" is highlighted and selected and it is trusted, it will
+#. * say "My App Application Selected". It is mandatory to say the file name first and the role after.
+#: app/fileItem.js:172
+#, fuzzy
+msgid "${VisibleName} Application Selected"
+msgstr "ملف ${VisibleName}"
+
+#. * TRANSLATORS: when using a screen reader, this is the text read when a normal file is
+#. * highlighted. Example: if a file named "my_picture.jpg" is highlighted, it will say "my_picture.jpg File"
+#: app/fileItem.js:178
+msgid "${VisibleName} File"
+msgstr "ملف ${VisibleName}"
+
+#. * TRANSLATORS: when using a screen reader, this is the text read when a normal file is highlighted and
+#. * selected. Example: if a file named "my_picture.jpg" is highlighted and selected, it will say
+#. * "my_picture.jpg File Selected". It is mandatory to say the file name first and the role after.
+#: app/fileItem.js:182
+#, fuzzy
+msgid "${VisibleName} File Selected"
+msgstr "ملف ${VisibleName}"
+
+#: app/fileItem.js:348
+msgid "Error while reading Desktop file"
+msgstr "خطأ أثناء قراءة ملف سطح المكتب"
+
+#: app/fileItem.js:390
+msgid "Broken Link"
+msgstr "وصلة معطوبة"
+
+#: app/fileItem.js:391
+msgid "Can not open this File because it is a Broken Symlink"
+msgstr "لا يمكن فتح هذا الملف لأنه وصلة رمزية معطوبة"
+
+#: app/fileItem.js:423
+msgid "Can't open the file"
+msgstr "لا يمكن فتح الملف"
+
+#: app/fileItem.js:449
+msgid "Broken Desktop File"
+msgstr "ملف سطح مكتب معطوب"
+
+#: app/fileItem.js:450
+msgid ""
+"This .desktop file has errors or points to a program without permissions. It "
+"can not be executed.\n"
+"\n"
+"\t<b>Edit the file to set the correct executable Program.</b>"
+msgstr ""
+"ملف .desktop هذا به أخطاء أو يشير إلى برنامج لا يمكن تشغيله دون صلاحيات.\n"
+"\n"
+"\t<b>حرِّر الملف لتعيين البرنامج التنفيذي الصحيح.</b>"
+
+#: app/fileItem.js:456
+msgid "Invalid Permissions on Desktop File"
+msgstr "صلاحيات ملف سطح المكتب غير صالحة"
+
+#: app/fileItem.js:457
+msgid ""
+"This .desktop File has incorrect Permissions. Right Click to edit "
+"Properties, then:\n"
+msgstr ""
+"ملف .desktop هذا لديه صلاحيات خاطئة. انقر بالزر الأيمن لتعديل الخصائص، ثم:\n"
+
+#: app/fileItem.js:459
+msgid ""
+"\n"
+"<b>Set Permissions, in \"Others Access\", \"Read Only\" or \"None\"</b>"
+msgstr ""
+"\n"
+"<b>اضبط الصلاحيات في «وصول الآخرين»على «قراءة فقط» أو «لا شيء»</b>"
+
+#: app/fileItem.js:462
+msgid ""
+"\n"
+"<b>Enable option, \"Allow Executing File as a Program\"</b>"
+msgstr ""
+"\n"
+"<b>فعِّل خيار «السماح بتنفيذ الملف كبرنامج»</b>"
+
+#: app/fileItem.js:470
+msgid ""
+"This .desktop file is not trusted, it can not be launched. To enable "
+"launching, right-click, then:\n"
+"\n"
+"<b>Enable \"Allow Launching\"</b>"
+msgstr ""
+"ملف .desktop هذا غير موثوق، ولا يمكن إطلاقه. لتمكين إطلاقه، انقر بالزر "
+"الأيمن، ثم:\n"
+"\n"
+"<b>فعِّل «السماح بالإطلاق»</b>"
+
+#: app/fileItem.js:669
+msgid "Failed to set execution flag"
+msgstr "تعذَّر تعيين راية التنفيذ"
+
+#: app/fileItem.js:681 app/fileItem.js:688
+msgid "Could not apply discrete GPU environment"
+msgstr "تعذَّر تطبيق بيئة معالج الرسوميات المنفصل"
+
+#: app/fileItem.js:717
+msgid "Could not find discrete GPU data"
+msgstr "تعذَّر العثور على بيانات معالج الرسوميات المنفصل"
+
+#: app/fileItem.js:842
+msgid "Failed to set metadata::trusted flag"
+msgstr "تعذَّر تعيين راية الوثوق في البيانات الوصفية"
+
+#: app/fileItemMenu.js:143
+msgid "Open All..."
+msgstr "افتح الكل..."
+
+#: app/fileItemMenu.js:143
+msgid "Open"
+msgstr "افتح"
+
+#: app/fileItemMenu.js:160
+msgid "Stack This Type"
+msgstr "كدِّس هذا النوع"
+
+#: app/fileItemMenu.js:160
+msgid "Unstack This Type"
+msgstr "فك تكديس هذا النوع"
+
+#: app/fileItemMenu.js:173
+msgid "Scripts"
+msgstr "إخطاطات"
+
+#: app/fileItemMenu.js:178
+msgid "Open All With Other Application..."
+msgstr "افتح الكل بواسطة تطبيق آخر..."
+
+#: app/fileItemMenu.js:178
+msgid "Open With Other Application"
+msgstr "افتح بواسطة تطبيق آخر"
+
+#: app/fileItemMenu.js:184
+msgid "Launch using Dedicated Graphics Card"
+msgstr "شغِّل باستخدام بطاقة الرسوميات المخصصة"
+
+#: app/fileItemMenu.js:195
+msgid "Run as a program"
+msgstr "شغِّل كبرنامج"
+
+#: app/fileItemMenu.js:203
+msgid "Cut"
+msgstr "قص"
+
+#: app/fileItemMenu.js:210
+msgid "Copy"
+msgstr "انسخ"
+
+#: app/fileItemMenu.js:218
+msgid "Rename…"
+msgstr "أعِد التسمية…"
+
+#: app/fileItemMenu.js:228
+msgid "Move to Trash"
+msgstr "انقل إلى المهملات"
+
+#: app/fileItemMenu.js:236
+msgid "Delete permanently"
+msgstr "احذف نهائيًا"
+
+#: app/fileItemMenu.js:246
+msgid "Don't Allow Launching"
+msgstr "لا تسمح بالإطلاق"
+
+#: app/fileItemMenu.js:246
+msgid "Allow Launching"
+msgstr "اسمح بالإطلاق"
+
+#: app/fileItemMenu.js:259
+msgid "Empty Trash"
+msgstr "أفرغ المهملات"
+
+#: app/fileItemMenu.js:272
+msgid "Eject"
+msgstr "أخرِج"
+
+#: app/fileItemMenu.js:280
+msgid "Unmount"
+msgstr "فك الوصل"
+
+#: app/fileItemMenu.js:294 app/fileItemMenu.js:301
+msgid "Extract Here"
+msgstr "استخرج هنا"
+
+#: app/fileItemMenu.js:308
+msgid "Extract To..."
+msgstr "استخرج إلى..."
+
+#: app/fileItemMenu.js:317
+msgid "Send to..."
+msgstr "أرسل إلى..."
+
+#: app/fileItemMenu.js:325
+msgid "Compress {0} folder"
+msgid_plural "Compress {0} folders"
+msgstr[0] "لم يُضغط مجلَّد"
+msgstr[1] "ضُغط مجلَّد"
+msgstr[2] "ضُغط مجلَّدان"
+msgstr[3] "ضُغطت {0} مجلَّدات"
+msgstr[4] "ضُغط {0} مجلَّدًا"
+msgstr[5] "ضُغط {0} مجلّّد"
+
+#: app/fileItemMenu.js:332
+msgid "Compress {0} file"
+msgid_plural "Compress {0} files"
+msgstr[0] "لم يُضغط ملف"
+msgstr[1] "ضُغط ملف"
+msgstr[2] "ضُغط ملفان"
+msgstr[3] "ضُغطت {0} ملفات"
+msgstr[4] "ضُغط {0} ملفًا"
+msgstr[5] "ضُغط {0} ملف"
+
+#: app/fileItemMenu.js:340
+msgid "New Folder with {0} item"
+msgid_plural "New Folder with {0} items"
+msgstr[0] "مجلَّد جديد دون عناصر"
+msgstr[1] "مجلَّد جديد بعنصر واحد"
+msgstr[2] "مجلَّد جديد بعنصرين"
+msgstr[3] "مجلَّد جديد بـ{0} عناصر"
+msgstr[4] "مجلَّد جديد بـ{0} عنصرًا"
+msgstr[5] "مجلَّد جديد بـ{0} عنصر"
+
+#: app/fileItemMenu.js:351
+msgid "Common Properties"
+msgstr "الخصائص المشتركة"
+
+#: app/fileItemMenu.js:351
+msgid "Properties"
+msgstr "الخصائص"
+
+#: app/fileItemMenu.js:358
+msgid "Show All in Files"
+msgstr "اعرض الكل في تطبيق الملفات"
+
+#: app/fileItemMenu.js:358
+msgid "Show in Files"
+msgstr "اعرض في تطبيق الملفات"
+
+#: app/fileItemMenu.js:449
+msgid "No Extraction Folder"
+msgstr "لا مجلَّد للاستخراج"
+
+#: app/fileItemMenu.js:450
+msgid "Unable to extract File, extraction Folder Does not Exist"
+msgstr "تعذَّر استخراج الملف، فمجلَّد الاستخراج غير موجود"
+
+#: app/fileItemMenu.js:470
+msgid "Select Extract Destination"
+msgstr "حدِّد وجهة الاستخراج"
+
+#: app/fileItemMenu.js:475
+msgid "Select"
+msgstr "حدِّد"
+
+#: app/fileItemMenu.js:516
+msgid "Can not email a Directory"
+msgstr "لا يمكن إرسال مجلَّد بالبريد"
+
+#: app/fileItemMenu.js:517
+msgid "Selection includes a Directory, compress the directory to a file first."
+msgstr "التحديد يتضمَّن مجلَّدًا. اضغط المجلَّد في ملف أولًا."
+
+#: app/notifyX11UnderWayland.js:37
+msgid "Desktop Icons NG is running under X11Wayland"
+msgstr "امتداد «أيقونات سطح المكتب NG» يعمل تحت X11Wayland"
+
+#: app/notifyX11UnderWayland.js:38
+msgid ""
+"It seems that you have your system configured to force GTK to use X11. This "
+"works, but it's suboptimal. You should check your system configuration to "
+"fix this."
+msgstr ""
+"يبدو أن نظامك مهيَّأ لإجبار جتك على استخدام إكس11. هذا يعمل، ولكنه ليس الوضع "
+"الأمثل. يجدر بك مراجعة إعدادات نظامك لإصلاح ذلك."
+
+#: app/notifyX11UnderWayland.js:39 app/showErrorPopup.js:39
+msgid "Close"
+msgstr "أغلِق"
+
+#: app/notifyX11UnderWayland.js:47
+msgid "Don't show this message anymore."
+msgstr "لا تُظهر هذه الرسالة مجددًا."
+
+#: app/preferences.js:91
+msgid "Settings"
+msgstr "الإعدادات"
+
+#: app/prefswindow.js:64
+msgid "Size for the desktop icons"
+msgstr "حجم أيقونات سطح المكتب"
+
+#: app/prefswindow.js:64
+msgid "Tiny"
+msgstr "ضئيل"
+
+#: app/prefswindow.js:64
+msgid "Small"
+msgstr "صغير"
+
+#: app/prefswindow.js:64
+msgid "Standard"
+msgstr "قياسي"
+
+#: app/prefswindow.js:64
+msgid "Large"
+msgstr "كبير"
+
+#: app/prefswindow.js:65
+msgid "Show the personal folder in the desktop"
+msgstr "أظهِر المجلَّد الشخصي على سطح المكتب"
+
+#: app/prefswindow.js:66
+msgid "Show the trash icon in the desktop"
+msgstr "أظهِر أيقونة المهملات على سطح المكتب"
+
+#: app/prefswindow.js:67 schemas/org.gnome.shell.extensions.ding.gschema.xml:45
+msgid "Show external drives in the desktop"
+msgstr "أظهِر محرِّكات الأقراص الخارجية على سطح المكتب"
+
+#: app/prefswindow.js:68 schemas/org.gnome.shell.extensions.ding.gschema.xml:50
+msgid "Show network drives in the desktop"
+msgstr "أظهِر سواقات الشبكة على سطح المكتب"
+
+#: app/prefswindow.js:71
+msgid "New icons alignment"
+msgstr "محاذاة الأيقونات الجديدة"
+
+#: app/prefswindow.js:73
+msgid "Top-left corner"
+msgstr "الركن العلوي الأيسر"
+
+#: app/prefswindow.js:74
+msgid "Top-right corner"
+msgstr "الركن العلوي الأيمن"
+
+#: app/prefswindow.js:75
+msgid "Bottom-left corner"
+msgstr "الركن السفلي الأيسر"
+
+#: app/prefswindow.js:76
+msgid "Bottom-right corner"
+msgstr "الركن السفلي الأيمن"
+
+#: app/prefswindow.js:78 schemas/org.gnome.shell.extensions.ding.gschema.xml:55
+msgid "Add new drives to the opposite side of the screen"
+msgstr "أضف محرِّكات الأقراص الجديدة إلى الجانب المقابل من الشاشة"
+
+#: app/prefswindow.js:79
+msgid "Highlight the drop place during Drag'n'Drop"
+msgstr "ميِّز مكان الإسقاط أثناء السحب والإفلات"
+
+#: app/prefswindow.js:80 schemas/org.gnome.shell.extensions.ding.gschema.xml:90
+msgid "Use Nemo to open folders"
+msgstr "استخدم «نيمو» لفتح المجلَّدات"
+
+#: app/prefswindow.js:82
+msgid "Add an emblem to soft links"
+msgstr "أضِف شارة إلى الوصلات اللينة"
+
+#: app/prefswindow.js:84
+msgid "Use dark text in icon labels"
+msgstr "استخدم نصًا داكنًا في تسميات الأيقونات"
+
+#: app/prefswindow.js:91
+msgid "Settings shared with Nautilus"
+msgstr "إعدادات مشتركة مع نوتلس"
+
+#: app/prefswindow.js:113
+msgid "Click type for open files"
+msgstr "نوع النقر لفتح الملفات"
+
+#: app/prefswindow.js:113
+msgid "Single click"
+msgstr "نقرة واحدة"
+
+#: app/prefswindow.js:113
+msgid "Double click"
+msgstr "نقرتان"
+
+#: app/prefswindow.js:114
+msgid "Show hidden files"
+msgstr "أظهِر الملفات المخفية"
+
+#: app/prefswindow.js:115
+msgid "Show a context menu item to delete permanently"
+msgstr "أظهِر عنصرًا للحذف النهائي في قائمة السياق"
+
+#: app/prefswindow.js:120
+msgid "Action to do when launching a program from the desktop"
+msgstr "الإجراء المتخذ عند إطلاق برنامج من سطح المكتب"
+
+#: app/prefswindow.js:121
+msgid "Display the content of the file"
+msgstr "اعرض محتوى الملف"
+
+#: app/prefswindow.js:122
+msgid "Launch the file"
+msgstr "أطلِق الملف"
+
+#: app/prefswindow.js:123
+msgid "Ask what to do"
+msgstr "اسأل ما يجب فعله"
+
+#: app/prefswindow.js:129
+msgid "Show image thumbnails"
+msgstr "أظهِر مصغَّرات الصور"
+
+#: app/prefswindow.js:130
+msgid "Never"
+msgstr "أبدًا"
+
+#: app/prefswindow.js:131
+msgid "Local files only"
+msgstr "الملفات المحليَّة فقط"
+
+#: app/prefswindow.js:132
+msgid "Always"
+msgstr "دائمًا"
+
+#: app/thumbnails.js:38
+msgid "GnomeDesktop-3.0 GIR file not found"
+msgstr ""
+
+#: app/thumbnails.js:39
+msgid ""
+"GnomeDesktop-3.0.gir file is missing. Please, install the required package "
+"in your system."
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:25
+msgid "Icon size"
+msgstr "حجم الأيقونة"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:26
+msgid "Set the size for the desktop icons."
+msgstr "عيِّن حجم أيقونات سطح المكتب."
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:30
+msgid "Show personal folder"
+msgstr "أظهِر المجلَّد الشخصي"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:31
+msgid "Show the personal folder in the desktop."
+msgstr "أظهِر المجلَّد الشخصي على سطح المكتب."
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:35
+msgid "Show trash icon"
+msgstr "أظهِر أيقونة المهملات"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:36
+msgid "Show the trash icon in the desktop."
+msgstr "أظهِر أيقونة المهملات على سطح المكتب."
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:40
+msgid "New icons start corner"
+msgstr "ركن بدء الأيقونات الجديدة"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:41
+msgid "Set the corner from where the icons will start to be placed."
+msgstr "عيِّن الركن الذي سيبدأ منه وضع الأيقونات."
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:46
+msgid "Show the disk drives connected to the computer."
+msgstr "أظهر محرِّكات الأقراص المتصلة بالحاسوب."
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:51
+msgid "Show mounted network volumes in the desktop."
+msgstr "أظهِر وحدات تخزين الشبكة الموصولة على سطح المكتب."
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:56
+msgid ""
+"When adding drives and volumes to the desktop, add them to the opposite side "
+"of the screen."
+msgstr ""
+"عند إضافة محرِّكات الأقراص ووحدات التخزين إلى سطح المكتب، أضفها إلى الجانب "
+"المقابل من الشاشة."
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:60
+msgid "Shows a rectangle in the destination place during DnD"
+msgstr "أظهِر مستطيلًا في مكان الوجهة أثناء السحب والإفلات"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:61
+msgid ""
+"When doing a Drag'n'Drop operation, marks the place in the grid where the "
+"icon will be put with a semitransparent rectangle."
+msgstr ""
+"عند تنفيذ عملية سحب وإفلات، فسيعلَّم مكان الأيقونة على الشبكة بمستطيل شبه شفاف."
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:65
+msgid "Sort Special Folders - Home/Trash Drives."
+msgstr "افرز المجلَّدات الخاصة - المنزل\\المهملات\\محرِّكات الأقراص."
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:66
+msgid ""
+"When arranging Icons on desktop, to sort and change the position of the "
+"Home, Trash and mounted Network or External Drives"
+msgstr ""
+"عند ترتيب الأيقونات على سطح المكتب، لفرز وتغيير موضع المنزل والمهملات "
+"ومحرِّكات أقراص الشبكة أو محرِّكات الأقراص الخارجية الموصولة"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:70
+msgid "Keep Icons Arranged"
+msgstr "أبقِ الأيقونات مرتَّبة"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:71
+msgid "Always keep Icons Arranged by the last arranged order"
+msgstr "أبقِ الأيقونات مرتَّبة دائمًا حسب آخر ترتيب استُخدم"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:75
+msgid "Arrange Order"
+msgstr "ترتيب الفرز"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:76
+msgid "Icons Arranged by this property"
+msgstr "تُرتَّب الأيقونات وفق هذه الخاصية"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:80
+msgid "Keep Icons Stacked"
+msgstr "أبقِ الأيقونات مكدَّسة"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:81
+msgid "Always keep Icons Stacked, Similar types are grouped"
+msgstr "أبقِ الأيقونات مكدَّسة دائمًا، حيث تُجمَّع الأنواع المتشابهة"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:85
+msgid "Type of Files to not Stack"
+msgstr "أنواع الملفات التي لا يجب تكديسها"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:86
+msgid "An Array of strings types, Don't Stack these types of files"
+msgstr "مصفوفة من سلاسل نصية للأنواع، لا تكدَّس هذه الأنواع من الملفات"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:91
+msgid "Use Nemo instead of Nautilus to open folders."
+msgstr "استخدم نيمو بدلًا من نوتلس لفتح المجلَّدات."
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:95
+msgid "Add an emblem to links"
+msgstr "أضِف شارة إلى الوصلات"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:96
+msgid "Add an emblem to allow to identify soft links."
+msgstr "أضِف شارة للتمكين من تمييز الوصلات اللينة."
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:100
+msgid "Use black for label text"
+msgstr "استخدم اللون الأسود لنص التسمية"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:101
+msgid ""
+"Paint the label text in black instead of white. Useful when using light "
+"backgrounds."
+msgstr "لوِّن نص التسمية بالأسود بدلًا من الأبيض. مفيد عند استخدام خلفيات فاتحة."
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:105
+msgid "Show a popup if running on X11Wayland"
+msgstr "أظهر منبثقة عند التشغيل على X11Wayland"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:106
+msgid ""
+"Whether DING should show a popup if it is running on X11Wayland, or the user "
+"decided to not show it anymore."
+msgstr ""
+"يحدد فيما إذا كان على الامتداد إظهار نافذة منبثقة عند تشغيلها على "
+"X11Wayland، أو إذا قرَّر المستخدم عدم إظهارها مجددًا."
+
+#, fuzzy
+#~ msgid "Folder"
+#~ msgstr "مجلَّد جديد"

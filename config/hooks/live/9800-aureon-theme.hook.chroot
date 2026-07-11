@@ -25,7 +25,11 @@ git clone --depth=1 https://github.com/vinceliuice/Fluent-gtk-theme.git
 
 cd Fluent-gtk-theme
 
-./install.sh --all --tweaks blur
+# Install the Dark variant
+./install.sh -t all -c dark -s standard --tweaks blur
+
+# Install the Light variant
+./install.sh -t all -c light -s standard --tweaks blur
 
 cd ..
 

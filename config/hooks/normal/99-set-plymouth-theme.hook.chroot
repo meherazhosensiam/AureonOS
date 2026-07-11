@@ -1,0 +1,12 @@
+#!/bin/bash
+set -e
+
+# Check if the theme exists first, if not, fallback to bgrt
+if [ -d "/usr/share/plymouth/themes/spinner" ]; then
+    THEME="spinner"
+else
+    THEME="bgrt"
+fi
+
+# Set the theme and update initramfs
+plymouth-set-default-theme -R "$THEME"

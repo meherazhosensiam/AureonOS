@@ -1,0 +1,986 @@
+# Chinese (Taiwan) translation for desktop-icons.
+# Copyright (C) 2018 desktop-icons's COPYRIGHT HOLDER
+# This file is distributed under the same license as the desktop-icons package.
+# Yi-Jyun Pan <pan93412@gmail.com>, 2018.
+# Luke Na <narukeu@outlook.com>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: desktop-icons master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-11-24 20:44+0100\n"
+"PO-Revision-Date: 2025-09-17 14:29+0800\n"
+"Last-Translator: Luke Na <narukeu@outlook.com>\n"
+"Language-Team: Chinese (Taiwan) <chinese-l10n@googlegroups.com>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.7\n"
+
+#: app/askRenamePopup.js:50
+msgid "Folder name"
+msgstr "資料夾名稱"
+
+#: app/askRenamePopup.js:50
+msgid "File name"
+msgstr "檔案名稱"
+
+#: app/askRenamePopup.js:59 app/autoAr.js:305 app/desktopManager.js:1091
+msgid "OK"
+msgstr "確定"
+
+#: app/askRenamePopup.js:59
+msgid "Rename"
+msgstr "重新命名"
+
+#: app/autoAr.js:88
+msgid "AutoAr is not installed"
+msgstr "AutoAr 未安裝"
+
+#: app/autoAr.js:89
+msgid ""
+"To be able to work with compressed files, install file-roller and/or gir-1.2-"
+"gnomeAutoAr"
+msgstr "若要能夠處理壓縮檔，請安裝 file-roller 及/或 gir-1.2-gnomeAutoAr"
+
+#: app/autoAr.js:224
+msgid "Extracting files"
+msgstr "正在解壓縮檔案"
+
+#: app/autoAr.js:241
+msgid "Compressing files"
+msgstr "正在壓縮檔案"
+
+#: app/autoAr.js:297 app/autoAr.js:636 app/desktopManager.js:1093
+#: app/fileItemMenu.js:474
+msgid "Cancel"
+msgstr "取消"
+
+#: app/autoAr.js:318 app/autoAr.js:619
+msgid "Enter a password here"
+msgstr "請在此輸入密碼"
+
+#: app/autoAr.js:359
+msgid "Removing partial file '${outputFile}'"
+msgstr "正在移除未完成的檔案「${outputFile}」"
+
+#: app/autoAr.js:378
+msgid "Creating destination folder"
+msgstr "正在建立目標資料夾"
+
+#: app/autoAr.js:410
+msgid "Extracting files into '${outputPath}'"
+msgstr "正在將檔案解壓縮至 '${outputPath}'"
+
+#: app/autoAr.js:442
+msgid "Extraction completed"
+msgstr "解壓縮完成"
+
+#: app/autoAr.js:443
+msgid "Extracting '${fullPathFile}' has been completed."
+msgstr "解壓縮 '${fullPathFile}' 已完成。"
+
+#: app/autoAr.js:449
+msgid "Extraction cancelled"
+msgstr "解壓縮已取消"
+
+#: app/autoAr.js:450
+msgid "Extracting '${fullPathFile}' has been cancelled by the user."
+msgstr "使用者已取消解壓縮 '${fullPathFile}'。"
+
+#: app/autoAr.js:460
+msgid "Passphrase required for ${filename}"
+msgstr "需要「${filename}」的通行片語"
+
+#: app/autoAr.js:463
+msgid "Error during extraction"
+msgstr "解壓縮時發生錯誤"
+
+#: app/autoAr.js:492
+msgid "Compressing files into '${outputFile}'"
+msgstr "正在將檔案壓縮至「${outputFile}」"
+
+#: app/autoAr.js:505
+msgid "Compression completed"
+msgstr "壓縮完成"
+
+#: app/autoAr.js:506
+msgid "Compressing files into '${outputFile}' has been completed."
+msgstr "將檔案壓縮至「${outputFile}」已完成。"
+
+#: app/autoAr.js:510 app/autoAr.js:517
+msgid "Cancelled compression"
+msgstr "壓縮已取消"
+
+#: app/autoAr.js:511
+msgid "The output file '${outputFile}' already exists."
+msgstr "輸出檔案「${outputFile}」已存在。"
+
+#: app/autoAr.js:518
+msgid "Compressing files into '${outputFile}' has been cancelled by the user."
+msgstr "使用者已取消將檔案壓縮至「${outputFile}」。"
+
+#: app/autoAr.js:521
+msgid "Error during compression"
+msgstr "壓縮時發生錯誤"
+
+#: app/autoAr.js:554
+msgid "Create archive"
+msgstr "建立壓縮檔"
+
+#: app/autoAr.js:579
+msgid "Archive name"
+msgstr "壓縮檔名稱"
+
+#: app/autoAr.js:614
+msgid "Password"
+msgstr "密碼"
+
+#: app/autoAr.js:633
+msgid "Create"
+msgstr "建立"
+
+#: app/autoAr.js:712
+msgid "Compatible with all operating systems."
+msgstr "與所有作業系統相容。"
+
+#: app/autoAr.js:718
+msgid "Password protected .zip, must be installed on Windows and Mac."
+msgstr "受密碼保護的 .zip，必須在 Windows 和 Mac 上安裝。"
+
+#: app/autoAr.js:724
+msgid "Smaller archives but Linux and Mac only."
+msgstr "壓縮檔較小，但僅限 Linux 和 Mac。"
+
+#: app/autoAr.js:730
+msgid "Smaller archives but must be installed on Windows and Mac."
+msgstr "壓縮檔較小，但必須在 Windows 和 Mac 上安裝。"
+
+#: app/dbusUtils.js:69
+msgid "\"${programName}\" is needed for Desktop Icons"
+msgstr "Desktop Icons 需要「${programName}」"
+
+#: app/dbusUtils.js:70
+msgid ""
+"For this functionality to work in Desktop Icons, you must install \"$"
+"{programName}\" in your system."
+msgstr ""
+"為使此功能在 Desktop Icons 中運作，您必須在系統中安裝「${programName}」。"
+
+#: app/desktopIconsUtil.js:157
+msgid "Command not found"
+msgstr "無法找到指令"
+
+#: app/desktopManager.js:264
+msgid "Nautilus File Manager not found"
+msgstr "找不到「檔案」(Nautilus)"
+
+#: app/desktopManager.js:265
+msgid "The Nautilus File Manager is mandatory to work with Desktop Icons NG."
+msgstr "Desktop Icons NG 需要「檔案」才能運作。"
+
+#: app/desktopManager.js:271
+msgid "GLibUnix GIR file not found"
+msgstr ""
+
+#: app/desktopManager.js:272
+msgid ""
+"GLibUnix-2.0.gir file is missing. Please, install the required package in "
+"your system."
+msgstr ""
+
+#: app/desktopManager.js:1050
+msgid "Clear Current Selection before New Search"
+msgstr "在新搜尋前清除目前選取項目"
+
+#: app/desktopManager.js:1095
+msgid "Find Files on Desktop"
+msgstr "在桌面上尋找檔案"
+
+#: app/desktopManager.js:1163 app/desktopManager.js:1875
+msgid "New Folder"
+msgstr "新增資料夾"
+
+#: app/desktopManager.js:1167
+msgid "New Document"
+msgstr "新增文件"
+
+#: app/desktopManager.js:1172
+msgid "Paste"
+msgstr "貼上"
+
+#: app/desktopManager.js:1176
+msgid "Undo"
+msgstr "復原"
+
+#: app/desktopManager.js:1180
+msgid "Redo"
+msgstr "重做"
+
+#: app/desktopManager.js:1186
+msgid "Select All"
+msgstr "全選"
+
+#: app/desktopManager.js:1194
+msgid "Show Desktop in Files"
+msgstr "在「檔案」中顯示桌面"
+
+#: app/desktopManager.js:1198 app/fileItemMenu.js:365
+msgid "Open in Terminal"
+msgstr "在終端機中開啟"
+
+#: app/desktopManager.js:1204
+msgid "Change Background…"
+msgstr "變更背景…"
+
+#: app/desktopManager.js:1215
+msgid "Desktop Icons Settings"
+msgstr "桌面圖示設定"
+
+#: app/desktopManager.js:1228
+msgid "Display Settings"
+msgstr "顯示設定"
+
+#: app/desktopManager.js:1888
+msgid "Folder Creation Failed"
+msgstr "建立資料夾失敗"
+
+#: app/desktopManager.js:1889
+msgid "Error while trying to create a Folder"
+msgstr "嘗試建立資料夾時發生錯誤"
+
+#: app/desktopManager.js:1925
+msgid "Template Creation Failed"
+msgstr "建立範本失敗"
+
+#: app/desktopManager.js:1926
+msgid "Error while trying to create a Document"
+msgstr "嘗試建立文件時發生錯誤"
+
+#: app/desktopManager.js:1934
+msgid "Arrange Icons"
+msgstr "排列圖示"
+
+#: app/desktopManager.js:1938
+msgid "Arrange By..."
+msgstr "排序方式…"
+
+#: app/desktopManager.js:1947
+msgid "Keep Arranged..."
+msgstr "保持排列…"
+
+#: app/desktopManager.js:1951
+msgid "Keep Stacked by type..."
+msgstr "按類型保持堆疊…"
+
+#: app/desktopManager.js:1956
+msgid "Sort Home/Drives/Trash..."
+msgstr "排序家資料夾/磁碟機/垃圾桶…"
+
+#: app/desktopManager.js:1962
+msgid "Sort by Name"
+msgstr "按名稱排序"
+
+#: app/desktopManager.js:1964
+msgid "Sort by Name Descending"
+msgstr "按名稱降序排序"
+
+#: app/desktopManager.js:1967
+msgid "Sort by Modified Time"
+msgstr "按修改時間排序"
+
+#: app/desktopManager.js:1970
+msgid "Sort by Type"
+msgstr "按類型排序"
+
+#: app/desktopManager.js:1973
+msgid "Sort by Size"
+msgstr "按大小排序"
+
+#. * TRANSLATORS: when using a screen reader, this is the text read when the user's personal folder is
+#. * highlighted.
+#. TRANSLATORS: "Home" is the text that will be shown in the user's personal folder
+#: app/fileItem.js:120 app/fileItem.js:255
+msgid "Home"
+msgstr "家資料夾"
+
+#. * TRANSLATORS: when using a screen reader, this is the text read when the user's personal folder is
+#. * highlighted and selected.
+#: app/fileItem.js:123
+#, fuzzy
+msgid "Home Selected"
+msgstr "選擇"
+
+#. * TRANSLATORS: when using a screen reader, this is the text read when the trash folder is
+#. * highlighted.
+#: app/fileItem.js:128
+msgid "Trash"
+msgstr "垃圾桶"
+
+#. * TRANSLATORS: when using a screen reader, this is the text read when the trash folder is
+#. * highlighted and selected.
+#: app/fileItem.js:131
+#, fuzzy
+msgid "Trash Selected"
+msgstr "選擇"
+
+#. * TRANSLATORS: when using a screen reader, this is the role used when an external drive is
+#. * highlighted. Example: if a USB stick named "my_portable" is highlighted, it will say "my_portable Drive".
+#. * It is mandatory to say the file name first and the role after.
+#: app/fileItem.js:137
+msgid "${VisibleName} Drive"
+msgstr "${VisibleName} 磁碟機"
+
+#. * TRANSLATORS: when using a screen reader, this is the role used when an external drive is
+#. * highlighted and selected. Example: if a USB stick named "my_portable" is highlighted and selected, it
+#. * will say "my_portable Drive Selected". It is mandatory to say the file name first, then the role, and
+#. * finally "Selected".
+#: app/fileItem.js:142
+#, fuzzy
+msgid "${VisibleName} Drive Selected"
+msgstr "${VisibleName} 磁碟機"
+
+#. * TRANSLATORS: when using a screen reader, this is the role used when a stack is
+#. * highlighted. Example: if a stack named "pictures" is selected, it will say "pictures Stack".
+#. * It is mandatory to say the file name first and the role after.
+#: app/fileItem.js:148
+msgid "${VisibleName} Stack"
+msgstr "${VisibleName} 堆疊"
+
+#. * TRANSLATORS: when using a screen reader, this is the role used when a stack is highlighted and
+#. * selected. Example: if a stack named "pictures" is highlighted and selected, it will say "pictures Stack Selected".
+#. * It is mandatory to say the file name first, then the role, and finally "Selected".
+#: app/fileItem.js:152
+#, fuzzy
+msgid "${VisibleName} Stack Selected"
+msgstr "${VisibleName} 堆疊"
+
+#. * TRANSLATORS: when using a screen reader, this is the role used when a folder is
+#. * highlighted. Example: if a folder named "things" is highlighted, it will say "things Folder".
+#. * It is mandatory to say the file name first and the role after.
+#: app/fileItem.js:158
+msgid "${VisibleName} Folder"
+msgstr "${VisibleName} 資料夾"
+
+#. * TRANSLATORS: when using a screen reader, this is the role used when a folder is
+#. * highlighted and selected. Example: if a folder named "things" is highlighted and selected, it will say
+#. * "things Folder Selected". It is mandatory to say the file name first, then the role, and finally "Selected".
+#: app/fileItem.js:162
+#, fuzzy
+msgid "${VisibleName} Folder Selected"
+msgstr "${VisibleName} 資料夾"
+
+#. * TRANSLATORS: when using a screen reader, this is the role used when a trusted desktop file is
+#. * highlighted. Example: if a desktop file named "My App" is highlighted and it is trusted, it will
+#. * say "My App Application". It is mandatory to say the file name first and the role after.
+#: app/fileItem.js:168
+#, fuzzy
+msgid "${VisibleName} Application"
+msgstr "${VisibleName} 檔案"
+
+#. * TRANSLATORS: when using a screen reader, this is the role used when a trusted desktop file is
+#. * highlighted. Example: if a desktop file named "My App" is highlighted and selected and it is trusted, it will
+#. * say "My App Application Selected". It is mandatory to say the file name first and the role after.
+#: app/fileItem.js:172
+#, fuzzy
+msgid "${VisibleName} Application Selected"
+msgstr "${VisibleName} 檔案"
+
+#. * TRANSLATORS: when using a screen reader, this is the text read when a normal file is
+#. * highlighted. Example: if a file named "my_picture.jpg" is highlighted, it will say "my_picture.jpg File"
+#: app/fileItem.js:178
+msgid "${VisibleName} File"
+msgstr "${VisibleName} 檔案"
+
+#. * TRANSLATORS: when using a screen reader, this is the text read when a normal file is highlighted and
+#. * selected. Example: if a file named "my_picture.jpg" is highlighted and selected, it will say
+#. * "my_picture.jpg File Selected". It is mandatory to say the file name first and the role after.
+#: app/fileItem.js:182
+#, fuzzy
+msgid "${VisibleName} File Selected"
+msgstr "${VisibleName} 檔案"
+
+#: app/fileItem.js:348
+msgid "Error while reading Desktop file"
+msgstr "讀取 .desktop 檔時發生錯誤"
+
+#: app/fileItem.js:390
+msgid "Broken Link"
+msgstr "損壞的連結"
+
+#: app/fileItem.js:391
+msgid "Can not open this File because it is a Broken Symlink"
+msgstr "無法開啟此檔案，因為它是一個損壞的符號連結"
+
+#: app/fileItem.js:423
+msgid "Can't open the file"
+msgstr "無法開啟檔案"
+
+#: app/fileItem.js:449
+msgid "Broken Desktop File"
+msgstr "損壞的 .desktop 檔"
+
+#: app/fileItem.js:450
+msgid ""
+"This .desktop file has errors or points to a program without permissions. It "
+"can not be executed.\n"
+"\n"
+"\t<b>Edit the file to set the correct executable Program.</b>"
+msgstr ""
+"此 .desktop 檔有錯誤或指向沒有權限的程式，無法執行。\n"
+"\n"
+"\t<b>請編輯檔案以設定正確的可執行程式。</b>"
+
+#: app/fileItem.js:456
+msgid "Invalid Permissions on Desktop File"
+msgstr ".desktop 檔權限無效"
+
+#: app/fileItem.js:457
+msgid ""
+"This .desktop File has incorrect Permissions. Right Click to edit "
+"Properties, then:\n"
+msgstr "此 .desktop 檔的權限不正確。請按右鍵開啟「內容」，然後：\n"
+
+#: app/fileItem.js:459
+msgid ""
+"\n"
+"<b>Set Permissions, in \"Others Access\", \"Read Only\" or \"None\"</b>"
+msgstr ""
+"\n"
+"<b>設定權限，在「其他存取權」中，設為「唯讀」或「無」</b>"
+
+#: app/fileItem.js:462
+msgid ""
+"\n"
+"<b>Enable option, \"Allow Executing File as a Program\"</b>"
+msgstr ""
+"\n"
+"<b>勾選「允許檔案作為程式執行」選項</b>"
+
+#: app/fileItem.js:470
+msgid ""
+"This .desktop file is not trusted, it can not be launched. To enable "
+"launching, right-click, then:\n"
+"\n"
+"<b>Enable \"Allow Launching\"</b>"
+msgstr ""
+"此 .desktop 檔不受信任，無法啟動。若要啟用啟動，請按右鍵，然後：\n"
+"\n"
+"<b>啟用「允許啟動」</b>"
+
+#: app/fileItem.js:669
+msgid "Failed to set execution flag"
+msgstr "設定執行權限失敗"
+
+#: app/fileItem.js:681 app/fileItem.js:688
+msgid "Could not apply discrete GPU environment"
+msgstr "無法套用獨立顯示卡執行環境"
+
+#: app/fileItem.js:717
+msgid "Could not find discrete GPU data"
+msgstr "找不到獨立顯示卡資料"
+
+#: app/fileItem.js:842
+msgid "Failed to set metadata::trusted flag"
+msgstr "設定 metadata::trusted 屬性失敗"
+
+#: app/fileItemMenu.js:143
+msgid "Open All..."
+msgstr "全部開啟…"
+
+#: app/fileItemMenu.js:143
+msgid "Open"
+msgstr "開啟"
+
+#: app/fileItemMenu.js:160
+msgid "Stack This Type"
+msgstr "堆疊此類型"
+
+#: app/fileItemMenu.js:160
+msgid "Unstack This Type"
+msgstr "取消堆疊此類型"
+
+#: app/fileItemMenu.js:173
+msgid "Scripts"
+msgstr "指令稿"
+
+#: app/fileItemMenu.js:178
+msgid "Open All With Other Application..."
+msgstr "以其他應用程式全部開啟…"
+
+#: app/fileItemMenu.js:178
+msgid "Open With Other Application"
+msgstr "使用其他應用程式開啟"
+
+#: app/fileItemMenu.js:184
+msgid "Launch using Dedicated Graphics Card"
+msgstr "使用獨立顯示卡啟動"
+
+#: app/fileItemMenu.js:195
+msgid "Run as a program"
+msgstr "以程式方式執行"
+
+#: app/fileItemMenu.js:203
+msgid "Cut"
+msgstr "剪下"
+
+#: app/fileItemMenu.js:210
+msgid "Copy"
+msgstr "複製"
+
+#: app/fileItemMenu.js:218
+msgid "Rename…"
+msgstr "重新命名…"
+
+#: app/fileItemMenu.js:228
+msgid "Move to Trash"
+msgstr "移動到垃圾桶"
+
+#: app/fileItemMenu.js:236
+msgid "Delete permanently"
+msgstr "永久刪除"
+
+#: app/fileItemMenu.js:246
+msgid "Don't Allow Launching"
+msgstr "停用啟動"
+
+#: app/fileItemMenu.js:246
+msgid "Allow Launching"
+msgstr "允許啟動"
+
+#: app/fileItemMenu.js:259
+msgid "Empty Trash"
+msgstr "清空垃圾桶"
+
+#: app/fileItemMenu.js:272
+msgid "Eject"
+msgstr "退出"
+
+#: app/fileItemMenu.js:280
+msgid "Unmount"
+msgstr "卸載"
+
+#: app/fileItemMenu.js:294 app/fileItemMenu.js:301
+msgid "Extract Here"
+msgstr "解壓縮至此"
+
+#: app/fileItemMenu.js:308
+msgid "Extract To..."
+msgstr "解壓縮到…"
+
+#: app/fileItemMenu.js:317
+msgid "Send to..."
+msgstr "傳送到…"
+
+#: app/fileItemMenu.js:325
+msgid "Compress {0} folder"
+msgid_plural "Compress {0} folders"
+msgstr[0] "壓縮 {0} 個資料夾"
+
+#: app/fileItemMenu.js:332
+msgid "Compress {0} file"
+msgid_plural "Compress {0} files"
+msgstr[0] "壓縮 {0} 個檔案"
+
+#: app/fileItemMenu.js:340
+msgid "New Folder with {0} item"
+msgid_plural "New Folder with {0} items"
+msgstr[0] "新增含 {0} 個項目的資料夾"
+
+#: app/fileItemMenu.js:351
+msgid "Common Properties"
+msgstr "共同內容"
+
+#: app/fileItemMenu.js:351
+msgid "Properties"
+msgstr "內容"
+
+#: app/fileItemMenu.js:358
+msgid "Show All in Files"
+msgstr "在「檔案」中顯示全部"
+
+#: app/fileItemMenu.js:358
+msgid "Show in Files"
+msgstr "在「檔案」中顯示"
+
+#: app/fileItemMenu.js:449
+msgid "No Extraction Folder"
+msgstr "沒有解壓縮資料夾"
+
+#: app/fileItemMenu.js:450
+msgid "Unable to extract File, extraction Folder Does not Exist"
+msgstr "無法解壓縮檔案，解壓縮資料夾不存在"
+
+#: app/fileItemMenu.js:470
+msgid "Select Extract Destination"
+msgstr "選擇解壓縮的位置"
+
+#: app/fileItemMenu.js:475
+msgid "Select"
+msgstr "選擇"
+
+#: app/fileItemMenu.js:516
+msgid "Can not email a Directory"
+msgstr "無法寄送資料夾"
+
+#: app/fileItemMenu.js:517
+msgid "Selection includes a Directory, compress the directory to a file first."
+msgstr "已選項目含資料夾，先把資料夾壓縮成一個檔案。"
+
+#: app/notifyX11UnderWayland.js:37
+msgid "Desktop Icons NG is running under X11Wayland"
+msgstr "Desktop Icons NG 正在 X11Wayland 下執行"
+
+#: app/notifyX11UnderWayland.js:38
+msgid ""
+"It seems that you have your system configured to force GTK to use X11. This "
+"works, but it's suboptimal. You should check your system configuration to "
+"fix this."
+msgstr ""
+"您的系統似乎被設定為強制 GTK 使用 X11。這樣可以運作，但並非最佳選擇。您應該檢"
+"查您的系統設定來修正此問題。"
+
+#: app/notifyX11UnderWayland.js:39 app/showErrorPopup.js:39
+msgid "Close"
+msgstr "關閉"
+
+#: app/notifyX11UnderWayland.js:47
+msgid "Don't show this message anymore."
+msgstr "不要再顯示此訊息。"
+
+#: app/preferences.js:91
+msgid "Settings"
+msgstr "設定"
+
+#: app/prefswindow.js:64
+msgid "Size for the desktop icons"
+msgstr "桌面圖示的大小"
+
+#: app/prefswindow.js:64
+msgid "Tiny"
+msgstr "極小"
+
+#: app/prefswindow.js:64
+msgid "Small"
+msgstr "小"
+
+#: app/prefswindow.js:64
+msgid "Standard"
+msgstr "標準"
+
+#: app/prefswindow.js:64
+msgid "Large"
+msgstr "大圖示"
+
+#: app/prefswindow.js:65
+msgid "Show the personal folder in the desktop"
+msgstr "在桌面顯示個人資料夾"
+
+#: app/prefswindow.js:66
+msgid "Show the trash icon in the desktop"
+msgstr "在桌面顯示垃圾桶圖示"
+
+#: app/prefswindow.js:67 schemas/org.gnome.shell.extensions.ding.gschema.xml:45
+msgid "Show external drives in the desktop"
+msgstr "在桌面顯示外接磁碟機"
+
+#: app/prefswindow.js:68 schemas/org.gnome.shell.extensions.ding.gschema.xml:50
+msgid "Show network drives in the desktop"
+msgstr "在桌面顯示網路資料夾"
+
+#: app/prefswindow.js:71
+msgid "New icons alignment"
+msgstr "新圖示對齊方式"
+
+#: app/prefswindow.js:73
+msgid "Top-left corner"
+msgstr "左上角"
+
+#: app/prefswindow.js:74
+msgid "Top-right corner"
+msgstr "右上角"
+
+#: app/prefswindow.js:75
+msgid "Bottom-left corner"
+msgstr "左下角"
+
+#: app/prefswindow.js:76
+msgid "Bottom-right corner"
+msgstr "右下角"
+
+#: app/prefswindow.js:78 schemas/org.gnome.shell.extensions.ding.gschema.xml:55
+msgid "Add new drives to the opposite side of the screen"
+msgstr "將新掛載磁碟機置於螢幕的另一邊"
+
+#: app/prefswindow.js:79
+msgid "Highlight the drop place during Drag'n'Drop"
+msgstr "拖放時突顯預計放置位置"
+
+#: app/prefswindow.js:80 schemas/org.gnome.shell.extensions.ding.gschema.xml:90
+msgid "Use Nemo to open folders"
+msgstr "使用 Nemo 開啟資料夾"
+
+#: app/prefswindow.js:82
+msgid "Add an emblem to soft links"
+msgstr "為符號連結新增徽章"
+
+#: app/prefswindow.js:84
+msgid "Use dark text in icon labels"
+msgstr "圖示標籤使用深色文字"
+
+#: app/prefswindow.js:91
+msgid "Settings shared with Nautilus"
+msgstr "與「檔案」共用設定"
+
+#: app/prefswindow.js:113
+msgid "Click type for open files"
+msgstr "開啟檔案的點擊方式"
+
+#: app/prefswindow.js:113
+msgid "Single click"
+msgstr "單擊"
+
+#: app/prefswindow.js:113
+msgid "Double click"
+msgstr "雙擊"
+
+#: app/prefswindow.js:114
+msgid "Show hidden files"
+msgstr "顯示隱藏檔"
+
+#: app/prefswindow.js:115
+msgid "Show a context menu item to delete permanently"
+msgstr "在快速選單顯示永久刪除"
+
+#: app/prefswindow.js:120
+msgid "Action to do when launching a program from the desktop"
+msgstr "在桌面執行應用程式時的動作"
+
+#: app/prefswindow.js:121
+msgid "Display the content of the file"
+msgstr "顯示檔案內容"
+
+#: app/prefswindow.js:122
+msgid "Launch the file"
+msgstr "執行檔案"
+
+#: app/prefswindow.js:123
+msgid "Ask what to do"
+msgstr "詢問要做什麼"
+
+#: app/prefswindow.js:129
+msgid "Show image thumbnails"
+msgstr "顯示影像縮圖"
+
+#: app/prefswindow.js:130
+msgid "Never"
+msgstr "從不"
+
+#: app/prefswindow.js:131
+msgid "Local files only"
+msgstr "僅限本機檔案"
+
+#: app/prefswindow.js:132
+msgid "Always"
+msgstr "一律"
+
+#: app/thumbnails.js:38
+msgid "GnomeDesktop-3.0 GIR file not found"
+msgstr ""
+
+#: app/thumbnails.js:39
+msgid ""
+"GnomeDesktop-3.0.gir file is missing. Please, install the required package "
+"in your system."
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:25
+msgid "Icon size"
+msgstr "圖示大小"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:26
+msgid "Set the size for the desktop icons."
+msgstr "設定桌面圖示的大小。"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:30
+msgid "Show personal folder"
+msgstr "顯示個人資料夾"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:31
+msgid "Show the personal folder in the desktop."
+msgstr "在桌面顯示個人資料夾。"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:35
+msgid "Show trash icon"
+msgstr "顯示垃圾桶圖示"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:36
+msgid "Show the trash icon in the desktop."
+msgstr "在桌面顯示垃圾桶圖示。"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:40
+msgid "New icons start corner"
+msgstr "新圖示起始角落"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:41
+msgid "Set the corner from where the icons will start to be placed."
+msgstr "設定新圖示置放的位置。"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:46
+msgid "Show the disk drives connected to the computer."
+msgstr "顯示連接於本機的硬碟。"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:51
+msgid "Show mounted network volumes in the desktop."
+msgstr "在桌面顯示已掛載的網路磁碟區。"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:56
+msgid ""
+"When adding drives and volumes to the desktop, add them to the opposite side "
+"of the screen."
+msgstr "將磁碟機和磁碟區新增至桌面時，將它們新增至螢幕的另一側。"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:60
+msgid "Shows a rectangle in the destination place during DnD"
+msgstr "拖曳同時在拖曳目的位置顯示矩形方格"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:61
+msgid ""
+"When doing a Drag'n'Drop operation, marks the place in the grid where the "
+"icon will be put with a semitransparent rectangle."
+msgstr "當執行拖曳，在圖示即將被置放的位置用半透明矩形顯示方格。"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:65
+msgid "Sort Special Folders - Home/Trash Drives."
+msgstr "排序特殊資料夾 - 家資料夾/垃圾桶/磁碟機。"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:66
+msgid ""
+"When arranging Icons on desktop, to sort and change the position of the "
+"Home, Trash and mounted Network or External Drives"
+msgstr ""
+"在桌面上排列圖示時，排序和變更家資料夾、垃圾桶以及已掛載的網路或外部磁碟機的"
+"位置"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:70
+msgid "Keep Icons Arranged"
+msgstr "保持圖示排列"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:71
+msgid "Always keep Icons Arranged by the last arranged order"
+msgstr "一律依照上次排列的順序保持圖示排列"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:75
+msgid "Arrange Order"
+msgstr "排列順序"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:76
+msgid "Icons Arranged by this property"
+msgstr "按此屬性排列圖示"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:80
+msgid "Keep Icons Stacked"
+msgstr "保持圖示堆疊"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:81
+msgid "Always keep Icons Stacked, Similar types are grouped"
+msgstr "一律保持圖示堆疊，相似類型會分組"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:85
+msgid "Type of Files to not Stack"
+msgstr "不堆疊的檔案類型"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:86
+msgid "An Array of strings types, Don't Stack these types of files"
+msgstr "字串類型陣列，不要堆疊這些類型的檔案"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:91
+msgid "Use Nemo instead of Nautilus to open folders."
+msgstr "使用 Nemo 而非 Nautilus 開啟資料夾。"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:95
+msgid "Add an emblem to links"
+msgstr "為連結新增標誌"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:96
+msgid "Add an emblem to allow to identify soft links."
+msgstr "新增標誌以識別軟連結。"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:100
+msgid "Use black for label text"
+msgstr "標籤文字使用黑色"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:101
+msgid ""
+"Paint the label text in black instead of white. Useful when using light "
+"backgrounds."
+msgstr "將標籤文字塗成黑色而非白色。在使用淺色背景時很有用。"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:105
+msgid "Show a popup if running on X11Wayland"
+msgstr "若在 X11Wayland 上執行則顯示彈出視窗"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:106
+msgid ""
+"Whether DING should show a popup if it is running on X11Wayland, or the user "
+"decided to not show it anymore."
+msgstr ""
+"DING 是否應在 X11Wayland 上執行時顯示彈出視窗，或使用者已決定不再顯示。"
+
+#, fuzzy
+#~ msgid "Folder"
+#~ msgstr "新增資料夾"
+
+#, fuzzy
+#~ msgid "Desktop icons"
+#~ msgstr "桌面圖示設定"
+
+#~ msgid ""
+#~ "To configure Desktop Icons NG, do right-click in the desktop and choose "
+#~ "the last item: 'Desktop Icons settings'"
+#~ msgstr ""
+#~ "要設定Desktop Icons NG，在桌面按滑鼠右鍵並選擇最後項目「桌面圖示設定」"
+
+#~ msgid "Do you want to run “{0}”, or display its contents?"
+#~ msgstr "要執行「{0}」，還是顯示它的內容？"
+
+#~ msgid "“{0}” is an executable text file."
+#~ msgstr "「{0}」是可執行的文字檔。"
+
+#~ msgid "Execute in a terminal"
+#~ msgstr "於終端機執行"
+
+#~ msgid "Show"
+#~ msgstr "顯示"
+
+#~ msgid "Execute"
+#~ msgstr "執行"
+
+#~ msgid "New folder"
+#~ msgstr "新增資料夾"
+
+#~ msgid "Delete"
+#~ msgstr "刪除"
+
+#~ msgid "Are you sure you want to permanently delete these items?"
+#~ msgstr "你確定要永久刪除這些項目嗎？"
+
+#~ msgid "If you delete an item, it will be permanently lost."
+#~ msgstr "如果直接刪除本項目，它會永久消失。"
+
+#, fuzzy
+#~ msgid "Show external disk drives in the desktop"
+#~ msgstr "在桌面顯示個人資料夾"
+
+#, fuzzy
+#~ msgid "Show the external drives"
+#~ msgstr "在桌面顯示個人資料夾"
+
+#, fuzzy
+#~ msgid "Show network volumes"
+#~ msgstr "在《檔案》中顯示"
+
+#~ msgid "Huge"
+#~ msgstr "巨大圖示"

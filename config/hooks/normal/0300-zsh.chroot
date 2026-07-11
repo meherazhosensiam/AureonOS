@@ -1,0 +1,11 @@
+#!/bin/bash
+set -e
+
+cat >> /etc/skel/.zshrc <<'EOF'
+
+# Syntax highlighting
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Command autosuggestions
+source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+EOF

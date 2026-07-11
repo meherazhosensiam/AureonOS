@@ -1,0 +1,14 @@
+#!/bin/bash
+set -e
+
+# Ensure the sudo group exists
+getent group sudo >/dev/null || groupadd sudo
+
+# Configure adduser so every new user is automatically
+# added to the sudo group.
+mkdir -p /etc/adduser.conf.d
+
+cat > /etc/adduser.conf.d/99-aureon.conf <<'EOF'
+EXTRA_GROUPS="sudo"
+ADD_EXTRA_GROUPS=1
+EOF
