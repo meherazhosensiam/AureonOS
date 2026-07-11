@@ -23,11 +23,7 @@ A Debian-based Linux distribution with a modern GNOME desktop.
 
 ## About
 
-AUREON OS is a personal open-source Linux distribution based on Debian. The project is focused on providing a clean, consistent, and easy-to-use desktop while keeping the flexibility and reliability of Debian.
-
-The desktop is built around GNOME with custom branding, themes, wallpapers, icons, and system configuration to create a unified experience. The goal is not to change how Linux works, but to provide a polished environment that is ready to use and easy to customize.
-
-This repository contains the source files, build scripts, configuration, and assets used to develop AUREON OS.
+AUREON OS is a Debian-based Linux distribution built with live-build, featuring the GNOME desktop environment and the Calamares installer. It is designed for cybersecurity professionals, ethical hackers, penetration testers, students, and Linux enthusiasts who want a modern and secure desktop operating system.
 
 ---
 
