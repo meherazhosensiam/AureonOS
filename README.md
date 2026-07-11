@@ -126,13 +126,10 @@ Third-party software included in or used to build AUREON OS, such as Debian, the
 
 For the complete license text, see the [LICENSE](LICENSE) file.
 ---
+---
 
 ## Acknowledgements
 
 This project builds upon the work of the Debian Project and the wider free and open-source software community. Their continued efforts make projects like AUREON OS possible.
 
----
-
-<p align="center">
-AUREON OS • Pre-release
-</p>
+-
