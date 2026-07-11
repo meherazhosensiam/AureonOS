@@ -3,7 +3,7 @@
 
 > **A modern, Debian-based Linux distribution built for productivity, customization, security, and developers.**
 
-![License](https://img.shields.io/badge/License-MIT-blue.svg)
+![License]([https://img.shields.io/badge/License-GNU GENERAL PUBLIC LICENSE.svg](https://img.shields.io/badge/license-%20%20GNU%20GPLv3%20-green)
 ![Platform](https://img.shields.io/badge/Platform-Linux-success)
 ![Base](https://img.shields.io/badge/Base-Debian-red)
 ![Status](https://img.shields.io/badge/Status-Active%20Development-orange)
