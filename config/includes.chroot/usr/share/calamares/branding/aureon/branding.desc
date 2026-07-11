@@ -1,0 +1,26 @@
+---
+componentName: aureon
+welcomeStyleCalamares: true
+
+strings:
+    productName:         "AUREON OS"
+    shortProductName:    "AUREON"
+    version:             "1.0"
+    shortVersion:        "1.0"
+    versionedName:       "AUREON OS 1.0"
+    shortVersionedName:  "AUREON 1.0"
+    bootloaderEntryName: "AUREON OS"
+    productUrl:          "https://github.com/meherazhosensiam/AureonOS"
+    supportUrl:          "https://github.com/meherazhosensiam/AureonOS/issues"
+
+images:
+    productLogo: "logo.png"
+    productIcon: "logo.png"
+    productWelcome: "welcome.png"
+
+slideshow: "show.qml"
+
+style:
+    sidebarBackground: "#111827"
+    sidebarText: "#FFFFFF"
+    sidebarTextSelect: "#FFFFFF"

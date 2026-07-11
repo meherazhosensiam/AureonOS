@@ -1,0 +1,964 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Stanisław Zadorozhnyi <zadorozhniy123@icloud.com>, 2021.
+# Yevhen Popok <xalt7x.service@gmail.com>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-11-24 20:44+0100\n"
+"PO-Revision-Date: 2024-04-06 20:47+0300\n"
+"Last-Translator: Yevhen Popok <xalt7x.service@gmail.com>\n"
+"Language-Team: \n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : "
+"n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: app/askRenamePopup.js:50
+msgid "Folder name"
+msgstr "Назва теки"
+
+#: app/askRenamePopup.js:50
+msgid "File name"
+msgstr "Назва файлу"
+
+#: app/askRenamePopup.js:59 app/autoAr.js:305 app/desktopManager.js:1091
+msgid "OK"
+msgstr "OK"
+
+#: app/askRenamePopup.js:59
+msgid "Rename"
+msgstr "Перейменувати"
+
+#: app/autoAr.js:88
+msgid "AutoAr is not installed"
+msgstr "AutoAr не встановлено"
+
+#: app/autoAr.js:89
+msgid ""
+"To be able to work with compressed files, install file-roller and/or gir-1.2-"
+"gnomeAutoAr"
+msgstr ""
+"Для роботи зі стиснутими файлами, встановіть file-roller та/чи gir-1.2-"
+"gnomeAutoAr"
+
+#: app/autoAr.js:224
+msgid "Extracting files"
+msgstr "Розпакування файлів"
+
+#: app/autoAr.js:241
+msgid "Compressing files"
+msgstr "Стиснення файлів"
+
+#: app/autoAr.js:297 app/autoAr.js:636 app/desktopManager.js:1093
+#: app/fileItemMenu.js:474
+msgid "Cancel"
+msgstr "Скасувати"
+
+#: app/autoAr.js:318 app/autoAr.js:619
+msgid "Enter a password here"
+msgstr "Введіть пароль тут"
+
+#: app/autoAr.js:359
+msgid "Removing partial file '${outputFile}'"
+msgstr "Видалення часткового файлу '${outputFile}'"
+
+#: app/autoAr.js:378
+msgid "Creating destination folder"
+msgstr "Створення теки призначення"
+
+#: app/autoAr.js:410
+msgid "Extracting files into '${outputPath}'"
+msgstr "Розпакування файлів до '${outputPath}'"
+
+#: app/autoAr.js:442
+msgid "Extraction completed"
+msgstr "Розпакування завершено"
+
+#: app/autoAr.js:443
+msgid "Extracting '${fullPathFile}' has been completed."
+msgstr "Розпакування '${fullPathFile}' завершено."
+
+#: app/autoAr.js:449
+msgid "Extraction cancelled"
+msgstr "Розпакування скасовано"
+
+#: app/autoAr.js:450
+msgid "Extracting '${fullPathFile}' has been cancelled by the user."
+msgstr "Розпакування '${fullPathFile}' скасовано користувачем."
+
+#: app/autoAr.js:460
+msgid "Passphrase required for ${filename}"
+msgstr "Потрібен пароль для ${filename}"
+
+#: app/autoAr.js:463
+msgid "Error during extraction"
+msgstr "Помилка під час розпакування"
+
+#: app/autoAr.js:492
+msgid "Compressing files into '${outputFile}'"
+msgstr "Стиснення файлів до '${outputFile}'"
+
+#: app/autoAr.js:505
+msgid "Compression completed"
+msgstr "Стиснення завершено"
+
+#: app/autoAr.js:506
+msgid "Compressing files into '${outputFile}' has been completed."
+msgstr "Стиснення файлів до '${outputFile}' завершено."
+
+#: app/autoAr.js:510 app/autoAr.js:517
+msgid "Cancelled compression"
+msgstr "Стиснення скасовано"
+
+#: app/autoAr.js:511
+msgid "The output file '${outputFile}' already exists."
+msgstr "Вихідний файл '${outputFile}' вже існує."
+
+#: app/autoAr.js:518
+msgid "Compressing files into '${outputFile}' has been cancelled by the user."
+msgstr "Стиснення файлів до '${outputFile}' скасовано користувачем."
+
+#: app/autoAr.js:521
+msgid "Error during compression"
+msgstr "Помилка під час стискання"
+
+#: app/autoAr.js:554
+msgid "Create archive"
+msgstr "Створити архів"
+
+#: app/autoAr.js:579
+msgid "Archive name"
+msgstr "Назва архіву"
+
+#: app/autoAr.js:614
+msgid "Password"
+msgstr "Пароль"
+
+#: app/autoAr.js:633
+msgid "Create"
+msgstr "Створити"
+
+#: app/autoAr.js:712
+msgid "Compatible with all operating systems."
+msgstr "Сумісно з усіма операційними системами."
+
+#: app/autoAr.js:718
+msgid "Password protected .zip, must be installed on Windows and Mac."
+msgstr "Захищений паролем .zip, але треба встановити на Windows та Mac."
+
+#: app/autoAr.js:724
+msgid "Smaller archives but Linux and Mac only."
+msgstr "Менші архіви, але тільки для Linux та Mac."
+
+#: app/autoAr.js:730
+msgid "Smaller archives but must be installed on Windows and Mac."
+msgstr "Менші архіви, але треба встановити на Windows та Mac."
+
+#: app/dbusUtils.js:69
+msgid "\"${programName}\" is needed for Desktop Icons"
+msgstr "Desktop Icons потребує \"${programName}\""
+
+#: app/dbusUtils.js:70
+msgid ""
+"For this functionality to work in Desktop Icons, you must install \"$"
+"{programName}\" in your system."
+msgstr ""
+"Для цього функціоналу Desktop Icons, необхідно встановити \"${programName}\" "
+"у вашій системі."
+
+#: app/desktopIconsUtil.js:157
+msgid "Command not found"
+msgstr "Команду не знайдено"
+
+#: app/desktopManager.js:264
+msgid "Nautilus File Manager not found"
+msgstr "Файловий менеджер Nautilus не знайдено"
+
+#: app/desktopManager.js:265
+msgid "The Nautilus File Manager is mandatory to work with Desktop Icons NG."
+msgstr "Файловий менеджер Nautilus є необхідним для роботи з Desktop Icons NG."
+
+#: app/desktopManager.js:271
+msgid "GLibUnix GIR file not found"
+msgstr ""
+
+#: app/desktopManager.js:272
+msgid ""
+"GLibUnix-2.0.gir file is missing. Please, install the required package in "
+"your system."
+msgstr ""
+
+#: app/desktopManager.js:1050
+msgid "Clear Current Selection before New Search"
+msgstr "Очистити поточний вибір перед новим пошуком"
+
+#: app/desktopManager.js:1095
+msgid "Find Files on Desktop"
+msgstr "Пошук файлів на стільниці"
+
+#: app/desktopManager.js:1163 app/desktopManager.js:1875
+msgid "New Folder"
+msgstr "Створити теку"
+
+#: app/desktopManager.js:1167
+msgid "New Document"
+msgstr "Створити документ"
+
+#: app/desktopManager.js:1172
+msgid "Paste"
+msgstr "Вставити"
+
+#: app/desktopManager.js:1176
+msgid "Undo"
+msgstr "Скасувати"
+
+#: app/desktopManager.js:1180
+msgid "Redo"
+msgstr "Повторити"
+
+#: app/desktopManager.js:1186
+msgid "Select All"
+msgstr "Виділити все"
+
+#: app/desktopManager.js:1194
+msgid "Show Desktop in Files"
+msgstr "Показати Стільницю у Файлах"
+
+#: app/desktopManager.js:1198 app/fileItemMenu.js:365
+msgid "Open in Terminal"
+msgstr "Відкрити в терміналі"
+
+#: app/desktopManager.js:1204
+msgid "Change Background…"
+msgstr "Змінити тло…"
+
+#: app/desktopManager.js:1215
+msgid "Desktop Icons Settings"
+msgstr "Налаштування піктограм стільниці"
+
+#: app/desktopManager.js:1228
+msgid "Display Settings"
+msgstr "Параметри екрана"
+
+#: app/desktopManager.js:1888
+msgid "Folder Creation Failed"
+msgstr "Створення теки зазнало невдачі"
+
+#: app/desktopManager.js:1889
+msgid "Error while trying to create a Folder"
+msgstr "Помилка при спробі створення теки"
+
+#: app/desktopManager.js:1925
+msgid "Template Creation Failed"
+msgstr "Створення шаблона зазнало невдачі"
+
+#: app/desktopManager.js:1926
+msgid "Error while trying to create a Document"
+msgstr "Помилка при спробі створення документа"
+
+#: app/desktopManager.js:1934
+msgid "Arrange Icons"
+msgstr "Вирівняти піктограми"
+
+#: app/desktopManager.js:1938
+msgid "Arrange By..."
+msgstr "Вирівняти за..."
+
+#: app/desktopManager.js:1947
+msgid "Keep Arranged..."
+msgstr "Зберігати вирівнювання..."
+
+#: app/desktopManager.js:1951
+msgid "Keep Stacked by type..."
+msgstr "Групувати в Стосі за типом..."
+
+#: app/desktopManager.js:1956
+msgid "Sort Home/Drives/Trash..."
+msgstr "Сортувати Домівку/Диски/Смітник..."
+
+#: app/desktopManager.js:1962
+msgid "Sort by Name"
+msgstr "Сортувати за назвою"
+
+#: app/desktopManager.js:1964
+msgid "Sort by Name Descending"
+msgstr "Сортувати за назвою в порядку спадання"
+
+#: app/desktopManager.js:1967
+msgid "Sort by Modified Time"
+msgstr "Сортувати за часом останньої зміни"
+
+#: app/desktopManager.js:1970
+msgid "Sort by Type"
+msgstr "Сортувати за типом"
+
+#: app/desktopManager.js:1973
+msgid "Sort by Size"
+msgstr "Сортувати за розміром"
+
+#. * TRANSLATORS: when using a screen reader, this is the text read when the user's personal folder is
+#. * highlighted.
+#. TRANSLATORS: "Home" is the text that will be shown in the user's personal folder
+#: app/fileItem.js:120 app/fileItem.js:255
+msgid "Home"
+msgstr "Домівка"
+
+#. * TRANSLATORS: when using a screen reader, this is the text read when the user's personal folder is
+#. * highlighted and selected.
+#: app/fileItem.js:123
+#, fuzzy
+msgid "Home Selected"
+msgstr "Виділити"
+
+#. * TRANSLATORS: when using a screen reader, this is the text read when the trash folder is
+#. * highlighted.
+#: app/fileItem.js:128
+msgid "Trash"
+msgstr "Смітник"
+
+#. * TRANSLATORS: when using a screen reader, this is the text read when the trash folder is
+#. * highlighted and selected.
+#: app/fileItem.js:131
+#, fuzzy
+msgid "Trash Selected"
+msgstr "Виділити"
+
+#. * TRANSLATORS: when using a screen reader, this is the role used when an external drive is
+#. * highlighted. Example: if a USB stick named "my_portable" is highlighted, it will say "my_portable Drive".
+#. * It is mandatory to say the file name first and the role after.
+#: app/fileItem.js:137
+msgid "${VisibleName} Drive"
+msgstr "${VisibleName} Диск"
+
+#. * TRANSLATORS: when using a screen reader, this is the role used when an external drive is
+#. * highlighted and selected. Example: if a USB stick named "my_portable" is highlighted and selected, it
+#. * will say "my_portable Drive Selected". It is mandatory to say the file name first, then the role, and
+#. * finally "Selected".
+#: app/fileItem.js:142
+#, fuzzy
+msgid "${VisibleName} Drive Selected"
+msgstr "${VisibleName} Диск"
+
+#. * TRANSLATORS: when using a screen reader, this is the role used when a stack is
+#. * highlighted. Example: if a stack named "pictures" is selected, it will say "pictures Stack".
+#. * It is mandatory to say the file name first and the role after.
+#: app/fileItem.js:148
+msgid "${VisibleName} Stack"
+msgstr "${VisibleName} Стос"
+
+#. * TRANSLATORS: when using a screen reader, this is the role used when a stack is highlighted and
+#. * selected. Example: if a stack named "pictures" is highlighted and selected, it will say "pictures Stack Selected".
+#. * It is mandatory to say the file name first, then the role, and finally "Selected".
+#: app/fileItem.js:152
+#, fuzzy
+msgid "${VisibleName} Stack Selected"
+msgstr "${VisibleName} Стос"
+
+#. * TRANSLATORS: when using a screen reader, this is the role used when a folder is
+#. * highlighted. Example: if a folder named "things" is highlighted, it will say "things Folder".
+#. * It is mandatory to say the file name first and the role after.
+#: app/fileItem.js:158
+msgid "${VisibleName} Folder"
+msgstr "${VisibleName} Тека"
+
+#. * TRANSLATORS: when using a screen reader, this is the role used when a folder is
+#. * highlighted and selected. Example: if a folder named "things" is highlighted and selected, it will say
+#. * "things Folder Selected". It is mandatory to say the file name first, then the role, and finally "Selected".
+#: app/fileItem.js:162
+#, fuzzy
+msgid "${VisibleName} Folder Selected"
+msgstr "${VisibleName} Тека"
+
+#. * TRANSLATORS: when using a screen reader, this is the role used when a trusted desktop file is
+#. * highlighted. Example: if a desktop file named "My App" is highlighted and it is trusted, it will
+#. * say "My App Application". It is mandatory to say the file name first and the role after.
+#: app/fileItem.js:168
+#, fuzzy
+msgid "${VisibleName} Application"
+msgstr "${VisibleName} Файл"
+
+#. * TRANSLATORS: when using a screen reader, this is the role used when a trusted desktop file is
+#. * highlighted. Example: if a desktop file named "My App" is highlighted and selected and it is trusted, it will
+#. * say "My App Application Selected". It is mandatory to say the file name first and the role after.
+#: app/fileItem.js:172
+#, fuzzy
+msgid "${VisibleName} Application Selected"
+msgstr "${VisibleName} Файл"
+
+#. * TRANSLATORS: when using a screen reader, this is the text read when a normal file is
+#. * highlighted. Example: if a file named "my_picture.jpg" is highlighted, it will say "my_picture.jpg File"
+#: app/fileItem.js:178
+msgid "${VisibleName} File"
+msgstr "${VisibleName} Файл"
+
+#. * TRANSLATORS: when using a screen reader, this is the text read when a normal file is highlighted and
+#. * selected. Example: if a file named "my_picture.jpg" is highlighted and selected, it will say
+#. * "my_picture.jpg File Selected". It is mandatory to say the file name first and the role after.
+#: app/fileItem.js:182
+#, fuzzy
+msgid "${VisibleName} File Selected"
+msgstr "${VisibleName} Файл"
+
+#: app/fileItem.js:348
+msgid "Error while reading Desktop file"
+msgstr "Помилка читання файлу запуску"
+
+#: app/fileItem.js:390
+msgid "Broken Link"
+msgstr "Пошкоджене посилання"
+
+#: app/fileItem.js:391
+msgid "Can not open this File because it is a Broken Symlink"
+msgstr "Неможливо відкрити файл, оскільки це пошкоджене символічне посилання"
+
+#: app/fileItem.js:423
+msgid "Can't open the file"
+msgstr "Не вдалося відкрити файл"
+
+#: app/fileItem.js:449
+msgid "Broken Desktop File"
+msgstr "Пошкоджений файл запуску"
+
+#: app/fileItem.js:450
+msgid ""
+"This .desktop file has errors or points to a program without permissions. It "
+"can not be executed.\n"
+"\n"
+"\t<b>Edit the file to set the correct executable Program.</b>"
+msgstr ""
+"В цьому файлі .desktop є помилки чи посилання на програму без прав доступу. "
+"Його не можна запустити.\n"
+"\n"
+"\t<b>Вкажіть в файлі коректну програму.</b>"
+
+#: app/fileItem.js:456
+msgid "Invalid Permissions on Desktop File"
+msgstr "Некоректні права доступу на файлу запуску"
+
+#: app/fileItem.js:457
+msgid ""
+"This .desktop File has incorrect Permissions. Right Click to edit "
+"Properties, then:\n"
+msgstr ""
+"Цей файл .desktop має некоректні права доступу. Клацніть правою клавішею, "
+"щоб відредагувати Властивості, а потім:\n"
+
+#: app/fileItem.js:459
+msgid ""
+"\n"
+"<b>Set Permissions, in \"Others Access\", \"Read Only\" or \"None\"</b>"
+msgstr ""
+"\n"
+"<b>Змініть Права доступу в \"Інші, Доступ\" на \"Лише читання\" або "
+"\"Немає\"</b>"
+
+#: app/fileItem.js:462
+msgid ""
+"\n"
+"<b>Enable option, \"Allow Executing File as a Program\"</b>"
+msgstr ""
+"\n"
+"<b>Увімкніть опцію \"Виконання файлу як програми\"</b>"
+
+#: app/fileItem.js:470
+msgid ""
+"This .desktop file is not trusted, it can not be launched. To enable "
+"launching, right-click, then:\n"
+"\n"
+"<b>Enable \"Allow Launching\"</b>"
+msgstr ""
+"Цей файл .desktop не є довіреним, його не можна запустити. Для виправлення "
+"клацніть правою клавішею, а потім\n"
+"\n"
+"<b>Увімкніть \"Дозволяти запуск\"</b>"
+
+#: app/fileItem.js:669
+msgid "Failed to set execution flag"
+msgstr "Не вдалося встановити прапорець виконання"
+
+#: app/fileItem.js:681 app/fileItem.js:688
+msgid "Could not apply discrete GPU environment"
+msgstr "Не вдалося застосувати середовище дискретної графічної плати"
+
+#: app/fileItem.js:717
+msgid "Could not find discrete GPU data"
+msgstr "Не вдалося знайти дані дискретної графічної плати"
+
+#: app/fileItem.js:842
+msgid "Failed to set metadata::trusted flag"
+msgstr "Не вдалося встановити прапорець metadata::trusted"
+
+#: app/fileItemMenu.js:143
+msgid "Open All..."
+msgstr "Відкрити все..."
+
+#: app/fileItemMenu.js:143
+msgid "Open"
+msgstr "Відкрити"
+
+#: app/fileItemMenu.js:160
+msgid "Stack This Type"
+msgstr "Додати цей тип до Стосу"
+
+#: app/fileItemMenu.js:160
+msgid "Unstack This Type"
+msgstr "Вилучити цей тип зі Стосу"
+
+#: app/fileItemMenu.js:173
+msgid "Scripts"
+msgstr "Скрипти"
+
+#: app/fileItemMenu.js:178
+msgid "Open All With Other Application..."
+msgstr "Відкрити все в іншій програмі..."
+
+#: app/fileItemMenu.js:178
+msgid "Open With Other Application"
+msgstr "Відкрити в іншій програмі"
+
+#: app/fileItemMenu.js:184
+msgid "Launch using Dedicated Graphics Card"
+msgstr "Запустити через дискретну графічну плату"
+
+#: app/fileItemMenu.js:195
+msgid "Run as a program"
+msgstr "Запустити як програму"
+
+#: app/fileItemMenu.js:203
+msgid "Cut"
+msgstr "Вирізати"
+
+#: app/fileItemMenu.js:210
+msgid "Copy"
+msgstr "Копіювати"
+
+#: app/fileItemMenu.js:218
+msgid "Rename…"
+msgstr "Перейменувати…"
+
+#: app/fileItemMenu.js:228
+msgid "Move to Trash"
+msgstr "Перемістити в смітник"
+
+#: app/fileItemMenu.js:236
+msgid "Delete permanently"
+msgstr "Вилучити остаточно"
+
+#: app/fileItemMenu.js:246
+msgid "Don't Allow Launching"
+msgstr "Не дозволяти запуск"
+
+#: app/fileItemMenu.js:246
+msgid "Allow Launching"
+msgstr "Дозволяти запуск"
+
+#: app/fileItemMenu.js:259
+msgid "Empty Trash"
+msgstr "Спорожнити смітник"
+
+#: app/fileItemMenu.js:272
+msgid "Eject"
+msgstr "Витягти"
+
+#: app/fileItemMenu.js:280
+msgid "Unmount"
+msgstr "Демонтувати"
+
+#: app/fileItemMenu.js:294 app/fileItemMenu.js:301
+msgid "Extract Here"
+msgstr "Розпакувати сюди"
+
+#: app/fileItemMenu.js:308
+msgid "Extract To..."
+msgstr "Розпакувати до..."
+
+#: app/fileItemMenu.js:317
+msgid "Send to..."
+msgstr "Надіслати до..."
+
+#: app/fileItemMenu.js:325
+msgid "Compress {0} folder"
+msgid_plural "Compress {0} folders"
+msgstr[0] "Стиснути {0} теку"
+msgstr[1] "Стиснути {0} теки"
+msgstr[2] "Стиснути {0} тек"
+msgstr[3] "Стиснути {0} теку"
+
+#: app/fileItemMenu.js:332
+msgid "Compress {0} file"
+msgid_plural "Compress {0} files"
+msgstr[0] "Стиснути {0} файл"
+msgstr[1] "Стиснути {0} файли"
+msgstr[2] "Стиснути {0} файлів"
+msgstr[3] "Стиснути {0} файл"
+
+#: app/fileItemMenu.js:340
+msgid "New Folder with {0} item"
+msgid_plural "New Folder with {0} items"
+msgstr[0] "Створити теку з {0} обʼєктом"
+msgstr[1] "Створити теку з {0} обʼєктами"
+msgstr[2] "Створити теку з {0} обʼєктами"
+msgstr[3] "Створити теку з {0} обʼєктом"
+
+#: app/fileItemMenu.js:351
+msgid "Common Properties"
+msgstr "Спільні властивості"
+
+#: app/fileItemMenu.js:351
+msgid "Properties"
+msgstr "Властивості"
+
+#: app/fileItemMenu.js:358
+msgid "Show All in Files"
+msgstr "Показати все у Файлах"
+
+#: app/fileItemMenu.js:358
+msgid "Show in Files"
+msgstr "Показати у Файлах"
+
+#: app/fileItemMenu.js:449
+msgid "No Extraction Folder"
+msgstr "Відсутня теки призначення"
+
+#: app/fileItemMenu.js:450
+msgid "Unable to extract File, extraction Folder Does not Exist"
+msgstr "Не вдалося видобути файл, оскільки теки призначення не існує"
+
+#: app/fileItemMenu.js:470
+msgid "Select Extract Destination"
+msgstr "Виберіть ціль для розпакування"
+
+#: app/fileItemMenu.js:475
+msgid "Select"
+msgstr "Виділити"
+
+#: app/fileItemMenu.js:516
+msgid "Can not email a Directory"
+msgstr "Неможливо надіслати теку електронною поштою"
+
+#: app/fileItemMenu.js:517
+msgid "Selection includes a Directory, compress the directory to a file first."
+msgstr "Вибране включає теку, для початку стисніть її до файлу."
+
+#: app/notifyX11UnderWayland.js:37
+msgid "Desktop Icons NG is running under X11Wayland"
+msgstr "Desktop Icons NG працює під X11Wayland"
+
+#: app/notifyX11UnderWayland.js:38
+msgid ""
+"It seems that you have your system configured to force GTK to use X11. This "
+"works, but it's suboptimal. You should check your system configuration to "
+"fix this."
+msgstr ""
+"Схоже, що ваша система налаштована таким чином, що GTK примусово "
+"використовує X11. Це можливий, але неоптимальний режим роботи. Вам необхідно "
+"перевірити конфігурацію системи, щоб виправити це."
+
+#: app/notifyX11UnderWayland.js:39 app/showErrorPopup.js:39
+msgid "Close"
+msgstr "Закрити"
+
+#: app/notifyX11UnderWayland.js:47
+msgid "Don't show this message anymore."
+msgstr "Більше не показувати це повідомлення."
+
+#: app/preferences.js:91
+msgid "Settings"
+msgstr "Параметри"
+
+#: app/prefswindow.js:64
+msgid "Size for the desktop icons"
+msgstr "Розмір піктограм стільниці"
+
+#: app/prefswindow.js:64
+msgid "Tiny"
+msgstr "Дуже малий"
+
+#: app/prefswindow.js:64
+msgid "Small"
+msgstr "Малий"
+
+#: app/prefswindow.js:64
+msgid "Standard"
+msgstr "Стандартний"
+
+#: app/prefswindow.js:64
+msgid "Large"
+msgstr "Великий"
+
+#: app/prefswindow.js:65
+msgid "Show the personal folder in the desktop"
+msgstr "Показувати теку користувача на стільниці"
+
+#: app/prefswindow.js:66
+msgid "Show the trash icon in the desktop"
+msgstr "Показувати піктограму смітника на стільниці"
+
+#: app/prefswindow.js:67 schemas/org.gnome.shell.extensions.ding.gschema.xml:45
+msgid "Show external drives in the desktop"
+msgstr "Показувати зовнішні диски на стільниці"
+
+#: app/prefswindow.js:68 schemas/org.gnome.shell.extensions.ding.gschema.xml:50
+msgid "Show network drives in the desktop"
+msgstr "Показувати мережеві диски на стільниці"
+
+#: app/prefswindow.js:71
+msgid "New icons alignment"
+msgstr "Вирівнювання для нових піктограм"
+
+#: app/prefswindow.js:73
+msgid "Top-left corner"
+msgstr "Верхній лівий кут"
+
+#: app/prefswindow.js:74
+msgid "Top-right corner"
+msgstr "Верхній правий кут"
+
+#: app/prefswindow.js:75
+msgid "Bottom-left corner"
+msgstr "Нижній лівий кут"
+
+#: app/prefswindow.js:76
+msgid "Bottom-right corner"
+msgstr "Нижній правий кут"
+
+#: app/prefswindow.js:78 schemas/org.gnome.shell.extensions.ding.gschema.xml:55
+msgid "Add new drives to the opposite side of the screen"
+msgstr "Додавати нові диски з протилежної сторони екрана"
+
+#: app/prefswindow.js:79
+msgid "Highlight the drop place during Drag'n'Drop"
+msgstr "Підсвічувати місце падіння під час перетягування"
+
+#: app/prefswindow.js:80 schemas/org.gnome.shell.extensions.ding.gschema.xml:90
+msgid "Use Nemo to open folders"
+msgstr "Відкривати теки за допомогою Nemo"
+
+#: app/prefswindow.js:82
+msgid "Add an emblem to soft links"
+msgstr "Додати емблему до мʼяких посилань"
+
+#: app/prefswindow.js:84
+msgid "Use dark text in icon labels"
+msgstr "Використати темний текст на підписах до піктограм"
+
+#: app/prefswindow.js:91
+msgid "Settings shared with Nautilus"
+msgstr "Спільні з Nautilus налаштування"
+
+#: app/prefswindow.js:113
+msgid "Click type for open files"
+msgstr "Вид клацання, щоб відкривати файли"
+
+#: app/prefswindow.js:113
+msgid "Single click"
+msgstr "Одинарне клацання"
+
+#: app/prefswindow.js:113
+msgid "Double click"
+msgstr "Подвійне клацання"
+
+#: app/prefswindow.js:114
+msgid "Show hidden files"
+msgstr "Показувати приховані файли"
+
+#: app/prefswindow.js:115
+msgid "Show a context menu item to delete permanently"
+msgstr "Додати пункт \"Вилучити остаточно\" у контекстне меню"
+
+#: app/prefswindow.js:120
+msgid "Action to do when launching a program from the desktop"
+msgstr "Дія при запуску програми зі стільниці"
+
+#: app/prefswindow.js:121
+msgid "Display the content of the file"
+msgstr "Показати вміст файлу"
+
+#: app/prefswindow.js:122
+msgid "Launch the file"
+msgstr "Запустити файл"
+
+#: app/prefswindow.js:123
+msgid "Ask what to do"
+msgstr "Запитати, що робити"
+
+#: app/prefswindow.js:129
+msgid "Show image thumbnails"
+msgstr "Показувати мініатюри зображень"
+
+#: app/prefswindow.js:130
+msgid "Never"
+msgstr "Ніколи"
+
+#: app/prefswindow.js:131
+msgid "Local files only"
+msgstr "Лише локальні файли"
+
+#: app/prefswindow.js:132
+msgid "Always"
+msgstr "Завжди"
+
+#: app/thumbnails.js:38
+msgid "GnomeDesktop-3.0 GIR file not found"
+msgstr ""
+
+#: app/thumbnails.js:39
+msgid ""
+"GnomeDesktop-3.0.gir file is missing. Please, install the required package "
+"in your system."
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:25
+msgid "Icon size"
+msgstr "Розмір піктограм"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:26
+msgid "Set the size for the desktop icons."
+msgstr "Встановити розмір піктограм стільниці."
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:30
+msgid "Show personal folder"
+msgstr "Показувати теку користувача"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:31
+msgid "Show the personal folder in the desktop."
+msgstr "Показувати теку користувача на стільниці."
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:35
+msgid "Show trash icon"
+msgstr "Показувати піктограму смітника"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:36
+msgid "Show the trash icon in the desktop."
+msgstr "Показувати піктограму смітника на стільниці."
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:40
+msgid "New icons start corner"
+msgstr "Початковий кут для нових піктограм"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:41
+msgid "Set the corner from where the icons will start to be placed."
+msgstr "Оберіть, від якого кута починати розміщення піктограм."
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:46
+msgid "Show the disk drives connected to the computer."
+msgstr "Показувати диски, підключені до компʼютера."
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:51
+msgid "Show mounted network volumes in the desktop."
+msgstr "Показувати змонтовані мережеві розділи на стільниці."
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:56
+msgid ""
+"When adding drives and volumes to the desktop, add them to the opposite side "
+"of the screen."
+msgstr ""
+"При додаванні дисків та розділів на стільницю, розміщувати їх з протилежної "
+"сторони екрана."
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:60
+msgid "Shows a rectangle in the destination place during DnD"
+msgstr "Показувати прямокутник у місці призначення під час перетягування"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:61
+msgid ""
+"When doing a Drag'n'Drop operation, marks the place in the grid where the "
+"icon will be put with a semitransparent rectangle."
+msgstr ""
+"Під час перетягування, місце куди буде переміщено піктограму, буде "
+"позначатися напівпрозорим прямокутником."
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:65
+msgid "Sort Special Folders - Home/Trash Drives."
+msgstr "Сортувати спеціальні теки - Домівку/Смітник/Диски."
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:66
+msgid ""
+"When arranging Icons on desktop, to sort and change the position of the "
+"Home, Trash and mounted Network or External Drives"
+msgstr ""
+"При вирівнюванні піктограм на стільниці, сортувати та змінювати положення "
+"Домівки, Смітника та підключених локальних і мережевих дисків"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:70
+msgid "Keep Icons Arranged"
+msgstr "Зберігати вирівнювання піктограм"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:71
+msgid "Always keep Icons Arranged by the last arranged order"
+msgstr ""
+"Завжди зберігати вирівнювання піктограм за їх останнім порядком вирівнювання"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:75
+msgid "Arrange Order"
+msgstr "Порядок вирівнювання"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:76
+msgid "Icons Arranged by this property"
+msgstr "Піктограми вирівнюються за цією властивістю"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:80
+msgid "Keep Icons Stacked"
+msgstr "Тримати піктограми в Стосі"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:81
+msgid "Always keep Icons Stacked, Similar types are grouped"
+msgstr "Завжди тримати піктограми в Стосі, подібні за типом - групувати"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:85
+msgid "Type of Files to not Stack"
+msgstr "Типи файлів, що не додаються до Стосу"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:86
+msgid "An Array of strings types, Don't Stack these types of files"
+msgstr "Масив рядкових значень, не додавати до Стосу такі типи файлів"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:91
+msgid "Use Nemo instead of Nautilus to open folders."
+msgstr "Відкривати теки за допомогою Nemo, а не Nautilus."
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:95
+msgid "Add an emblem to links"
+msgstr "Додавати емблеми до посилань"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:96
+msgid "Add an emblem to allow to identify soft links."
+msgstr "Додавати емблеми для визначення мʼяких посилань."
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:100
+msgid "Use black for label text"
+msgstr "Чорний колір для написів"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:101
+msgid ""
+"Paint the label text in black instead of white. Useful when using light "
+"backgrounds."
+msgstr ""
+"Використовувати для написів чорний колір замість білого. Корисно для світлих "
+"шпалер."
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:105
+msgid "Show a popup if running on X11Wayland"
+msgstr "Показувати спливаюче вікно, якщо запущено під X11Wayland"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:106
+msgid ""
+"Whether DING should show a popup if it is running on X11Wayland, or the user "
+"decided to not show it anymore."
+msgstr ""
+"Чи потрібно DING показувати спливаюче вікно при роботі під X11Wayland, або ж "
+"користувач вже визначився, що надалі показувати його не потрібно."
+
+#, fuzzy
+#~ msgid "Folder"
+#~ msgstr "Створити теку"
+
+#~ msgid "Desktop icons"
+#~ msgstr "Піктограми стільниці"

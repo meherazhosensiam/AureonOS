@@ -1,0 +1,2400 @@
+# Japanese translation file for Arc Menu by @hayao0819.
+# Yamada Hayao <hayao@fascode.net>, 2020.
+# Makoto Sakaguchi <ycco34vx@gmail.com>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Arc Menu\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-03-31 19:58-0400\n"
+"PO-Revision-Date: 2025-05-10 16:29+0900\n"
+"Last-Translator: Makoto Sakaguchi <ycco34vx@gmail.com>\n"
+"Language-Team: Japanese <>\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.6\n"
+
+#: appMenu.js:60 appMenu.js:284
+msgid "Pin to ArcMenu"
+msgstr "ArcMenu にピン留め"
+
+#: appMenu.js:89 appMenu.js:239
+msgid "Create Desktop Shortcut"
+msgstr "デスクトップショートカットを作成"
+
+#: appMenu.js:238
+msgid "Delete Desktop Shortcut"
+msgstr "デスクトップショートカットを削除"
+
+#: appMenu.js:247 appMenu.js:284
+msgid "Unpin from ArcMenu"
+msgstr "ArcMenu からピン留めを外す"
+
+#: appMenu.js:323
+msgid "Open Folder Location"
+msgstr "フォルダーの場所を開く"
+
+#: constants.js:87
+msgid "Favorites"
+msgstr "お気に入り"
+
+#: constants.js:88 menulayouts/runner.js:131 menulayouts/windows.js:337
+#: settings/Menu/LayoutTweaksPage.js:824
+msgid "Frequent Apps"
+msgstr "よく使うアプリ"
+
+#: constants.js:89 menuWidgets.js:1181 menulayouts/az.js:63
+#: menulayouts/az.js:72 menulayouts/eleven.js:55 menulayouts/eleven.js:64
+#: menulayouts/redmond.js:74 menulayouts/redmond.js:77
+#: menulayouts/redmond.js:81 menulayouts/sleek.js:74 menulayouts/sleek.js:77
+msgid "All Apps"
+msgstr "すべてのアプリ"
+
+#: constants.js:90 menulayouts/insider.js:281
+#: settings/Menu/LayoutTweaksPage.js:710 settings/Menu/LayoutTweaksPage.js:822
+#: settings/MenuPage.js:101
+msgid "Pinned Apps"
+msgstr "ピン留めされたアプリ"
+
+#: constants.js:91 menulayouts/raven.js:296 menulayouts/unity.js:371
+#: searchProviders/recentFiles.js:29 searchProviders/recentFiles.js:30
+msgid "Recent Files"
+msgstr "最近使ったファイル"
+
+#: constants.js:260 menuButton.js:800 settings/Menu/ListPinnedPage.js:388
+msgid "Log Out..."
+msgstr "ログアウト…"
+
+#: constants.js:261 menuButton.js:799 settings/Menu/ListPinnedPage.js:387
+msgid "Lock"
+msgstr "ロック"
+
+#: constants.js:262 menuButton.js:794 settings/Menu/ListPinnedPage.js:390
+msgid "Restart..."
+msgstr "再起動..."
+
+#: constants.js:263 menuButton.js:795 settings/Menu/ListPinnedPage.js:389
+msgid "Power Off..."
+msgstr "電源オフ..."
+
+#: constants.js:264 menuButton.js:791 settings/Menu/ListPinnedPage.js:391
+msgid "Suspend"
+msgstr "サスペンド"
+
+#: constants.js:265 settings/Menu/ListPinnedPage.js:392
+msgid "Hybrid Sleep"
+msgstr "ハイブリッドスリープ"
+
+#: constants.js:266 settings/Menu/ListPinnedPage.js:394
+msgid "Hibernate"
+msgstr "ハイバネート"
+
+#: constants.js:267 menuButton.js:801 settings/Menu/ListPinnedPage.js:395
+msgid "Switch User"
+msgstr "ユーザーを切り替え"
+
+#: constants.js:412 settings/AboutPage.js:21 settings/DonatePage.js:17
+#: settings/GeneralPage.js:530 settings/MenuButtonPage.js:211
+msgid "ArcMenu"
+msgstr ""
+
+# メニューレイアウト名
+#: constants.js:417
+msgid "Brisk"
+msgstr ""
+
+# メニューレイアウト名
+#: constants.js:422
+msgid "Whisker"
+msgstr ""
+
+# メニューレイアウト名
+#: constants.js:427
+msgid "GNOME Menu"
+msgstr "GNOME メニュー"
+
+# メニューレイアウト名
+#: constants.js:432
+msgid "Mint"
+msgstr ""
+
+# メニューレイアウト名
+#: constants.js:437
+msgid "Budgie"
+msgstr ""
+
+# メニューレイアウト名
+#: constants.js:445
+msgid "Unity"
+msgstr ""
+
+# メニューレイアウト名
+#: constants.js:450
+msgid "Plasma"
+msgstr ""
+
+# メニューレイアウト名
+#: constants.js:455
+msgid "tognee"
+msgstr ""
+
+# メニューレイアウト名
+#: constants.js:460
+msgid "Insider"
+msgstr ""
+
+# メニューレイアウト名
+#: constants.js:465
+msgid "Redmond"
+msgstr ""
+
+# メニューレイアウト名
+#: constants.js:470
+msgid "Windows"
+msgstr ""
+
+# メニューレイアウト名
+#: constants.js:475
+msgid "11"
+msgstr ""
+
+# メニューレイアウト名
+#: constants.js:480
+msgid "a.z."
+msgstr ""
+
+# メニューレイアウト名
+#: constants.js:485
+msgid "Enterprise"
+msgstr ""
+
+# メニューレイアウト名
+#: constants.js:490
+msgid "Pop"
+msgstr ""
+
+# メニューレイアウト名
+#: constants.js:495
+msgid "Sleek"
+msgstr ""
+
+# メニューレイアウト名
+#: constants.js:503
+msgid "Elementary"
+msgstr ""
+
+# メニューレイアウト名
+#: constants.js:508
+msgid "Chromebook"
+msgstr ""
+
+# メニューレイアウト名
+#: constants.js:516
+msgid "Runner"
+msgstr ""
+
+# メニューレイアウト名
+#: constants.js:521
+msgid "GNOME Overview"
+msgstr ""
+
+# メニューレイアウト名
+#: constants.js:529
+msgid "Raven"
+msgstr ""
+
+#: constants.js:537
+msgid "Traditional"
+msgstr "伝統的"
+
+#: constants.js:542
+msgid "Modern"
+msgstr "モダン"
+
+#: constants.js:547
+msgid "Touch"
+msgstr "タッチ"
+
+#: constants.js:552
+msgid "Launcher"
+msgstr "ランチャー"
+
+#: constants.js:557
+msgid "Alternative"
+msgstr "代替"
+
+#: constants.js:564
+msgid "Settings"
+msgstr "設定"
+
+#: constants.js:564
+msgid "Software"
+msgstr "ソフトウェア"
+
+#: constants.js:564
+msgid "Terminal"
+msgstr "コンソール"
+
+#: constants.js:564
+msgid "Tweaks"
+msgstr "微調整"
+
+#: constants.js:565 menuButton.js:744 menuWidgets.js:544
+#: settings/Menu/ListPinnedPage.js:355 settings/Menu/ListPinnedPage.js:377
+msgid "Activities Overview"
+msgstr "アクティビティ画面"
+
+#: constants.js:565 menuButton.js:730 settings/Menu/ListPinnedPage.js:341
+#: settings/Menu/ListPinnedPage.js:352 settings/Menu/ListPinnedPage.js:364
+msgid "ArcMenu Settings"
+msgstr "ArcMenu の設定"
+
+#: constants.js:565
+msgid "Files"
+msgstr "ファイル"
+
+#: menuButton.js:38 menulayouts/plasma.js:128 menulayouts/plasma.js:577
+msgid "Apps"
+msgstr "アプリ"
+
+#: menuButton.js:775 settings/Menu/ListPinnedPage.js:380
+msgid "Show Desktop"
+msgstr "デスクトップの表示"
+
+#: menuButton.js:789 menuWidgets.js:860 menuWidgets.js:877
+msgid "Power Off / Log Out"
+msgstr "電源オフ / ログアウト"
+
+#: menuButton.js:830
+msgid "Dash to Panel Settings"
+msgstr "Dash to Panel の設定"
+
+#: menuButton.js:834
+msgid "App Icons Taskbar Settings"
+msgstr "App Icons Taskbar の設定"
+
+#: menuWidgets.js:914 menulayouts/plasma.js:328
+msgid "Session"
+msgstr "セッション"
+
+#: menuWidgets.js:918 menulayouts/plasma.js:332
+msgid "System"
+msgstr "システム"
+
+#: menuWidgets.js:1111 menuWidgets.js:1132 menulayouts/az.js:64
+#: menulayouts/eleven.js:56 menulayouts/redmond.js:75 menulayouts/redmond.js:80
+#: menulayouts/sleek.js:75
+msgid "Back"
+msgstr "戻る"
+
+#: menuWidgets.js:2399 menulayouts/pop.js:355
+msgid "Unnamed Folder"
+msgstr "名前のないフォルダー"
+
+#: menuWidgets.js:2499 menulayouts/pop.js:1185
+msgid "New"
+msgstr "新規"
+
+#: menuWidgets.js:3061 menulayouts/az.js:71 menulayouts/eleven.js:63
+#: menulayouts/insider.js:185 menulayouts/plasma.js:123 menulayouts/raven.js:62
+#: menulayouts/raven.js:233 menulayouts/raven.js:274 menulayouts/redmond.js:76
+#: menulayouts/redmond.js:79 menulayouts/redmond.js:82 menulayouts/sleek.js:76
+#: menulayouts/unity.js:42 menulayouts/unity.js:279 menulayouts/unity.js:349
+#: menulayouts/windows.js:415
+msgid "Pinned"
+msgstr "ピン留め済み"
+
+#: menuWidgets.js:3231
+msgid "Unmount Drive"
+msgstr "ドライブのアンマウント"
+
+#: menuWidgets.js:3233
+msgid "Eject Drive"
+msgstr "ドライブを取り出す"
+
+#: menuWidgets.js:3277
+msgid "Remove from Recent"
+msgstr "最近の項目から削除"
+
+#: menuWidgets.js:3360
+msgid "Search…"
+msgstr "検索…"
+
+#: menulayouts/baseMenuLayout.js:500
+msgid "More Recent Files..."
+msgstr "最近使ったファイル…"
+
+#: menulayouts/eleven.js:71
+msgid "Frequent"
+msgstr "よく使う"
+
+#: menulayouts/plasma.js:132 placeDisplay.js:133 placeDisplay.js:156
+#: settings/Menu/ListPinnedPage.js:411
+msgid "Computer"
+msgstr "コンピュータ"
+
+# For Plasma
+#: menulayouts/plasma.js:136
+msgid "Leave"
+msgstr "終了"
+
+#: menulayouts/plasma.js:276 menulayouts/windows.js:272
+#: settings/MenuPage.js:123
+msgid "Application Shortcuts"
+msgstr "アプリケーションショートカット"
+
+#: menulayouts/plasma.js:281 menulayouts/windows.js:276
+msgid "Places"
+msgstr "場所"
+
+#: menulayouts/plasma.js:296 menulayouts/windows.js:208
+#: settings/Menu/LayoutTweaksPage.js:757 settings/Menu/LayoutTweaksPage.js:911
+msgid "Bookmarks"
+msgstr "ブックマーク"
+
+#: menulayouts/plasma.js:298 menulayouts/windows.js:210
+msgid "Devices"
+msgstr "デバイス"
+
+#: menulayouts/plasma.js:300 menulayouts/windows.js:212
+#: settings/Menu/ListPinnedPage.js:412
+msgid "Network"
+msgstr "ネットワーク"
+
+#: menulayouts/pop.js:258 menulayouts/pop.js:461 menulayouts/pop.js:474
+msgid "Library Home"
+msgstr "ライブラリホーム"
+
+#: menulayouts/pop.js:724
+msgid "New Folder"
+msgstr "新しいフォルダー"
+
+#: menulayouts/pop.js:823
+msgid "Rename Folder"
+msgstr "フォルダーの名前を変更"
+
+#: menulayouts/pop.js:824
+msgid "Delete Folder"
+msgstr "フォルダーの削除"
+
+#: menulayouts/pop.js:834
+#, javascript-format
+msgid "Permanently delete %s folder?"
+msgstr "%s フォルダーを完全に削除しますか？"
+
+#: menulayouts/pop.js:839
+msgid "No"
+msgstr "いいえ"
+
+#: menulayouts/pop.js:847
+msgid "Yes"
+msgstr "はい"
+
+#: menulayouts/pop.js:862
+#, javascript-format
+msgid "Rename %s folder"
+msgstr "%s フォルダーの名前を変更する"
+
+#: menulayouts/pop.js:896 settings/GeneralPage.js:317
+#: settings/MenuButtonPage.js:532
+msgid "Cancel"
+msgstr "キャンセル"
+
+#: menulayouts/pop.js:904 settings/GeneralPage.js:305
+#: settings/Menu/ListPinnedPage.js:653 settings/Menu/VisualSettings.js:372
+msgid "Apply"
+msgstr "適用"
+
+#: menulayouts/raven.js:62 menulayouts/raven.js:239 menulayouts/unity.js:42
+#: menulayouts/unity.js:283 settings/Menu/LayoutTweaksPage.js:576
+#: settings/Menu/LayoutTweaksPage.js:603 settings/Menu/LayoutTweaksPage.js:709
+#: settings/Menu/LayoutTweaksPage.js:800 settings/Menu/LayoutTweaksPage.js:825
+#: settings/Menu/LayoutTweaksPage.js:865
+msgid "All Programs"
+msgstr "すべてのプログラム"
+
+#: menulayouts/raven.js:280 menulayouts/unity.js:354
+#: settings/Menu/VisualSettings.js:231
+msgid "Shortcuts"
+msgstr "ショートカット"
+
+#: menulayouts/runner.js:229
+msgid "Configure Runner"
+msgstr "Runner を設定する"
+
+#: menulayouts/unity.js:419
+msgid "Categories"
+msgstr "カテゴリー"
+
+#: menulayouts/windows.js:434
+msgid "Extras"
+msgstr "その他"
+
+#: placeDisplay.js:56
+#, javascript-format
+msgid "Failed to launch “%s”"
+msgstr "「%s」の起動に失敗しました"
+
+#: placeDisplay.js:71
+#, javascript-format
+msgid "Failed to mount volume for “%s”"
+msgstr "「%s」のボリュームのマウントに失敗しました"
+
+#: placeDisplay.js:119 placeDisplay.js:340
+#: settings/Menu/LayoutTweaksPage.js:575 settings/Menu/LayoutTweaksPage.js:602
+#: settings/Menu/ListPinnedPage.js:403 utils.js:234
+msgid "Home"
+msgstr "ホーム"
+
+#: placeDisplay.js:223
+#, javascript-format
+msgid "Ejecting drive “%s” failed:"
+msgstr "ドライブ「%s」の取り出しに失敗しました:"
+
+#: prefsWidgets.js:266
+msgid "Modify"
+msgstr "変更"
+
+#: prefsWidgets.js:281
+msgid "Move Up"
+msgstr "上に移動"
+
+#: prefsWidgets.js:288
+msgid "Move Down"
+msgstr "下に移動"
+
+#: prefsWidgets.js:295
+msgid "Remove"
+msgstr "削除"
+
+#: search.js:742
+msgid "Searching..."
+msgstr "検索中…"
+
+#: search.js:744
+msgid "No results."
+msgstr "結果がありません。"
+
+#: search.js:827
+#, javascript-format
+msgid "+ %d more"
+msgstr "+ %d 件"
+
+#: searchProviders/openWindows.js:31
+msgid "List of open windows across all workspaces"
+msgstr "すべてのワークスペースの開いているウィンドウの一覧"
+
+#: searchProviders/openWindows.js:32
+msgid "Open Windows"
+msgstr "開いているウィンドウ"
+
+#: searchProviders/openWindows.js:46
+#, javascript-format
+msgid "'%s' on Workspace %d"
+msgstr "「%s」はワークスペース %d にあります"
+
+#: searchProviders/recentFiles.js:90
+#, javascript-format
+msgid "Failed to open “%s”"
+msgstr "「%s」を開くのに失敗しました"
+
+#: settings/AboutPage.js:16 settings/Menu/ListPinnedPage.js:374
+msgid "About"
+msgstr "このアプリについて"
+
+#: settings/AboutPage.js:22
+msgid "Application Menu Extension for GNOME"
+msgstr "GNOME 用アプリケーションメニュー拡張機能"
+
+#. TRANSLATORS: 'PROJECT_NAME' Version
+#: settings/AboutPage.js:67
+#, javascript-format
+msgid "%s Version"
+msgstr "%s バージョン"
+
+#. TRANSLATORS: 'PROJECT_NAME' - Release Notes
+#: settings/AboutPage.js:76
+#, javascript-format
+msgid "%s - Release Notes"
+msgstr "%s - リリースノート"
+
+#: settings/AboutPage.js:78
+msgid "What's New"
+msgstr "新機能"
+
+#: settings/AboutPage.js:123
+msgid "Message Tray Update Notification"
+msgstr "メッセージトレイ更新通知"
+
+#: settings/AboutPage.js:124
+#, javascript-format
+msgid "Show a notification when %s receives an update."
+msgstr "%s がアップデートを受信したときに通知を表示する。"
+
+#: settings/AboutPage.js:132
+msgid "Git Commit"
+msgstr "Git コミット"
+
+#: settings/AboutPage.js:142
+msgid "GNOME Version"
+msgstr "GNOME バージョン"
+
+#: settings/AboutPage.js:151
+msgid "OS Name"
+msgstr "OS名"
+
+#: settings/AboutPage.js:164
+msgid "Windowing System"
+msgstr "ウィンドウシステム"
+
+#. TRANSLATORS: 'PROJECT_NAME' on GitLab
+#: settings/AboutPage.js:175
+#, javascript-format
+msgid "%s on GitLab"
+msgstr "GitLab上の%s"
+
+#: settings/AboutPage.js:178
+msgid "Report an Issue"
+msgstr "問題を報告する"
+
+#. TRANSLATORS: 'PROJECT_NAME' Settings
+#: settings/AboutPage.js:188
+#, javascript-format
+msgid "%s Settings"
+msgstr "%s の設定"
+
+#: settings/AboutPage.js:191 settings/Menu/ThemingDialog.js:70
+#: settings/Menu/ThemingDialog.js:75
+msgid "Load"
+msgstr "読み込み"
+
+#: settings/AboutPage.js:196
+msgid "Load Settings"
+msgstr "設定を読み込む"
+
+#: settings/AboutPage.js:222 settings/Menu/ThemingDialog.js:128
+#: settings/Menu/ThemingDialog.js:141
+msgid "Save"
+msgstr "保存"
+
+#: settings/AboutPage.js:227
+msgid "Save Settings"
+msgstr "設定を保存する"
+
+#: settings/AboutPage.js:249 settings/AboutPage.js:250
+msgid "Credits"
+msgstr "クレジット"
+
+#: settings/AboutPage.js:254
+msgid "Brought to you by"
+msgstr "提供"
+
+#: settings/AboutPage.js:265
+msgid "History"
+msgstr "履歴"
+
+#: settings/AboutPage.js:283
+msgid "Contributions by"
+msgstr "貢献者"
+
+#: settings/AboutPage.js:286
+msgid "Contributors"
+msgstr "コントリビューター"
+
+#: settings/AboutPage.js:288
+msgid "Translators"
+msgstr "翻訳者"
+
+#: settings/AboutPage.js:292
+msgid "Artwork by"
+msgstr "アートワーク提供者"
+
+#: settings/AboutPage.js:300 settings/AboutPage.js:301
+msgid "Legal"
+msgstr "法的情報"
+
+#: settings/AboutPage.js:307
+msgid "This program comes with absolutely no warranty."
+msgstr "本プログラムには、いかなる保証もありません。"
+
+#: settings/AboutPage.js:309
+msgid "GNU General Public License, version 2 or later"
+msgstr "GNU 一般公衆利用許諾契約書 バージョン2以降"
+
+#. TRANSLATORS: this is the program license url; the string contains the name of the license as link text.
+#: settings/AboutPage.js:309
+#, javascript-format
+msgid "See the <a href=\"%s\">%s</a> for details."
+msgstr "詳細については、<a href=\"%s\">%s</a> をご覧ください。"
+
+#: settings/DonatePage.js:12 updateNotifier.js:66
+msgid "Donate"
+msgstr "寄付"
+
+#: settings/DonatePage.js:22
+#, javascript-format
+msgid "Help Support %s"
+msgstr "%s をサポートする"
+
+#: settings/DonatePage.js:23 updateNotifier.js:57
+#, javascript-format
+msgid ""
+"Thank you for using %s! If you enjoy it and would like to help support its "
+"continued development, please consider making a donation."
+msgstr ""
+"%s をご利用いただきありがとうございます！\n"
+"もしお気に召しましたら、継続的な開発支援のために寄付をご検討ください。"
+
+#: settings/DonatePage.js:27
+msgid "Donate via PayPal"
+msgstr "PayPalで寄付する"
+
+#: settings/DonatePage.js:30
+msgid "Donate via Buy Me a Coffee"
+msgstr "Buy Me a Coffeeで寄付する"
+
+#: settings/DonatePage.js:42
+#, javascript-format
+msgid ""
+"A huge thank you to everyone who has supported %s! Your support helps keep "
+"%s going. It is truly appreciated!"
+msgstr ""
+"%s を支えてくださったすべての方々に心から感謝いたします！\n"
+"皆様のご支援が %s を継続する力となっています。本当にありがとうございます！"
+
+#: settings/GeneralPage.js:32
+msgid "General"
+msgstr "全般"
+
+#: settings/GeneralPage.js:39
+msgid "Panel Display Options"
+msgstr "パネル表示オプション"
+
+#: settings/GeneralPage.js:52
+msgid "Show Activities Button"
+msgstr "アクティビティボタンを表示する"
+
+#: settings/GeneralPage.js:53
+msgid "Dash to Panel may conflict with this setting"
+msgstr "Dash to Panel がこの設定と競合する可能性があります"
+
+#: settings/GeneralPage.js:61 settings/GeneralPage.js:87
+#: settings/Menu/LayoutTweaksPage.js:630
+msgid "Left"
+msgstr "左"
+
+#: settings/GeneralPage.js:62 settings/GeneralPage.js:88
+msgid "Center"
+msgstr "中央"
+
+#: settings/GeneralPage.js:63 settings/GeneralPage.js:89
+#: settings/Menu/LayoutTweaksPage.js:631
+msgid "Right"
+msgstr "右"
+
+#: settings/GeneralPage.js:65 settings/MenuButtonPage.js:126
+msgid "Position in Panel"
+msgstr "パネル内の位置"
+
+#: settings/GeneralPage.js:95
+msgid "Menu Alignment"
+msgstr "メニューの配置"
+
+#: settings/GeneralPage.js:114
+msgid "Display ArcMenu on all Panels"
+msgstr "すべてのパネルに ArcMenu を表示する"
+
+#: settings/GeneralPage.js:115
+msgid "Dash to Panel or App Icons Taskbar extension required"
+msgstr "Dash to Panel または App Icons Taskbar 拡張機能が必要です"
+
+#: settings/GeneralPage.js:131
+msgid "Always Prefer Top Panel"
+msgstr "常に上部パネルを優先する"
+
+#: settings/GeneralPage.js:132
+msgid "Useful with Dash to Panel setting 'Keep original gnome-shell top panel'"
+msgstr "Dash to Panel 設定の『オリジナルの GNOME Shell トップバーを維持』と併用すると便利です"
+
+#: settings/GeneralPage.js:146
+msgid "General Settings"
+msgstr "一般設定"
+
+#: settings/GeneralPage.js:150 settings/GeneralPage.js:337
+msgid "ArcMenu Hotkey"
+msgstr "ArcMenu ホットキー"
+
+#: settings/GeneralPage.js:151
+msgid "Standalone Runner Menu"
+msgstr "スタンドアロン Runner メニュー"
+
+#: settings/GeneralPage.js:164
+msgid "Hide Overview on Startup"
+msgstr "起動時にアクティビティ画面を非表示にする"
+
+#: settings/GeneralPage.js:213
+msgid "Hotkey Options"
+msgstr "ホットキーオプション"
+
+#: settings/GeneralPage.js:226 settings/GeneralPage.js:362
+msgid "Disabled"
+msgstr "無効"
+
+#: settings/GeneralPage.js:251
+msgid "Open on Primary Monitor"
+msgstr "プライマリモニターに開く"
+
+#: settings/GeneralPage.js:269
+msgid "Modify Hotkey"
+msgstr "ホットキーを変更"
+
+#. TRANSLATORS: %s is replaced with a description of the keyboard shortcut, don't translate/transliterate <b>%s</b>
+#: settings/GeneralPage.js:337
+#, javascript-format
+msgid "Enter a new shortcut to change <b>%s</b>"
+msgstr "<b>%s</b>を変更するため、新しいショートカットを入力してください"
+
+#: settings/GeneralPage.js:337
+msgid "Standalone Runner Hotkey"
+msgstr "スタンドアロン Runner ホットキー"
+
+#: settings/GeneralPage.js:367
+msgid "Press Esc to cancel or Backspace to disable the keyboard shortcut."
+msgstr ""
+"Esc キーを押してキャンセルするか、Backspace キーを押してキーボードショート"
+"カットを無効にしてください。"
+
+#: settings/GeneralPage.js:420
+#, javascript-format
+msgid "Conflict with <b>%s</b> hotkey"
+msgstr "<b>%s</b> のホットキーと競合しています"
+
+#: settings/GeneralPage.js:531
+msgid "Standlone Runner"
+msgstr "スタンドアロン Runner"
+
+#: settings/Menu/FineTunePage.js:33
+msgid "Show Category Sub Menus"
+msgstr "カテゴリのサブメニューを表示する"
+
+#: settings/Menu/FineTunePage.js:47
+msgid "Show Application Descriptions"
+msgstr "アプリケーションの説明を表示する"
+
+#: settings/Menu/FineTunePage.js:61
+msgid "Disable ScrollView Fade Effects"
+msgstr "スクロールビューのフェード効果を無効化"
+
+#: settings/Menu/FineTunePage.js:75
+msgid "Disable Tooltips"
+msgstr "ツールチップを無効化"
+
+#: settings/Menu/FineTunePage.js:89
+msgid "Group Apps Alphabetically on List Views"
+msgstr "リストビューでアプリをアルファベット順にグループ化"
+
+#: settings/Menu/FineTunePage.js:90 settings/Menu/FineTunePage.js:105
+msgid "For All Apps sections"
+msgstr "すべてのアプリセクション用"
+
+#: settings/Menu/FineTunePage.js:104
+msgid "Group Apps Alphabetically on Grid Views"
+msgstr "グリッドビューでアプリをアルファベット順にグループ化"
+
+#: settings/Menu/FineTunePage.js:119
+msgid "Show Hidden Recent Files"
+msgstr "非表示の最近使ったファイルを表示する"
+
+#: settings/Menu/FineTunePage.js:133
+msgid "Multi-Lined Labels"
+msgstr "複数行ラベル"
+
+#: settings/Menu/FineTunePage.js:134
+msgid "Allow application labels to span multiple lines on grid style layouts"
+msgstr ""
+"グリッドスタイルのレイアウトでアプリケーションのラベルを複数行に渡らせること"
+"を許可する"
+
+#: settings/Menu/FineTunePage.js:148
+msgid "Activate App Window on Launch"
+msgstr "起動時にアプリウィンドウをアクティブにする"
+
+#: settings/Menu/FineTunePage.js:149
+msgid ""
+"Launching an app activates its existing window if one is open; otherwise, it "
+"launches a new instance. Hold Ctrl while launching or middle-click to open a "
+"new window."
+msgstr ""
+"アプリを起動すると、既存のウィンドウが開いている場合はそれをアクティブ化し、"
+"開いていない場合は新しいインスタンスを起動します。 新しいウィンドウを開くに"
+"は、Ctrlキーを押しながら起動するか、ミドルクリックしてください。"
+
+#: settings/Menu/FineTunePage.js:159
+msgid "Full Color"
+msgstr "フルカラー"
+
+#: settings/Menu/FineTunePage.js:160
+msgid "Symbolic"
+msgstr "シンボリック"
+
+#: settings/Menu/FineTunePage.js:162
+msgid "Category Icon Type"
+msgstr "カテゴリアイコンの種類"
+
+#: settings/Menu/FineTunePage.js:163 settings/Menu/FineTunePage.js:174
+msgid "Some icon themes may not include selected icon type"
+msgstr ""
+"一部のアイコンテーマには、選択したアイコンの種類が含まれていない場合がありま"
+"す"
+
+#: settings/Menu/FineTunePage.js:173
+msgid "Shortcuts Icon Type"
+msgstr "ショートカットアイコンの種類"
+
+#: settings/Menu/FineTunePage.js:197
+msgid "Disable New Apps Tracker"
+msgstr "新しいアプリの追跡を無効化"
+
+#: settings/Menu/FineTunePage.js:206
+msgid "Clear All"
+msgstr "すべてクリア"
+
+#: settings/Menu/FineTunePage.js:215
+msgid "Clear Apps Marked 'New'"
+msgstr "‘新規’ マークをすべてクリア"
+
+#: settings/Menu/LayoutTweaksPage.js:25 settings/MenuPage.js:49
+#: settings/MenuPage.js:91
+#, javascript-format
+msgid "%s Layout Tweaks"
+msgstr "%s レイアウトの調整"
+
+#: settings/Menu/LayoutTweaksPage.js:113 settings/Menu/LayoutTweaksPage.js:118
+#: settings/Menu/LayoutTweaksPage.js:731 settings/Menu/LayoutTweaksPage.js:886
+msgid "Extra Shortcuts"
+msgstr "追加のショートカット"
+
+#: settings/Menu/LayoutTweaksPage.js:138
+msgid "Vertical Separator"
+msgstr "垂直セパレーター"
+
+#: settings/Menu/LayoutTweaksPage.js:147
+msgid "Mouse Click"
+msgstr "マウスクリック"
+
+#: settings/Menu/LayoutTweaksPage.js:148
+msgid "Mouse Hover"
+msgstr "マウスホバー"
+
+#: settings/Menu/LayoutTweaksPage.js:151
+msgid "Category Activation"
+msgstr "カテゴリのアクティベーション"
+
+#: settings/Menu/LayoutTweaksPage.js:174
+msgid "Round"
+msgstr "円め"
+
+#: settings/Menu/LayoutTweaksPage.js:175 settings/Menu/VisualSettings.js:185
+#: settings/Menu/VisualSettings.js:186 settings/Menu/VisualSettings.js:187
+msgid "Square"
+msgstr "四角"
+
+#: settings/Menu/LayoutTweaksPage.js:177
+msgid "Avatar Icon Shape"
+msgstr "アバターアイコンの形状"
+
+#: settings/Menu/LayoutTweaksPage.js:193 settings/Menu/LayoutTweaksPage.js:932
+msgid "Bottom"
+msgstr "下部"
+
+#: settings/Menu/LayoutTweaksPage.js:194 settings/Menu/LayoutTweaksPage.js:456
+#: settings/Menu/LayoutTweaksPage.js:933
+msgid "Top"
+msgstr "上部"
+
+#: settings/Menu/LayoutTweaksPage.js:197
+msgid "Searchbar Location"
+msgstr "検索バーの位置"
+
+#: settings/Menu/LayoutTweaksPage.js:218
+msgid "Flip Layout Horizontally"
+msgstr "レイアウトを水平方向に反転"
+
+#: settings/Menu/LayoutTweaksPage.js:234
+msgid "Disable User Avatar"
+msgstr "ユーザーアバターを無効化"
+
+#: settings/Menu/LayoutTweaksPage.js:274 settings/Menu/LayoutTweaksPage.js:578
+#: settings/Menu/LayoutTweaksPage.js:605 settings/Menu/LayoutTweaksPage.js:713
+#: settings/Menu/LayoutTweaksPage.js:802 settings/Menu/LayoutTweaksPage.js:828
+msgid "Default View"
+msgstr "デフォルトビュー"
+
+#: settings/Menu/LayoutTweaksPage.js:301 settings/Menu/LayoutTweaksPage.js:354
+msgid "Disable Frequent Apps"
+msgstr "よく使用するアプリを無効化"
+
+#: settings/Menu/LayoutTweaksPage.js:335
+msgid "Show Apps Grid"
+msgstr "アプリグリッドを表示"
+
+#: settings/Menu/LayoutTweaksPage.js:368
+msgid "Disable Pinned Apps"
+msgstr "アプリのピン留めを無効化"
+
+#: settings/Menu/LayoutTweaksPage.js:394
+msgid "Activate on Hover"
+msgstr "ホバー時にアクティブ化"
+
+#: settings/Menu/LayoutTweaksPage.js:444
+msgid "Enable Activities Overview Shortcut"
+msgstr "アクティビティ画面のショートカットを有効にする"
+
+#: settings/Menu/LayoutTweaksPage.js:457
+msgid "Centered"
+msgstr "中央"
+
+#: settings/Menu/LayoutTweaksPage.js:459
+msgid "Position"
+msgstr "位置"
+
+#: settings/Menu/LayoutTweaksPage.js:470 settings/Menu/LayoutTweaksPage.js:616
+msgid "List"
+msgstr "リスト"
+
+#: settings/Menu/LayoutTweaksPage.js:471 settings/Menu/LayoutTweaksPage.js:617
+msgid "Grid"
+msgstr "グリッド"
+
+#: settings/Menu/LayoutTweaksPage.js:473 settings/Menu/LayoutTweaksPage.js:619
+msgid "Search Results Display Style"
+msgstr "検索結果の表示スタイル"
+
+#: settings/Menu/LayoutTweaksPage.js:500 settings/Menu/VisualSettings.js:315
+msgid "Width"
+msgstr "横幅"
+
+#: settings/Menu/LayoutTweaksPage.js:523 settings/Menu/VisualSettings.js:36
+#: settings/Menu/VisualSettings.js:334
+msgid "Height"
+msgstr "高さ"
+
+#: settings/Menu/LayoutTweaksPage.js:546 settings/Menu/ThemePage.js:197
+msgid "Font Size"
+msgstr "フォントサイズ"
+
+#: settings/Menu/LayoutTweaksPage.js:547 settings/MenuButtonPage.js:103
+#, javascript-format
+msgid "%d Default Theme Value"
+msgstr "%d デフォルトテーマ値"
+
+#: settings/Menu/LayoutTweaksPage.js:561
+msgid "Show Frequent Apps"
+msgstr "よく使用するアプリを表示"
+
+#: settings/Menu/LayoutTweaksPage.js:633
+msgid "Position on Monitor"
+msgstr "モニター上の位置"
+
+#: settings/Menu/LayoutTweaksPage.js:691 settings/Menu/VisualSettings.js:77
+msgid "Right-Panel Width"
+msgstr "右パネルの横幅"
+
+#: settings/Menu/LayoutTweaksPage.js:743 settings/Menu/LayoutTweaksPage.js:897
+msgid "External Devices"
+msgstr "外部デバイス"
+
+#: settings/Menu/LayoutTweaksPage.js:789
+msgid "Nothing Yet!"
+msgstr "まだ何もありません！"
+
+#: settings/Menu/LayoutTweaksPage.js:799 settings/Menu/LayoutTweaksPage.js:823
+#: settings/Menu/LayoutTweaksPage.js:864
+msgid "Categories List"
+msgstr "カテゴリーリスト"
+
+#: settings/Menu/LayoutTweaksPage.js:826
+msgid "Pinned and Frequent Apps"
+msgstr "ピン留めされたアプリとよく使用するアプリ"
+
+#: settings/Menu/LayoutTweaksPage.js:855
+msgid "Max Frequent Apps"
+msgstr "よく使用するアプリの最大数"
+
+#: settings/Menu/LayoutTweaksPage.js:868
+msgid "'All Apps' Button Action"
+msgstr "「すべてのアプリ」ボタンの動作"
+
+#: settings/Menu/LayoutTweaksPage.js:919
+msgid "Category Quick Links"
+msgstr "カテゴリのクイックリンク"
+
+#: settings/Menu/LayoutTweaksPage.js:920
+msgid ""
+"Display quick links of extra categories on the home page\n"
+"Must also be enabled in 'Menu -> Extra Categories' section"
+msgstr ""
+"ホームページに追加カテゴリのクイックリンクを表示\n"
+"「メニュー」 → 「追加カテゴリ」セクションで有効にする必要があります"
+
+#: settings/Menu/LayoutTweaksPage.js:935
+msgid "Quick Links Location"
+msgstr "クイックリンクの位置"
+
+#: settings/Menu/LayoutTweaksPage.js:967
+msgid "Enable Weather Widget"
+msgstr "天気ウィジェットを有効化"
+
+#: settings/Menu/LayoutTweaksPage.js:981
+msgid "Enable Clock Widget"
+msgstr "時計ウィジェットを有効化"
+
+#: settings/Menu/LayoutsPage.js:24
+msgid "Current Menu Layout"
+msgstr "現在のメニューレイアウト"
+
+#: settings/Menu/LayoutsPage.js:38
+msgid "Choose a new menu layout?"
+msgstr "新しいメニューレイアウトを選択しますか？"
+
+#: settings/Menu/LayoutsPage.js:44
+#, javascript-format
+msgid "%s Menu Layouts"
+msgstr "%s メニューレイアウト"
+
+#: settings/Menu/ListOtherPage.js:34
+msgid "Actions will be hidden from ArcMenu if not available on your system."
+msgstr ""
+"お使いのシステムで利用できないアクションは、ArcMenu から非表示になります。"
+
+#: settings/Menu/ListOtherPage.js:38
+msgid "Power Off / Log Out Buttons"
+msgstr "電源オフ / ログアウト ボタン"
+
+#: settings/Menu/ListOtherPage.js:41 settings/Menu/VisualSettings.js:111
+#: settings/Menu/VisualSettings.js:184 settings/Menu/VisualSettings.js:278
+msgid "Off"
+msgstr "オフ"
+
+#: settings/Menu/ListOtherPage.js:42
+msgid "Power Buttons"
+msgstr "電源ボタン"
+
+#: settings/Menu/ListOtherPage.js:43
+msgid "Power Menu"
+msgstr "電源メニュー"
+
+#: settings/Menu/ListOtherPage.js:45
+msgid "Override Display Style"
+msgstr "表示スタイルの上書き"
+
+#: settings/Menu/ListPinnedPage.js:64 settings/Menu/ListPinnedPage.js:67
+#: settings/Menu/ListPinnedPage.js:73 settings/Menu/ListPinnedPage.js:78
+msgid "Add More Apps"
+msgstr "他のアプリを追加"
+
+#: settings/Menu/ListPinnedPage.js:70
+msgid "Add Default User Directories"
+msgstr "デフォルトのユーザーディレクトリを追加"
+
+#: settings/Menu/ListPinnedPage.js:76
+msgid "Add More Shortcuts"
+msgstr "他のショートカットを追加"
+
+#: settings/Menu/ListPinnedPage.js:142
+msgid "Add Custom Shortcut"
+msgstr "カスタムショートカットを追加"
+
+#: settings/Menu/ListPinnedPage.js:233
+msgid "Invalid Shortcut"
+msgstr "無効なショートカット"
+
+#: settings/Menu/ListPinnedPage.js:325
+msgid "Add to your Pinned Apps"
+msgstr "ピン留めされたアプリに追加"
+
+#: settings/Menu/ListPinnedPage.js:327
+msgid "Add to your Extra Shortcuts"
+msgstr "追加のショートカットに追加"
+
+#: settings/Menu/ListPinnedPage.js:329
+msgid "Select Application Shortcuts"
+msgstr "アプリケーションのショートカットを選択"
+
+#: settings/Menu/ListPinnedPage.js:331
+msgid "Select Directory Shortcuts"
+msgstr "ディレクトリのショートカットを選択"
+
+#: settings/Menu/ListPinnedPage.js:333
+msgid "Add to the Context Menu"
+msgstr "コンテキストメニューに追加"
+
+#: settings/Menu/ListPinnedPage.js:347 settings/Menu/ListPinnedPage.js:358
+#: settings/Menu/ListPinnedPage.js:381 settings/Menu/ListPinnedPage.js:386
+msgid "Separator"
+msgstr "セパレーター"
+
+#: settings/Menu/ListPinnedPage.js:348 settings/Menu/ListPinnedPage.js:359
+msgid "Spacer"
+msgstr "スペーサー"
+
+#: settings/Menu/ListPinnedPage.js:354
+msgid "Run Command..."
+msgstr "コマンドを実行..."
+
+#: settings/Menu/ListPinnedPage.js:357
+msgid "Show All Apps"
+msgstr "すべてのアプリを表示する"
+
+#: settings/Menu/ListPinnedPage.js:366
+msgid "Menu Settings"
+msgstr "メニュー設定"
+
+#: settings/Menu/ListPinnedPage.js:368
+msgid "Menu Theming"
+msgstr "メニューテーマ"
+
+#: settings/Menu/ListPinnedPage.js:370
+msgid "Change Menu Layout"
+msgstr "メニューレイアウトを変更"
+
+#: settings/Menu/ListPinnedPage.js:372
+msgid "Menu Button Settings"
+msgstr "メニューボタン設定"
+
+#: settings/Menu/ListPinnedPage.js:375
+msgid "Panel Extension Settings"
+msgstr "パネル拡張設定"
+
+#: settings/Menu/ListPinnedPage.js:379 settings/MenuPage.js:144
+msgid "Power Options"
+msgstr "電源オプション"
+
+#: settings/Menu/ListPinnedPage.js:404
+msgid "Documents"
+msgstr "ドキュメント"
+
+#: settings/Menu/ListPinnedPage.js:406
+msgid "Downloads"
+msgstr "ダウンロード"
+
+#: settings/Menu/ListPinnedPage.js:408
+msgid "Music"
+msgstr "ミュージック"
+
+#: settings/Menu/ListPinnedPage.js:409
+msgid "Pictures"
+msgstr "ピクチャ"
+
+#: settings/Menu/ListPinnedPage.js:410
+msgid "Videos"
+msgstr "ビデオ"
+
+#: settings/Menu/ListPinnedPage.js:413
+msgid "Recent"
+msgstr "最近"
+
+#: settings/Menu/ListPinnedPage.js:440
+msgid "Dash to Panel or App Icons Taskbar"
+msgstr "Dash to Panel または App Icons Taskbar"
+
+#: settings/Menu/ListPinnedPage.js:521
+#, javascript-format
+msgid "%s has been added"
+msgstr "%s が追加されました"
+
+#: settings/Menu/ListPinnedPage.js:532
+#, javascript-format
+msgid "%s has been removed"
+msgstr "%s が削除されました"
+
+#: settings/Menu/ListPinnedPage.js:556
+msgid "Add a Custom Shortcut"
+msgstr "カスタムショートカットを追加"
+
+#: settings/Menu/ListPinnedPage.js:566
+msgid "Edit Pinned App"
+msgstr "ピン留めされたアプリを編集"
+
+#: settings/Menu/ListPinnedPage.js:568
+msgid "Edit Shortcut"
+msgstr "ショートカットを編集"
+
+#: settings/Menu/ListPinnedPage.js:580
+msgid "Title"
+msgstr "タイトル"
+
+#: settings/Menu/ListPinnedPage.js:592 settings/MenuButtonPage.js:59
+#: settings/MenuButtonPage.js:156
+msgid "Icon"
+msgstr "アイコン"
+
+#: settings/Menu/ListPinnedPage.js:605 settings/MenuButtonPage.js:159
+msgid "Browse..."
+msgstr "参照..."
+
+#: settings/Menu/ListPinnedPage.js:611 settings/MenuButtonPage.js:617
+msgid "Select an Icon"
+msgstr "アイコンを選択"
+
+#: settings/Menu/ListPinnedPage.js:640
+msgid "Command"
+msgstr "コマンド"
+
+#: settings/Menu/ListPinnedPage.js:640
+msgid "Directory"
+msgstr "ディレクトリ"
+
+#: settings/Menu/ListPinnedPage.js:653
+msgid "Add"
+msgstr "追加"
+
+#: settings/Menu/SearchOptionsPage.js:16 settings/MenuPage.js:134
+msgid "Search Options"
+msgstr "検索オプション"
+
+#: settings/Menu/SearchOptionsPage.js:27
+msgid "Hide Search Bar"
+msgstr "検索バーを非表示にする"
+
+#: settings/Menu/SearchOptionsPage.js:28
+msgid "The search bar hides when empty and appears when typing."
+msgstr "検索バーは、空の場合は自動的に非表示になり、入力すると表示されます。"
+
+#: settings/Menu/SearchOptionsPage.js:42
+msgid "Show Search Result Descriptions"
+msgstr "検索結果の説明を表示"
+
+#: settings/Menu/SearchOptionsPage.js:57
+msgid "Highlight search result terms"
+msgstr "検索結果のキーワードを強調表示"
+
+#: settings/Menu/SearchOptionsPage.js:76
+msgid "Max Search Results"
+msgstr "最大検索結果件数"
+
+#: settings/Menu/SearchOptionsPage.js:120
+msgid "Search Box Border Radius"
+msgstr "検索ボックスの枠線の角の丸み"
+
+#: settings/Menu/SearchOptionsPage.js:134
+msgid "Extra Search Providers"
+msgstr "追加の検索プロバイダー"
+
+#: settings/Menu/SearchOptionsPage.js:145
+msgid "Search for open windows across all workspaces"
+msgstr "すべてのワークスペースで開いているウィンドウを検索"
+
+#: settings/Menu/SearchOptionsPage.js:159
+msgid "Search for recent files"
+msgstr "最近のファイルを検索"
+
+#: settings/Menu/SubPage.js:44 settings/MenuButtonPage.js:29
+msgid "Reset settings"
+msgstr "設定をリセット"
+
+#: settings/Menu/SubPage.js:49 settings/MenuButtonPage.js:37
+#, javascript-format
+msgid "Reset all %s settings?"
+msgstr "すべての %s 設定をリセットしますか？"
+
+#: settings/Menu/SubPage.js:50 settings/MenuButtonPage.js:38
+#, javascript-format
+msgid "All %s settings will be reset to the default value."
+msgstr "すべての %s 設定が既定値にリセットされます。"
+
+#: settings/Menu/ThemePage.js:39
+msgid "Override Theme"
+msgstr "テーマを上書き"
+
+#: settings/Menu/ThemePage.js:40 settings/MenuButtonPage.js:249
+msgid "Results may vary with third party themes"
+msgstr "サードパーティ製のテーマでは、結果が異なる場合があります"
+
+#: settings/Menu/ThemePage.js:47 settings/Menu/ThemingDialog.js:67
+#: settings/Menu/ThemingDialog.js:75 settings/Menu/ThemingDialog.js:141
+msgid "Menu Themes"
+msgstr "メニューテーマ"
+
+#: settings/Menu/ThemePage.js:119
+msgid "Current Theme"
+msgstr "現在のテーマ"
+
+#: settings/Menu/ThemePage.js:147
+msgid "Save as Theme"
+msgstr "テーマとして保存"
+
+#: settings/Menu/ThemePage.js:177
+msgid "Menu Styling"
+msgstr "メニュースタイリング"
+
+#: settings/Menu/ThemePage.js:182 settings/Menu/ThemePage.js:208
+#: settings/Menu/ThemePage.js:214 settings/MenuButtonPage.js:256
+#: settings/MenuButtonPage.js:259 settings/MenuButtonPage.js:265
+msgid "Background Color"
+msgstr "背景色"
+
+#: settings/Menu/ThemePage.js:185 settings/Menu/ThemePage.js:211
+#: settings/Menu/ThemePage.js:217 settings/MenuButtonPage.js:253
+#: settings/MenuButtonPage.js:262 settings/MenuButtonPage.js:268
+msgid "Foreground Color"
+msgstr "前景色"
+
+#: settings/Menu/ThemePage.js:188 settings/MenuButtonPage.js:279
+msgid "Border Color"
+msgstr "枠線の色"
+
+#: settings/Menu/ThemePage.js:191 settings/MenuButtonPage.js:275
+msgid "Border Width"
+msgstr "枠線の太さ"
+
+#: settings/Menu/ThemePage.js:194 settings/MenuButtonPage.js:271
+msgid "Border Radius"
+msgstr "枠線の角の丸み"
+
+#: settings/Menu/ThemePage.js:200
+msgid "Separator Color"
+msgstr "セパレーターの色"
+
+#: settings/Menu/ThemePage.js:204
+msgid "Menu Items Styling"
+msgstr "メニュー項目のスタイリング"
+
+#: settings/Menu/ThemePage.js:208 settings/Menu/ThemePage.js:211
+#: settings/MenuButtonPage.js:259 settings/MenuButtonPage.js:262
+msgid "Hover"
+msgstr "ホバー"
+
+#: settings/Menu/ThemePage.js:214 settings/Menu/ThemePage.js:217
+#: settings/MenuButtonPage.js:265 settings/MenuButtonPage.js:268
+msgid "Active"
+msgstr "アクティブ"
+
+#: settings/Menu/ThemingDialog.js:15
+msgid "Save Theme As..."
+msgstr "テーマを名前を付けて保存…"
+
+#: settings/Menu/ThemingDialog.js:27
+msgid "Theme Name"
+msgstr "テーマ名"
+
+#: settings/Menu/ThemingDialog.js:44
+msgid "Save Theme"
+msgstr "テーマを保存"
+
+#: settings/Menu/ThemingDialog.js:60
+msgid "Manage Themes"
+msgstr "テーマを管理"
+
+#: settings/Menu/ThemingDialog.js:322
+msgid "Save Themes"
+msgstr "テーマを保存"
+
+#: settings/Menu/ThemingDialog.js:324
+msgid "Load Themes"
+msgstr "テーマを読み込む"
+
+#: settings/Menu/ThemingDialog.js:377
+#, javascript-format
+msgid "%s has been selected"
+msgstr "%s が選択されました"
+
+#: settings/Menu/ThemingDialog.js:389
+#, javascript-format
+msgid "%s has been unselected"
+msgstr "%s の選択が解除されました"
+
+#: settings/Menu/VisualSettings.js:18
+msgid "Menu Size"
+msgstr "メニューサイズ"
+
+#: settings/Menu/VisualSettings.js:56
+msgid "Left-Panel Width"
+msgstr "左パネルの幅"
+
+#: settings/Menu/VisualSettings.js:57 settings/Menu/VisualSettings.js:78
+msgid "Traditional Layouts"
+msgstr "伝統的なレイアウト"
+
+#: settings/Menu/VisualSettings.js:98
+msgid "Width Offset"
+msgstr "幅のオフセット"
+
+#: settings/Menu/VisualSettings.js:99 settings/Menu/VisualSettings.js:193
+msgid "Non-Traditional Layouts"
+msgstr "非伝統的なレイアウト"
+
+#: settings/Menu/VisualSettings.js:106
+msgid "Menu Location"
+msgstr "メニューの位置"
+
+#: settings/Menu/VisualSettings.js:112
+msgid "Top Centered"
+msgstr "上部中央"
+
+#: settings/Menu/VisualSettings.js:113
+msgid "Top Left"
+msgstr "左上"
+
+#: settings/Menu/VisualSettings.js:114
+msgid "Top Right"
+msgstr "右上"
+
+#: settings/Menu/VisualSettings.js:115
+msgid "Bottom Centered"
+msgstr "下部中央"
+
+#: settings/Menu/VisualSettings.js:116
+msgid "Bottom Left"
+msgstr "左下"
+
+#: settings/Menu/VisualSettings.js:117
+msgid "Bottom Right"
+msgstr "右下"
+
+#: settings/Menu/VisualSettings.js:118
+msgid "Left Centered"
+msgstr "左中央"
+
+#: settings/Menu/VisualSettings.js:119
+msgid "Right Centered"
+msgstr "右中央"
+
+#: settings/Menu/VisualSettings.js:120
+msgid "Monitor Centered"
+msgstr "モニター中央"
+
+#: settings/Menu/VisualSettings.js:122
+msgid "Override Menu Location"
+msgstr "メニューの位置を上書きする"
+
+#: settings/Menu/VisualSettings.js:163
+msgid "Override Menu Rise"
+msgstr "メニューの上昇を上書きする"
+
+#: settings/Menu/VisualSettings.js:164
+msgid "Menu Distance from Panel and Screen Edge"
+msgstr "パネルと画面端からメニューまでの距離"
+
+#: settings/Menu/VisualSettings.js:178
+msgid "Override Icon Sizes"
+msgstr "アイコンサイズを上書きする"
+
+#: settings/Menu/VisualSettings.js:179
+msgid "Override the icon size of various menu items"
+msgstr "様々なメニュー項目のアイコンサイズを上書きする"
+
+#: settings/Menu/VisualSettings.js:185 settings/Menu/VisualSettings.js:188
+#: settings/Menu/VisualSettings.js:280
+msgid "Small"
+msgstr "小"
+
+#: settings/Menu/VisualSettings.js:186 settings/Menu/VisualSettings.js:189
+#: settings/Menu/VisualSettings.js:281
+msgid "Medium"
+msgstr "中"
+
+#: settings/Menu/VisualSettings.js:187 settings/Menu/VisualSettings.js:190
+#: settings/Menu/VisualSettings.js:282
+msgid "Large"
+msgstr "大"
+
+#: settings/Menu/VisualSettings.js:188 settings/Menu/VisualSettings.js:189
+#: settings/Menu/VisualSettings.js:190
+msgid "Wide"
+msgstr "ワイド"
+
+#: settings/Menu/VisualSettings.js:191 settings/MenuButtonPage.js:486
+msgid "Custom"
+msgstr "カスタム"
+
+#: settings/Menu/VisualSettings.js:193
+msgid "Grid Menu Items"
+msgstr "グリッドメニュー項目"
+
+#: settings/Menu/VisualSettings.js:194
+msgid "Apps, Pinned Apps, Shortcuts, Grid Search Results"
+msgstr "アプリ、ピン留めされたアプリ、ショートカット、グリッド検索結果"
+
+#: settings/Menu/VisualSettings.js:224
+msgid "Applications"
+msgstr "アプリケーション"
+
+#: settings/Menu/VisualSettings.js:225
+msgid "Apps, Pinned Apps, Items within Category, List Search Results"
+msgstr "アプリ、ピン留めされたアプリ、カテゴリ内の項目、リスト検索結果"
+
+#: settings/Menu/VisualSettings.js:232
+msgid "Directory / Application / Other Shortcuts, Power Menu"
+msgstr "ディレクトリ / アプリケーション / その他のショートカット、電源メニュー"
+
+#: settings/Menu/VisualSettings.js:238
+msgid "Application Categories"
+msgstr "アプリケーションカテゴリ"
+
+#: settings/Menu/VisualSettings.js:244
+msgid "Button Widgets"
+msgstr "ボタンウィジェット"
+
+#: settings/Menu/VisualSettings.js:245
+msgid "Power Buttons, Unity Bottom Bar, Mint Side Bar, etc"
+msgstr "電源ボタン、Unity ボトムバー、Mint サイドバー、など"
+
+#: settings/Menu/VisualSettings.js:251
+msgid "Miscellaneous"
+msgstr "その他"
+
+#: settings/Menu/VisualSettings.js:252
+msgid "Avatar, Search, Navigation Icons"
+msgstr "アバター、検索、ナビゲーションアイコン"
+
+#: settings/Menu/VisualSettings.js:279
+msgid "Extra Small"
+msgstr "超小"
+
+#: settings/Menu/VisualSettings.js:283
+msgid "Extra Large"
+msgstr "超大"
+
+#: settings/Menu/VisualSettings.js:286 settings/MenuButtonPage.js:63
+msgid "Hidden"
+msgstr "非表示"
+
+#: settings/Menu/VisualSettings.js:305
+msgid "Custom Grid Icon Size"
+msgstr "カスタムグリッドアイコンサイズ"
+
+#: settings/Menu/VisualSettings.js:353 settings/MenuButtonPage.js:193
+msgid "Icon Size"
+msgstr "アイコンサイズ"
+
+#: settings/MenuButtonPage.js:18
+msgid "Menu Button"
+msgstr "メニューボタン"
+
+#: settings/MenuButtonPage.js:54
+msgid "Appearance"
+msgstr "外観"
+
+#: settings/MenuButtonPage.js:60 settings/MenuButtonPage.js:143
+msgid "Text"
+msgstr "テキスト"
+
+#: settings/MenuButtonPage.js:61
+msgid "Icon and Text"
+msgstr "アイコンとテキスト"
+
+#: settings/MenuButtonPage.js:62
+msgid "Text and Icon"
+msgstr "テキストとアイコン"
+
+#: settings/MenuButtonPage.js:65
+msgid "Display Style"
+msgstr "表示スタイル"
+
+#: settings/MenuButtonPage.js:102
+msgid "Padding"
+msgstr "パディング"
+
+#: settings/MenuButtonPage.js:170
+msgid "Choose a New Icon"
+msgstr "新しいアイコンを選択"
+
+#: settings/MenuButtonPage.js:206
+msgid "Click Options"
+msgstr "クリックオプション"
+
+#: settings/MenuButtonPage.js:212
+msgid "Context Menu"
+msgstr "コンテキストメニュー"
+
+#: settings/MenuButtonPage.js:213
+msgid "None"
+msgstr "なし"
+
+#: settings/MenuButtonPage.js:216
+msgid "Left Click"
+msgstr "左クリック"
+
+#: settings/MenuButtonPage.js:226
+msgid "Right Click"
+msgstr "右クリック"
+
+#: settings/MenuButtonPage.js:236
+msgid "Middle Click"
+msgstr "中クリック"
+
+#: settings/MenuButtonPage.js:248
+msgid "Styling"
+msgstr "スタイリング"
+
+#: settings/MenuButtonPage.js:276
+msgid "Background colors required if set to 0"
+msgstr "0に設定されている場合は、背景色の指定が必要です"
+
+#: settings/MenuButtonPage.js:424
+msgid "Menu Button Icons"
+msgstr "メニューボタンアイコン"
+
+#: settings/MenuButtonPage.js:428
+msgid "Icons"
+msgstr "アイコン"
+
+#: settings/MenuButtonPage.js:448
+msgid "Distros"
+msgstr "ディストロ"
+
+#: settings/MenuButtonPage.js:454
+msgid "Legal Disclaimer"
+msgstr "法的免責事項"
+
+#: settings/MenuButtonPage.js:520
+msgid "Browse Files..."
+msgstr "ファイルを参照…"
+
+#: settings/MenuButtonPage.js:525
+msgid "Select an Image File"
+msgstr "画像ファイルを選択"
+
+#: settings/MenuButtonPage.js:533 settings/MenuButtonPage.js:715
+msgid "Select"
+msgstr "選択"
+
+#: settings/MenuButtonPage.js:552
+msgid "Browse Icons..."
+msgstr "アイコンを参照…"
+
+#: settings/MenuButtonPage.js:622
+msgid "System Icons"
+msgstr "システムアイコン"
+
+#: settings/MenuButtonPage.js:626
+msgid "Search..."
+msgstr "検索中..."
+
+#: settings/MenuButtonPage.js:735
+msgid "Legal Disclaimer for Distro Icons"
+msgstr "ディストリビューションアイコンの法的免責事項"
+
+#: settings/MenuPage.js:24
+msgid "Menu"
+msgstr "メニュー"
+
+#: settings/MenuPage.js:32
+msgid "How should the menu look?"
+msgstr "メニューはどのような外観にしますか？"
+
+#: settings/MenuPage.js:39
+msgid "Menu Layout"
+msgstr "メニューレイアウト"
+
+#: settings/MenuPage.js:40
+msgid "Choose a layout style for the menu"
+msgstr "メニューのレイアウトスタイルを選択"
+
+#: settings/MenuPage.js:55
+msgid "Menu Theme"
+msgstr "メニューテーマ"
+
+#: settings/MenuPage.js:56
+msgid "Modify menu colors, font size, and border"
+msgstr "メニューの色、フォントサイズ、およびボーダーを変更する"
+
+#: settings/MenuPage.js:65
+msgid "Menu Visual Appearance"
+msgstr "メニューの外観"
+
+#: settings/MenuPage.js:66
+msgid "Change menu height, width, location, and icon sizes"
+msgstr "メニューの高さ、幅、位置、およびアイコンサイズを変更する"
+
+#: settings/MenuPage.js:75
+msgid "Fine Tune"
+msgstr "微調整"
+
+#: settings/MenuPage.js:76
+msgid "Adjust less commonly used settings"
+msgstr "使用頻度の低い設定を調整する"
+
+#: settings/MenuPage.js:85
+msgid "What should show on the menu?"
+msgstr "メニューに何を表示しますか？"
+
+#: settings/MenuPage.js:92
+msgid "Settings specific to the current menu layout"
+msgstr "現在のメニューレイアウトに固有の設定"
+
+#: settings/MenuPage.js:112
+msgid "Directory Shortcuts"
+msgstr "ディレクトリショートカット"
+
+#: settings/MenuPage.js:145
+msgid "Choose which power options to show and the display style"
+msgstr "表示する電源オプションおよび表示スタイルを選択"
+
+#: settings/MenuPage.js:156
+msgid "Extra Categories"
+msgstr "追加のカテゴリ"
+
+#: settings/MenuPage.js:158
+msgid "Add or remove additional custom categories"
+msgstr "追加のカスタムカテゴリを追加または削除する"
+
+#: settings/MenuPage.js:168
+msgid "What should show on the context menu?"
+msgstr "コンテキストメニューに何を表示しますか？"
+
+#: settings/MenuPage.js:173
+msgid "Modify ArcMenu Context Menu"
+msgstr "ArcMenu のコンテキストメニューを変更する"
+
+#. TRANSLATORS: This will display as "ProjectName v21 Released!" as an example.
+#: updateNotifier.js:56
+#, javascript-format
+msgid "%s v%s Released!"
+msgstr "%s v%s リリース！"
+
+#: updateNotifier.js:67
+msgid "What's new?"
+msgstr "新機能"
+
+#: updateNotifier.js:68
+msgid "Dismiss"
+msgstr "閉じる"
+
+#~ msgid "Restart"
+#~ msgstr "再起動"
+
+#~ msgid "Eleven"
+#~ msgstr "Eleven"
+
+#~ msgid "Simple"
+#~ msgstr "シンプル"
+
+#~ msgid "Simple 2"
+#~ msgstr "シンプル2"
+
+#~ msgid "Settings Quick Links:"
+#~ msgstr "設定クイックリンク:"
+
+#~ msgid "Modify Pinned Apps"
+#~ msgstr "ピン留めされたアプリを変更"
+
+#~ msgid "Modify Shortcuts"
+#~ msgstr "ショートカットを変更"
+
+#~ msgid "Layout Tweaks"
+#~ msgstr "レイアウトを調整"
+
+#~ msgid "Button Appearance"
+#~ msgstr "ボタンの外見"
+
+#~ msgid "Dash to Dock Settings"
+#~ msgstr "Dash to Dockの設定"
+
+#~ msgid "Ubuntu Dock Settings"
+#~ msgstr "Ubuntu Dockの設定"
+
+#~ msgid "Trash"
+#~ msgstr "ゴミ箱"
+
+#~ msgid "More"
+#~ msgstr "詳細"
+
+#~ msgid "All"
+#~ msgstr "A全て"
+
+#~ msgid "Type to search…"
+#~ msgstr "入力して検索…"
+
+#~ msgid "Circular"
+#~ msgstr "円形"
+
+#~ msgid "Selected Button Border Color"
+#~ msgstr "選択されたボタンの下線の色"
+
+#~ msgid "Selected Button Background Color"
+#~ msgstr "選択されたボタンの背景色"
+
+#~ msgid "Restore Defaults"
+#~ msgstr "デフォルトに戻す"
+
+#~ msgid "Restore the default settings on this page"
+#~ msgstr "このページの設定をデフォルトに戻す"
+
+#~ msgid "Brisk Menu Shortcuts"
+#~ msgstr "Briskメニューのショートカット"
+
+#~ msgid "Inherit Shell Theme Popup Gap"
+#~ msgstr "シェルのギャップを継承する"
+
+#~ msgid "Default Screen"
+#~ msgstr "デフォルトの画面"
+
+#~ msgid "Home Screen"
+#~ msgstr "ホームスクリーン"
+
+#~ msgid "Unity Layout Buttons"
+#~ msgstr "Unity レイアウトのボタン"
+
+#~ msgid "Button Separator Position"
+#~ msgstr "セパレータの位置"
+
+#~ msgid "Separator Position"
+#~ msgstr "セパレータの位置"
+
+#~ msgid "Adjust the position of the separator in the button panel"
+#~ msgstr "ボタンパネルのセパレーターの位置を調整"
+
+#~ msgid "Mint Layout Shortcuts"
+#~ msgstr "Mint レイアウトのショートカット"
+
+#~ msgid "Shortcut Separator Position"
+#~ msgstr "ショートカットの区切りの位置"
+
+#~ msgid "Show all connected external devices in ArcMenu"
+#~ msgstr "ArcMenuに全ての外部でばいすを表示する"
+
+#~ msgid "Show all Nautilus bookmarks in ArcMenu"
+#~ msgstr "NautilusのブックマークをArcMenuに表示する"
+
+#~ msgid "Choose the default screen for tognee Layout"
+#~ msgstr "togneeレイアウト用のデフォルトの画面を選択してください"
+
+#~ msgid "Choose the default screen for ArcMenu"
+#~ msgstr "ArcMenuのデフォルトの画面を選択してください"
+
+#~ msgid "Current Windows:"
+#~ msgstr "現在のウィンドウ:"
+
+#~ msgid "New Window"
+#~ msgstr "新しいウィンドウ"
+
+#~ msgid "Launch using Integrated Graphics Card"
+#~ msgstr "iGPUを使って実行"
+
+#~ msgid "Launch using Discrete Graphics Card"
+#~ msgstr "dGPUを使って実行"
+
+#~ msgid "Add to Favorites"
+#~ msgstr "お気に入りに追加"
+
+#~ msgid "Users"
+#~ msgstr "ユーザー"
+
+#~ msgid "Show Applications"
+#~ msgstr "アプリを表示"
+
+#~ msgid "Add world clocks…"
+#~ msgstr "世界時計を追加する…"
+
+#~ msgid "World Clocks"
+#~ msgstr "世界時計"
+
+#~ msgid "Weather"
+#~ msgstr "天気"
+
+#~ msgid "Select a location…"
+#~ msgstr "地域を選択…"
+
+#~ msgid "Loading…"
+#~ msgstr "読み込み中…"
+
+#~ msgid "Go online for weather information"
+#~ msgstr "天気に関する情報のためにオンラインでアクセス"
+
+#~ msgid "Weather information is currently unavailable"
+#~ msgstr "天気に関する情報が現在利用できません"
+
+#~ msgid "Empty Trash"
+#~ msgstr "空のゴミ箱"
+
+#~ msgid "Change Selected Pinned App"
+#~ msgstr "選択されたピン留めアプリを変更"
+
+#~ msgid "Default Apps"
+#~ msgstr "デフォルトのアプリ"
+
+#~ msgid "Presets"
+#~ msgstr "プリセット"
+
+#~ msgid "Edit Custom Shortcut"
+#~ msgstr "カスタムショートカットを編集"
+
+#~ msgid "Shortcut Name:"
+#~ msgstr "ショートカット名:"
+
+#~ msgid "Icon:"
+#~ msgstr "アイコン:"
+
+#~ msgid "Terminal Command:"
+#~ msgstr "ターミナルコマンド:"
+
+#~ msgid "Shortcut Path:"
+#~ msgstr "ショートカットパス:"
+
+#~ msgid "Activities Hot Corner Options"
+#~ msgstr "ホットコーナーのオプション"
+
+#~ msgid "Modify Activities Hot Corner"
+#~ msgstr "ホットコーナーを編集"
+
+#~ msgid "Hotkey activation"
+#~ msgstr "ショートカットキーを有効化"
+
+#~ msgid "Key Release"
+#~ msgstr "キーリリース"
+
+#~ msgid "Key Press"
+#~ msgstr "キーを押す"
+
+#~ msgid "Left Super Key"
+#~ msgstr "左のSuperキー"
+
+#~ msgid "Right Super Key"
+#~ msgstr "右のSuperキー"
+
+#~ msgid "Custom Hotkey"
+#~ msgstr "カスタムホットキー"
+
+#~ msgid "Display ArcMenu On"
+#~ msgstr "ArcMenuを表示する"
+
+#~ msgid "Dash to Dock"
+#~ msgstr "Dash to Dock"
+
+#~ msgid "Ubuntu Dock"
+#~ msgstr "Ubuntu Dock"
+
+#~ msgid "Main Panel"
+#~ msgstr "メインパネル"
+
+#~ msgid "Dash to Panel"
+#~ msgstr "Dash to Panel"
+
+#~ msgid "Dash to Dock extension not running!"
+#~ msgstr "Dash to Dockが動いていません!"
+
+#~ msgid "Enable Dash to Dock for this feature to work."
+#~ msgstr "この機能を使うにはDash to Dockを有効化してください。"
+
+#~ msgid "Main Panel not found!"
+#~ msgstr "メインパネルが見つかりません!"
+
+#~ msgid "Enable Dash to Panel for this feature to work."
+#~ msgstr "この機能を使うにはDash to Panelを有効化してください。"
+
+#~ msgid "Activities Hot Corner Action"
+#~ msgstr "ホットコーナーのアクション"
+
+#~ msgid "GNOME Default"
+#~ msgstr "GNOMEのデフォルト"
+
+#~ msgid "Open ArcMenu"
+#~ msgstr "ArcMenuを開く"
+
+#~ msgid "Custom Activities Hot Corner Action"
+#~ msgstr "ホットコーナーの動作を変更"
+
+#~ msgid ""
+#~ "Choose from a list of preset commands or use your own terminal command"
+#~ msgstr ""
+#~ "リストからコマンドを選択するかその他のターミナルコマンドを使用してください"
+
+#~ msgid "Preset commands"
+#~ msgstr "プリセットコマンド"
+
+#~ msgid "Show all Applications"
+#~ msgstr "全てのアプリケーションを表示"
+
+#~ msgid "GNOME Terminal"
+#~ msgstr "ターミナル"
+
+#~ msgid "GNOME System Monitor"
+#~ msgstr "システムモニター"
+
+#~ msgid "GNOME Calculator"
+#~ msgstr "電卓"
+
+#~ msgid "GNOME gedit"
+#~ msgstr "Gedit"
+
+#~ msgid "GNOME Screenshot"
+#~ msgstr "スクリーンショット"
+
+#~ msgid "GNOME Weather"
+#~ msgstr "天気"
+
+#~ msgid "Terminal Command"
+#~ msgstr "ターミナル"
+
+#~ msgid "Set Custom Hotkey"
+#~ msgstr "カスタムホットキーをセット"
+
+#~ msgid "Choose Modifiers"
+#~ msgstr "変更を選択"
+
+#~ msgid "Ctrl"
+#~ msgstr "Ctrl"
+
+#~ msgid "Super"
+#~ msgstr "Súper"
+
+#~ msgid "Shift"
+#~ msgstr "Shift"
+
+#~ msgid "Alt"
+#~ msgstr "Alt"
+
+#~ msgid "Press any key"
+#~ msgstr "何かキーを押して下さい"
+
+#~ msgid "Show Arrow"
+#~ msgstr "印を表示する"
+
+#~ msgid "Icon Appearance"
+#~ msgstr "アイコンの見た目"
+
+#~ msgid "Hover Color"
+#~ msgstr "ホバー時の色"
+
+#~ msgid "Hover Background Color"
+#~ msgstr "ホバー時の背景色"
+
+#~ msgid "Active Background Color"
+#~ msgstr "アクティブな背景色"
+
+#~ msgid "Disable Rounded Corners"
+#~ msgstr "丸い角を無効化"
+
+#~ msgid "ArcMenu Icons"
+#~ msgstr "ArcMenu アイコン"
+
+#~ msgid "Browse for a Custom Icon"
+#~ msgstr "その他のアイコンを参照"
+
+#~ msgid "Available Menu Layouts"
+#~ msgstr "利用可能なメニューレイアウト"
+
+#~ msgid "Enable Custom Menu Theme"
+#~ msgstr "カスタムテーマを有効化"
+
+#~ msgid "Menu Height"
+#~ msgstr "メニューの高さ"
+
+#~ msgid "Large Application Icons"
+#~ msgstr "大きいアプリアイコン"
+
+#~ msgid "Disable Recently Installed Apps Indicator"
+#~ msgstr "最近インストールされたアプリのインジケータを無効化"
+
+#~ msgid "Disable Category Arrows"
+#~ msgstr "カテゴリのアローを無効化"
+
+#~ msgid "Disable Menu Arrow"
+#~ msgstr "メニューの印を無効化"
+
+#~ msgid "Alphabetize 'All Programs' Category"
+#~ msgstr "アルファベット順の\"全てのアプリケーション\""
+
+#~ msgid "Enable/Disable multi-lined labels on large application icon layouts."
+#~ msgstr "大きいアプリアイコンのレイアウトで複数行を有効化または無効化。"
+
+#~ msgid "Recently Installed Application Indicators"
+#~ msgstr "最近インストールされたアプリケーションのインジケータ"
+
+#~ msgid "Category Indicator Color"
+#~ msgstr "カテゴリインジケータの色"
+
+#~ msgid "Application Indicator Label Color"
+#~ msgstr "アプリケーションインジケータのラベルの色"
+
+#~ msgid "Gap Adjustment"
+#~ msgstr "調整の幅"
+
+#~ msgid "Offset ArcMenu by 1px"
+#~ msgstr "ArcMenuを1pxずらす"
+
+#~ msgid ""
+#~ "Useful if you notice a 1px gap or overlap between ArcMenu and the panel"
+#~ msgstr "ArcMenuとパネルの間が1px重なった場合に使ってください"
+
+#~ msgid "Select Themes to Import"
+#~ msgstr "インポートするテーマを選択"
+
+#~ msgid "Select Themes to Export"
+#~ msgstr "エクスポートするテーマを選択"
+
+#~ msgid "Import"
+#~ msgstr "インポート"
+
+#~ msgid "Export"
+#~ msgstr "エクスポート"
+
+#~ msgid "Menu Theme Presets"
+#~ msgstr "メニューテーマプリセット"
+
+#~ msgid "Current Menu Theme Preset"
+#~ msgstr "現在のメニューテーマのプリセット"
+
+#~ msgid "Save as Preset"
+#~ msgstr "プリセットとして保存"
+
+#~ msgid "Browse Presets"
+#~ msgstr "プリセットを参照"
+
+#~ msgid "Theme Settings"
+#~ msgstr "テーマ設定"
+
+#~ msgid "Active Item Background Color"
+#~ msgstr "アクティブなアイテムの背景色"
+
+#~ msgid "Active Item Foreground Color"
+#~ msgstr "アクティブなアイテムの色"
+
+#~ msgid "Menu Displacement"
+#~ msgstr "メニューの変位"
+
+#~ msgid "Export or Import Settings"
+#~ msgstr "設定のエクスポートとインポート"
+
+#~ msgid "All ArcMenu Settings"
+#~ msgstr "全ての設定"
+
+#~ msgid "Export or Import All ArcMenu Settings"
+#~ msgstr "全ての設定をインポートまたはエクスポート"
+
+#~ msgid ""
+#~ "Importing settings from file may replace ALL saved settings.\n"
+#~ "This includes all saved pinned apps."
+#~ msgstr ""
+#~ "設定をインポートすると全ての設定が変更されます。\n"
+#~ "これはピン留めされたアプリも含まれています。"
+
+#~ msgid "Import from File"
+#~ msgstr "ファイルからインポート"
+
+#~ msgid "Import settings"
+#~ msgstr "設定をインポート"
+
+#~ msgid "Export to File"
+#~ msgstr "ファイルにエクスポート"
+
+#~ msgid "Export settings"
+#~ msgstr "設定をエクスポート"
+
+#~ msgid "Export or Import Menu Theme Presets"
+#~ msgstr "テーマプリセットのエクスポートとインポート"
+
+#~ msgid "Menu theme presets are located in the \"Menu Theme\" section"
+#~ msgstr "メニューテーマのプリセットは「メニューテーマ」セクションにあります"
+
+#~ msgid "Import Theme Preset"
+#~ msgstr "テーマプリセットをインポート"
+
+#~ msgid "Export Theme Preset"
+#~ msgstr "テーマプリセットをエクスポート"
+
+#~ msgid "ArcMenu Settings Window Size"
+#~ msgstr "ArcMenu設定のウィンドウサイズ"
+
+#~ msgid "Window Width"
+#~ msgstr "ウィンドウの横幅"
+
+#~ msgid "Window Height"
+#~ msgstr "ウィンドウの高さ"
+
+#~ msgid "Restore Default Settings?"
+#~ msgstr "デフォルトの設定を復元しますか？"
+
+#~ msgid "ArcMenu Version"
+#~ msgstr "ArcMenuのバージョン"
+
+#~ msgid "OS"
+#~ msgstr "OS"
+
+#~ msgid "Session Type"
+#~ msgstr "セッションタイプ"
+
+#~ msgid "Developers"
+#~ msgstr "開発者"
+
+#~ msgid "Patrons"
+#~ msgstr "支援者"
+
+#~ msgid "Misc"
+#~ msgstr "その他"
+
+#~ msgid "ArcMenu - Hybrid Sleep Error!"
+#~ msgstr "ArcMenu - ハイブリットスリープのエラー!"
+
+#~ msgid "System unable to hybrid sleep."
+#~ msgstr "システムはハイブリッドスリープできません。"
+
+#~ msgid "ArcMenu - Hibernate Error!"
+#~ msgstr "ArcMenu - ハイバネートのエラー!"
+
+#~ msgid "System unable to hibernate."
+#~ msgstr "システムをハイバネートできません。"
+
+#~ msgid "Disable Active Indicator"
+#~ msgstr "アクティブインジケータを無効化"
+
+#~ msgid "Launch using Dedicated Graphics Card"
+#~ msgstr "専用のグラフィックカードを使用して実行"
+
+#~ msgid "Brisk Menu Style"
+#~ msgstr "Brisk Menu"
+
+#~ msgid "Whisker Menu Style"
+#~ msgstr "Whisker Menu"
+
+#~ msgid "Mint Menu Style"
+#~ msgstr "Mint Menu"
+
+#~ msgid "Ubuntu Dash Style"
+#~ msgstr "Ubuntu Dash"
+
+#~ msgid "Redmond Menu Style"
+#~ msgstr "Redmon dメニュー"
+
+#~ msgid "GNOME Dash Style"
+#~ msgstr "Gnome Dash"
+
+#~ msgid "Simple Menu 2 Style"
+#~ msgstr "SImple Menu 2"
+
+#~ msgid "Raven Menu Style"
+#~ msgstr "Raven Menu"
+
+#~ msgid ""
+#~ "Traditional layouts use a familiar style and have a traditional user "
+#~ "experience."
+#~ msgstr ""
+#~ "従来のレイアウトは使い慣れたスタイルを使用し、従来のユーザーエクスペリエン"
+#~ "スを備えています。"
+
+#~ msgid ""
+#~ "Modern layouts use a style and UX based approach with a focus on design "
+#~ "and functionality."
+#~ msgstr ""
+#~ "モダンレイアウトのスタイルとUXベースはデザインと機能に重点を置いています。"
+
+#~ msgid ""
+#~ "Touch layouts contain large menu elements that are well suited for touch "
+#~ "based devices."
+#~ msgstr ""
+#~ "タッチレイアウトはタッチデバイスに最適化され、大きなメニューを使用可能で"
+#~ "す。"
+
+#~ msgid ""
+#~ "Simple layouts are designed for mouse based devices and contain "
+#~ "simplistic menu elements."
+#~ msgstr ""
+#~ "シンプルなメニューで構成され、マウスベースのデバイス用に設計されています"
+
+#~ msgid ""
+#~ "Launcher layouts are well suited for keyboard driven devices and provide "
+#~ "the user with quick and simple menu elements."
+#~ msgstr "キーボードベースのデバイス用に設計されているシンプルなメニューです"
+
+#~ msgid ""
+#~ "Alternative layouts have an unconventional style that provide a unique "
+#~ "user experience."
+#~ msgstr "新しいメニューは今までにない新しい独自のレイアウトです"
+
+#~ msgid "Included Layouts"
+#~ msgstr "含まれているレイアウト"
+
+#~ msgid "Information"
+#~ msgstr "情報"
+
+#~ msgid "Show Extra Large Icons with App Descriptions"
+#~ msgstr "アプリの説明付きの大きいアイコンを表示する"
+
+#~ msgid "Disable current theme menu arrow pointer"
+#~ msgstr "現在のテーマのアローポインターを無効化"
+
+#~ msgid "Disable Activities Button in panel"
+#~ msgstr "パネルアクティビティボタンを無効化"
+
+#~ msgid "Dash to Panel currently enabled!"
+#~ msgstr "Dash to Panelが有効化されました"
+
+#~ msgid "Disable Dash to Panel for this feature to work."
+#~ msgstr "この機能を使うにはDash to Dockを無効化してください"
+
+#~ msgid "Position in Dash to Panel"
+#~ msgstr "Dash to Panelの位置"
+
+#~ msgid "Position ArcMenu on the Left side of Dash to Panel"
+#~ msgstr "ArcMenuをDash to Panelの左に表示"
+
+#~ msgid "Position ArcMenu on the Left side of the Main Panel"
+#~ msgstr "ArcMenuをメインパネルの左に表示"
+
+#~ msgid "Position ArcMenu in the Center of Dash to Panel"
+#~ msgstr "ArcMenuをDash to Panelの中央に表示"
+
+#~ msgid "Restore Activities Button in panel"
+#~ msgstr "アクティビティボタンをパネルに戻す"
+
+#~ msgid "Choose from a variety of icons"
+#~ msgstr "様々なアイコンから選択"
+
+#~ msgid "Change the color of the Menu Button"
+#~ msgstr "メニューボタンの色を変える"
+
+#~ msgid ""
+#~ "Icon color options will only work with files ending with \"-symbolic.svg\""
+#~ msgstr ""
+#~ "アイコンカラーのオプションは \"-symbolic.svg\"で終わるファイルでのみ動作し"
+#~ "ます"
+
+#~ msgid "Change the hover color of the Menu Button"
+#~ msgstr "メニューボタンにホバー時の色を変える"
+
+#~ msgid "Change the active color of the Menu Button"
+#~ msgstr "メニューボタンのアクティブ時の色を変える"
+
+#~ msgid "Adjust the menu height"
+#~ msgstr "メニューの高さを調整する"
+
+#~ msgid "Certain menu layouts only"
+#~ msgstr "特定のメニューレイアウトのみ"
+
+#~ msgid "Adjust the left-panel width"
+#~ msgstr "左パネルの横幅を調整する"
+
+#~ msgid "Adjust the right-panel width"
+#~ msgstr "右パネルの横幅を調整する"
+
+#~ msgid "Enable large application icons"
+#~ msgstr "大きいアプリアイコンを有効化"
+
+#~ msgid "Enable/Disble"
+#~ msgstr "有効/無効"
+
+#~ msgid "Import ArcMenu Theme Presets from a file"
+#~ msgstr "ファイルからArcMenu テーマをインポート"
+
+#~ msgid "Donate to the ArcMenu Project"
+#~ msgstr "ArcMenuプロジェクトに寄付する"
+
+#~ msgid "ArcMenu GitLab Page"
+#~ msgstr "ArchMenu GitLab"
+
+#~ msgid "Session Buttons"
+#~ msgstr "設定ボタン"
+
+#~ msgid "Reset all..."
+#~ msgstr "全てリセット..."
+
+#~ msgid "Reset all ArcMenu Settings to Default"
+#~ msgstr "全てのArcMenuの設定をデフォルトに戻す"
+
+#~ msgid "Error - Invalid Shortcut"
+#~ msgstr "エラー - 間違ったショートカット"

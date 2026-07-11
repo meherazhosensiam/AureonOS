@@ -1,2 +1,8 @@
 #!/bin/bash
-systemctl enable usbguard
+set -e
+
+if systemctl list-unit-files | grep -q usbguard.service; then
+    systemctl enable usbguard.service
+else
+    echo "USBGuard service not found, skipping..."
+fi

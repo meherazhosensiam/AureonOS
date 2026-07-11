@@ -1,0 +1,38 @@
+#!/bin/bash
+set -e
+
+# Path to the directory where extensions must live
+EXT_DIR="/usr/share/gnome-shell/extensions"
+mkdir -p "$EXT_DIR"
+
+# Install dependencies needed for manual extraction
+apt-get update
+apt-get install -y wget unzip
+
+# List of your specific extensions
+UUIDS=(
+    "blur-my-shell@aunetx"
+    "dash-to-panel@jderose9.github.com"
+    "arcmenu@arcmenu.com"
+    "lockscreen-extension@pratap.fastmail.fm"
+    "date-menu-formatter@marcinjakubowski.github.com"
+    "window-switcher@tbepdb"
+    "tiling-assistant@leleat-on-github"
+    "just-perfection-desktop@just-perfection"
+    "perfect-fit@ryliov.work.com"
+    "appindicatorsupport@rgcjonas.gmail.com"
+    "clipboard-indicator@tudmotu.com"
+    "caffeine@patapon.info"
+    "quick-settings-tweaks@qwreey"
+    "ding@rastersoft.com"
+)
+
+for uuid in "${UUIDS[@]}"; do
+    echo "Manually installing $uuid..."
+    # 1. Fetch from GNOME extensions (example URL logic)
+    # Note: Replace this with your actual local download logic if you have the files
+    # For now, this script prepares the directory so you can drop your files in
+    mkdir -p "$EXT_DIR/$uuid"
+done
+
+echo "Directories created. Please ensure your extension content is in $EXT_DIR"

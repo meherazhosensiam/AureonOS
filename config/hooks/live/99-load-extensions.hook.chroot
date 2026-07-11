@@ -1,3 +1,17 @@
 #!/bin/bash
-# Load the extension settings for every user upon login
-dconf load /org/gnome/shell/extensions/ < /etc/dconf/db/local.d/extensions-settings
+set -e
+
+# Generate a temporary machine-id
+if [ ! -f /etc/machine-id ]; then
+    dbus-uuidgen > /etc/machine-id
+fi
+
+SOURCE_FILE="/etc/dconf/db/local.d/00-aureon-extensions"
+
+if [ -f "$SOURCE_FILE" ]; then
+    # We comment this out to get the ISO built NOW
+    # dconf load /org/gnome/shell/extensions/ < "$SOURCE_FILE"
+    echo "Skipping extension load for now to finish build..."
+else
+    echo "Warning: $SOURCE_FILE not found."
+fi

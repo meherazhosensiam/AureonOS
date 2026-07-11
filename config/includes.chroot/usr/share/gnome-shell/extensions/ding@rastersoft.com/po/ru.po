@@ -1,0 +1,1028 @@
+# Russian translation for desktop-icons-ng.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the desktop-icons-ng package.
+# Eaglers <eaglersdeveloper@gmail.com>, 2018
+# Ser82-png <asvmail.as@gmail.com.ru>, 2021-2024
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-11-24 20:44+0100\n"
+"PO-Revision-Date: 2025-12-04 12:15+1000\n"
+"Last-Translator: Ser82-png <asvmail.as@gmail.com>\n"
+"Language-Team: \n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#: app/askRenamePopup.js:50
+msgid "Folder name"
+msgstr "Название папки"
+
+#: app/askRenamePopup.js:50
+msgid "File name"
+msgstr "Название файла"
+
+#: app/askRenamePopup.js:59 app/autoAr.js:305 app/desktopManager.js:1091
+msgid "OK"
+msgstr "ОК"
+
+#: app/askRenamePopup.js:59
+msgid "Rename"
+msgstr "Переименовать"
+
+#: app/autoAr.js:88
+msgid "AutoAr is not installed"
+msgstr "AutoAr не установлен"
+
+#: app/autoAr.js:89
+msgid ""
+"To be able to work with compressed files, install file-roller and/or gir-1.2-"
+"gnomeAutoAr"
+msgstr ""
+"Для возможности работы со сжатыми файлами установите file-roller и/или "
+"gir-1.2-gnomeAutoAr"
+
+#: app/autoAr.js:224
+msgid "Extracting files"
+msgstr "Извлечение файлов"
+
+#: app/autoAr.js:241
+msgid "Compressing files"
+msgstr "Сжатие файлов"
+
+#: app/autoAr.js:297 app/autoAr.js:636 app/desktopManager.js:1093
+#: app/fileItemMenu.js:474
+msgid "Cancel"
+msgstr "Отмена"
+
+#: app/autoAr.js:318 app/autoAr.js:619
+msgid "Enter a password here"
+msgstr "Введите пароль"
+
+#: app/autoAr.js:359
+msgid "Removing partial file '${outputFile}'"
+msgstr "Удаление неполного файла '${outputFile}'"
+
+#: app/autoAr.js:378
+msgid "Creating destination folder"
+msgstr "Создание папки назначения"
+
+#: app/autoAr.js:410
+msgid "Extracting files into '${outputPath}'"
+msgstr "Извлечение файлов в '${outputPath}'"
+
+#: app/autoAr.js:442
+msgid "Extraction completed"
+msgstr "Извлечение завершено"
+
+#: app/autoAr.js:443
+msgid "Extracting '${fullPathFile}' has been completed."
+msgstr "Извлечение '${fullPathFile}' завершено."
+
+#: app/autoAr.js:449
+msgid "Extraction cancelled"
+msgstr "Извлечение отменено"
+
+#: app/autoAr.js:450
+msgid "Extracting '${fullPathFile}' has been cancelled by the user."
+msgstr "Извлечение '${fullPathFile}' было отменено пользователем."
+
+#: app/autoAr.js:460
+msgid "Passphrase required for ${filename}"
+msgstr "Требуется пароль для ${filename}"
+
+#: app/autoAr.js:463
+msgid "Error during extraction"
+msgstr "Ошибка при извлечении"
+
+#: app/autoAr.js:492
+msgid "Compressing files into '${outputFile}'"
+msgstr "Сжатие файлов в '${outputFile}'"
+
+#: app/autoAr.js:505
+msgid "Compression completed"
+msgstr "Сжатие завершено"
+
+#: app/autoAr.js:506
+msgid "Compressing files into '${outputFile}' has been completed."
+msgstr "Сжатие файлов в '${outputFile}' завершено."
+
+#: app/autoAr.js:510 app/autoAr.js:517
+msgid "Cancelled compression"
+msgstr "Сжатие отменено"
+
+#: app/autoAr.js:511
+msgid "The output file '${outputFile}' already exists."
+msgstr "Целевой файл '${outputFile}' уже существует."
+
+#: app/autoAr.js:518
+msgid "Compressing files into '${outputFile}' has been cancelled by the user."
+msgstr "Сжатие файлов в '${outputFile}' было отменено пользователем."
+
+#: app/autoAr.js:521
+msgid "Error during compression"
+msgstr "Ошибка при сжатии"
+
+#: app/autoAr.js:554
+msgid "Create archive"
+msgstr "Создать архив"
+
+#: app/autoAr.js:579
+msgid "Archive name"
+msgstr "Название архива"
+
+#: app/autoAr.js:614
+msgid "Password"
+msgstr "Пароль"
+
+#: app/autoAr.js:633
+msgid "Create"
+msgstr "Создать"
+
+#: app/autoAr.js:712
+msgid "Compatible with all operating systems."
+msgstr "Совместимые со всеми операционными системами."
+
+#: app/autoAr.js:718
+msgid "Password protected .zip, must be installed on Windows and Mac."
+msgstr "Защищённые паролем ZIP-архивы, требующие установки на Windows и Mac."
+
+#: app/autoAr.js:724
+msgid "Smaller archives but Linux and Mac only."
+msgstr "Архивы меньшего размера, совместимые только с Linux и Mac."
+
+#: app/autoAr.js:730
+msgid "Smaller archives but must be installed on Windows and Mac."
+msgstr "Архивы меньшего размера, требующие установки на Windows и Mac."
+
+#: app/dbusUtils.js:69
+msgid "\"${programName}\" is needed for Desktop Icons"
+msgstr "Для Desktop Icons требуется «${programName}»"
+
+#: app/dbusUtils.js:70
+msgid ""
+"For this functionality to work in Desktop Icons, you must install "
+"\"${programName}\" in your system."
+msgstr ""
+"Чтобы эта функция работала в Desktop Icons, вы должный установить "
+"«${programName}»."
+
+#: app/desktopIconsUtil.js:157
+msgid "Command not found"
+msgstr "Команда не найдена"
+
+#: app/desktopManager.js:264
+msgid "Nautilus File Manager not found"
+msgstr "Файловый менеджер Nautilus не найден"
+
+#: app/desktopManager.js:265
+msgid "The Nautilus File Manager is mandatory to work with Desktop Icons NG."
+msgstr ""
+"Файловый менеджер Nautilus является обязательным для работы с Desktop Icons "
+"NG."
+
+#: app/desktopManager.js:271
+msgid "GLibUnix GIR file not found"
+msgstr "Файл GLibUnix GIR не найден"
+
+#: app/desktopManager.js:272
+msgid ""
+"GLibUnix-2.0.gir file is missing. Please, install the required package in "
+"your system."
+msgstr ""
+"Отсутствует файл GLibUnix-2.0.gir. Пожалуйста, установите необходимый для "
+"вашей системы пакет."
+
+#: app/desktopManager.js:1050
+msgid "Clear Current Selection before New Search"
+msgstr "Очистить текущую подборку перед новым поиском"
+
+#: app/desktopManager.js:1095
+msgid "Find Files on Desktop"
+msgstr "Поиск файлов на рабочем столе"
+
+#: app/desktopManager.js:1163 app/desktopManager.js:1875
+msgid "New Folder"
+msgstr "Создать папку"
+
+#: app/desktopManager.js:1167
+msgid "New Document"
+msgstr "Создать документ"
+
+#: app/desktopManager.js:1172
+msgid "Paste"
+msgstr "Вставить"
+
+#: app/desktopManager.js:1176
+msgid "Undo"
+msgstr "Отменить"
+
+#: app/desktopManager.js:1180
+msgid "Redo"
+msgstr "Повторить"
+
+#: app/desktopManager.js:1186
+msgid "Select All"
+msgstr "Выделить всё"
+
+#: app/desktopManager.js:1194
+msgid "Show Desktop in Files"
+msgstr "Показать рабочий стол в файловом менеджере"
+
+#: app/desktopManager.js:1198 app/fileItemMenu.js:365
+msgid "Open in Terminal"
+msgstr "Открыть в терминале"
+
+#: app/desktopManager.js:1204
+msgid "Change Background…"
+msgstr "Изменить фон…"
+
+#: app/desktopManager.js:1215
+msgid "Desktop Icons Settings"
+msgstr "Параметры Desktop Icons"
+
+#: app/desktopManager.js:1228
+msgid "Display Settings"
+msgstr "Настройки экрана"
+
+#: app/desktopManager.js:1888
+msgid "Folder Creation Failed"
+msgstr "Не удалось создать папку"
+
+#: app/desktopManager.js:1889
+msgid "Error while trying to create a Folder"
+msgstr "Произошла ошибка при попытке создать папку"
+
+#: app/desktopManager.js:1925
+msgid "Template Creation Failed"
+msgstr "Не удалось создать шаблон"
+
+#: app/desktopManager.js:1926
+msgid "Error while trying to create a Document"
+msgstr "Произошла ошибка при попытке создать документ"
+
+#: app/desktopManager.js:1934
+msgid "Arrange Icons"
+msgstr "Упорядочить значки"
+
+#: app/desktopManager.js:1938
+msgid "Arrange By..."
+msgstr "Упорядочить по..."
+
+#: app/desktopManager.js:1947
+msgid "Keep Arranged..."
+msgstr "Сохранить порядок..."
+
+#: app/desktopManager.js:1951
+msgid "Keep Stacked by type..."
+msgstr "Сохранить сгруппированными по типу..."
+
+#: app/desktopManager.js:1956
+msgid "Sort Home/Drives/Trash..."
+msgstr "Сортировать Домашняя папка/Диски/Корзина..."
+
+#: app/desktopManager.js:1962
+msgid "Sort by Name"
+msgstr "Сортировать по названию"
+
+#: app/desktopManager.js:1964
+msgid "Sort by Name Descending"
+msgstr "Сортировать по названию в порядке убывания"
+
+#: app/desktopManager.js:1967
+msgid "Sort by Modified Time"
+msgstr "Сортировать по времени изменения"
+
+#: app/desktopManager.js:1970
+msgid "Sort by Type"
+msgstr "Сортировать по типу"
+
+#: app/desktopManager.js:1973
+msgid "Sort by Size"
+msgstr "Сортировать по размеру"
+
+#. * TRANSLATORS: when using a screen reader, this is the text read when the user's personal folder is
+#. * highlighted.
+#. TRANSLATORS: "Home" is the text that will be shown in the user's personal folder
+#: app/fileItem.js:120 app/fileItem.js:255
+msgid "Home"
+msgstr "Домашняя папка"
+
+#. * TRANSLATORS: when using a screen reader, this is the text read when the user's personal folder is
+#. * highlighted and selected.
+#: app/fileItem.js:123
+msgid "Home Selected"
+msgstr "Выбрана домашняя папка"
+
+#. * TRANSLATORS: when using a screen reader, this is the text read when the trash folder is
+#. * highlighted.
+#: app/fileItem.js:128
+msgid "Trash"
+msgstr "Корзина"
+
+#. * TRANSLATORS: when using a screen reader, this is the text read when the trash folder is
+#. * highlighted and selected.
+#: app/fileItem.js:131
+msgid "Trash Selected"
+msgstr "Выбрана корзина"
+
+#. * TRANSLATORS: when using a screen reader, this is the role used when an external drive is
+#. * highlighted. Example: if a USB stick named "my_portable" is highlighted, it will say "my_portable Drive".
+#. * It is mandatory to say the file name first and the role after.
+#: app/fileItem.js:137
+msgid "${VisibleName} Drive"
+msgstr "${VisibleName} диск"
+
+#. * TRANSLATORS: when using a screen reader, this is the role used when an external drive is
+#. * highlighted and selected. Example: if a USB stick named "my_portable" is highlighted and selected, it
+#. * will say "my_portable Drive Selected". It is mandatory to say the file name first, then the role, and
+#. * finally "Selected".
+#: app/fileItem.js:142
+msgid "${VisibleName} Drive Selected"
+msgstr "${VisibleName} выбран диск"
+
+#. * TRANSLATORS: when using a screen reader, this is the role used when a stack is
+#. * highlighted. Example: if a stack named "pictures" is selected, it will say "pictures Stack".
+#. * It is mandatory to say the file name first and the role after.
+#: app/fileItem.js:148
+msgid "${VisibleName} Stack"
+msgstr "${VisibleName} группа"
+
+#. * TRANSLATORS: when using a screen reader, this is the role used when a stack is highlighted and
+#. * selected. Example: if a stack named "pictures" is highlighted and selected, it will say "pictures Stack Selected".
+#. * It is mandatory to say the file name first, then the role, and finally "Selected".
+#: app/fileItem.js:152
+msgid "${VisibleName} Stack Selected"
+msgstr "${VisibleName} выбрана группа"
+
+#. * TRANSLATORS: when using a screen reader, this is the role used when a folder is
+#. * highlighted. Example: if a folder named "things" is highlighted, it will say "things Folder".
+#. * It is mandatory to say the file name first and the role after.
+#: app/fileItem.js:158
+msgid "${VisibleName} Folder"
+msgstr "${VisibleName} папка"
+
+#. * TRANSLATORS: when using a screen reader, this is the role used when a folder is
+#. * highlighted and selected. Example: if a folder named "things" is highlighted and selected, it will say
+#. * "things Folder Selected". It is mandatory to say the file name first, then the role, and finally "Selected".
+#: app/fileItem.js:162
+msgid "${VisibleName} Folder Selected"
+msgstr "${VisibleName} выбрана папка"
+
+#. * TRANSLATORS: when using a screen reader, this is the role used when a trusted desktop file is
+#. * highlighted. Example: if a desktop file named "My App" is highlighted and it is trusted, it will
+#. * say "My App Application". It is mandatory to say the file name first and the role after.
+#: app/fileItem.js:168
+msgid "${VisibleName} Application"
+msgstr "${VisibleName} приложение"
+
+#. * TRANSLATORS: when using a screen reader, this is the role used when a trusted desktop file is
+#. * highlighted. Example: if a desktop file named "My App" is highlighted and selected and it is trusted, it will
+#. * say "My App Application Selected". It is mandatory to say the file name first and the role after.
+#: app/fileItem.js:172
+msgid "${VisibleName} Application Selected"
+msgstr "${VisibleName} выбрано приложение"
+
+#. * TRANSLATORS: when using a screen reader, this is the text read when a normal file is
+#. * highlighted. Example: if a file named "my_picture.jpg" is highlighted, it will say "my_picture.jpg File"
+#: app/fileItem.js:178
+msgid "${VisibleName} File"
+msgstr "${VisibleName} файл"
+
+#. * TRANSLATORS: when using a screen reader, this is the text read when a normal file is highlighted and
+#. * selected. Example: if a file named "my_picture.jpg" is highlighted and selected, it will say
+#. * "my_picture.jpg File Selected". It is mandatory to say the file name first and the role after.
+#: app/fileItem.js:182
+msgid "${VisibleName} File Selected"
+msgstr "${VisibleName} выбран файл"
+
+#: app/fileItem.js:348
+msgid "Error while reading Desktop file"
+msgstr "Ошибка при чтении .desktop файла"
+
+#: app/fileItem.js:390
+msgid "Broken Link"
+msgstr "Нерабочая ссылка"
+
+#: app/fileItem.js:391
+msgid "Can not open this File because it is a Broken Symlink"
+msgstr ""
+"Невозможно открыть этот файл, потому что это неработающая символическая "
+"ссылка"
+
+#: app/fileItem.js:423
+msgid "Can't open the file"
+msgstr "Не удалось открыть файл"
+
+#: app/fileItem.js:449
+msgid "Broken Desktop File"
+msgstr "Нерабочий .desktop файл"
+
+#: app/fileItem.js:450
+msgid ""
+"This .desktop file has errors or points to a program without permissions. It "
+"can not be executed.\n"
+"\n"
+"\t<b>Edit the file to set the correct executable Program.</b>"
+msgstr ""
+"Этот .desktop-файл содержит ошибки или указывает на программу без "
+"необходимых разрешений. Его нельзя выполнить.\n"
+"\n"
+"\t<b>Отредактируйте файл так, чтобы он указывал на необходимый исполняемый "
+"файл.</b>"
+
+#: app/fileItem.js:456
+msgid "Invalid Permissions on Desktop File"
+msgstr "Неверные права доступа к .desktop-файлу"
+
+#: app/fileItem.js:457
+msgid ""
+"This .desktop File has incorrect Permissions. Right Click to edit "
+"Properties, then:\n"
+msgstr ""
+"Этот .desktop-файл имеет неправильные разрешения. Щёлкните правой кнопкой "
+"мыши, чтобы изменить свойства, а затем:\n"
+
+#: app/fileItem.js:459
+msgid ""
+"\n"
+"<b>Set Permissions, in \"Others Access\", \"Read Only\" or \"None\"</b>"
+msgstr ""
+"\n"
+"<b>Установите разрешения в разделе «Права доступа» на «Только чтение» или "
+"«Нет»</b>"
+
+#: app/fileItem.js:462
+msgid ""
+"\n"
+"<b>Enable option, \"Allow Executing File as a Program\"</b>"
+msgstr ""
+"\n"
+"<b>Включить параметр «Разрешить выполнение файла как программы»</b>"
+
+#: app/fileItem.js:470
+msgid ""
+"This .desktop file is not trusted, it can not be launched. To enable "
+"launching, right-click, then:\n"
+"\n"
+"<b>Enable \"Allow Launching\"</b>"
+msgstr ""
+"Этот .desktop-файл не является доверенным, его нельзя запустить. Чтобы "
+"разрешить запуск, щёлкните правой кнопкой мыши, а затем:\n"
+"\n"
+"<b>включите «Разрешить запуск»</b>"
+
+#: app/fileItem.js:669
+msgid "Failed to set execution flag"
+msgstr "Не удалось установить флаг выполнения"
+
+#: app/fileItem.js:681 app/fileItem.js:688
+msgid "Could not apply discrete GPU environment"
+msgstr "Не удалось применить среду дискретного графического процессора"
+
+#: app/fileItem.js:717
+msgid "Could not find discrete GPU data"
+msgstr "Не удалось найти данные дискретного графического процессора"
+
+#: app/fileItem.js:842
+msgid "Failed to set metadata::trusted flag"
+msgstr "Не удалось установить флаг metadata::trusted"
+
+#: app/fileItemMenu.js:143
+msgid "Open All..."
+msgstr "Открыть всё..."
+
+#: app/fileItemMenu.js:143
+msgid "Open"
+msgstr "Открыть"
+
+#: app/fileItemMenu.js:160
+msgid "Stack This Type"
+msgstr "Сгруппировать этот тип"
+
+#: app/fileItemMenu.js:160
+msgid "Unstack This Type"
+msgstr "Разгруппировать этот тип"
+
+#: app/fileItemMenu.js:173
+msgid "Scripts"
+msgstr "Скрипты"
+
+#: app/fileItemMenu.js:178
+msgid "Open All With Other Application..."
+msgstr "Открыть всё в другом приложении..."
+
+#: app/fileItemMenu.js:178
+msgid "Open With Other Application"
+msgstr "Открыть в другом приложении"
+
+#: app/fileItemMenu.js:184
+msgid "Launch using Dedicated Graphics Card"
+msgstr "Запустить, используя дискретную видеокарту"
+
+#: app/fileItemMenu.js:195
+msgid "Run as a program"
+msgstr "Запустить как программу"
+
+#: app/fileItemMenu.js:203
+msgid "Cut"
+msgstr "Вырезать"
+
+#: app/fileItemMenu.js:210
+msgid "Copy"
+msgstr "Копировать"
+
+#: app/fileItemMenu.js:218
+msgid "Rename…"
+msgstr "Переименовать…"
+
+#: app/fileItemMenu.js:228
+msgid "Move to Trash"
+msgstr "Отправить в корзину"
+
+#: app/fileItemMenu.js:236
+msgid "Delete permanently"
+msgstr "Удалить безвозвратно"
+
+#: app/fileItemMenu.js:246
+msgid "Don't Allow Launching"
+msgstr "Не разрешать запуск"
+
+#: app/fileItemMenu.js:246
+msgid "Allow Launching"
+msgstr "Разрешить запуск"
+
+#: app/fileItemMenu.js:259
+msgid "Empty Trash"
+msgstr "Очистить корзину"
+
+#: app/fileItemMenu.js:272
+msgid "Eject"
+msgstr "Извлечь"
+
+#: app/fileItemMenu.js:280
+msgid "Unmount"
+msgstr "Отмонтировать"
+
+#: app/fileItemMenu.js:294 app/fileItemMenu.js:301
+msgid "Extract Here"
+msgstr "Извлечь в текущую папку"
+
+#: app/fileItemMenu.js:308
+msgid "Extract To..."
+msgstr "Извлечь в..."
+
+#: app/fileItemMenu.js:317
+msgid "Send to..."
+msgstr "Отправить в..."
+
+#: app/fileItemMenu.js:325
+msgid "Compress {0} folder"
+msgid_plural "Compress {0} folders"
+msgstr[0] "Сжать {0} папку"
+msgstr[1] "Сжать {0} папки"
+msgstr[2] "Сжать {0} папок"
+
+#: app/fileItemMenu.js:332
+msgid "Compress {0} file"
+msgid_plural "Compress {0} files"
+msgstr[0] "Сжать {0} файл"
+msgstr[1] "Сжать {0} файла"
+msgstr[2] "Сжать {0} файлов"
+
+#: app/fileItemMenu.js:340
+msgid "New Folder with {0} item"
+msgid_plural "New Folder with {0} items"
+msgstr[0] "Новая папка с {0} элементом"
+msgstr[1] "Новая папка с {0} элементами"
+msgstr[2] "Новая папка с {0} элементами"
+
+#: app/fileItemMenu.js:351
+msgid "Common Properties"
+msgstr "Общие свойства"
+
+#: app/fileItemMenu.js:351
+msgid "Properties"
+msgstr "Свойства"
+
+#: app/fileItemMenu.js:358
+msgid "Show All in Files"
+msgstr "Показать всё в файловом менеджере"
+
+#: app/fileItemMenu.js:358
+msgid "Show in Files"
+msgstr "Показать в файловом менеджере"
+
+#: app/fileItemMenu.js:449
+msgid "No Extraction Folder"
+msgstr "Нет папки для извлечения"
+
+#: app/fileItemMenu.js:450
+msgid "Unable to extract File, extraction Folder Does not Exist"
+msgstr "Не удается извлечь файл, так как нет папки для извлечения"
+
+#: app/fileItemMenu.js:470
+msgid "Select Extract Destination"
+msgstr "Выбрать папку назначения для извлечения"
+
+#: app/fileItemMenu.js:475
+msgid "Select"
+msgstr "Выделить"
+
+#: app/fileItemMenu.js:516
+msgid "Can not email a Directory"
+msgstr "Невозможно отправить каталог по электронной почте"
+
+#: app/fileItemMenu.js:517
+msgid "Selection includes a Directory, compress the directory to a file first."
+msgstr "Выбран каталог, сначала сожмите его в файл."
+
+#: app/notifyX11UnderWayland.js:37
+msgid "Desktop Icons NG is running under X11Wayland"
+msgstr "Desktop Icons NG работает под управлением X11Wayland"
+
+#: app/notifyX11UnderWayland.js:38
+msgid ""
+"It seems that you have your system configured to force GTK to use X11. This "
+"works, but it's suboptimal. You should check your system configuration to "
+"fix this."
+msgstr ""
+"Похоже, что ваша система настроена таким образом, чтобы заставить GTK "
+"использовать X11. Это работает, но неоптимально. Вам следует проверить "
+"конфигурацию вашей системы, чтобы исправить это."
+
+#: app/notifyX11UnderWayland.js:39 app/showErrorPopup.js:39
+msgid "Close"
+msgstr "Закрыть"
+
+#: app/notifyX11UnderWayland.js:47
+msgid "Don't show this message anymore."
+msgstr "Больше не показывайте это сообщение."
+
+#: app/preferences.js:91
+msgid "Settings"
+msgstr "Параметры"
+
+#: app/prefswindow.js:64
+msgid "Size for the desktop icons"
+msgstr "Размер значков на рабочем столе"
+
+#: app/prefswindow.js:64
+msgid "Tiny"
+msgstr "Крошечный"
+
+#: app/prefswindow.js:64
+msgid "Small"
+msgstr "Маленький"
+
+#: app/prefswindow.js:64
+msgid "Standard"
+msgstr "Стандартный"
+
+#: app/prefswindow.js:64
+msgid "Large"
+msgstr "Большой"
+
+#: app/prefswindow.js:65
+msgid "Show the personal folder in the desktop"
+msgstr "Показывать домашнюю папку на рабочем столе"
+
+#: app/prefswindow.js:66
+msgid "Show the trash icon in the desktop"
+msgstr "Показывать корзину на рабочем столе"
+
+#: app/prefswindow.js:67 schemas/org.gnome.shell.extensions.ding.gschema.xml:45
+msgid "Show external drives in the desktop"
+msgstr "Показывать внешние диски на рабочем столе"
+
+#: app/prefswindow.js:68 schemas/org.gnome.shell.extensions.ding.gschema.xml:50
+msgid "Show network drives in the desktop"
+msgstr "Показывать сетевые диски на рабочем столе"
+
+#: app/prefswindow.js:71
+msgid "New icons alignment"
+msgstr "Выравнивание для новых значков"
+
+#: app/prefswindow.js:73
+msgid "Top-left corner"
+msgstr "Верхний левый угол"
+
+#: app/prefswindow.js:74
+msgid "Top-right corner"
+msgstr "Правый верхний угол"
+
+#: app/prefswindow.js:75
+msgid "Bottom-left corner"
+msgstr "Нижний левый угол"
+
+#: app/prefswindow.js:76
+msgid "Bottom-right corner"
+msgstr "Правый нижний угол"
+
+#: app/prefswindow.js:78 schemas/org.gnome.shell.extensions.ding.gschema.xml:55
+msgid "Add new drives to the opposite side of the screen"
+msgstr "Добавлять новые диски на противоположную сторону экрана"
+
+#: app/prefswindow.js:79
+msgid "Highlight the drop place during Drag'n'Drop"
+msgstr "Подсвечивать место назначения во время перетаскивания"
+
+#: app/prefswindow.js:80 schemas/org.gnome.shell.extensions.ding.gschema.xml:90
+msgid "Use Nemo to open folders"
+msgstr "Использовать Nemo для открытия папок"
+
+#: app/prefswindow.js:82
+msgid "Add an emblem to soft links"
+msgstr "Добавить эмблему к символическим ссылкам"
+
+#: app/prefswindow.js:84
+msgid "Use dark text in icon labels"
+msgstr "Использовать тёмный текст в подписях к значкам"
+
+#: app/prefswindow.js:91
+msgid "Settings shared with Nautilus"
+msgstr "Общие настройки с Nautilus"
+
+#: app/prefswindow.js:113
+msgid "Click type for open files"
+msgstr "Тип нажатия для открытия файлов"
+
+#: app/prefswindow.js:113
+msgid "Single click"
+msgstr "Одинарный щелчок"
+
+#: app/prefswindow.js:113
+msgid "Double click"
+msgstr "Двойной щелчок"
+
+#: app/prefswindow.js:114
+msgid "Show hidden files"
+msgstr "Показывать скрытые файлы"
+
+#: app/prefswindow.js:115
+msgid "Show a context menu item to delete permanently"
+msgstr "Добавить пункт в контекстное меню «Удалить безвозвратно»"
+
+#: app/prefswindow.js:120
+msgid "Action to do when launching a program from the desktop"
+msgstr "Действие при запуске программы с рабочего стола"
+
+#: app/prefswindow.js:121
+msgid "Display the content of the file"
+msgstr "Показать содержимое файла"
+
+#: app/prefswindow.js:122
+msgid "Launch the file"
+msgstr "Запустить файл"
+
+#: app/prefswindow.js:123
+msgid "Ask what to do"
+msgstr "Спросить что делать"
+
+#: app/prefswindow.js:129
+msgid "Show image thumbnails"
+msgstr "Показывать миниатюры изображений"
+
+#: app/prefswindow.js:130
+msgid "Never"
+msgstr "Никогда"
+
+#: app/prefswindow.js:131
+msgid "Local files only"
+msgstr "Только для локальных файлов"
+
+#: app/prefswindow.js:132
+msgid "Always"
+msgstr "Всегда"
+
+#: app/thumbnails.js:38
+msgid "GnomeDesktop-3.0 GIR file not found"
+msgstr "Файл GnomeDesktop-3.0 GIR не найден"
+
+#: app/thumbnails.js:39
+msgid ""
+"GnomeDesktop-3.0.gir file is missing. Please, install the required package "
+"in your system."
+msgstr ""
+"Отсутствует файл GnomeDesktop-3.0.gir. Пожалуйста, установите необходимый "
+"для вашей системы пакет."
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:25
+msgid "Icon size"
+msgstr "Размер значка"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:26
+msgid "Set the size for the desktop icons."
+msgstr "Установить размер значков на рабочем столе."
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:30
+msgid "Show personal folder"
+msgstr "Показывать домашнюю папку"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:31
+msgid "Show the personal folder in the desktop."
+msgstr "Показывать значок домашней папки на рабочем столе."
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:35
+msgid "Show trash icon"
+msgstr "Показывать значок корзины"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:36
+msgid "Show the trash icon in the desktop."
+msgstr "Показывать значок корзины на рабочем столе."
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:40
+msgid "New icons start corner"
+msgstr "Новые значки начинают размещаться с угла"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:41
+msgid "Set the corner from where the icons will start to be placed."
+msgstr "Установите угол, с которого значки начнут размещаться."
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:46
+msgid "Show the disk drives connected to the computer."
+msgstr "Показывать диски, подключенные к компьютеру."
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:51
+msgid "Show mounted network volumes in the desktop."
+msgstr "Показывать подключенные сетевые тома на рабочем столе."
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:56
+msgid ""
+"When adding drives and volumes to the desktop, add them to the opposite side "
+"of the screen."
+msgstr ""
+"Когда добавляются диски и тома на рабочий стол, располагать их на "
+"противоположной стороне экрана."
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:60
+msgid "Shows a rectangle in the destination place during DnD"
+msgstr "Показывать прямоугольник в месте назначения во время перемещения"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:61
+msgid ""
+"When doing a Drag'n'Drop operation, marks the place in the grid where the "
+"icon will be put with a semitransparent rectangle."
+msgstr ""
+"При выполнении операции Drag'n'Drop отмечается место в сетке полупрозрачным "
+"прямоугольником, куда будет помещён значок."
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:65
+msgid "Sort Special Folders - Home/Trash Drives."
+msgstr "Сортировать специальный папки - Домашняя папка/Корзина/Диски."
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:66
+msgid ""
+"When arranging Icons on desktop, to sort and change the position of the "
+"Home, Trash and mounted Network or External Drives"
+msgstr ""
+"При размещении значков на рабочем столе, для сортировки и изменения "
+"положения Домашней папки, Корзины и подключенных сетевых или внешних дисков"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:70
+msgid "Keep Icons Arranged"
+msgstr "Сохранить порядок значков"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:71
+msgid "Always keep Icons Arranged by the last arranged order"
+msgstr "Всегда сохранять порядок значков используя последнее упорядочивание"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:75
+msgid "Arrange Order"
+msgstr "Упорядочивание значков"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:76
+msgid "Icons Arranged by this property"
+msgstr "Упорядочивание значков по этому свойству"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:80
+msgid "Keep Icons Stacked"
+msgstr "Сохранять сгруппированность значков"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:81
+msgid "Always keep Icons Stacked, Similar types are grouped"
+msgstr "Всегда сохранять сгруппированность значков. Группируются похожие типы"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:85
+msgid "Type of Files to not Stack"
+msgstr "Типы файлов, которые не группируются"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:86
+msgid "An Array of strings types, Don't Stack these types of files"
+msgstr "Целый набор из строковых типов. Эти типы файлов не группируются"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:91
+msgid "Use Nemo instead of Nautilus to open folders."
+msgstr "Использовать Nemo вместо Nautilus для открытия папок."
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:95
+msgid "Add an emblem to links"
+msgstr "Добавить эмблему к ссылкам"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:96
+msgid "Add an emblem to allow to identify soft links."
+msgstr "Добавить эмблему для идентификации символических ссылок."
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:100
+msgid "Use black for label text"
+msgstr "Использовать чёрный цвет для текста в подписях"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:101
+msgid ""
+"Paint the label text in black instead of white. Useful when using light "
+"backgrounds."
+msgstr ""
+"Окрашивать текст подписи чёрным цветом вместо белого. Полезно при "
+"использовании светлого фона."
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:105
+msgid "Show a popup if running on X11Wayland"
+msgstr "Показывать всплывающее окно при работе под управлением X11Wayland"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:106
+msgid ""
+"Whether DING should show a popup if it is running on X11Wayland, or the user "
+"decided to not show it anymore."
+msgstr ""
+"Нужно ли DING показывать всплывающее окно при работе под управлением "
+"X11Wayland, или пользователь уже решил больше не показывать его."
+
+#, fuzzy
+#~ msgid "Folder"
+#~ msgstr "Создать папку"
+
+#~ msgid "Desktop icons"
+#~ msgstr "Desktop Icons"
+
+#~ msgid "Add an emblem to .desktop files"
+#~ msgstr "Добавить эмблему к .desktop файлу"
+
+#~ msgid ""
+#~ "To configure Desktop Icons NG, do right-click in the desktop and choose "
+#~ "the last item: 'Desktop Icons settings'"
+#~ msgstr ""
+#~ "Чтобы настроить Desktop Icons NG, щёлкните правой кнопкой мыши на рабочем "
+#~ "столе и выберите последний пункт: «Параметры Desktop Icons»."
+
+#~ msgid "Add an emblem to executable .desktop files"
+#~ msgstr "Добавить эмблему в исполняемые .desktop файлы"
+
+#~ msgid "Add an emblem to .desktop files that have permission to be launched."
+#~ msgstr "Добавить эмблему в .desktop файлы с разрешениями на выполнение."
+
+#~ msgid "Do you want to run “{0}”, or display its contents?"
+#~ msgstr "Вы хотите выполнить “{0}” или отобразить содержимое?"
+
+#~ msgid "“{0}” is an executable text file."
+#~ msgstr "“{0}” является исполняемым текстовым файлом."
+
+#~ msgid "Execute in a terminal"
+#~ msgstr "Выполнить в терминале"
+
+#~ msgid "Show"
+#~ msgstr "Показать"
+
+#~ msgid "Execute"
+#~ msgstr "Выполнить"
+
+#~ msgid "New folder"
+#~ msgstr "Создать папку"
+
+#~ msgid "Delete"
+#~ msgstr "Удалить"
+
+#~ msgid "Are you sure you want to permanently delete these items?"
+#~ msgstr "Вы уверены, что хотите удалить эти файлы навсегда?"
+
+#~ msgid "If you delete an item, it will be permanently lost."
+#~ msgstr "Если вы удалите файл, он будет навсегда потерян."
+
+#~ msgid "There was an error while trying to permanently delete the file {:}."
+#~ msgstr "Произошла ошибка при попытке окончательно удалить файл {:}."
+
+#, fuzzy
+#~ msgid "Show external disk drives in the desktop"
+#~ msgstr "Показывать домашнюю папку на рабочем столе"
+
+#, fuzzy
+#~ msgid "Show the external drives"
+#~ msgstr "Показывать домашнюю папку на рабочем столе"
+
+#, fuzzy
+#~ msgid "Show network volumes"
+#~ msgstr "Показать в «Файлах»"
+
+#~ msgid "Enter file name…"
+#~ msgstr "Ввести имя файла…"
+
+#~ msgid "Huge"
+#~ msgstr "Огромный"
+
+#~ msgid "Ok"
+#~ msgstr "ОК"
