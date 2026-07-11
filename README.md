@@ -11,7 +11,7 @@
 ---
 
 <p align="center">
-  <img src="assets/logo.png" alt="AUREON OS Logo" width="180">
+  <img src="config/includes.chroot/usr/share/aureonos/assets/text-logo.png" alt="AUREON OS Logo" width="180">
 </p>
 <h1 align="center">AUREON OS</h1>
 
