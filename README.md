@@ -24,7 +24,23 @@
 <p align="center">
 A Debian-based Linux distribution with a modern GNOME desktop.
 </p>
+## Screenshots
 
+### Desktop
+
+![Desktop](desktop.png)
+
+### AUREON Security Center
+
+![Security Center](security-center.png)
+
+### Application Menu
+
+![Application Menu](applications.png)
+
+### Lock Screen
+
+![Lock Screen] (lockscreen.png)
 ---
 
 ## About
