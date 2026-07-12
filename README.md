@@ -2,7 +2,7 @@
 # AUREON OS
 
 > **A modern, Debian-based Linux distribution built for productivity, customization, security, and developers.**
-
+[![Pre-release](https://img.shields.io/badge/Release-Pre--Release-orange)](https://github.com/meherazhosensiam/AureonOS/releases)
 ![License](https://img.shields.io/badge/License-GPLv3-green.svg)
 ![Platform](https://img.shields.io/badge/Platform-Linux-success)
 ![Base](https://img.shields.io/badge/Base-Debian-red)
