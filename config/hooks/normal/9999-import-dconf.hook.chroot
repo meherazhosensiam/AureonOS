@@ -1,17 +1,27 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 
-# Instead of using 'dconf write' (which requires a display), 
-# use dconf's ability to load from a database file.
-# Make sure your custom settings are placed in a file here:
-# /etc/dconf/db/local.d/00-aureon-settings
+# Generate a valid machine-id every time
+rm -f /etc/machine-id /var/lib/dbus/machine-id
 
-# Example:
-mkdir -p /etc/dconf/db/local.d/
-cat <<EOF > /etc/dconf/db/local.d/00-aureon-settings
-[org/gnome/desktop/interface]
-gtk-theme='Adwaita'
-EOF
+systemd-machine-id-setup
 
-# Update the dconf databases
+mkdir -p /var/lib/dbus
+ln -sf /etc/machine-id /var/lib/dbus/machine-id
+
+# Update system dconf database
 dconf update
+
+# Import user settings only if present
+SOURCE_FILE="/etc/dconf/db/local.d/00-aureon-extensions"
+
+if [ -f "$SOURCE_FILE" ]; then
+    dbus-run-session -- bash -c '
+        export DCONF_PROFILE=user
+        dconf load /org/gnome/shell/extensions/ < /etc/dconf/db/local.d/00-aureon-extensions
+    '
+fi
+
+# Remove machine-id so installed systems generate a unique one
+rm -f /etc/machine-id /var/lib/dbus/machine-id
+touch /etc/machine-id
