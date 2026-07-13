@@ -1,0 +1,39 @@
+---
+componentName:   aureon
+welcomeStyleCalamares: true
+welcomeExpandingLogo: true
+windowExpanding: normal
+windowSize: 800px,580px
+windowPlacement: center
+
+strings:
+    productName:         AUREON  GNU/Linux
+    shortProductName:    AUREON
+    version:             1.0
+    shortVersion:        1.0
+    versionedName:       AUREON 1.0
+    shortVersionedName:  AUREON 1.0
+    bootloaderEntryName: AUREON
+    productUrl:          
+    supportUrl:          
+    knownIssuesUrl:      
+    releaseNotesUrl:     
+    donateUrl:           
+
+sidebar: widget
+navigation: widget
+
+images:
+    productLogo:         "logo.png"
+    productIcon:         "logo.png"
+    productWelcome:      "welcome.png"
+
+slideshow:               "show.qml"
+
+style:
+   SidebarBackground:    "#000000"
+   SidebarText:          "#FFFFFF"
+   SidebarTextCurrent:   "#fbfbfb"
+   SidebarBackgroundCurrent: "#d22913"
+
+slideshowAPI: 2

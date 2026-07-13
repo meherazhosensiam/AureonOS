@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Install AUREON OS
-Comment=Install AUREON OS to your hard drive
-Exec=pkexec calamares
-Icon=calamares
-Terminal=false
-Categories=System;
