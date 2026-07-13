@@ -100,3 +100,4 @@ LB_UTC_TIME="false"
 # Enable verbose
 # If set here, overrides the command line option
 #_VERBOSE="false"
+LB_DISTRIBUTION="trixie"
