@@ -1,0 +1,112 @@
+/* Main Window */
+QWidget {
+    background: #121212;
+    color: #ffffff;
+    font-size: 11pt;
+}
+
+/* Sidebar */
+QListView {
+    background: #0f0f0f;
+    border: none;
+    color: white;
+}
+
+QListView::item {
+    height: 48px;
+    padding-left: 16px;
+    border-radius: 6px;
+}
+
+QListView::item:selected {
+    background: #d32f2f;
+    color: white;
+}
+
+QListView::item:hover {
+    background: #282828;
+}
+
+/* Titles */
+QLabel {
+    color: white;
+}
+
+QLabel[class="Heading"] {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* Buttons */
+QPushButton {
+    background: #d32f2f;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    min-height: 38px;
+    min-width: 120px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background: #ef5350;
+}
+
+QPushButton:pressed {
+    background: #b71c1c;
+}
+
+QPushButton:disabled {
+    background: #555;
+}
+
+/* Text fields */
+QLineEdit,
+QComboBox {
+    background: #1d1d1d;
+    color: white;
+    border: 1px solid #555;
+    border-radius: 6px;
+    padding: 6px;
+}
+
+/* Progress bar */
+QProgressBar {
+    background: #1d1d1d;
+    border-radius: 8px;
+    color: white;
+}
+
+QProgressBar::chunk {
+    background: #d32f2f;
+}
+/* Language list */
+QTreeView,
+QListView {
+    background: #111111;
+    color: white;
+    border: none;
+    outline: none;
+    padding: 8px;
+}
+
+QTreeView::item,
+QListView::item {
+    min-height: 42px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 12px;
+    padding-right: 40px;   /* Increase right padding */
+}
+
+QTreeView::item:selected,
+QListView::item:selected {
+    background: #d32f2f;
+    color: white;
+    border-radius: 8px;
+}
+
+QTreeView::item:hover,
+QListView::item:hover {
+    background: #222222;
+}

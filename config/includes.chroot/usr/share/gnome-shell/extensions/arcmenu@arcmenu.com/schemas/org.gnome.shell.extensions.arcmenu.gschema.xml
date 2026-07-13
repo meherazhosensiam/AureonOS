@@ -86,7 +86,26 @@
       <value value="1" nick="In_Line"/>
       <value value="2" nick="Menu"/>
   </enum>
-  <enum id='org.gnome.shell.extensions.arcmenu.menu-item-icon-style'>
+  <enum id='org.gnome.shell.extensions.arcmenu.icon-sizes'>
+      <value value="0" nick="Default"/>
+      <value value="1" nick="ExtraSmall"/>
+      <value value="2" nick="Small"/>
+      <value value="3" nick="Medium"/>
+      <value value="4" nick="Large"/>
+      <value value="5" nick="Extralarge"/>
+      <value value="6" nick="Hidden"/>
+  </enum>
+  <enum id='org.gnome.shell.extensions.arcmenu.grid-icon-sizes'>
+      <value value="0" nick="Default"/>
+      <value value="1" nick="Small"/>
+      <value value="2" nick="Medium"/>
+      <value value="3" nick="Large"/>
+      <value value="4" nick="Small_Rect"/>
+      <value value="5" nick="Medium_Rect"/>
+      <value value="6" nick="Large_Rect"/>
+      <value value="7" nick="Custom"/>
+  </enum>
+  <enum id='org.gnome.shell.extensions.arcmenu.category-icon-type'>
       <value value="0" nick="Full_Color"/>
       <value value="1" nick="Symbolic"/>
   </enum>
@@ -138,9 +157,8 @@
         <choice value='whisker'/>
         <choice value='windows'/>
         <choice value='zest'/>
-      </choices>
+    </choices>
     </key>
-    <!-- #region Override Menu Theme -->
     <key type="b" name="override-menu-theme">
       <default>false</default>
       <summary>Override ArcMenu theme</summary>
@@ -189,8 +207,10 @@
       <default>"rgb(255,255,255)"</default>
       <summary>ArcMenu menu item active fg color. Active when 'override-menu-theme' enabled.</summary>
     </key>
-    <!-- #endregion -->
-    <!-- #region Menu Button Customization -->
+    <key type="(bi)" name="menu-arrow-rise">
+      <default>(false, 6)</default>
+      <summary>ArcMenu distance from panel and screen edge.</summary>
+    </key>
     <key type="(bs)" name="menu-button-fg-color">
       <default>(false, "rgb(242,242,242)")</default>
       <summary>ArcMenu menu button fg color.</summary>
@@ -227,7 +247,6 @@
       <default>(false, "rgb(242,242,242)")</default>
       <summary>ArcMenu menu button active fg color.</summary>
     </key>
-    <!-- #endregion -->
     <key name="menu-themes" type="aas">
     <!--Order of elements in a theme:
         [Theme Name, menuBGColor, menuFGColor, menuBorderColor, menuBorderWidth, menuBorderRadius,
@@ -241,10 +260,6 @@
                 ['Light Blue', 'rgb(245,247,250)', 'rgb(18,51,84)', 'rgba(18,51,84,0.2)', '1', '14', '11',
                     'rgba(18,51,84,0.15)', 'rgba(18,51,84,0.08)', 'rgb(18,51,84)', 'rgba(18,51,84,0.15)', 'rgb(18,51,84)']]</default>
       <summary>List of color-themes</summary>
-    </key>
-    <key type="(bi)" name="menu-arrow-rise">
-      <default>(false, 6)</default>
-      <summary>ArcMenu distance from panel and screen edge.</summary>
     </key>
     <key name="force-menu-location" enum="org.gnome.shell.extensions.arcmenu.forcemenulocation">
       <default>'Off'</default>
@@ -282,17 +297,13 @@
       <default>false</default>
       <summary>Enable Clocks Widget Unity layout</summary>
     </key>
-    <key enum="org.gnome.shell.extensions.arcmenu.menu-item-icon-style" name="icon-style-categories">
+    <key enum="org.gnome.shell.extensions.arcmenu.category-icon-type" name="category-icon-type">
       <default>'Symbolic'</default>
-      <summary>Categories icon style. Full_Color or Symbolic</summary>
+      <summary>Category icon type. Full_Color or Symbolic</summary>
     </key>
-    <key enum="org.gnome.shell.extensions.arcmenu.menu-item-icon-style" name="icon-style-shortcuts">
+    <key enum="org.gnome.shell.extensions.arcmenu.category-icon-type" name="shortcut-icon-type">
       <default>'Symbolic'</default>
-      <summary>Shortcuts icon style. Full_Color or Symbolic</summary>
-    </key>
-    <key enum="org.gnome.shell.extensions.arcmenu.menu-item-icon-style" name="icon-style-buttons">
-      <default>'Symbolic'</default>
-      <summary>Buttons icon style. Full_Color or Symbolic</summary>
+      <summary>Shortcut icon type. Full_Color or Symbolic</summary>
     </key>
     <key type="b" name="scrollview-fade-effect">
       <default>true</default>
@@ -359,7 +370,7 @@
       <default>true</default>
       <summary>Tooltips</summary>
     </key>
-    <key type="b" name="show-category-sub-menus">
+      <key type="b" name="show-category-sub-menus">
       <default>false</default>
       <summary>Show category sub menus.</summary>
     </key>
@@ -480,7 +491,7 @@
       <summary>Enable a vertical separator</summary>
     </key>
     <key type="i" name="menu-height">
-      <default>600</default>
+      <default>550</default>
       <summary>Menu Height</summary>
     </key>
     <key type="i" name="menu-width-adjustment">
@@ -563,38 +574,34 @@
       <default>'Round'</default>
       <summary>Appearance of the avatar icon.</summary>
     </key>
-    <!-- #region Icon Sizes -->
-    <key type="i" name="icon-size-apps">
-      <default>-1</default>
-      <summary>Icon size of application menu items.</summary>
-      <description>-1 uses the layout default. Any positive value sets the icon size in pixels.</description>
+    <key name="menu-item-icon-size" enum="org.gnome.shell.extensions.arcmenu.icon-sizes">
+      <default>'Default'</default>
+      <summary>Size of the menu items icon.</summary>
     </key>
-    <key type="i" name="icon-size-shortcuts">
-      <default>-1</default>
-      <summary>Icon size of shortcut menu items.</summary>
-      <description>-1 uses the layout default. Any positive value sets the icon size in pixels.</description>
+    <key name="menu-item-category-icon-size" enum="org.gnome.shell.extensions.arcmenu.icon-sizes">
+      <default>'Default'</default>
+      <summary>Size of the category icons.</summary>
     </key>
-    <key type="i" name="icon-size-categories">
-      <default>-1</default>
-      <summary>Icon size of category menu items.</summary>
-      <description>-1 uses the layout default. 0 hides the icon. Any positive value sets the icon size in pixels.</description>
+    <key name="menu-item-grid-icon-size" enum="org.gnome.shell.extensions.arcmenu.grid-icon-sizes">
+      <default>'Default'</default>
+      <summary>Size of the menu grid icons.</summary>
     </key>
-    <key type="i" name="icon-size-buttons">
-      <default>-1</default>
-      <summary>Icon size of button menu items.</summary>
-      <description>-1 uses the layout default. Any positive value sets the icon size in pixels.</description>
+    <key name="custom-grid-icon-size" type="a{si}">
+      <default>{'width': 108, 'height': 108, 'iconSize': 62}</default>
+      <summary>Custom "grid icon" size (width, height, iconSize).</summary>
     </key>
-    <key type="i" name="icon-size-misc">
-      <default>-1</default>
-      <summary>Icon size of search and navigation icons.</summary>
-      <description>-1 uses the layout default. Any positive value sets the icon size in pixels.</description>
+    <key name="button-item-icon-size" enum="org.gnome.shell.extensions.arcmenu.icon-sizes">
+      <default>'Default'</default>
+      <summary>Size of the button items in ArcMenu.</summary>
     </key>
-    <key name="icon-size-grid" type="a{si}">
-      <default>{'width': -1, 'height': -1, 'size': -1}</default>
-      <summary>Icon size of application grid items.</summary>
-      <description>Dictionary with keys 'width', 'height', 'size'. -1 uses the layout default. Any positive value sets the size in pixels.</description>
+    <key name="misc-item-icon-size" enum="org.gnome.shell.extensions.arcmenu.icon-sizes">
+      <default>'Default'</default>
+      <summary>Size of misc items in ArcMenu.</summary>
     </key>
-    <!-- #endregion -->
+    <key name="quicklinks-item-icon-size" enum="org.gnome.shell.extensions.arcmenu.icon-sizes">
+      <default>'Default'</default>
+      <summary>Size of quicklink items in ArcMenu.</summary>
+    </key>
     <key type="b" name="dash-to-panel-standalone">
       <default>false</default>
       <summary>Force placement of ArcMenu on GNOME top panel.</summary>
