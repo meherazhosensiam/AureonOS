@@ -62,7 +62,7 @@ LB_DEBIAN_INSTALLER_PRESEEDFILE=""
 LB_DEBIAN_INSTALLER_GUI="true"
 
 # Set hdd label
-LB_HDD_LABEL=AUREON_OS""
+LB_HDD_LABEL="AUREON_OS"
 
 # Set hdd filesystem size
 LB_HDD_SIZE="auto"

@@ -1,8 +1,8 @@
-[org/gnome/login-screen]
-# Path to the custom logo displayed on the login screen
-logo='file:///usr/share/aureonos/assets/logo.png'
-
 [org/gnome/desktop/background]
-# Path to the dark wallpaper used for the login background
+picture-uri='file:///usr/share/backgrounds/aureon/dark.png'
+picture-uri-dark='file:///usr/share/backgrounds/aureon/dark.png'
+picture-options='zoom'
+
+[org/gnome/desktop/screensaver]
 picture-uri='file:///usr/share/backgrounds/aureon/dark.png'
 picture-options='zoom'
