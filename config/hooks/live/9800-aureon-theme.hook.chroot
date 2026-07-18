@@ -48,11 +48,8 @@ cd ..
 ########################################
 # Fluent Cursor Theme
 ########################################
-
-git clone --depth=1 https://github.com/vinceliuice/Fluent-icon-theme.git fluent-cursor
-
-cd fluent-cursor
-
+cd Fluent-icon-theme 
+cd cursors
 ./install.sh
 
 cd ..

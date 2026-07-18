@@ -1,11 +1,13 @@
 #!/bin/bash
-# Ensure ZSH is installed
+set -e
+
+apt-get update
 apt-get install -y zsh
 
-# Set ZSH as the default shell for all new users
-sed -i 's|DSHELL=/bin/bash|DSHELL=/bin/zsh|g' /etc/adduser.conf
+# Default shell for future users
+sed -i 's|^DSHELL=.*|DSHELL=/bin/zsh|' /etc/adduser.conf
 
-# Change the shell for the user named 'user', if they exist
-if id "user" &>/dev/null; then
-    chsh -s /bin/zsh user
+# Change shell if the user already exists
+if id user >/dev/null 2>&1; then
+    usermod -s /bin/zsh user
 fi

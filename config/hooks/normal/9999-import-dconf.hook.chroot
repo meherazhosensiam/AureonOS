@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-# Generate a valid machine-id every time
+# Generate a temporary machine ID for the build
 rm -f /etc/machine-id /var/lib/dbus/machine-id
 
 systemd-machine-id-setup
@@ -9,19 +9,9 @@ systemd-machine-id-setup
 mkdir -p /var/lib/dbus
 ln -sf /etc/machine-id /var/lib/dbus/machine-id
 
-# Update system dconf database
+# Compile the system dconf database
 dconf update
 
-# Import user settings only if present
-SOURCE_FILE="/etc/dconf/db/local.d/00-aureon-extensions"
-
-if [ -f "$SOURCE_FILE" ]; then
-    dbus-run-session -- bash -c '
-        export DCONF_PROFILE=user
-        dconf load /org/gnome/shell/extensions/ < /etc/dconf/db/local.d/00-aureon-extensions
-    '
-fi
-
-# Remove machine-id so installed systems generate a unique one
+# Remove the machine ID so installed systems generate their own
 rm -f /etc/machine-id /var/lib/dbus/machine-id
 touch /etc/machine-id

@@ -1,0 +1,2 @@
+[org/gnome/shell]
+enabled-extensions=['blur-my-shell@aunetx', 'dash-to-dock@micxgx.gmail.com', 'arcmenu@arcmenu.com', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'appindicatorsupport@rgcjonas.gmail.com']
