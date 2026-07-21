@@ -29,6 +29,17 @@ Additional packages may be required depending on future project updates.
 git clone https://github.com/meherazhosensiam/AureonOS.git
 cd AureonOS
 ```
+## After cloning the Repository
+clean the build environment first To ensure any broken file and configuration are not there
+
+```bash
+sudo lb clean --all
+```
+Then rebuild the configuration structure
+
+```bash
+sudo lb config
+```
 
 ## Configure
 
@@ -45,14 +56,9 @@ config/
 Run the build script:
 
 ```bash
-sudo ./build.sh
-```
-
-or, if using live-build directly:
-
-```bash
 sudo lb build
 ```
+
 
 The build process may take some time depending on your hardware and internet speed.
 
