@@ -1,7 +1,7 @@
 # Building AUREON OS
 
 This document explains how to build the AUREON OS ISO from source.
-
+> **Note:** I am suggesting you do all the work as a root user So you don't have to face any permission issue and you don't have to type sudo every time
 ## System Requirements
 
 Recommended build machine:
@@ -50,6 +50,34 @@ If you need to change branding, packages, or installer settings, edit the files 
 ```
 config/
 ```
+
+## Generating ISO Images for Different Architectures
+
+AUREON OS can be built for multiple CPU architectures by changing the
+`--architectures` option during the `lb config` step.
+
+### AMD64 (64-bit Intel/AMD)
+
+```bash
+lb config --architectures amd64
+sudo lb build
+```
+
+### ARM64 (AArch64)
+
+```bash
+lb config --architectures arm64
+sudo lb build
+```
+
+### ARMHF (32-bit ARM)
+
+```bash
+lb config --architectures armhf
+sudo lb build
+```
+
+> **Note:** Building for a different architecture may require using an appropriate build environment, cross-compilation tools, or native hardware depending on the target architecture.
 
 ## Build the ISO
 
