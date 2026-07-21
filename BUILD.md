@@ -30,7 +30,7 @@ git clone https://github.com/meherazhosensiam/AureonOS.git
 cd AureonOS
 ```
 ## After cloning the Repository
-clean the build environment first To ensure any broken file and configuration are not there
+clean the build environment first to ensure any broken file and configuration are not there
 
 ```bash
 sudo lb clean --all
@@ -117,7 +117,6 @@ AureonOS/
 ├── hooks/
 ├── includes/
 ├── package-lists/
-├── build.sh
 ├── README.md
 ├── BUILD.md
 ├── CONTRIBUTING.md
@@ -133,7 +132,7 @@ Run:
 
 ```bash
 sudo lb clean --purge
-sudo ./build.sh
+sudo lb build
 ```
 
 ### Package not found
