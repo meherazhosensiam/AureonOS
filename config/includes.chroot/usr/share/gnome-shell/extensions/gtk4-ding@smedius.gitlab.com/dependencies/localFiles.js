@@ -1,4 +1,3 @@
-export {Gio, GLib, Soup} from './gi.js';
 export {DesktopFolderUtils} from '../app/utils/desktopFolderUtils.js';
 export * as AdwPreferencesWindow from '../app/adwPreferencesWindow.js';
 export * as AppChooser from '../app/appChooser.js';
@@ -23,7 +22,6 @@ export * as Thumbnails from '../app/thumbnails.js';
 export * as WindowManager from '../app/windowManager.js';
 export * as DesktopMenu from '../app/desktopMenu.js';
 export * as DragManager from '../app/dragManager.js';
-export * as WebUtils from '../app/utils/webutils.js';
 export {IconCreator} from '../app/desktopIconFactory.js';
 export {FileItemIcon} from '../app/fileItemIcon.js';
 export {DesktopIconItem} from '../app/desktopIconItem.js';
@@ -41,5 +39,3 @@ export {HtmlWidgetHost} from '../app/htmlWidgetHost.js';
 export {HtmlWidgetHostWithBackend} from '../app/htmlWidgetHostWithBackend.js';
 export * as WidgetApi from '../app/widgetApi.js';
 export {WebWidgetContext} from '../app/widgetWebContext.js';
-export {WidgetWindow} from '../app/widgetWindow.js';
-export {PinnedWindowManager} from '../app/pinnedWindowManager.js';

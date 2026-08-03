@@ -24,13 +24,12 @@ import Clutter from 'gi://Clutter';
 import Meta from 'gi://Meta';
 import Mtk from 'gi://Mtk';
 import Shell from 'gi://Shell';
-import St from 'gi://St';
 
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 import * as Config from 'resource:///org/gnome/shell/misc/config.js';
 import * as BoxPointer from 'resource:///org/gnome/shell/ui/boxpointer.js';
 
-import * as WindowTypeManager from './windowTypeManager.js';
+import * as EmulateX11 from './emulateX11WindowType.js';
 import * as GnomeShellOverride from './gnomeShellOverride.js';
 import * as VisibleArea from './visibleArea.js';
 import * as FileUtils from './utils/fileUtils.js';
@@ -69,21 +68,33 @@ const ifaceXml = `
     <arg type="s" direction="in" name="Set Shell Cursor"/>
     </method>
     <method name="showShellBackgroundMenu"/>
-    <method name="setWidgetLayerRaised">
-      <arg type="b" direction="in" name="Raised"/>
-    </method>
   </interface>
 </node>`;
+
+// Since Gnome Shell 48 the enumeration of the cursor is different
+// the name has changed, althugh the value is the same;
+// We use our own enumeration names to avoid problems with the version
+// of the Gnome Shell, the enumeration integer points to the correct
+// value in the Gnome Shell 48 and Meta 48 Enum and earlier.
+const ShellDropCursor = {
+    DEFAULT: 2, // META_CURSOR_DEFAULT Meta.Cursor.DEFAULT
+    NODROP: 15, // META_CURSOR_NO_DROP Meta.Cursor.DND_UNSUPPORTED_TARGET
+    COPY: 13, // META_CURSOR_COPY Meta.Cursor.DND_COPY
+    MOVE: 14, // META_CURSOR_MOVE Meta.Cursor.DND_MOVE
+};
 
 export {DingManager};
 
 const DingManager = class {
     constructor(extensionObject) {
-        this._getSettings = extensionObject.getSettings.bind(extensionObject);
+        this.settings = extensionObject.getSettings();
         this.path = extensionObject.path;
         this.metadata = extensionObject.metadata;
         this.version = this.metadata['version-name'];
         this.uuid = this.metadata.uuid;
+        this.isWayland = typeof Meta.is_wayland_compositor === 'function'
+            ? Meta.is_wayland_compositor()
+            : true;
         this._init();
     }
 
@@ -95,7 +106,6 @@ const DingManager = class {
         this.launchDesktop = 0;
         this.waylandClient = null;
         this.DesktopIconsUsableArea = null;
-        this.scaleFactorId = 0;
         this.dingExtensionServiceImplementation = null;
         this.dingExtensionServiceInterface = null;
 
@@ -103,21 +113,27 @@ const DingManager = class {
         this.GnomeShellVersion = GnomeShellVersion;
         this.ShortcutManager = null;
 
-        /* The constructor of the window manager class only initializes some
+        /* The constructor of the EmulateX11 class only initializes some
          * internal properties, but nothing else. In fact, it has its own
          * enable() and disable() methods. That's why it could have been
          * created here, in init(). But since the rule seems to be NO CLASS
          * CREATION IN INIT UNDER NO CIRCUMSTANCES...
          */
-        this.windowTypeManager = null;
+        this.x11Manager = null;
         this.visibleArea = null;
 
         /* Ensures that there aren't "rogue" processes.
          * This is a safeguard measure for the case of Gnome Shell being
-         * relaunched (for example with Alt+F2 and R), to kill
-         * any old DING instance before launching a new one.
+         * relaunched (for example, under X11, with Alt+F2 and R), to kill
+         * any old DING instance. That's why it must be here, in init(),
+         * and not in enable() or disable() (disable already guarantees that
+         * the current instance is killed).
          */
-        this.killingProcess = false;
+        this.killingProcess = true;
+
+        this._doKillAllOldDesktopProcesses()
+        .catch(e => console.error(e))
+        .finally(() => (this.killingProcess = false));
     }
 
 
@@ -125,23 +141,6 @@ const DingManager = class {
      * Enables the extension
      */
     enable() {
-        if (typeof Meta.is_wayland_compositor === 'function' &&
-            !Meta.is_wayland_compositor()
-        ) {
-            console.error('Gtk4 DING extension requires a Wayland session');
-            return;
-        }
-
-        if (!this.settings)
-            this.settings = this._getSettings();
-
-        if (!this.killingProcess) {
-            this.killingProcess = true;
-            this._doKillAllOldDesktopProcesses()
-            .catch(e => console.error(e))
-            .finally(() => (this.killingProcess = false));
-        }
-
         if (!this.GnomeShellOverride) {
             this.GnomeShellOverride =
                 new GnomeShellOverride.GnomeShellOverride();
@@ -149,8 +148,8 @@ const DingManager = class {
 
         this.GnomeShellOverride.enable();
 
-        if (!this.windowTypeManager)
-            this.windowTypeManager = new WindowTypeManager.WindowTypeManager();
+        if (!this.x11Manager)
+            this.x11Manager = new EmulateX11.EmulateX11WindowType();
 
         if (!this.DesktopIconsUsableArea) {
             this.DesktopIconsUsableArea = new VisibleArea.VisibleArea();
@@ -196,7 +195,9 @@ const DingManager = class {
             this.startupPreparedId = null;
         }
 
-        this.windowTypeManager.enable();
+        // under X11 we now need to cheat, so now do all this under wayland
+        // as well as X
+        this.x11Manager.enable();
 
         /*
          * If the desktop geometry changes (because a new monitor has
@@ -228,16 +229,6 @@ const DingManager = class {
                 this._updateDesktopGeometry.bind(this)
             );
 
-        /*
-         * Detect changes in the shell scale factor so desktop geometry is
-         * refreshed whenever GNOME Shell changes scaling.
-         */
-        this.scaleFactorId =
-            St.ThemeContext.get_for_stage(global.stage).connect(
-                'notify::scale-factor',
-                () => this._updateDesktopGeometry()
-            );
-
         this.dbusConnectionId = this._acquireDBusName();
 
         this.lockSignalhandlerId =
@@ -263,7 +254,6 @@ const DingManager = class {
             appID,
             appPath
         );
-        this.windowTypeManager.setRemoteActionGroup(this.remoteDingActions);
 
         this.remoteGeometryUpdateRequestedId =
             Gio.DBus.session.signal_subscribe(
@@ -301,7 +291,7 @@ const DingManager = class {
         this.DesktopIconsUsableArea = null;
         this._killCurrentProcess();
         this.GnomeShellOverride.disable();
-        this.windowTypeManager.disable();
+        this.x11Manager.disable();
         this.visibleArea.disable();
         this.ShortcutManager.disable();
 
@@ -325,11 +315,6 @@ const DingManager = class {
             this.visibleArea.disconnect(this.visibleAreaId);
             this.visibleAreaId = 0;
         }
-        if (this.scaleFactorId) {
-            St.ThemeContext.get_for_stage(global.stage)
-            .disconnect(this.scaleFactorId);
-            this.scaleFactorId = 0;
-        }
         if (this.dbusConnectionId)
             this._stopDbusService();
 
@@ -343,8 +328,6 @@ const DingManager = class {
 
             this.remoteGeometryUpdateRequestedId = 0;
         }
-
-        this.settings = null;
 
         console.log('Adw-DING disabled.');
     }
@@ -376,13 +359,11 @@ const DingManager = class {
      * Start the Dbus Service
      *
      * @param {GObject} connection the Dbus Connection
+     *
      */
     _onBusAcquired(connection) {
         this.dingExtensionServiceImplementation =
-            new DingExtensionService(
-                this._updateDesktopGeometry.bind(this),
-                this._setWidgetLayerRaised.bind(this)
-            );
+            new DingExtensionService(this._updateDesktopGeometry.bind(this));
 
         this.dingExtensionServiceInterface =
             Gio.DBusExportedObject.wrapJSObject(
@@ -435,11 +416,7 @@ const DingManager = class {
         const locked = value.get_boolean();
 
         if (!locked)
-            this.windowTypeManager.refreshWindows();
-    }
-
-    _setWidgetLayerRaised(raised) {
-        this.windowTypeManager?.setWindowsRaisedAsDock(raised);
+            this.x11Manager.refreshWindows();
     }
 
     /**
@@ -462,7 +439,6 @@ const DingManager = class {
     _getDesktopGeometry() {
         let desktopList = [];
         let ws = global.workspace_manager.get_workspace_by_index(0);
-        const {scaleFactor} = St.ThemeContext.get_for_stage(global.stage);
 
         for (let monitorIndex = 0;
             monitorIndex < Main.layoutManager.monitors.length;
@@ -475,7 +451,6 @@ const DingManager = class {
                 'width': area.width,
                 'height': area.height,
                 'zoom': area.scale,
-                scaleFactor,
                 'marginTop': area.marginTop,
                 'marginBottom': area.marginBottom,
                 'marginLeft': area.marginLeft,
@@ -506,7 +481,7 @@ const DingManager = class {
         }
 
         this.waylandClient = null;
-        this.windowTypeManager.set_wayland_client(null);
+        this.x11Manager.set_wayland_client(null);
     }
 
     /**
@@ -566,7 +541,7 @@ const DingManager = class {
      */
     _doRelaunch(reloadTime) {
         this.waylandClient = null;
-        this.windowTypeManager.set_wayland_client(null);
+        this.x11Manager.set_wayland_client(null);
         if (this.isEnabled) {
             if (this.launchDesktop)
                 GLib.source_remove(this.launchDesktop);
@@ -609,7 +584,7 @@ const DingManager = class {
 
         this.waylandClient = new LaunchSubprocess(0, 'Adw-DING');
         this.waylandClient.set_cwd(GLib.get_home_dir());
-        this.windowTypeManager.set_wayland_client(this.waylandClient);
+        this.x11Manager.set_wayland_client(this.waylandClient);
 
         const launchTime = GLib.get_monotonic_time();
 
@@ -662,8 +637,9 @@ const DingManager = class {
 };
 
 /**
- * This class encapsulates the code to launch a subprocess and detect whether
- * a window belongs to it.
+ * This class encapsulates the code to launch a subprocess that can detect
+ * whether a window belongs to it. It only does this on Wayland, because on X11
+ * there is no need to do these tricks.
  *
  * It is compatible with-
  * https://gitlab.gnome.org/GNOME/mutter/merge_requests/754 to simplify the code
@@ -693,7 +669,7 @@ var LaunchSubprocess = class {
 
     makeWaylandClientSubprocess(argv) {
         if (!this.isWayland)
-            throw new Error('Unsupported compositor: Wayland is required');
+            throw new Error('X11, Cannot make Wayland client subprocess');
 
         let subprocess;
 
@@ -729,15 +705,10 @@ var LaunchSubprocess = class {
 
     async spawnv(argv) {
         try {
-            this.subprocess = this.makeWaylandClientSubprocess(argv);
-            try {
-                const pid = Number(this.subprocess?.get_identifier());
-
-                if (pid)
-                    this._movePidToDingScope(pid);
-            } catch (e) {
-                console.warn(`Failed to move ${this._processID} to systemd scope:`, e);
-            }
+            if (this.isWayland)
+                this.subprocess = this.makeWaylandClientSubprocess(argv);
+            else
+                this.subprocess = this._launcher.spawnv(argv);
         } catch (e) {
             this.subprocess = null;
             throw e;
@@ -808,52 +779,6 @@ var LaunchSubprocess = class {
         await this.readOutput(dataInputStream, cancellable);
     }
 
-    _movePidToDingScope(pid) {
-        const bus = Gio.bus_get_sync(Gio.BusType.SESSION, null);
-
-        const properties = [
-            ['Description',
-                new GLib.Variant('s', `${appID} All process`)],
-
-            ['Slice',
-                new GLib.Variant('s', `app-${appID}.slice`)],
-
-            ['PIDs',
-                new GLib.Variant('au', [pid])],
-
-            ['CollectMode',
-                new GLib.Variant('s', 'inactive-or-failed')],
-
-            ['CPUAccounting',
-                new GLib.Variant('b', true)],
-
-            ['MemoryAccounting',
-                new GLib.Variant('b', true)],
-
-            ['TasksAccounting',
-                new GLib.Variant('b', true)],
-        ];
-
-        const params = new GLib.Variant('(ssa(sv)a(sa(sv)))', [
-            `app-${appID}-main.scope`,
-            'replace',
-            properties,
-            [],
-        ]);
-
-        bus.call_sync(
-            'org.freedesktop.systemd1',
-            '/org/freedesktop/systemd1',
-            'org.freedesktop.systemd1.Manager',
-            'StartTransientUnit',
-            params,
-            null,
-            Gio.DBusCallFlags.NONE,
-            -1,
-            null
-        );
-    }
-
     /**
      * Queries whether the passed window belongs to the launched subprocess.
      *
@@ -901,15 +826,37 @@ var LaunchSubprocess = class {
         else
             this._waylandClient?.hide_from_window_list(window);
     }
+
+    make_desktop_window(window) {
+        if (window.window_type === Meta.WindowType.DESKTOP)
+            return true;
+
+        if (!this.isWayland || !this.process_running)
+            return false;
+
+        try {
+            this._waylandClient.make_desktop(window);
+            console.log(
+                'Making Wayland window type Desktop with Meta.WaylandClient API'
+            );
+
+            return true;
+        } catch (e) {
+            console.log(
+                'No API to make window type Desktop available!'
+            );
+        }
+
+        return false;
+    }
 };
 
 /**
  * This class implements the Dbus Services Provided for the extension
  */
 var DingExtensionService = class {
-    constructor(updateDesktopGeometryCB, setWidgetLayerRaisedCB) {
+    constructor(updateDesktopGeometryCB) {
         this.geometryUpdate = updateDesktopGeometryCB;
-        this.setWidgetLayerRaisedCB = setWidgetLayerRaisedCB;
         this.synthesizeHover = new SynthesizeHover();
     }
 
@@ -935,10 +882,6 @@ var DingExtensionService = class {
 
         Main.layoutManager.setDummyCursorGeometry(X, Y, 0, 0);
         backgroundMenu.open(BoxPointer.PopupAnimation.FULL);
-    }
-
-    setWidgetLayerRaised(raised) {
-        this.setWidgetLayerRaisedCB?.(raised);
     }
 
     getDropTargetAppInfoDesktopFile([dropX, dropY]) {
@@ -985,22 +928,18 @@ var DingExtensionService = class {
     }
 
     setDragCursor(cursor) {
-        const actor = global.get_stage().get_grab_actor?.();
-        const CursorType = Clutter.CursorType;
-
         switch (cursor) {
         case 'dndMoveCursor':
-            actor?.set_cursor_type(CursorType.MOVE);
+            global.display.set_cursor(ShellDropCursor.MOVE);
             break;
         case 'dndCopyCursor':
-            actor?.set_cursor_type(CursorType.COPY);
+            global.display.set_cursor(ShellDropCursor.COPY);
             break;
         case 'dndNoDropCursor':
-            actor?.set_cursor_type(CursorType.NO_DROP);
+            global.display.set_cursor(ShellDropCursor.NODROP);
             break;
         default:
-            actor?.set_cursor_type(CursorType.DEFAULT);
-            break;
+            global.display.set_cursor(ShellDropCursor.DEFAULT);
         }
     }
 

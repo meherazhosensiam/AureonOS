@@ -238,9 +238,6 @@ const DBusInterfaces = {
         <arg type="s" direction="in" name="Set Shell Cursor"/>
       </method>
       <method name="showShellBackgroundMenu"/>
-      <method name="setWidgetLayerRaised">
-        <arg type="b" direction="in" name="Raised"/>
-      </method>
     </interface>
   </node>`,
 };

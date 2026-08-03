@@ -174,7 +174,6 @@ const adWDingApp = GObject.registerClass(
                 'uuid': this.uuid,
                 'mainApp': app,
             };
-            app.getDialogParentWindow = () => app.get_active_window();
             this.Utils = {FileUtils};
 
             this.Utils.DBusUtils =
@@ -520,7 +519,7 @@ const adWDingApp = GObject.registerClass(
 
         async _updateIconCache() {
             const appPath = `/${appID.split('.').join('/')}`;
-            const iconPath = '/icons/scalable/apps';
+            const iconPath = '/icons/hicolor/scalable/apps';
             const iconResrc = `resource://${appPath}${iconPath}/${appID}.svg`;
 
             const appIcon = GLib.build_filenamev([

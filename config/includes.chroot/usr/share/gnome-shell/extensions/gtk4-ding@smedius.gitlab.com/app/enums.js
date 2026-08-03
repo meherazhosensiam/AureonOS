@@ -142,8 +142,6 @@ export const XDG_TERMINAL_LIST_FILE = 'xdg-terminals.list';
 export const XDG_TERMINAL_DIR = 'xdg-terminal-exec';
 export const SYSTEM_DATA_DIRS = ['/usr/local/share', '/usr/share'];
 export const XDG_TERMINAL_EXEC = 'xdg-terminal-exec';
-export const WIDGETS_DOWNLOAD_URL =
-    'https://gitlab.com/api/v4/projects/smedius%2Fdesktop-icons-ng/repository/archive.tar.gz?sha=main&path=widgets';
 export const GRID_ELEMENT_SPACING = 2;
 export const GRID_PADDING = 0;
 export const WIDGET_GRID_SIZE = 10;

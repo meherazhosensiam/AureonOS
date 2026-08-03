@@ -485,7 +485,7 @@ const FileItemIcon = class extends DesktopIconItem {
         let newIconPaintable = iconPaintable;
 
         if (this.isEncrypted && this.Prefs.showLinkEmblem) {
-            emblem = Gio.ThemedIcon.new('ding-icon-emblem-locked');
+            emblem = Gio.ThemedIcon.new('icon-emblem-locked');
 
             newIconPaintable =
                 this._addEmblem(newIconPaintable, emblem, position);
@@ -533,12 +533,7 @@ const FileItemIcon = class extends DesktopIconItem {
         if (!fileList)
             fileList = [];
 
-        const display = Gdk.Display.get_default();
-        const launchContext = display.get_app_launch_context();
-        launchContext.set_timestamp(Gdk.CURRENT_TIME);
-
-        this._doOpenContext(launchContext, fileList)
-        .catch(e => console.error(e));
+        this._doOpenContext(null, fileList).catch(e => console.error(e));
     }
 
     async onAllowDisallowLaunchingClicked() {
@@ -598,16 +593,11 @@ const FileItemIcon = class extends DesktopIconItem {
                 continue;
 
             let envS = env.get_strv();
-            const display = Gdk.Display.get_default();
-            const launchContext = display.get_app_launch_context();
-            launchContext.set_timestamp(Gdk.CURRENT_TIME);
-
+            let context = new Gio.AppLaunchContext();
             for (let i = 0; i < envS.length; i += 2)
-                launchContext.setenv(envS[i], envS[i + 1]);
+                context.setenv(envS[i], envS[i + 1]);
 
-            this._doOpenContext(launchContext, null)
-            .catch(e => console.error(e));
-
+            this._doOpenContext(context, null).catch(e => console.error(e));
             return;
         }
         console.log('Could not find discrete GPU data in switcheroo-control');

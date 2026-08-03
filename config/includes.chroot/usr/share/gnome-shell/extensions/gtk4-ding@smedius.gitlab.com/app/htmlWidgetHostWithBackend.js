@@ -110,39 +110,6 @@ const HtmlWidgetHostWithBackend = class extends HtmlWidgetHost {
         return spec;
     }
 
-    _movePidToScope(pid, unitName, description) {
-        const bus = Gio.bus_get_sync(Gio.BusType.SESSION, null);
-        const appID = this._mainApp.get_application_id();
-        const properties = [
-            ['Description', new GLib.Variant('s', description)],
-            ['Slice', new GLib.Variant('s', `app-${appID}.slice`)],
-            ['PIDs', new GLib.Variant('au', [pid])],
-            ['CollectMode', new GLib.Variant('s', 'inactive-or-failed')],
-            ['CPUAccounting', new GLib.Variant('b', true)],
-            ['MemoryAccounting', new GLib.Variant('b', true)],
-            ['TasksAccounting', new GLib.Variant('b', true)],
-        ];
-
-        const params = new GLib.Variant('(ssa(sv)a(sa(sv)))', [
-            unitName,
-            'replace',
-            properties,
-            [],
-        ]);
-
-        bus.call_sync(
-            'org.freedesktop.systemd1',
-            '/org/freedesktop/systemd1',
-            'org.freedesktop.systemd1.Manager',
-            'StartTransientUnit',
-            params,
-            null,
-            Gio.DBusCallFlags.NONE,
-            -1,
-            null
-        );
-    }
-
     async _startBackend(inst) {
         let spec = inst?.backendSpec;
         if (!spec)
@@ -180,28 +147,6 @@ const HtmlWidgetHostWithBackend = class extends HtmlWidgetHost {
             const argv = Array.isArray(spec.argv) ? [...spec.argv] : [];
 
             this._backendProc = launcher.spawnv(argv);
-
-            try {
-                const backendPid = Number(this._backendProc.get_identifier());
-
-                if (backendPid) {
-                    const appID = this._mainApp.get_application_id();
-                    const backendScope =
-                            `app-${appID}-backend-${inst.widgetId}-${inst.instanceId.slice(0, 8)}.scope`;
-
-                    this._movePidToScope(
-                        backendPid,
-                        backendScope,
-                        `${appID} ${inst.widgetId}`
-                    );
-                }
-            } catch (e) {
-                console.warn(
-                    'HtmlWidgetHostWithBackend: failed to move backend to systemd scope:',
-                    e
-                );
-            }
-
             this._backendIn = new Gio.DataOutputStream({
                 base_stream: this._backendProc.get_stdin_pipe(),
             });

@@ -1,13 +1,41 @@
 #!/bin/bash
-set -e
+s#!/bin/sh
+set -eu
 
-apt-get update
-apt-get install -y zsh
+ZSH="/bin/zsh"
 
-# Default shell for future users
-sed -i 's|^DSHELL=.*|DSHELL=/bin/zsh|' /etc/adduser.conf
-
-# Change shell if the user already exists
-if id user >/dev/null 2>&1; then
-    usermod -s /bin/zsh user
+# Ensure Zsh exists
+if [ ! -x "$ZSH" ]; then
+    echo "Error: $ZSH not found."
+    exit 1
 fi
+
+# Ensure Zsh is listed as a valid login shell
+if ! grep -qxF "$ZSH" /etc/shells; then
+    echo "$ZSH" >> /etc/shells
+fi
+
+# Set the default shell for adduser
+if [ -f /etc/adduser.conf ]; then
+    if grep -q '^DSHELL=' /etc/adduser.conf; then
+        sed -i "s|^DSHELL=.*|DSHELL=$ZSH|" /etc/adduser.conf
+    else
+        echo "DSHELL=$ZSH" >> /etc/adduser.conf
+    fi
+fi
+
+# Set the default shell for useradd
+if [ -f /etc/default/useradd ]; then
+    if grep -q '^SHELL=' /etc/default/useradd; then
+        sed -i "s|^SHELL=.*|SHELL=$ZSH|" /etc/default/useradd
+    else
+        echo "SHELL=$ZSH" >> /etc/default/useradd
+    fi
+fi
+
+# Change the shell for the live user if present
+if id user >/dev/null 2>&1; then
+    usermod -s "$ZSH" user
+fi
+
+echo "Default shell configured as $ZSH."

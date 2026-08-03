@@ -167,7 +167,7 @@ class CssOverrideGroup extends Adw.PreferencesGroup {
             }</span>`
         );
         this.add(warningLabel);
-        const icon = Gtk.Image.new_from_icon_name('ding-window-pop-out-symbolic');
+        const icon = Gtk.Image.new_from_icon_name('window-pop-out-symbolic');
         this.cssOverrideButton = new Adw.ActionRow({
             title: _('Edit CSS Override File...'),
         });
@@ -250,7 +250,7 @@ class ShortcutGroup extends Adw.PreferencesGroup {
         this.shortcutButton = new Adw.ActionRow({
             title: _('Edit Shortcuts...'),
         });
-        const icon = Gtk.Image.new_from_icon_name('ding-window-pop-out-symbolic');
+        const icon = Gtk.Image.new_from_icon_name('window-pop-out-symbolic');
         this.shortcutButton.add_suffix(icon);
         this.shortcutButton.set_activatable_widget(icon);
 
@@ -378,26 +378,7 @@ const aboutApp = class AboutDialog {
         );
 
         aboutDialog.set_release_notes(
-            `<p>* Adw version 100.24 for Gnome 50</p>
-<ul><li>Add support for downloading and installing the latest widgets from the Add Widget dialog, with a refreshed chooser and widget registry parsing.</li>
-<li>Run the main app and HTML widget backend processes in dedicated systemd cgroup scopes under user.app, with app-prefixed subprocess names, independent of GNOME Shell.</li>
-<li>Improve media player widgets by keeping the last active player selected when multiple players are playing.</li>
-<li>Persist pinned widget global coordinates so pinned widgets keep their positions across grid and margin changes.</li>
-<li>Add retry handling for temporary Open-Meteo 502/504 failures in weather widgets.</li>
-<li>Weblate translation update.</li></ul>
-            <p>* Adw version 100.23 for Gnome 50</p>
-<ul><li>Refreshes GNOME 50 support with a Mutter cursor fix, Nautilus Previewer 2 / Sushi D-Bus support, improved Today widget dragging and timezone handling, plus packaging and translation updates.</li></ul>
-            <p>* Adw version 100.22 for Gnome 49, 50</p>
-<ul><li>Merge the latest window-tracking and draggable-widget fixes: clock, metrics, weather, media, and pinned windows now drag and track positions more reliably, while weather animations stay off by default and media widgets use a lighter DOM to reduce CPU use.</li></ul>
-            <p>* Adw version 100.21 for Gnome 49, 50</p>
-<ul><li>Short stability release: hardens the extension lifecycle, fixes window-type manager cleanup and stacking behavior, and adds GLibUnix signal compatibility for older systems.</li></ul>
-            <p>* Adw version 100.20 for Gnome 49, 50</p>
-<ul><li>Hardened widget host and WebKit integration, improved floating and pinned widget behavior, added media widget persistence and controls, refined geometry handling, and refreshed compatibility fixes.</li></ul>
-            <p>* Adw version 100.19 for Gnome 49, 50</p>
-<ul><li>Extends and hardens the widget API, adds floating and pinned HTML widgets, introduces Sticky Notes, makes Today and media widgets pinnable, updates world clocks, and polishes pinned widget interaction and UI behavior.</li></ul>
-            <p>* Adw version 100.18 for Gnome 49, 50</p>
-<ul><li>Wayland-only release: removes X11 support, improves dock/widget-layer focus and display behavior, and updates shell compatibility.</li></ul>
-            <p>* Adw version 100.17 for Gnome 45, 46, 47, 48, 49</p>
+            `<p>* Adw version 100.17 for Gnome 45, 46, 47, 48, 49</p>
 <ul><li>Widget polish: grid controls, media widgets, webview reattach, redisplay, and animation.</li></ul>
             <p>* Adw version 100.16 for Gnome 45, 46, 47, 48, 49</p>
 <ul><li>Fixes -Empty window not mapping, icon placement with monitor hotplug</li></ul>
@@ -593,7 +574,7 @@ const AdwPreferencesWindow = class extends DingPreferencesWindow {
         );
     }
 
-    getAdwPreferencesWindow(window = null, parentWindow = null) {
+    getAdwPreferencesWindow(window = null) {
         var prefsWindow;
 
         if (window) {
@@ -605,8 +586,6 @@ const AdwPreferencesWindow = class extends DingPreferencesWindow {
             if (app)
                 prefsWindow.set_application(app);
         }
-        if (parentWindow)
-            prefsWindow.set_transient_for(parentWindow);
         prefsWindow.set_can_navigate_back(true);
         prefsWindow.set_search_enabled(true);
 
@@ -617,25 +596,25 @@ const AdwPreferencesWindow = class extends DingPreferencesWindow {
 
         prefsFrame.set_name(_('Desktop'));
         prefsFrame.set_title(_('Desktop'));
-        prefsFrame.set_icon_name('ding-prefs-desktop-symbolic');
+        prefsFrame.set_icon_name('prefs-desktop-symbolic');
 
         const filesPrefsFrame = new Adw.PreferencesPage();
 
         filesPrefsFrame.set_name(_('Files'));
         filesPrefsFrame.set_title(_('Files'));
-        filesPrefsFrame.set_icon_name('ding-prefs-files-symbolic');
+        filesPrefsFrame.set_icon_name('prefs-files-symbolic');
 
         const tweaksFrame = new Adw.PreferencesPage();
 
         tweaksFrame.set_name(_('Tweaks'));
         tweaksFrame.set_title(_('Tweaks'));
-        tweaksFrame.set_icon_name('ding-prefs-tweaks-symbolic');
+        tweaksFrame.set_icon_name('prefs-tweaks-symbolic');
 
         const aboutFrame = new Adw.PreferencesPage();
 
         aboutFrame.set_name(_('More'));
         aboutFrame.set_title(_('More'));
-        aboutFrame.set_icon_name('ding-prefs-more-symbolic');
+        aboutFrame.set_icon_name('prefs-more-symbolic');
 
         prefsWindow.add(prefsFrame);
         prefsWindow.add(filesPrefsFrame);
@@ -828,7 +807,7 @@ const AdwPreferencesWindow = class extends DingPreferencesWindow {
 
         const aboutButton = new Adw.ActionRow();
         aboutButton.set_title(_('About...'));
-        const icon = Gtk.Image.new_from_icon_name('ding-window-pop-out-symbolic');
+        const icon = Gtk.Image.new_from_icon_name('window-pop-out-symbolic');
         aboutButton.add_suffix(icon);
         aboutButton.set_activatable_widget(icon);
 

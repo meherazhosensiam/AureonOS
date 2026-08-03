@@ -72,11 +72,9 @@ const FileItemMenu = class {
         x = null,
         y = null,
         _shiftSelected = false,
-        _controlSelected = false,
-        timestamp = Gdk.CURRENT_TIME
+        _controlSelected = false
     ) {
         this.activeFileItem = fileItem;
-        this._menuTimestamp = timestamp;
         const selectedItemsNum =
             this._desktopManager.getNumberOfSelectedItems();
         const scriptsSubmenu = this.scriptsMonitor.getGioMenu();
@@ -403,8 +401,9 @@ const FileItemMenu = class {
         this.popupmenu.set_pointing_to(menulocation);
         const menuGtkPosition =
             fileItem._grid.getIntelligentPosition(menulocation);
-        if (menuGtkPosition !== null)
+        if (menuGtkPosition)
             this.popupmenu.set_position(menuGtkPosition);
+
         this.popupmenu.popup();
         this.popupmenu.connect('closed', () => {
             GLib.idle_add(GLib.PRIORITY_DEFAULT_IDLE, () => {
@@ -444,7 +443,7 @@ const FileItemMenu = class {
             });
         const popupGtkPosition =
             fileItem._grid.getIntelligentPosition(popupLocation);
-        if (popupGtkPosition !== null)
+        if (popupGtkPosition)
             this._toolTipPopup.set_position(popupGtkPosition);
         this._toolTipPopup.popup();
         this._toolTipPopup.connect(
@@ -786,8 +785,7 @@ const FileItemActions = class {
                     fileItems,
                     this.activeFileItem,
                     this._dbusManager,
-                    this._DesktopIconsUtil,
-                    this._desktopManager.getDialogParentWindow()
+                    this._DesktopIconsUtil
                 );
             this._mainApp.activate_action('textEntryAccelsTurnOff', null);
             chooser.show();
@@ -878,7 +876,7 @@ const FileItemActions = class {
         return new Promise(resolve => {
             if (!dialogTitle)
                 dialogTitle =  _('Select Destination');
-            const window = this._desktopManager.getDialogParentWindow();
+            const window = this._mainApp.get_active_window();
             if (!selectionText)
                 selectionText = _('Select');
             const dialog = new Gtk.FileDialog({
@@ -910,7 +908,7 @@ const FileItemActions = class {
             if (!selectionText)
                 selectionText = _('Select');
             let returnValue = null;
-            const window = this._desktopManager.getDialogParentWindow();
+            const window = this._mainApp.get_active_window();
             const dialog = new Gtk.FileChooserDialog({title: dialogTitle});
             dialog.set_action(Gtk.FileChooserAction.SELECT_FOLDER);
             dialog.set_create_folders(true);
@@ -1135,12 +1133,14 @@ const FileItemActions = class {
         if (!propList)
             return;
 
+        const timestamp = Gdk.CURRENT_TIME;
+
         this._desktopManager
             .DBusUtils
             .RemoteFileOperations
             .ShowItemPropertiesRemote(
                 propList,
-                this._menuTimestamp ?? Gdk.CURRENT_TIME
+                timestamp
             );
     }
 
@@ -1149,12 +1149,14 @@ const FileItemActions = class {
         if (!showInFilesList)
             return;
 
+        const timestamp = Gdk.CURRENT_TIME;
+
         this._desktopManager
             .DBusUtils
             .RemoteFileOperations
             .ShowItemsRemote(
                 showInFilesList,
-                this._menuTimestamp ?? Gdk.CURRENT_TIME
+                timestamp
             );
     }
 
@@ -1314,8 +1316,7 @@ const FileItemActions = class {
         if (path === this.activeFileItem.path &&
             this.activeFileItem.actionMap.has(actionName)
         ) {
-            const context = Gdk.Display.get_default().get_app_launch_context();
-            context.set_timestamp(Gdk.CURRENT_TIME);
+            let context = new Gio.AppLaunchContext();
             this.activeFileItem.desktopAppInfo.launch_action(action, context);
         }
     }

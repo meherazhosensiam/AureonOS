@@ -25,18 +25,6 @@ import {Gio, GLib} from '../dependencies/gi.js';
 
 export {WidgetRegistry};
 
-function cloneJsonObject(value, fallback = {}) {
-    if (value === null || value === undefined)
-        return fallback;
-
-    try {
-        return JSON.parse(JSON.stringify(value));
-    } catch (e) {
-        console.error('WidgetRegistry: failed to clone JSON object:', e);
-        return fallback;
-    }
-}
-
 const WidgetRegistry = class  {
     constructor(desktopIconsUtil) {
         this._util = desktopIconsUtil;
@@ -72,9 +60,7 @@ const WidgetRegistry = class  {
      */
     async listWidgets() {
         await this._ensureLoadedAsync();
-        return Array.from(this._widgets.values()).map(
-            desc => this._cloneDescriptor(desc)
-        );
+        return Array.from(this._widgets.values());
     }
 
     /**
@@ -102,14 +88,7 @@ const WidgetRegistry = class  {
      *   author: "Sundeep Mediratta",
      *   version: "1.0",
      *   homepage: "https://…",
-     *   license: "GPL-3.0-or-later",
-     *   pinnable: boolean,
-     *   chrome: {
-     *     showCloseButton: boolean,
-     *     showPrefsButton: boolean,
-     *     showMoveButton: boolean,
-     *     showPinButton: boolean
-     *   }
+     *   license: "GPL-3.0-or-later"
      * }
      *
      * @param {string} id Widget identifier
@@ -120,8 +99,7 @@ const WidgetRegistry = class  {
             return null;
 
         await this._ensureLoadedAsync();
-        const desc = this._widgets.get(id) ?? null;
-        return desc ? this._cloneDescriptor(desc) : null;
+        return this._widgets.get(id) ?? null;
     }
 
     /*
@@ -351,16 +329,8 @@ const WidgetRegistry = class  {
 
                     const id = idRaw;
                     const kind = manifest.kind === 'gtk' ? 'gtk' : 'html';
-                    const widgetName =
-                        typeof manifest.name === 'string' &&
-                            manifest.name.trim()
-                            ? manifest.name.trim()
-                            : id;
-                    const description =
-                        typeof manifest.description === 'string' &&
-                            manifest.description.trim()
-                            ? manifest.description.trim()
-                            : id;
+                    const displayName = manifest.name || id;
+                    const description = manifest.description || '';
                     const author = manifest.author || '';
                     const version = manifest.version || '';
                     const icon = manifest.icon || '';
@@ -375,12 +345,10 @@ const WidgetRegistry = class  {
                             ? Math.max(1, Math.floor(manifest.defaultHeight))
                             : 160;
 
-                    const defaultConfig = cloneJsonObject(
+                    const defaultConfig =
                         this._isObject(manifest.defaultConfig)
                             ? manifest.defaultConfig
-                            : {},
-                        {}
-                    );
+                            : {};
 
                     const prefs =
                         typeof manifest.prefs === 'string'
@@ -391,11 +359,6 @@ const WidgetRegistry = class  {
                         this._isObject(manifest.backend)
                             ? manifest.backend
                             : null;
-                    const pinnable = manifest.pinnable === true;
-
-                    const chrome = this._normalizeChromePolicy(
-                        manifest.chrome
-                    );
 
                     const desc = {
                         id,
@@ -403,7 +366,7 @@ const WidgetRegistry = class  {
                         dir: widgetDir,
                         manifestFile,
                         isUser,
-                        name: widgetName,
+                        displayName,
                         description,
                         author,
                         version,
@@ -413,8 +376,6 @@ const WidgetRegistry = class  {
                         defaultConfig,
                         prefs,
                         backend,
-                        pinnable,
-                        chrome,
                         hasBackend: !!backend,
                     };
 
@@ -464,37 +425,6 @@ const WidgetRegistry = class  {
         return isObject;
     }
 
-    _normalizeChromePolicy(policy) {
-        const defaults = {
-            showCloseButton: true,
-            showPrefsButton: true,
-            showMoveButton: true,
-            showPinButton: true,
-        };
-
-        if (!this._isObject(policy))
-            return defaults;
-
-        return {
-            showCloseButton:
-                typeof policy.showCloseButton === 'boolean'
-                    ? policy.showCloseButton
-                    : defaults.showCloseButton,
-            showPrefsButton:
-                typeof policy.showPrefsButton === 'boolean'
-                    ? policy.showPrefsButton
-                    : defaults.showPrefsButton,
-            showMoveButton:
-                typeof policy.showMoveButton === 'boolean'
-                    ? policy.showMoveButton
-                    : defaults.showMoveButton,
-            showPinButton:
-                typeof policy.showPinButton === 'boolean'
-                    ? policy.showPinButton
-                    : defaults.showPinButton,
-        };
-    }
-
     _logDuplicateIds(id, existing, replace, widgetDir, isUser) {
         if (this._loggedDuplicateIds.has(id))
             return;
@@ -516,18 +446,6 @@ const WidgetRegistry = class  {
             `${newPath} (${newScope}) — ${action}`
         );
         this._loggedDuplicateIds.add(id);
-    }
-
-    _cloneDescriptor(desc) {
-        if (!desc)
-            return null;
-
-        return {
-            ...desc,
-            defaultConfig: cloneJsonObject(desc.defaultConfig, {}),
-            backend: desc.backend ? cloneJsonObject(desc.backend, null) : null,
-            chrome: desc.chrome ? cloneJsonObject(desc.chrome, null) : null,
-        };
     }
 
     _nextFilesAsync(enumerator) {

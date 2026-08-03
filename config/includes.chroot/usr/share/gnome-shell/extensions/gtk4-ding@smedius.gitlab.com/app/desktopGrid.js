@@ -47,6 +47,7 @@ const DisplayGrid = class {
         this._asDesktop = asDesktop;
         this._desktopDescription = desktopDescription;
         this._hidden = hidden;
+        this._using_X11 = this.DesktopIconsUtil.usingX11();
         this.directoryOpenTimer = null;
         this.windowGlobalRectangle = new Gdk.Rectangle();
         this._updateWindowGeometry();
@@ -83,9 +84,12 @@ const DisplayGrid = class {
             this._mappedPromise =
                 new Promise(resolve => (this._resolveMapped = resolve));
 
-            // Wayland compositor may hang on some high-resolution displays
-            // unless windows are maximized before first map.
-            this._window.maximize();
+            if (!this._using_X11) {
+                // Wayland Compositer hang on some high resolution
+                // requires all windows be maximized to map and display
+                // initially.
+                this._window.maximize();
+            }
 
             this._window.connect('map', () => {
                 if (!this._resolveMapped)
@@ -234,10 +238,6 @@ const DisplayGrid = class {
         this._hidden = false;
     }
 
-    getWindow() {
-        return this._window;
-    }
-
     queue_draw() {
         this._container.queue_draw();
         this._overlay.queue_draw();
@@ -256,13 +256,14 @@ const DisplayGrid = class {
         this._x = this._desktopDescription.x;
         this._y = this._desktopDescription.y;
         this._monitor = this._desktopDescription.monitorIndex;
+        this._sizer = this._zoom;
 
-        // GNOME Shell reports logical coordinates when the scale factor is 1.
-        // In that case, DING should not divide the geometry by zoom again.
-        const coordinatesAreLogical =
-            this._desktopDescription.scaleFactor === 1;
-
-        this._sizer = coordinatesAreLogical ? 1 : this._desktopDescription.zoom;
+        if (this._asDesktop) {
+            if (this._using_X11)
+                this._sizer = Math.ceil(this._zoom);
+            else if (this.Prefs.fractionalScaling)
+                this._sizer = 1;
+        }
 
         this._windowWidth =
             Math.floor(this._desktopDescription.width / this._sizer);
@@ -421,23 +422,17 @@ const DisplayGrid = class {
     // margins to prevent going under/over margins
 
     getIntelligentPosition(gdkRectangle) {
-        if (!this._marginLeftHiddenObject &&
-            !this._marginRightHiddenObject &&
-            !this._marginTopHiddenObject &&
-            !this._marginBottomHiddenObject)
-            return null;
-
         var clickLocation = 'center';
 
         if (this._marginLeft > 0 &&
-            (gdkRectangle.x < (this._marginLeft * 2))
+            (gdkRectangle.x < (this._x + this._marginLeft * 2))
         )
             clickLocation = 'left';
 
         if (this._marginRight > 0 &&
             (
                 gdkRectangle.x + gdkRectangle.width >
-                (this._windowWidth - this._marginRight * 2.5)
+                (this._x + this._windowWidth - this._marginRight * 2.5)
             )
         )
             clickLocation = 'right';
@@ -445,15 +440,15 @@ const DisplayGrid = class {
         if (this._marginBottom > 0 &&
             (
                 gdkRectangle.y + gdkRectangle.height >
-                (this._windowHeight - this._marginBottom * 2)
+                (this._y + this._windowHeight - this._marginBottom * 2)
             )
         ) {
             switch (clickLocation) {
             case 'left':
-                clickLocation = 'bottomLeft';
+                clickLocation = 'bottomleft';
                 break;
             case 'right':
-                clickLocation = 'bottomRight';
+                clickLocation = 'bottomright';
                 break;
             default:
                 clickLocation = 'bottom';
@@ -462,7 +457,7 @@ const DisplayGrid = class {
 
         if (this._marginTop > 0 &&
             (
-                gdkRectangle.y < (this._marginTop * 2)
+                gdkRectangle.y < (this._y + this._marginTop * 2)
             )
         ) {
             switch (clickLocation) {
@@ -479,10 +474,15 @@ const DisplayGrid = class {
 
         var returnvalue;
 
+        //* Fix - Currently Gtk4 returns incorrect Gtk.PositionType Enums    *//
+        //* Returning Integers instead of Enums                              *//
+        //* Enums Gtk.PositionType.LEFT does not seem to work even when      *//
+        //* returning 0 *//
+
         switch (clickLocation) {
         case 'left':
             if (this._marginLeftHiddenObject)
-                returnvalue = Gtk.PositionType.RIGHT;
+                returnvalue = 1; // Gtk.PositionType.RIGHT;
             else
                 returnvalue = null;
 
@@ -490,7 +490,8 @@ const DisplayGrid = class {
 
         case 'right':
             if (this._marginRightHiddenObject)
-                returnvalue = Gtk.PositionType.LEFT;
+                // Gtk.PositionType.LEFT = 0, overRiding with 1 as it works
+                returnvalue = 1;
             else
                 returnvalue = null;
 
@@ -498,7 +499,7 @@ const DisplayGrid = class {
 
         case 'top':
             if (this._marginTopHiddenObject)
-                returnvalue = Gtk.PositionType.BOTTOM;
+                returnvalue = 3; // Gtk.PositionType.BOTTOM;
             else
                 returnvalue = null;
 
@@ -506,7 +507,7 @@ const DisplayGrid = class {
 
         case 'bottom':
             if (this._marginBottomHiddenObject)
-                returnvalue = Gtk.PositionType.TOP;
+                returnvalue = 2; // Gtk.PositionType.TOP;
             else
                 returnvalue = null;
 
@@ -519,17 +520,19 @@ const DisplayGrid = class {
         case 'bottomRight':
             if (this._marginBottomHiddenObject &&
                 this._marginRightHiddenObject) {
-                returnvalue = Gtk.PositionType.LEFT;
+                // Gtk.PositionType.LEFT = 0, overRiding with 1 as it works
+                returnvalue = 1;
                 break;
             }
 
             if (this._marginBottomHiddenObject) {
-                returnvalue = Gtk.PositionType.TOP;
+                returnvalue = 2; // Gtk.PositionType.TOP
                 break;
             }
 
             if (this._marginRightHiddenObject) {
-                returnvalue = Gtk.PositionType.LEFT;
+                // Gtk.PositionType.LEFT = 0, overRiding with 1 as it works
+                returnvalue = 1;
                 break;
             }
 
@@ -538,17 +541,17 @@ const DisplayGrid = class {
         case 'bottomLeft':
             if (this._marginBottomHiddenObject &&
                 this._marginLeftHiddenObject) {
-                returnvalue = Gtk.PositionType.RIGHT;
+                returnvalue = 1; // Gtk.PositionType.RIGHT
                 break;
             }
 
             if (this._marginBottomHiddenObject) {
-                returnvalue = Gtk.PositionType.TOP;
+                returnvalue = 2; // Gtk.PositionType.TOP
                 break;
             }
 
             if (this._marginLeftHiddenObject) {
-                returnvalue = Gtk.PositionType.RIGHT;
+                returnvalue = 1; // Gtk.PositionType.RIGHT
                 break;
             }
 
@@ -556,17 +559,19 @@ const DisplayGrid = class {
 
         case 'topRight':
             if (this._marginTopHiddenObject && this._marginRightHiddenObject) {
-                returnvalue = Gtk.PositionType.LEFT;
+                // Gtk.PositionType.LEFT = 0, overRiding with 1 as it works
+                returnvalue = 1;
                 break;
             }
 
             if (this._marginTopHiddenObject) {
-                returnvalue = Gtk.PositionType.BOTTOM;
+                returnvalue = 3; // Gtk.PositionType.BOTTOM
                 break;
             }
 
             if (this._marginRightHiddenObject) {
-                returnvalue = Gtk.PositionType.LEFT;
+                // Gtk.PositionType.LEFT = 0, overRiding with 1 as it works
+                returnvalue = 1;
                 break;
             }
 
@@ -574,15 +579,15 @@ const DisplayGrid = class {
 
         case 'topLeft':
             if (this._marginTopHiddenObject && this._marginLeftHiddenObject) {
-                returnvalue = Gtk.PositionType.RIGHT;
+                returnvalue = 1; // Gtk.PositionType.RIGHT
                 break;
             }
             if (this._marginTopHiddenObject) {
-                returnvalue = Gtk.PositionType.BOTTOM;
+                returnvalue = 3; // Gtk.PositionType.BOTTOM
                 break;
             }
             if (this._marginLeftHiddenObject) {
-                returnvalue = Gtk.PositionType.RIGHT;
+                returnvalue = 1; // Gtk.PositionType.RIGHT
                 break;
             }
             break;
@@ -623,8 +628,8 @@ const DisplayGrid = class {
 
     getDistance(x) {
         // Returns the distance to the middle point of this grid from X //
-        return Math.pow(x - (this._x + this._windowWidth * this._sizer / 2), 2) +
-            Math.pow(x - (this._y + this._windowHeight * this._sizer / 2), 2);
+        return Math.pow(x - (this._x + this._windowWidth * this._zoom / 2), 2) +
+            Math.pow(x - (this._y + this._windowHeight * this._zoom / 2), 2);
     }
 
     _coordinatesGlobalToLocal(X, Y, widget = null) {
@@ -1472,7 +1477,6 @@ const ControlGrid = class extends DrawGrid {
             return;
 
         const button = actor.get_current_button();
-        const timestamp = actor.get_current_event_time();
         const state = this._buttonClick.get_current_event_state();
         const isCtrl = (state & Gdk.ModifierType.CONTROL_MASK) !== 0;
         const isShift = (state & Gdk.ModifierType.SHIFT_MASK) !== 0;
@@ -1482,20 +1486,12 @@ const ControlGrid = class extends DrawGrid {
 
         if (clickItem && this._clickItemClickable(clickItem, X, Y)) {
             clickItem
-                ._onPressButton(
-                    actor,
-                    nPress,
-                    X, Y,
-                    x, y,
-                    isShift,
-                    isCtrl,
-                    timestamp
-                );
+                ._onPressButton(actor, nPress, X, Y, x, y, isShift, isCtrl);
             return;
         }
 
         this._desktopManager
-            .onPressButton(X, Y, x, y, button, isShift, isCtrl, this, timestamp);
+            .onPressButton(X, Y, x, y, button, isShift, isCtrl, this);
     }
 
     async _doGestureRelease(actor, nPress, x, y, grid) {
@@ -1732,7 +1728,12 @@ const ControlGrid = class extends DrawGrid {
             let gdkDropAction = drop.get_actions();
 
             if (!Gdk.DragAction.is_unique(gdkDropAction)) {
-                if (gdkDropAction >
+                if (this._using_X11 &&
+                    (gdkDropAction >=
+                            (Gdk.DragAction.COPY | Gdk.DragAction.MOVE)))
+                    gdkDropAction = Gdk.DragAction.MOVE;
+
+                else if (gdkDropAction >
                         (Gdk.DragAction.COPY | Gdk.DragAction.MOVE))
                     gdkDropAction = Gdk.DragAction.ASK;
             }
@@ -2425,10 +2426,6 @@ const WidgetGrid = class extends ControlGrid {
         super(params);
         this._selectedWidget = null;   // instanceId
         this._draggedWidget = null;    // instanceId
-        // Pending only until the pointer moves far enough to count as a drag.
-        this._pendingChromeDrag = null;
-        // Small pointer jitter should not steal clicks from draggable chrome.
-        this._chromeDragThreshold = 5;
         this.widgetGridEnabled = false;
         this._gridSize = this.Enums.WIDGET_GRID_SIZE;
 
@@ -2436,11 +2433,12 @@ const WidgetGrid = class extends ControlGrid {
         this._rootFixed.put(this._widgetContainer, 0, 0);
         this.resizeGrid();
         this._widgetContainer.set_name('widget-container');
-        this._widgetContainer.set_focusable(true);
         this._widgetContainerOnTop = true;
         this.lowerWidgetContainer();
 
-        const drag = new Gtk.GestureDrag({button: 1});
+        this._longPressActive = false;
+
+        const drag = new Gtk.GestureDrag();
         drag.set_propagation_phase(Gtk.PropagationPhase.CAPTURE);
         this._widgetContainer.add_controller(drag);
 
@@ -2453,16 +2451,35 @@ const WidgetGrid = class extends ControlGrid {
         contextClick.set_propagation_phase(Gtk.PropagationPhase.CAPTURE);
         this._widgetContainer.add_controller(contextClick);
 
-        click.set_exclusive(true);
-        drag.set_exclusive(true);
-        click.group(drag);
+        const longPress = new Gtk.GestureLongPress();
+        longPress.set_propagation_phase(Gtk.PropagationPhase.CAPTURE);
+        this._widgetContainer.add_controller(longPress);
 
-        drag.connect('drag-begin', this._onWidgetMoveDragBegin.bind(this));
-        drag.connect('drag-update', this._onWidgetMoveDragUpdate.bind(this));
-        drag.connect('drag-end', this._onWidgetMoveDragEnd.bind(this));
+        longPress.group(drag);
+
+        const settings = Gtk.Settings.get_default();
+        if (settings) {
+            const longPressTime = settings.gtk_long_press_time;     // ms
+            const doubleClickTime = settings.gtk_double_click_time; // ms
+
+            if (longPressTime && doubleClickTime) {
+                let factor = doubleClickTime / longPressTime;
+                longPress.set_delay_factor(factor);
+            }
+        }
+
+        drag.connect('drag-begin', this._onWidgetDragBegin.bind(this));
+        drag.connect('drag-update', this._onWidgetDragUpdate.bind(this));
+        drag.connect('drag-end', this._onWidgetDragEnd.bind(this));
+
         click.connect('pressed', this._onClick.bind(this));
         click.connect('released', this._onClickRelease.bind(this));
         contextClick.connect('pressed', this._onWidgetContextMenu.bind(this));
+
+        longPress.connect('pressed', this._onWidgetLongPress.bind(this));
+
+        longPress
+            .connect('cancelled', this._onWidgetLongPressCancelled.bind(this));
     }
 
     get widgetContainer() {
@@ -2487,18 +2504,6 @@ const WidgetGrid = class extends ControlGrid {
 
     toggleWidgetLayer() {
         this.setWidgetContainerOnTop(!this._widgetContainerOnTop);
-    }
-
-    restoreWidgetLayerFocus() {
-        if (!this._widgetContainerOnTop)
-            return;
-
-        this._window.present();
-
-        if (this._widgetContainer.grab_focus())
-            return;
-
-        this._window.grab_focus();
     }
 
     resizeWindow() {
@@ -2534,20 +2539,16 @@ const WidgetGrid = class extends ControlGrid {
             this._widgetContainer.insert_after(this._rootFixed, this._container);
 
             this._widgetContainer.add_css_class('widgets-on-top');
-            this._window.add_css_class('widgets-on-top');
 
             // Input: widget layer active, icons inert
-            this._container.opacity = 0.05;
             this._container.set_can_target(false);
             this._widgetContainer.set_can_target(true);
             this._desktopManager.unselectAll();
-            this._desktopManager.closeFocusStealingWindows();
+            this._mainapp.activate_action('textEntryOff', null);
             this._mainapp.set_accels_for_action(
                 'app.lowerWidgetLayer',
                 ['Escape']
             );
-
-            this.restoreWidgetLayerFocus();
         } else {
         // Icons above widgets (normal mode)
         // Draw order: widgets (bottom), icons (top)
@@ -2556,15 +2557,14 @@ const WidgetGrid = class extends ControlGrid {
             this._container.insert_after(this._rootFixed, this._widgetContainer);
 
             this._widgetContainer.remove_css_class('widgets-on-top');
-            this._window.remove_css_class('widgets-on-top');
 
             // Input: icons active, widget layer background only
-            this._container.opacity = 1.0;
             this._container.set_can_target(true);
             this._widgetContainer.set_can_target(false);
 
             this._desktopManager.widgetManager?.clearSelectedInstance();
             this._mainapp.set_accels_for_action('app.lowerWidgetLayer', []);
+            this._mainapp.activate_action('textEntryOn', null);
         }
 
         this._desktopManager.widgetManager
@@ -2605,21 +2605,42 @@ const WidgetGrid = class extends ControlGrid {
         return super._onKeyPress(actor, keyval, keycode, state);
     }
 
-    beginWidgetMove(instanceId, startX, startY, allowChrome = false) {
-        this.restoreWidgetLayerFocus();
+    _onWidgetLongPress(gesture, x, y) {
+        this._longPressActive = true;
+        this._onWidgetDragBegin(gesture, x, y);
+    }
+
+    _onWidgetLongPressCancelled(_gesture) {
+        this._longPressActive = false;
+    }
+
+    _onWidgetDragBegin(gesture, startX, startY) {
         this._dragStartX = startX;
         this._dragStartY = startY;
-        this._selectedWidget = instanceId;
 
-        this._draggedWidget = this._findWidgetByInstanceId(instanceId);
+        this._draggedWidget = this._findWidgetAt(startX, startY);
 
         this._dragPointerOffsetX = 0;
         this._dragPointerOffsetY = 0;
 
         if (!this._draggedWidget ||
-            (!allowChrome && this._isWidgetChromeActor(this._draggedWidget)))
-            return false;
+            this._isWidgetChromeActor(this._draggedWidget)) {
+            this._longPressActive = false;
+            gesture.set_state(Gtk.EventSequenceState.DENIED);
+            return;
+        }
 
+        // Require a long-press before we actually claim the drag.
+        // This lets normal short clicks go through to the WebView / Gtk.Button.
+        if (!this._longPressActive) {
+            // Don’t drag, let the sequence fall through to children.
+            this._draggedWidget = null;
+            return;
+        }
+
+        gesture.set_state(Gtk.EventSequenceState.CLAIMED);
+
+        const instanceId = this._draggedWidget.widgetInstanceId;
         const frame =
             this._desktopManager.widgetManager.getInstanceFrame(instanceId);
 
@@ -2632,68 +2653,6 @@ const WidgetGrid = class extends ControlGrid {
             this._desktopManager.widgetManager.hideSelectionChromeDuringDrag();
 
         this._setWidgetDraggingState(true);
-        return true;
-    }
-
-    _onWidgetMoveDragBegin(gesture, startX, startY) {
-        const target = this._findWidgetAt(startX, startY);
-        if (!target)
-            return;
-
-        if (!this._isWidgetDraggableChromeActor(target))
-            return;
-
-        const instanceId = target.widgetInstanceId;
-        if (!instanceId)
-            return;
-
-        // Record the chrome press; actual drag start waits for movement.
-        this._pendingChromeDrag = {
-            instanceId,
-            startX,
-            startY,
-        };
-    }
-
-    _onWidgetMoveDragUpdate(gesture, offsetX, offsetY) {
-        if (this._pendingChromeDrag) {
-            // Ignore small jitter until the pointer has moved far enough
-            // to count as a real drag. This will reliably deliver clicks
-            // to the underlying chrome as we are using a grouped controllers
-            const dist = offsetX * offsetX + offsetY * offsetY;
-            const threshold =
-                this._chromeDragThreshold * this._chromeDragThreshold;
-            if (dist < threshold)
-                return;
-
-            const started = this.beginWidgetMove(
-                this._pendingChromeDrag.instanceId,
-                this._pendingChromeDrag.startX,
-                this._pendingChromeDrag.startY,
-                true
-            );
-
-            if (!started) {
-                this._pendingChromeDrag = null;
-                gesture.set_state(Gtk.EventSequenceState.DENIED);
-                return;
-            }
-
-            gesture.set_state(Gtk.EventSequenceState.CLAIMED);
-            this._pendingChromeDrag = null;
-        }
-
-        this.updateWidgetMove(offsetX, offsetY);
-    }
-
-    _onWidgetMoveDragEnd(_gesture, offsetX, offsetY) {
-        this.endWidgetMove(offsetX, offsetY);
-        if (this._draggedWidget &&
-            this._isWidgetDraggableChromeActor(this._draggedWidget))
-            this._desktopManager.widgetManager.clearSelectedInstance();
-
-        this.click = null;
-        this._pendingChromeDrag = null;
     }
 
     _findWidgetAt(lx, ly) {
@@ -2719,28 +2678,23 @@ const WidgetGrid = class extends ControlGrid {
         return null;
     }
 
-    _findWidgetByInstanceId(instanceId) {
-        if (!instanceId)
-            return null;
-
-        let child = this._widgetContainer.get_first_child();
-        while (child) {
-            if (child.widgetInstanceId === instanceId)
-                return child;
-
-            child = child.get_next_sibling();
-        }
-
-        return null;
-    }
-
-    updateWidgetMove(offsetX, offsetY) {
+    _onWidgetDragUpdate(gesture, offsetX, offsetY) {
         if (!this._draggedWidget)
             return;
 
         const lx = this._dragStartX + offsetX;
         const ly = this._dragStartY + offsetY;
-        this._moveDraggedWidgetToPointer(lx, ly);
+
+        const instanceId = this._draggedWidget.widgetInstanceId;
+        const [offX, offY] = this._getWidgetOffsets(instanceId);
+        let newLocalX = lx - offX;
+        let newLocalY = ly - offY;
+
+        if (this.widgetGridEnabled)
+            [newLocalX, newLocalY] = 
+                this._getWidgetSnappedPosition(newLocalX, newLocalY);
+
+        this._widgetContainer.move(this._draggedWidget, newLocalX, newLocalY);
     }
 
     _getWidgetSnappedPosition(lx, ly) {
@@ -2751,47 +2705,27 @@ const WidgetGrid = class extends ControlGrid {
         return [newLocalX, newLocalY];
     }
 
-    endWidgetMove(offsetX, offsetY) {
+    _onWidgetDragEnd(gesture, offsetX, offsetY) {
         if (!this._draggedWidget)
             return;
 
         const lx = this._dragStartX + offsetX;
         const ly = this._dragStartY + offsetY;
-        this._finishDraggedWidgetAtPointer(lx, ly);
-    }
-
-    _moveDraggedWidgetToPointer(lx, ly) {
-        if (!this._draggedWidget)
-            return;
 
         const instanceId = this._draggedWidget.widgetInstanceId;
         const [offX, offY] = this._getWidgetOffsets(instanceId);
         let newLocalX = lx - offX;
         let newLocalY = ly - offY;
 
-        if (this.widgetGridEnabled) {
-            [newLocalX, newLocalY] =
+        if (this.widgetGridEnabled)
+            [newLocalX, newLocalY] = 
                 this._getWidgetSnappedPosition(newLocalX, newLocalY);
-        }
 
-        this._widgetContainer.move(this._draggedWidget, newLocalX, newLocalY);
-    }
-
-    _finishDraggedWidgetAtPointer(lx, ly) {
-        if (!this._draggedWidget)
-            return;
-
-        const instanceId = this._draggedWidget.widgetInstanceId;
-        const [offX, offY] = this._getWidgetOffsets(instanceId);
-        let newLocalX = lx - offX;
-        let newLocalY = ly - offY;
-
-        if (this.widgetGridEnabled) {
-            [newLocalX, newLocalY] =
-                this._getWidgetSnappedPosition(newLocalX, newLocalY);
-        }
-
-        this._desktopManager.widgetManager.setInstanceFrame(instanceId, newLocalX, newLocalY);
+        this._desktopManager.widgetManager.setInstanceFrame(
+            instanceId,
+            newLocalX,
+            newLocalY
+        );
 
         if (this._selectedWidget === instanceId) {
             this._desktopManager.widgetManager
@@ -2802,6 +2736,7 @@ const WidgetGrid = class extends ControlGrid {
         this._draggedWidget = null;
         this._dragPointerOffsetX = null;
         this._dragPointerOffsetY = null;
+        this._longPressActive = false;
     }
 
     _setWidgetDraggingState(isDragging) {
@@ -2833,10 +2768,7 @@ const WidgetGrid = class extends ControlGrid {
     }
 
     _onClick(gesture, nPress, x, y) {
-        this.restoreWidgetLayerFocus();
         const widget = this._findWidgetAt(x, y);
-        let instanceId = widget?.widgetInstanceId;
-        this.click = null;
 
         if (!widget) {
             this._selectedWidget = null;
@@ -2844,60 +2776,30 @@ const WidgetGrid = class extends ControlGrid {
             return;
         }
 
-        if (this._isWidgetMoveButtonActor(widget)) {
-            instanceId = this._selectedWidget;
-            if (!instanceId)
-                return;
-
-            this.beginWidgetMove(instanceId, x, y);
-            gesture.set_state(Gtk.EventSequenceState.CLAIMED);
-            this.click = null;
-            return;
-        }
-
         if (this._isWidgetChromeActor(widget)) {
-            this.click = null;
+            this._selectedWidget = null;
             return;
         }
 
-        if (this._isWidgetDraggableChromeActor(widget))
+        const instanceId = widget.widgetInstanceId;
+        if (!instanceId) {
+            this._selectedWidget = null;
             return;
-
-        if (!instanceId)
-            return;
+        }
 
         this._selectedWidget = instanceId;
         this._desktopManager.widgetManager.selectInstance(instanceId);
-
-        if (this._isWidgetHostDraggableAt(instanceId, x, y)) {
-            this.beginWidgetMove(instanceId, x, y);
-            gesture.set_state(Gtk.EventSequenceState.CLAIMED);
-            this.click = null;
-            return;
-        }
-
         this.click = [x, y];
     }
 
     _onClickRelease(gesture, _nPress, x, y) {
-        if (!this.click) {
-            this.click = null;
-            return;
-        }
-
         if (!this._selectedWidget)
             return;
 
-        // Reliable for the normal widget-content path: if the press stayed
-        // within click radius and did not become a drag, we hand the click
-        // back to the child actor here. Chrome drag handles use their own
-        // thresholded path and do not depend on this fallback.
         const [clickX, clickY] = this.click ?? [x, y];
         const dx = x - clickX;
         const dy = y - clickY;
         const dist = dx * dx + dy * dy;
-        // Keep a small click radius so tiny pointer jitter does not turn a
-        // normal widget click into a drag-like sequence.
         const radius = 4 * 4;
         const isClick = dist <= radius;
         this.click = null;
@@ -2905,54 +2807,15 @@ const WidgetGrid = class extends ControlGrid {
         if (!isClick)
             return;
 
-        // At this point we’ve done all our selection work in _onClick.
-        // For a real click, we now DENY the sequence
+        // At this point we’ve done all our selection work in _onClick or
+        // _onWidgetLongPress. For a real click, we now DENY the sequence
         // so that the underlying actor (HTML WebView or Gtk.Button add
         // widget) sees a normal click.
         gesture.set_state(Gtk.EventSequenceState.DENIED);
     }
 
     _isWidgetChromeActor(actor) {
-        const name = actor.get_name?.();
-        if (typeof name !== 'string')
-            return false;
-
-        return (
-            name === 'ding-widget-prefs-button' ||
-            name === 'ding-widget-pin-button' ||
-            name === 'ding-widget-move-button' ||
-            name === 'ding-widget-close-button'
-        );
-    }
-
-    _isWidgetMoveButtonActor(actor) {
-        return actor && actor.get_name() === 'ding-widget-move-button';
-    }
-
-    _isWidgetDraggableChromeActor(actor) {
-        const name = actor?.get_name?.();
-        return name === 'ding-widget-add-button' ||
-            name === 'ding-widget-grid-toggle-button';
-    }
-
-    _isWidgetHostDraggableAt(instanceId, localX, localY) {
-        if (!instanceId)
-            return false;
-
-        const inst = this._desktopManager.widgetManager.getInstance(instanceId);
-        if (!inst || inst.kind !== 'html' || !inst.host)
-            return false;
-
-        if (typeof inst.host.isDraggable !== 'function')
-            return false;
-
-        const frame = this._desktopManager.widgetManager.getInstanceFrame(instanceId);
-        if (!frame)
-            return false;
-
-        const widgetLocalX = localX - frame.x;
-        const widgetLocalY = localY - frame.y;
-        return inst.host.isDraggable(widgetLocalX, widgetLocalY);
+        return actor.get_name?.() === 'ding-widget-close-button';
     }
 
     _doDrawOnGrid(snapshot) {
@@ -2966,13 +2829,13 @@ const WidgetGrid = class extends ControlGrid {
             const width = this._drawArea.get_allocated_width();
             const height = this._drawArea.get_allocated_height();
             const gridColor = new Gdk.RGBA({red: 0.3, green: 0.3, blue: 0.3, alpha: 0.18});
-
+            
             for (let x = 0; x < width; x += this._gridSize) {
                 const rect = new Graphene.Rect();
                 rect.init(x + 0.5, 0, 1, height);
                 snapshot.append_color(gridColor, rect);
             }
-
+            
             for (let y = 0; y < height; y += this._gridSize) {
                 const rect = new Graphene.Rect();
                 rect.init(0, y + 0.5, width, 1);

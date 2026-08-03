@@ -1,9 +1,9 @@
 ########################################################################
-# AUREON OS - Minimal GNOME Package List
+# AUREON OS - GNOME Desktop Package List (Debian 13 Trixie)
 ########################################################################
 
 ############################
-# Base Desktop
+# GNOME Desktop Environment
 ############################
 gnome-core
 gnome-shell
@@ -13,12 +13,16 @@ gnome-settings-daemon
 gnome-terminal
 gnome-console
 nautilus
-nautilus-extension-gnome-terminal
 gnome-text-editor
 eog
 evince
+
+############################
+# Display Server
+############################
 xorg
 xserver-xorg
+xwayland
 
 ############################
 # Display Manager
@@ -30,21 +34,24 @@ gdm3
 ############################
 network-manager
 network-manager-gnome
+wpasupplicant
 
 ############################
-# Audio
+# Audio System
 ############################
 pipewire
-pipewire-audio
+pipewire-pulse
 wireplumber
 pavucontrol
 
 ############################
-# File Management
+# File System Integration
 ############################
 gvfs
 gvfs-backends
+gvfs-fuse
 udisks2
+udisks2-btrfs
 
 ############################
 # Themes & Icons
@@ -56,11 +63,20 @@ gnome-themes-extra
 # Fonts
 ############################
 fonts-dejavu
+fonts-dejavu-core
+fonts-dejavu-extra
 fonts-noto
+fonts-noto-core
+fonts-noto-extra
+fonts-noto-cjk
 fonts-noto-color-emoji
+fonts-lohit-beng-bengali
+fonts-hosny-amiri
+fonts-thai-tlwg
+fonts-indic
 
 ############################
-# Customization
+# GNOME Customization
 ############################
 gnome-tweaks
 dconf-cli
@@ -72,10 +88,10 @@ dconf-editor
 file-roller
 zip
 unzip
-p7zip-full
+7zip
 
 ############################
-# System Utilities
+# Basic System Tools
 ############################
 sudo
 bash
@@ -93,21 +109,30 @@ pciutils
 usbutils
 lsof
 rsync
-plymouth
-usbguard
-plymouth-themes 
-zsh
+
+############################
+# ZSH Enhancement
+############################
 zsh-syntax-highlighting
 zsh-autosuggestions
-dconf-cli
-dconf-editor
-libgnome-menu-3-0
-gir1.2-gmenu-3.0
-gnome-menus
+
+############################
+# Boot Splash
+############################
+plymouth
+plymouth-themes
+
+############################
+# Security / Permissions
+############################
+polkitd
+dbus-user-session
+
 ############################
 # Printing
 ############################
 cups
+cups-client
 
 ############################
 # Bluetooth
@@ -116,22 +141,35 @@ bluez
 blueman
 
 ############################
-# installer
+# Installer
 ############################
 calamares
 calamares-settings-debian
+
 ############################
-# Build Dependencies
+# Desktop Integration
 ############################
-polkitd
-dbus-user-session
 xdg-user-dirs
 xdg-utils
 desktop-file-utils
+shared-mime-info
 
 ############################
-# Flatpak
+# Flatpak Support
 ############################
 flatpak
+gnome-software
 gnome-software-plugin-flatpak
 libfuse2t64
+
+############################
+# Virtualization Support
+############################
+open-vm-tools
+open-vm-tools-desktop
+qemu-guest-agent
+spice-vdagent
+
+########################################################################
+# End AUREON OS Desktop Package List
+########################################################################

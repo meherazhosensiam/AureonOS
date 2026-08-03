@@ -41,21 +41,6 @@ const DesktopActions = class {
         this._createMenuActionGroup();
     }
 
-    _getSushiActivationToken(file) {
-        try {
-            const display = Gdk.Display.get_default();
-            const appInfo = DesktopAppInfo.new('org.gnome.NautilusPreviewer.desktop') ??
-                DesktopAppInfo.new('org.gnome.Sushi.desktop');
-
-            const ctx = display.get_app_launch_context();
-            const token = ctx.get_startup_notify_id(appInfo, [file]) ?? '';
-            return token;
-        } catch (e) {
-            console.log(`Could not get activation token: ${e.message}`);
-            return '';
-        }
-    }
-
     // Create the menu action group
     // and add the actions to the main app
     // and set the accelerators
@@ -295,10 +280,7 @@ const DesktopActions = class {
                 return;
             const RemoteOperation =
                 this._DBusUtils.RemoteFileOperations;
-            const activationToken = this._getSushiActivationToken(this.activeFileItem.file);
-            RemoteOperation
-                .ShowFileRemote(this.activeFileItem.uri, activationToken, true)
-                .catch(e => console.error(e));
+            RemoteOperation.ShowFileRemote(this.activeFileItem.uri, 0, true);
         });
         this._mainApp.add_action(previewAction);
 
@@ -355,6 +337,13 @@ const DesktopActions = class {
         });
         this._mainApp.add_action(createDesktopShortcut);
 
+        const textEntryAccelsTurnOff =
+            Gio.SimpleAction.new('textEntryAccelsTurnOff', null);
+        textEntryAccelsTurnOff.connect('activate', () => {
+            this._textEntryAccelsTurnOff();
+        });
+        this._mainApp.add_action(textEntryAccelsTurnOff);
+
         const newDocument =
             Gio.SimpleAction.new('newDocument', new GLib.VariantType('s'));
         newDocument.connect('activate', (action, parameter) => {
@@ -362,7 +351,12 @@ const DesktopActions = class {
         });
         this._mainApp.add_action(newDocument);
 
-        // showShortcutViewer action is registered by ShortcutManager.
+        const showShortcutViewer =
+            Gio.SimpleAction.new('showShortcutViewer', null);
+        showShortcutViewer.connect('activate', () => {
+            this._showShortcutViewer();
+        });
+        this._mainApp.add_action(showShortcutViewer);
 
         const toggleVisibility =
             Gio.SimpleAction.new('toggleVisibility', null);
@@ -638,10 +632,7 @@ const DesktopActions = class {
             return;
         }
 
-        const parentWindow =
-            this._desktopManager.getDialogParentWindow();
-        this.preferencesWindow =
-            this._Prefs.getAdwPreferencesWindow(parentWindow);
+        this.preferencesWindow = this._Prefs.getAdwPreferencesWindow();
         this.preferencesWindow.connect('close-request', () => {
             this.preferencesWindow = null;
         });
@@ -869,17 +860,7 @@ const DesktopActions = class {
                 fileItem.iconRectangle.x + fileItem.iconRectangle.width / 2;
             const Y =
                 fileItem.iconRectangle.y + fileItem.iconRectangle.height / 2;
-            this._fileItemMenu.showMenu(
-                fileItem,
-                3,
-                0,
-                0,
-                X,
-                Y,
-                false,
-                false,
-                Gdk.CURRENT_TIME
-            );
+            this._fileItemMenu.showMenu(fileItem, 3, 0, 0, X, Y, false, false);
         } else {
             const grid = this._desktops.filter(f =>
                 f.coordinatesBelongToThisGrid(this._clickX, this._clickY));
@@ -1192,8 +1173,9 @@ const DesktopBackgroundMenu = class {
         const menuLocation = new Gdk.Rectangle({x, y, width: 1, height: 1});
         this.popupmenu.set_pointing_to(menuLocation);
         const menuGtkPosition = grid.getIntelligentPosition(menuLocation);
-        if (menuGtkPosition !== null)
+        if (menuGtkPosition)
             this.popupmenu.set_position(menuGtkPosition);
+
         this.popupmenu.set_has_arrow(false);
         this.popupmenu.popup();
         this.popupmenu.connect('closed', () => {

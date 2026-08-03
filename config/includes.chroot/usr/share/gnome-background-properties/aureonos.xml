@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wallpapers>
+  <wallpaper deleted="false">
+    <name>AureonOS</name>
+    <filename>/usr/share/backgrounds/aureon/light.png</filename>
+    <filename-dark>/usr/share/backgrounds/aureon/dark.png</filename-dark>
+    <options>zoom</options>
+  </wallpaper>
+</wallpapers>

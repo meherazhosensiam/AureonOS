@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-import {Gdk, Gio, GLib, GdkWayland} from '../../dependencies/gi.js';
+import {Gdk, Gio, GLib, GdkX11, GdkWayland} from '../../dependencies/gi.js';
 import {DBusInterfaces, GsConnect} from '../../dependencies/localFiles.js';
 import {_} from '../../dependencies/gettext.js';
 
@@ -679,9 +679,11 @@ Signals.addSignalMethods(DBusManager.prototype);
 class DbusOperationsManager {
     constructor(
         FreeDesktopFileManager,
+        GnomeNautilusPreview,
         GnomeArchiveManager
     ) {
         this.freeDesktopFileManager = FreeDesktopFileManager;
+        this.gnomeNautilusPreviewManager = GnomeNautilusPreview;
         this.gnomeArchiveManager = GnomeArchiveManager;
 
         this._monitorExtractionSupportedTypes();
@@ -792,6 +794,26 @@ class DbusOperationsManager {
         );
     }
 
+    ShowFileRemote(uri, integer, boolean, callback = null) {
+        if (!this.gnomeNautilusPreviewManager.proxy) {
+            this._sendNoProxyError(callback);
+
+            return;
+        }
+
+        this.gnomeNautilusPreviewManager.proxy.ShowFileRemote(
+            uri,
+            integer,
+            boolean,
+            (result, error) => {
+                if (callback)
+                    callback(result, error);
+
+                if (error)
+                    console.log(`Error previewing file: ${error.message}`);
+            });
+    }
+
     ExtractRemote(extractFileItem, folder, boolean, callback = null) {
         if (!this.gnomeArchiveManager.proxy) {
             this._sendNoProxyError(callback);
@@ -837,7 +859,7 @@ class DbusOperationsManager {
         if (!timestamp)
             return '';
 
-        const context = Gdk.Display.get_default().get_app_launch_context();
+        const context = Gdk.Screen.get_default().get_app_launch_context();
         context.set_timestamp(timestamp);
 
         if (!this._fileManager) {
@@ -867,22 +889,21 @@ class RemoteFileOperationsManager extends DbusOperationsManager {
     ) {
         super(
             FreeDesktopFileManager,
+            GnomeNautilusPreview,
             GnomeArchiveManager
         );
 
         this.mainApp = mainApp;
         this.fileOperationsManager = fileOperationsManager;
-        this.gnomeNautilusPreviewManager = GnomeNautilusPreview;
         this._createPlatformData();
         this._eventsStack = [];
     }
 
     pushEvent(params = {}) {
-        let parentWindow = params.parentWindow;
-        if (!parentWindow) {
-            if (this.mainApp && this.mainApp.getDialogParentWindow)
-                parentWindow = this.mainApp.getDialogParentWindow();
-        }
+        const parentWindow =
+            params.parentWindow
+                ? params.parentWindow
+                : this.mainApp.get_active_window();
 
         const currentEventTime =
             params.timestamp
@@ -923,10 +944,7 @@ class RemoteFileOperationsManager extends DbusOperationsManager {
                 const eventParameters =
                     this._eventsStack.pop() ||
                     {
-                        'parentWindow':
-                            this.mainApp.getDialogParentWindow
-                                ? this.mainApp.getDialogParentWindow()
-                                : null,
+                        'parentWindow': this.mainApp.get_active_window(),
                         'timestamp': Gdk.CURRENT_TIME,
                     };
 
@@ -947,10 +965,19 @@ class RemoteFileOperationsManager extends DbusOperationsManager {
                             if (handle)
                                 parentHandle = `wayland:${handle}`;
 
+
                             freePlatformData = () => {
                                 if (topLevel instanceof GdkWayland.WaylandToplevel)
                                     topLevel.unexport_handle();
                             };
+                        }
+
+                        if (topLevel instanceof GdkX11.X11Surface) {
+                            const xid =
+                                GdkX11.X11Window.prototype.get_xid
+                                .call(topLevel);
+
+                            parentHandle = `x11:${xid}`;
                         }
                     } catch (e) {
                         console.error(e,
@@ -965,34 +992,9 @@ class RemoteFileOperationsManager extends DbusOperationsManager {
                         'timestamp': new GLib.Variant('u', timestamp),
                         'window-position': new GLib.Variant('s', windowPosition),
                     },
-                    parentHandle,
                     freePlatformData,
                 };
             };
-    }
-
-    async ShowFileRemote(uri, activationToken = '', boolean, callback = null) {
-        if (!this.gnomeNautilusPreviewManager.proxy) {
-            this._sendNoProxyError(callback);
-
-            return;
-        }
-
-        const platformData = await this.platformData();
-
-        this.gnomeNautilusPreviewManager.proxy.ShowFileRemote(
-            uri,
-            platformData.parentHandle,
-            boolean,
-            activationToken,
-            (result, error) => {
-                platformData.freePlatformData();
-                if (callback)
-                    callback(result, error);
-
-                if (error)
-                    console.log(`Error previewing file: ${error.message}`);
-            });
     }
 
     async MoveURIsRemote(fileList, uri, callback) {
@@ -1402,7 +1404,6 @@ const DBusUtils = class {
         this.mainApp = mainApp;
         this.discreteGpuAvailable = false;
         this.dbusManagerObject = new DBusManager(mainApp);
-        this._screenSaverActiveChangedSignalId = 0;
         const makeAsync = true;
         const insSytembus = true;
         const insSessionBus = !insSytembus;
@@ -1454,7 +1455,7 @@ const DBusUtils = class {
             this.dbusManagerObject,
             'org.gnome.NautilusPreviewer',
             '/org/gnome/NautilusPreviewer',
-            'org.gnome.NautilusPreviewer2',
+            'org.gnome.NautilusPreviewer',
             insSessionBus,
             'Nautilus-Sushi',
             makeAsync
@@ -1544,34 +1545,8 @@ const DBusUtils = class {
 
         this.RemoteExtensionControl =
             new ExtensionControl(this.RemoteExtensionManager);
-
-        this._connectScreenSaverActiveChangedSignal();
-    }
-
-    _connectScreenSaverActiveChangedSignal() {
-        try {
-            this._screenSaverActiveChangedSignalId =
-                Gio.DBus.session.signal_subscribe(
-                    'org.gnome.ScreenSaver',
-                    'org.gnome.ScreenSaver',
-                    'ActiveChanged',
-                    '/org/gnome/ScreenSaver',
-                    null,
-                    Gio.DBusSignalFlags.NONE,
-                    (_connection, _sender, _objectPath, _iface, _signal, params) => {
-                        const [active] = params.deepUnpack();
-                        this.emit('screen-saver-active-changed', !!active);
-                    }
-                );
-        } catch (e) {
-            console.error(
-                'DBusUtils: failed to subscribe to ScreenSaver ActiveChanged:',
-                e
-            );
-        }
     }
 };
-Signals.addSignalMethods(DBusUtils.prototype);
 
 class ExtensionControl {
     constructor(RemoteExtensionManager) {
@@ -1589,10 +1564,6 @@ class ExtensionControl {
 
     showShellBackgroundMenu() {
         this.RemoteExtensionManager.proxy.showShellBackgroundMenuSync();
-    }
-
-    setWidgetLayerRaised(raised) {
-        this.RemoteExtensionManager.proxy.setWidgetLayerRaisedSync(!!raised);
     }
 
     async getDropTargetCoordinates() {
