@@ -20,13 +20,7 @@ import {_} from '../dependencies/gettext.js';
 export {AppChooserDialog};
 
 const AppChooserDialog = class {
-    constructor(
-        fileItems,
-        activeFileItem = null,
-        dbusUtils,
-        desktopIconsUtil,
-        parentWindow = null
-    ) {
+    constructor(fileItems, activeFileItem = null, dbusUtils, desktopIconsUtil) {
         if (!activeFileItem)
             activeFileItem = fileItems[0];
 
@@ -43,12 +37,8 @@ const AppChooserDialog = class {
         this.mimeType = activeFileItem.attributeContentType;
         this.mimeTypeIsDirectory = this.mimeType === 'inode/directory';
 
-        let appwindow = parentWindow;
-        if (!appwindow) {
-            const mainApp = this._desktopIconsUtil.getMainApp();
-            if (mainApp && mainApp.getDialogParentWindow)
-                appwindow = mainApp.getDialogParentWindow();
-        }
+        const appwindow =
+            this._desktopIconsUtil.getMainApp().get_active_window();
 
         this.builderObject =
             Gtk.Builder

@@ -67,7 +67,7 @@ var GnomeShellOverride = class {
             const transparent = 0;
 
             const adjustment =
-                Main.overview._overview._controls._stateAdjustment;
+                Main.overview._overview._controls._stateAdjustment
 
             function _windowIsOnThisMonitor(metawindow, monitorIndex) {
                 const geometry =
@@ -75,17 +75,17 @@ var GnomeShellOverride = class {
 
                 const [intersects] =
                     metawindow.get_frame_rect().intersect(geometry);
-
+                
                 return intersects;
             }
 
             function _modifyTransparency(value) {
-                const {initialState, finalState} =
+                const {initialState, finalState, } =
                     adjustment.getStateTransitionParams();
 
-                if ((initialState === ControlsState.HIDDEN ||
-                    finalState === ControlsState.HIDDEN) &&
-                    (Math.abs(initialState - finalState) === 1))
+                if ((initialState == ControlsState.HIDDEN ||
+                    finalState == ControlsState.HIDDEN) &&
+                    (Math.abs(initialState - finalState) == 1))
                     return _setTransparency(value);
 
                 return transparent;
@@ -129,16 +129,15 @@ var GnomeShellOverride = class {
 
                 desktopLayer.add_constraint(syncAll);
                 desktopLayer.opacity = _setTransparency(opaque);
-
+    
                 this._stateAdjustment.connectObject('notify::value',
-                    stAdjustment => {
-                        if (SHOW_ON_WORKSPACE_THUMBNAILS) {
+                    (stAdjustment) => {
+                        if (SHOW_ON_WORKSPACE_THUMBNAILS)
                             desktopLayer.opacity =
                                 _setTransparency(this._stateAdjustment.value);
-                        } else {
+                        else
                             desktopLayer.opacity =
                                 _modifyTransparency(stAdjustment.value);
-                        }
                     },
                     this
                 );

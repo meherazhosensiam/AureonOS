@@ -146,7 +146,7 @@ const SymLinkIcon = class {
                 let newIconPaintable = iconPaintable;
 
                 if (this._isSymlink && this.Prefs.showLinkEmblem) {
-                    emblem = Gio.ThemedIcon.new('ding-icon-emblem-symbolic-link');
+                    emblem = Gio.ThemedIcon.new('icon-emblem-symbolic-link');
 
                     newIconPaintable =
                     this._addEmblem(newIconPaintable, emblem, position);
@@ -155,7 +155,7 @@ const SymLinkIcon = class {
                 }
 
                 if (this._isBrokenSymlink) {
-                    emblem = Gio.ThemedIcon.new('ding-icon-emblem-unreadable');
+                    emblem = Gio.ThemedIcon.new('icon-emblem-unreadable');
 
                     newIconPaintable =
                     this._addEmblem(newIconPaintable, emblem, position);

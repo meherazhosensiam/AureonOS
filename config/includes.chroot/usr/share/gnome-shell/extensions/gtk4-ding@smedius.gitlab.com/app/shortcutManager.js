@@ -101,7 +101,7 @@ const EditableShortcutRow = GObject.registerClass(
         }
 
         addEditor() {
-            this.editIcon = Gtk.Image.new_from_icon_name('ding-xapp-edit-symbolic');
+            this.editIcon = Gtk.Image.new_from_icon_name('xapp-edit-symbolic');
             this.editIcon.margin_start = 10;
             this.add_suffix(this.editIcon);
             this.set_activatable_widget(this.editIcon);
@@ -139,7 +139,7 @@ const EditableShortcutRow = GObject.registerClass(
                 width_chars: 30,
                 can_focus: true,
                 has_frame: true,
-                primary_icon_name: 'ding-edit-undo-symbolic',
+                primary_icon_name: 'edit-undo-symbolic',
                 primary_icon_tooltip_text: _('Reset to Default'),
                 primary_icon_sensitive: this.defaultAccel !== this.accelText,
                 primary_icon_activatable: true,
@@ -431,6 +431,7 @@ const ShortcutManager = class {
         this._initializeOurShortcuts();
         this._monitorUserShortcuts();
         this._refreshUserShortcuts();
+        this._addTextEntryActions();
         this._mainApp.connect(
             'action-added',
             (_app, name) => this._setAccel(name)
@@ -441,6 +442,16 @@ const ShortcutManager = class {
         );
         // Global shortcuts are automatically monitored and set by the
         // extension from settings
+    }
+
+    _addTextEntryActions() {
+        const textEntryOn = Gio.SimpleAction.new('textEntryOn', null);
+        textEntryOn.connect('activate', this._textEntryAccelsTurnOn.bind(this));
+        this._mainApp.add_action(textEntryOn);
+
+        const textEntryOff = Gio.SimpleAction.new('textEntryOff', null);
+        textEntryOff.connect('activate', this._textEntryAccelsTurnOff.bind(this));
+        this._mainApp.add_action(textEntryOff);
     }
 
     // this function is not used, but is another way of setting action
@@ -496,7 +507,7 @@ const ShortcutManager = class {
     _setAccel(actionName) {
         const action = this._mainApp.lookup_action(actionName);
 
-        if (!action || !this._localShortcuts[actionName])
+        if (!action)
             return;
 
         const accel = this._readOverRideActionShortcut(actionName);
@@ -508,12 +519,7 @@ const ShortcutManager = class {
     }
 
     _readOverRideActionShortcut(actionName) {
-        const shortcutDefinition = this._localShortcuts[actionName];
-
-        if (!shortcutDefinition)
-            return '';
-
-        const defaultShortCut = shortcutDefinition.Accel ?? '';
+        const defaultShortCut = this._localShortcuts[actionName].Accel ?? '';
         const userShortcut = this._overRideMap.get(actionName);
 
         const overrideShortCut = this._overRideMap.has(actionName)
@@ -578,41 +584,67 @@ const ShortcutManager = class {
     }
 
     _textEntryAccelsTurnOn() {
-        this._setTextEntryAccelState(true);
+        this._mainApp.set_accels_for_action(
+            'app.previewAction',
+            this._localShortcuts.previewAction.Accel.split(',')
+        );
+        this._mainApp.set_accels_for_action(
+            'app.unselectAll',
+            this._localShortcuts.unselectAll.Accel.split(',')
+        );
+        this._mainApp.set_accels_for_action(
+            'app.openOneFileAction',
+            this._localShortcuts.openOneFileAction.Accel.split(',')
+        );
+        this._mainApp.set_accels_for_action(
+            'app.movetotrash',
+            this._localShortcuts.movetotrash.Accel.split(',')
+        );
+        this._mainApp.set_accels_for_action(
+            'app.chooseIconLeft',
+            this._localShortcuts.chooseIconLeft.Accel.split(',')
+        );
+        this._mainApp.set_accels_for_action(
+            'app.chooseIconRight',
+            this._localShortcuts.chooseIconRight.Accel.split(',')
+        );
+        this._mainApp.set_accels_for_action(
+            'app.chooseIconUp',
+            this._localShortcuts.chooseIconUp.Accel.split(',')
+        );
+        this._mainApp.set_accels_for_action(
+            'app.chooseIconDown',
+            this._localShortcuts.chooseIconDown.Accel.split(',')
+        );
+        this._mainApp.set_accels_for_action(
+            'app.menuKeyPressed',
+            this._localShortcuts.menuKeyPressed.Accel.split(',')
+        );
+        this._mainApp.set_accels_for_action(
+            'app.findFiles',
+            this._localShortcuts.findFiles.Accel.split(',')
+        );
+        this._mainApp.set_accels_for_action(
+            'app.toggleKeyboardSelection',
+            this._localShortcuts.toggleKeyboardSelection.Accel.split(',')
+        );
     }
 
     _textEntryAccelsTurnOff() {
-        this._setTextEntryAccelState(false);
-    }
-
-    _setTextEntryAccelState(enabled) {
-        const textEntryActions = [
-            'previewAction',
-            'unselectAll',
-            'openOneFileAction',
-            'movetotrash',
-            'chooseIconLeft',
-            'chooseIconRight',
-            'chooseIconUp',
-            'chooseIconDown',
-            'menuKeyPressed',
-            'findFiles',
-            'toggleKeyboardSelection',
-            'doPaste',
-            'doUndo',
-            'doRedo',
-            'selectAll',
-            'docut',
-            'docopy',
-        ];
-
-        for (const actionName of textEntryActions) {
-            const accels = enabled
-                ? this._readOverRideActionShortcut(actionName).split(',')
-                    .filter(Boolean)
-                : [''];
-            this._mainApp.set_accels_for_action(`app.${actionName}`, accels);
-        }
+        this._mainApp.set_accels_for_action('app.previewAction', ['']);
+        this._mainApp.set_accels_for_action('app.unselectAll', ['']);
+        this._mainApp.set_accels_for_action('app.openOneFileAction', ['']);
+        this._mainApp.set_accels_for_action('app.movetotrash', ['']);
+        this._mainApp.set_accels_for_action('app.chooseIconLeft', ['']);
+        this._mainApp.set_accels_for_action('app.chooseIconRight', ['']);
+        this._mainApp.set_accels_for_action('app.chooseIconUp', ['']);
+        this._mainApp.set_accels_for_action('app.chooseIconDown', ['']);
+        this._mainApp.set_accels_for_action('app.menuKeyPressed', ['']);
+        this._mainApp.set_accels_for_action('app.findFiles', ['']);
+        this._mainApp.set_accels_for_action(
+            'app.toggleKeyboardSelection',
+            ['']
+        );
     }
 
     _resetGlobalShortcuts() {
@@ -634,13 +666,6 @@ const ShortcutManager = class {
         this._resetGlobalShortcuts();
         this._resetLocalShortcuts();
         console.log('All Shortcuts reset to Defaults!');
-    }
-
-    closeShortcutViewer() {
-        if (!this._shortCutsWindow)
-            return;
-
-        this._shortCutsWindow.close();
     }
 
     _showShortcutViewer() {
@@ -684,7 +709,7 @@ const ShortcutManager = class {
         const resetButton = new Adw.ActionRow({
             title: _('Reset All...'),
         });
-        const icon = Gtk.Image.new_from_icon_name('ding-edit-undo-symbolic');
+        const icon = Gtk.Image.new_from_icon_name('edit-undo-symbolic');
         resetButton.add_suffix(icon);
         resetButton.set_activatable_widget(icon);
         resetButton.connect('activated', this._resetAllShortcuts.bind(this));

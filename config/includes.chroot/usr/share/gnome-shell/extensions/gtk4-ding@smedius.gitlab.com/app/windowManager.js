@@ -43,8 +43,6 @@ const WindowManager = class {
         this._priorPrimaryIndex = null;
         this._priorPrimaryMonitorIndex = null;
         this._differentZooms = false;
-        this._scaleFactorChanged = false;
-        this._priorScaleFactor = null;
         this._hidden = false;
         this._gridWindowsUpdateInProgress = false;
         this._pendingDesktopList = null;
@@ -198,11 +196,7 @@ const WindowManager = class {
 
         this._gridWindowsUpdateInProgress = true;
         await this._displayDesktopSnapShots();
-        this._desktopManager.clearAllLayersFromGrids({
-            redisplay,
-            monitorschanged,
-            gridschanged,
-        });
+        this._desktopManager.clearAllLayersFromGrids();
 
         this._desktops.forEach((desktop, index) => {
             desktop.updateGridDescription(this._desktopList[index]);
@@ -266,20 +260,13 @@ const WindowManager = class {
         this._primaryScreen = this._desktopList[this._primaryIndex] ?? null;
         this._primaryMonitorIndex = this._primaryScreen.monitorIndex ?? null;
 
-        const previousScaleFactor = this._priorScaleFactor;
-        const currentScaleFactor = this._desktopList[0]?.scaleFactor ?? null;
-        this._scaleFactorChanged = currentScaleFactor !== previousScaleFactor;
-        this._priorScaleFactor = currentScaleFactor;
-
-        // See if there are different zooms in the desktops when logical scaling
-        // is not active. If scaleFactor is 1, zoom differences do not matter.
-        this._differentZooms = this._desktopList[0]?.scaleFactor !== 1 &&
-            this._desktopList.some((d, index) => {
-                const nextd = this._desktopList[index + 1];
-                if (nextd != null)
-                    return d.zoom !== nextd.zoom;
-                return false;
-            });
+        // See if there are different zooms in the desktops
+        this._differentZooms = this._desktopList.some((d, index) => {
+            const nextd = this._desktopList[index + 1];
+            if (nextd != null)
+                return d.zoom !== nextd.zoom;
+            return false;
+        });
     }
 
     _computeDesktopChangeInfo(newDesktopList) {
@@ -311,23 +298,6 @@ const WindowManager = class {
                 monitorschanged: false,
                 gridschanged: false,
                 redisplay: false,
-            };
-        }
-
-        if (this._scaleFactorChanged) {
-            newDesktopList.forEach((_area, index) => {
-                monitorschangedList.push(index);
-                gridschangedList.push(index);
-            });
-
-            return {
-                firstDesktop,
-                monitorCountChanged,
-                monitorschangedList,
-                gridschangedList,
-                monitorschanged: true,
-                gridschanged: true,
-                redisplay: true,
             };
         }
 
@@ -443,35 +413,25 @@ const WindowManager = class {
         const allocatedPromises =
             this._desktops.map(d => d.ensureAllocationComplete());
 
-        let safegaurd = 0;
+        let safegaurd;
         try {
-            const timeoutPromise = new Promise((resolve, reject) => {
-                safegaurd = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 2000,
-                    () => {
-                        safegaurd = 0;
-                        // No useless log noise if windows fail to map
-                        // eslint-disable-next-line prefer-promise-reject-errors
-                        reject();
-                        return GLib.SOURCE_REMOVE;
-                    }
-                );
-            });
-
-            const mapPromises = Promise.all([
-                Promise.all(displayPromises),
-                Promise.all(allocatedPromises),
-            ]);
-
-            await Promise.race([mapPromises, timeoutPromise]);
+            safegaurd = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 2000,
+                () => {
+                    throw new Error(
+                        'Timeout while waiting for desktop windows to map'
+                    );
+                }
+            );
+            await Promise.all(displayPromises);
+            await Promise.all(allocatedPromises);
         } catch (e) {
-            // logError(e);
+            logError(e);
             // if the windows fail to map, we should still proceed
             // and poke the desktop windows later.
             this.show();
-        } finally {
-            if (safegaurd)
-                GLib.source_remove(safegaurd);
         }
+        if (safegaurd)
+            GLib.source_remove(safegaurd);
 
         if (this._desktopManager.windowsPromiseResolve)
             this._desktopManager.windowsPromiseResolve(true);
@@ -484,7 +444,10 @@ const WindowManager = class {
 
     show() {
         this._hidden = false;
-        this._desktops.forEach(desktop => desktop.show());
+        this._desktops.forEach(desktop => {
+            desktop.show();
+            desktop.set_visible(true);
+        });
     }
 
     queue_draw() {
@@ -503,37 +466,14 @@ const WindowManager = class {
             return;
 
         this._desktops.forEach(desktop => desktop.toggleWidgetLayer());
-        this._syncShellWidgetLayerRaised();
     }
 
     lowerWidgetLayers() {
         this._desktops.forEach(desktop => desktop.lowerWidgetContainer());
-        this._syncShellWidgetLayerRaised(false);
     }
 
     raiseWidgetLayers() {
         this._desktops.forEach(desktop => desktop.raiseWidgetContainer());
-        this._syncShellWidgetLayerRaised(true);
-    }
-
-    _syncShellWidgetLayerRaised(raised = null) {
-        const remoteControl = this._desktopManager.DBusUtils
-            .RemoteExtensionControl;
-
-        if (!remoteControl.isAvailable)
-            return;
-
-        let nextRaised = raised;
-        if (nextRaised === null) {
-            const desktop = this._desktops[0];
-            nextRaised = desktop ? desktop.isWidgetContainerOnTop() : false;
-        }
-
-        try {
-            remoteControl.setWidgetLayerRaised(nextRaised);
-        } catch (e) {
-            console.error(e);
-        }
     }
 
     _registerWidgetLayerAction() {

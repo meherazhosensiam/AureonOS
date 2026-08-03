@@ -337,11 +337,7 @@ const DesktopFolderUtils = class {
         if (this._activeWindow)
             return this._activeWindow;
 
-        const app = Gio.Application.get_default();
-        if (app && app.getDialogParentWindow)
-            return app.getDialogParentWindow();
-
-        return null;
+        return Gio.Application.get_default().get_active_window();
     }
 
     set activeWindow(window) {

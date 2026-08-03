@@ -210,16 +210,6 @@ var AutoAr = class {
             e => console.error(e));
     }
 
-    async extractArchiveToFolder(fullPath, folder, cancellable = null) {
-        if (!GnomeAutoar)
-            throw new Error('AutoAr is not installed');
-
-        const archiveFile = Gio.File.new_for_path(fullPath);
-        const extractor = GnomeAutoar.Extractor.new(archiveFile, folder);
-        extractor.set_output_is_dest(true);
-        await this.runToolAsync(extractor, cancellable);
-    }
-
     compressFileItems(fileList, destinationFolder) {
         if (!this.checkAutoAr())
             return;

@@ -1,4 +1,3 @@
-/* eslint-disable no-useless-escape */
 /* DING: Desktop Icons New Generation for GNOME Shell
  *
  * Gtk4 Port Copyright (C) 2022 - 2025 Sundeep Mediratta (smedius@gmail.com)
@@ -36,14 +35,14 @@ object-src 'none';
 frame-ancestors 'none';
 form-action 'none';
 
-script-src 'self' ding-widget: 'unsafe-inline';
-style-src  'self' ding-widget: 'unsafe-inline';
+script-src 'self' 'unsafe-inline';
+style-src  'self' 'unsafe-inline';
 
-img-src    'self' ding-widget: data: blob:;
-font-src   'self' ding-widget: data:;
-media-src  'self' ding-widget: blob:;
+img-src    'self' data: blob:;
+font-src   'self' data:;
+media-src  'self' blob:;
 
-connect-src 'self' ding-widget: https: ;
+connect-src 'self' https: ;
 navigate-to 'self';
 block-all-mixed-content;
 
@@ -58,16 +57,15 @@ object-src 'none';
 frame-ancestors 'none';
 form-action 'none';
 
-script-src 'self' ding-widget: 'unsafe-inline';
-style-src  'self' ding-widget: 'unsafe-inline';
+script-src 'self' 'unsafe-inline';
+style-src  'self' 'unsafe-inline';
 
-img-src    'self' ding-widget: data: blob:;
-font-src   'self' ding-widget: data:;
-media-src  'self' ding-widget: blob:;
+img-src    'self' data: blob:;
+font-src   'self' data:;
+media-src  'self' blob:;
 
 connect-src
     'self'
-    ding-widget:
     https:
     http:
     http://localhost:*
@@ -85,23 +83,20 @@ frame-ancestors 'none';
 
 script-src
     'self'
-    ding-widget:
     'unsafe-inline'
     https:;
 
 style-src
     'self'
-    ding-widget:
     'unsafe-inline'
     https:;
 
-img-src    'self' ding-widget: data: blob: https:;
-font-src   'self' ding-widget: data: https:;
-media-src  'self' ding-widget: blob: https:;
+img-src    'self' data: blob: https:;
+font-src   'self' data: https:;
+media-src  'self' blob: https:;
 
 connect-src
     'self'
-    ding-widget:
     https:
     http:
     ws:
@@ -139,158 +134,6 @@ export const WIDGET_API =
     } catch (e) {
         // Failing to inject style is non-fatal.
         console.error('ding: failed to inject default style', e);
-    }
-
-    // Prevent in-webview reload shortcuts. Widgets should be refreshed only
-    // through host-controlled actions, not arbitrary page reload keys.
-    window.addEventListener('keydown', function(event) {
-        var key = String(event.key || '').toLowerCase();
-        if (key === 'f5' || (event.ctrlKey && key === 'r')) {
-            event.preventDefault();
-            event.stopPropagation();
-        }
-    }, true);
-
-    // ---------------------------------------------------------------------
-    // Local fetch hardening
-    // ---------------------------------------------------------------------
-    // During widget reload(), WebKit can surface ding-widget:// fetches as
-    // generic "access control" errors instead of resolving them when the old
-    // DOM is tearing down or the new DOM is not ready yet. Older widgets may
-    // immediately retry those rejected fetches, turning a reload transition
-    // into a tight loop of local requests. Gate local fetches off while page
-    // lifecycle signals say the document is unloading (beforeunload/pagehide/
-    // unload), then re-enable them once the new document is shown/loaded
-    // again. Outside that transition, keep a small per-URL failure cooldown
-    // so repeated local fetch failures also fall back to a tiny synthetic
-    // Response, preserving host responsiveness without changing normal network
-    // fetch behavior. Prior to this buggy widget fetches during reload() 
-    // could cause the entire WebView to become unresponsive with the loop
-    // of failed fetches freezing the desktop.
-
-    var _nativeFetch =
-        typeof window.fetch === 'function' ? window.fetch.bind(window) : null;
-    var _localFetchFailures = new Map();
-    var _localFetchBlocked = false;
-    var LOCAL_FETCH_FAILURE_WINDOW_MS = 3000;
-    var LOCAL_FETCH_FAILURE_MAX_BURST = 8;
-    var LOCAL_FETCH_COOLDOWN_MS = 4000;
-
-    function _normalizeLocalFetchUrl(input) {
-        try {
-            if (typeof input === 'string')
-                return String(new URL(input, window.location.href));
-
-            if (input && typeof input.url === 'string')
-                return String(new URL(input.url, window.location.href));
-        } catch (_e) {}
-
-        return '';
-    }
-
-    function _getSyntheticFetchBody(url) {
-        if (/\.svg(?:$|[?])/i.test(url))
-            return '<svg xmlns="http://www.w3.org/2000/svg"></svg>';
-        return '';
-    }
-
-    function _getSyntheticFetchMime(url) {
-        if (/\.svg(?:$|[?])/i.test(url))
-            return 'image/svg+xml';
-        if (/\.css(?:$|[?])/i.test(url))
-            return 'text/css';
-        if (/\.js(?:$|[?])/i.test(url))
-            return 'application/javascript';
-        if (/\.html?(?:$|[?])/i.test(url))
-            return 'text/html';
-        return 'text/plain';
-    }
-
-    function _buildSyntheticFetchResponse(url) {
-        var headers = new Headers({
-            'Content-Type': _getSyntheticFetchMime(url),
-        });
-
-        return new Response(_getSyntheticFetchBody(url), {
-            status: 200,
-            headers,
-        });
-    }
-
-    function _shouldCoolDownLocalFetch(url) {
-        var now = Date.now();
-        var guard = _localFetchFailures.get(url);
-        if (!guard)
-            return false;
-
-        if (guard.cooldownUntil && now < guard.cooldownUntil)
-            return true;
-
-        if (guard.cooldownUntil && now >= guard.cooldownUntil) {
-            _localFetchFailures.delete(url);
-            return false;
-        }
-
-        return false;
-    }
-
-    function _recordLocalFetchFailure(url) {
-        var now = Date.now();
-        var guard = _localFetchFailures.get(url) || {
-            windowStart: now,
-            count: 0,
-            cooldownUntil: 0,
-        };
-
-        if ((now - guard.windowStart) >= LOCAL_FETCH_FAILURE_WINDOW_MS) {
-            guard.windowStart = now;
-            guard.count = 0;
-            guard.cooldownUntil = 0;
-        }
-
-        guard.count++;
-        if (guard.count > LOCAL_FETCH_FAILURE_MAX_BURST)
-            guard.cooldownUntil = now + LOCAL_FETCH_COOLDOWN_MS;
-
-        _localFetchFailures.set(url, guard);
-    }
-
-    function _blockLocalFetches() {
-        _localFetchBlocked = true;
-    }
-
-    function _allowLocalFetches() {
-        _localFetchBlocked = false;
-        _localFetchFailures.clear();
-    }
-
-    window.addEventListener('beforeunload', _blockLocalFetches, true);
-    window.addEventListener('pagehide', _blockLocalFetches, true);
-    window.addEventListener('unload', _blockLocalFetches, true);
-    window.addEventListener('pageshow', _allowLocalFetches, true);
-    window.addEventListener('load', _allowLocalFetches, true);
-
-    if (_nativeFetch) {
-        window.fetch = function(input, init) {
-            var url = _normalizeLocalFetchUrl(input);
-            if (!url || !url.startsWith('ding-widget://'))
-                return _nativeFetch(input, init);
-
-            if (_localFetchBlocked)
-                return Promise.resolve(_buildSyntheticFetchResponse(url));
-
-            if (_shouldCoolDownLocalFetch(url))
-                return Promise.resolve(_buildSyntheticFetchResponse(url));
-
-            return _nativeFetch(input, init).catch(function(error) {
-                _recordLocalFetchFailure(url);
-
-                if (_shouldCoolDownLocalFetch(url))
-                    return _buildSyntheticFetchResponse(url);
-
-                throw error;
-            });
-        };
     }
 
     // ---------------------------------------------------------------------
@@ -476,11 +319,7 @@ export const WIDGET_API =
 
     var _hostState = {
         editMode: false,
-        widgetEditMode: false,
         selected: false,
-        pinned: false,
-        hostChromeVisible: false,
-        pinnable: false,
         theme: 'light',
         reducedMotion: false,
         direction: 'ltr',
@@ -525,16 +364,7 @@ export const WIDGET_API =
 
             // Edit mode & selection
             body.classList.toggle('ding-edit-mode', !!_hostState.editMode);
-            body.classList.toggle(
-                'ding-widget-edit-mode',
-                !!_hostState.widgetEditMode
-            );
             body.classList.toggle('ding-selected', !!_hostState.selected);
-            body.classList.toggle('ding-pinned', !!_hostState.pinned);
-            body.classList.toggle(
-                'ding-host-chrome-visible',
-                !!_hostState.hostChromeVisible
-            );
 
             // Reduced motion:
             body.classList.toggle('ding-reduced-motion', !!_hostState.reducedMotion);
@@ -556,7 +386,7 @@ export const WIDGET_API =
         var snapshot = _cloneHostState();
         _debugHostState('notify', snapshot);
 
-        _applyHostStateToDom();
+        _applyHostStateToDom()
 
         _hostStateListeners.forEach(function(cb) {
             try {
@@ -654,64 +484,6 @@ export const WIDGET_API =
             });
         },
 
-        setPinned: function(pinned) {
-            if (!this.instanceId)
-                return;
-
-            // Floating/pinned HTML widgets may be reparented between host
-            // containers. Widget authors should keep important UI state in
-            // config or other persistent state rather than in-memory only.
-            post({
-                type: 'setPinned',
-                instanceId: this.instanceId,
-                pinned: !!pinned,
-            });
-        },
-
-        beginPinnedEdit: function(editing) {
-            if (!this.instanceId)
-                return;
-
-            // Floating edit mode may move the widget to a different host layer.
-            // Widgets that support pinning should tolerate a host-triggered
-            // reload when that parent change occurs.
-            post({
-                type: 'beginPinnedEdit',
-                instanceId: this.instanceId,
-                editing: !!editing,
-            });
-        },
-
-        beginPinnedWindowMove: function(position) {
-            if (!this.instanceId)
-                return;
-
-            var x = Number(position && position.x);
-            var y = Number(position && position.y);
-            var button = Number(position && position.button);
-            var timestamp = Number(position && position.timestamp);
-
-            post({
-                type: 'beginPinnedWindowMove',
-                instanceId: this.instanceId,
-                x: Number.isFinite(x) ? x : 0,
-                y: Number.isFinite(y) ? y : 0,
-                button: Number.isFinite(button) ? button : 1,
-                timestamp: Number.isFinite(timestamp) ? timestamp : 0,
-            });
-        },
-
-        setDraggableRegions: function(regions) {
-            if (!this.instanceId)
-                return;
-
-            post({
-                type: 'setDraggableRegions',
-                instanceId: this.instanceId,
-                regions: Array.isArray(regions) ? regions : [],
-            });
-        },
-
         getConfig: function() {
             if (!this.instanceId)
                 return Promise.resolve(null);
@@ -739,7 +511,7 @@ export const WIDGET_API =
         /**
          * Returns a shallow copy of the current host state:
          * {
-         *   editMode, selected, pinned, theme,
+         *   editMode, selected, theme, visible,
          *   reducedMotion, direction, locale
          * }
          */

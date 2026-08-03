@@ -9,10 +9,14 @@
   ],
   "settings-schema": "org.gnome.shell.extensions.gtk4-ding",
   "shell-version": [
-    "50"
+    "45",
+    "46",
+    "47",
+    "48",
+    "49"
   ],
   "url": "https://gitlab.com/smedius/desktop-icons-ng",
   "uuid": "gtk4-ding@smedius.gitlab.com",
-  "version": 138,
-  "version-name": "100.24"
+  "version": 129,
+  "version-name": "100.17"
 }

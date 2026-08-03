@@ -27,7 +27,6 @@ const HtmlWidgetHost = class {
      *     instanceId: string,
      *     widgetId: string,
      *     frameRect: {x, y, width, height},
-     *     mainApp: Adw.Application | null,
      *     widgetRegistry: WidgetRegistry | null,
      *     webContext: WebKit.WebContext,
      *     mode: 'prefs' or 'widget'
@@ -38,7 +37,6 @@ const HtmlWidgetHost = class {
         this._instanceId = params.instanceId;
         this._widgetId = params.widgetId;
         this._frameRect = params.frameRect;
-        this._mainApp = params.mainApp ?? null;
         this._widgetRegistry = params.widgetRegistry;
         this._webContext = params.webContext;
         this._mode = params.mode === 'prefs' ? 'prefs' : 'widget';
@@ -46,14 +44,10 @@ const HtmlWidgetHost = class {
 
         this._pendingHostStatePatches = [];
         this._pendingPostMessages = [];
-        this._draggableRegions = [];
         this._webView = null;
         this._destroyed = false;
         this._tickId = 0;
         this._mappedNotifyId = 0;
-        this._parentNotifyId = 0;
-        this._previousParent = null;
-        this._keyboardFocusable = this._mode === 'prefs';
 
         this._makeGtkWidget();
 
@@ -90,64 +84,16 @@ const HtmlWidgetHost = class {
         );
     }
 
-    setKeyboardFocusable(focusable) {
-        this._keyboardFocusable = !!focusable;
-        this._applyKeyboardFocusPolicy();
-    }
-
     isAlive() {
         return !this._destroyed;
     }
 
-    setDraggableRegions(regions) {
-        if (this._destroyed)
-            return;
-
-        if (!Array.isArray(regions)) {
-            this._draggableRegions = [];
-            return;
-        }
-
-        this._draggableRegions = regions
-            .map(region => this._normalizeDraggableRegion(region))
-            .filter(region => region !== null);
-    }
-
-    clearDraggableRegions() {
-        this._draggableRegions = [];
-    }
-
-    isDraggable(x, y) {
-        const px = Number(x);
-        const py = Number(y);
-        if (!Number.isFinite(px) || !Number.isFinite(py))
-            return false;
-
-        for (const region of this._draggableRegions) {
-            if (px < region.x || py < region.y)
-                continue;
-            if (px >= region.x + region.width)
-                continue;
-            if (py >= region.y + region.height)
-                continue;
-
-            return true;
-        }
-
-        return false;
-    }
-
     destroy() {
         this._destroyed = true;
-        this.clearDraggableRegions();
 
         if (this._mappedNotifyId && this._webView)
             this._webView.disconnect(this._mappedNotifyId);
         this._mappedNotifyId = 0;
-
-        if (this._parentNotifyId && this._frame)
-            this._frame.disconnect(this._parentNotifyId);
-        this._parentNotifyId = 0;
 
         if (this._tickId)
             this._webView?.remove_tick_callback(this._tickId);
@@ -192,27 +138,6 @@ const HtmlWidgetHost = class {
         this._pokeWebViewRender();
     }
 
-    async reload() {
-        if (this._destroyed)
-            return;
-
-        this.clearDraggableRegions();
-
-        const webView = await this.getWebViewAsync();
-        if (!webView)
-            return;
-
-        webView.reload();
-    }
-
-    // Reparenting an HTML widget between the desktop container and a floating
-    // widget window can leave WebKit visually blank even though the WebView is
-    // still mapped, sized, and otherwise healthy. A full reload reliably
-    // rebuilds WebKit's render/compositing state for the new parent chain.
-    async reloadForReparent() {
-        await this.reload();
-    }
-
     _makeGtkWidget() {
         this._frame = new DingRoundedClip({radius: 8});
 
@@ -220,13 +145,9 @@ const HtmlWidgetHost = class {
             this._frameRect.width,
             this._frameRect.height
         );
-        this._applyWidgetKeyboardFocus(this._frame);
 
         this._frame.instanceId = this._instanceId;
         this._frame.widgetId = this._widgetId;
-        this._parentNotifyId = this._frame.connect('notify::parent', () => {
-            this._handleParentChange();
-        });
     }
 
     async _makeWebView() {
@@ -237,7 +158,6 @@ const HtmlWidgetHost = class {
             );
         this._webView.set_overflow(Gtk.Overflow.HIDDEN);
         this._webView.set_name('ding-widget-webview');
-        this._applyWidgetKeyboardFocus(this._webView);
 
         this._frame.set_child(this._webView);
     }
@@ -304,21 +224,6 @@ const HtmlWidgetHost = class {
         this._flushPendingMessages();
     }
 
-    _handleParentChange() {
-        if (this._destroyed || !this._frame)
-            return;
-
-        const currentParent = this._frame.get_parent?.() ?? null;
-        const previousParent = this._previousParent;
-
-        this._previousParent = currentParent;
-
-        if (!currentParent || currentParent === previousParent)
-            return;
-
-        this.reloadForReparent().catch(e => logError(e));
-    }
-
     _flushPendingHostStatePatches() {
         for (const patch of this._pendingHostStatePatches)
             this._sendHostStatePatch(patch);
@@ -331,30 +236,6 @@ const HtmlWidgetHost = class {
             this._postMessage(msg);
 
         this._pendingPostMessages.length = 0;
-    }
-
-    _normalizeDraggableRegion(region) {
-        if (!region || typeof region !== 'object')
-            return null;
-
-        const x = Number(region.x);
-        const y = Number(region.y);
-        const width = Number(region.width);
-        const height = Number(region.height);
-
-        if (!Number.isFinite(x) || !Number.isFinite(y))
-            return null;
-        if (!Number.isFinite(width) || !Number.isFinite(height))
-            return null;
-        if (width <= 0 || height <= 0)
-            return null;
-
-        return {
-            x,
-            y,
-            width,
-            height,
-        };
     }
 
     _sendHostStatePatch(patch) {
@@ -372,21 +253,6 @@ const HtmlWidgetHost = class {
         }
 
         this._evaluateScript(script);
-    }
-
-    _applyKeyboardFocusPolicy() {
-        if (this._destroyed)
-            return;
-
-        this._applyWidgetKeyboardFocus(this._frame);
-        this._applyWidgetKeyboardFocus(this._webView);
-    }
-
-    _applyWidgetKeyboardFocus(widget) {
-        if (!widget || this._mode === 'prefs')
-            return;
-
-        widget.set_focusable(this._keyboardFocusable);
     }
 
     _pokeWebViewRender() {
@@ -620,11 +486,6 @@ export const DingRoundedClip = GObject.registerClass({
         const width = this.get_width();
         const height = this.get_height();
         if (width <= 0 || height <= 0)
-            return;
-
-        const childWidth = this._child.get_width?.() ?? 0;
-        const childHeight = this._child.get_height?.() ?? 0;
-        if (childWidth <= 0 || childHeight <= 0)
             return;
 
         const rect = new Graphene.Rect();

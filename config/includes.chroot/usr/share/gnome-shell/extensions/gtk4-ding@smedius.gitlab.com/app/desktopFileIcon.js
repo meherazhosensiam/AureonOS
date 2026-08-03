@@ -254,7 +254,7 @@ const DesktopFileIcon = class extends FileItemIcon {
         if (this._isDesktopFile &&
             (!this._isValidDesktopFile || !this.trustedDesktopFile)
         ) {
-            emblem = Gio.ThemedIcon.new('ding-icon-emblem-unreadable');
+            emblem = Gio.ThemedIcon.new('icon-emblem-unreadable');
 
             newIconPaintable =
                 this._addEmblem(newIconPaintable, emblem, position);

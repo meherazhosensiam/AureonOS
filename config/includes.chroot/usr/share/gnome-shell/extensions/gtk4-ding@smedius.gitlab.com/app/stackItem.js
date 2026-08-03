@@ -149,7 +149,7 @@ const StackItem = class extends DesktopIconItem.DesktopIconItem {
         let emblem = null;
 
         if (this.isStackTop && !this.stackUnique)
-            emblem = Gio.ThemedIcon.new('ding-icon-emblem-stack');
+            emblem = Gio.ThemedIcon.new('icon-emblem-stack');
 
         return this._addEmblem(iconPaintable, emblem);
     }

@@ -52,7 +52,7 @@ const AppImageFileIcon = class extends FileItemIcon {
         await super._doOpenContext(context, fileList);
     }
 
-    _launchAppImageFile(context, _fileList) {
+    _launchAppImageFile() {
         if (this._writableByOthers || !this._attributeCanExecute) {
             const title = _('Invalid Permissions on AppImage File');
             const a =  _('This AppImage File has incorrect Permissions.');
@@ -94,7 +94,7 @@ const AppImageFileIcon = class extends FileItemIcon {
         if (appImageHandler.some(
             app => {
                 if (app.get_name().toLowerCase().includes('appimagelauncher'))
-                    return app.launch_uris([this.uri], context);
+                    return app.launch_uris([this.uri], null);
 
                 return false;
             }
@@ -111,7 +111,7 @@ const AppImageFileIcon = class extends FileItemIcon {
         let newIconPaintable = iconPaintable;
 
         if (this.isAppImageFile && !this.trustedAppImageFile) {
-            emblem = Gio.ThemedIcon.new('ding-icon-emblem-unreadable');
+            emblem = Gio.ThemedIcon.new('icon-emblem-unreadable');
 
             newIconPaintable =
                 this._addEmblem(newIconPaintable, emblem, position);

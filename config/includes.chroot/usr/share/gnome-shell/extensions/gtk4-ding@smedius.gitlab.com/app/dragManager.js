@@ -785,7 +785,7 @@ const DragManager = class {
         event,
         opts = {desktopactions: true}
     ) {
-        const window = this._desktopManager.getDialogParentWindow();
+        const window = this._mainApp.get_active_window();
         this._mainApp.activate_action('textEntryAccelsTurnOff', null);
         const chooser = new Gtk.AlertDialog();
         chooser.set_message(_('Choose Action for Files'));

@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-import {Adw, GLib, Gtk, Gio, Gdk, DesktopAppInfo} from '../dependencies/gi.js';
+import {Adw, GLib, Gtk, Gio, Gdk, GdkX11, DesktopAppInfo} from '../dependencies/gi.js';
 import {DesktopWidgetCapability} from '../dependencies/gi.js';
 import {_} from '../dependencies/gettext.js';
 
@@ -33,8 +33,8 @@ const Preferences = class {
         let schemaSource = GioSSS.get_default();
         this._desktopManager = null;
         this._widgetState = null;
-        this._widgetStateSaving = false;
-        this._pendingWidgetStateSave = null;
+        this._widgetStateMonitor = null;
+        this._suppressWidgetMonitorEvent = false;
         this.desktopWidgetCapability = DesktopWidgetCapability;
 
         // Adw Style Manager
@@ -84,6 +84,9 @@ const Preferences = class {
         }
 
         // Mutter Settings
+        this.usingX11 =
+            Gdk.Display.get_default() instanceof GdkX11.X11Display;
+
         const schemaMutter =
             schemaSource.lookup(this._Enums.SCHEMA_MUTTER, true);
 
@@ -228,12 +231,9 @@ const Preferences = class {
         this._refreshAnimations();
     }
 
-    getAdwPreferencesWindow(parentWindow = null) {
+    getAdwPreferencesWindow() {
         this.AdwPreferencesWindow =
-            this._adwPreferencesWindow.getAdwPreferencesWindow(
-                null,
-                parentWindow
-            );
+            this._adwPreferencesWindow.getAdwPreferencesWindow();
 
         return this.AdwPreferencesWindow;
     }
@@ -257,12 +257,58 @@ const Preferences = class {
         this._initLocalCSSprovider();
         this._monitorDesktopSettings();
         this._monitorTerminalSettings();
-        this._loadInitialWidgetState();
+        this._monitorWidgetState();
     }
 
-    _loadInitialWidgetState() {
+    _monitorWidgetState() {
         if (!this._desktopIconsUtil)
             return;
+
+        const widgetsFile = this._desktopIconsUtil.getWidgetsStateFile();
+        if (!widgetsFile)
+            return;
+
+        try {
+            this._widgetStateMonitor =
+                widgetsFile.monitor_file(
+                    Gio.FileMonitorFlags.WATCH_MOVES,
+                    null
+                );
+
+            this._widgetStateMonitor.set_rate_limit(500);
+
+            this._widgetStateMonitor.connect('changed', () => {
+                if (this._suppressWidgetMonitorEvent)
+                    return;
+
+                if (this._widgetStateReloadTimeoutId) {
+                    GLib.source_remove(this._widgetStateReloadTimeoutId);
+                    this._widgetStateReloadTimeoutId = null;
+                }
+
+                this._widgetStateReloadTimeoutId =
+                    GLib.timeout_add(GLib.PRIORITY_DEFAULT, 250, () => {
+                        this._widgetStateReloadTimeoutId = null;
+                        this._loadWidgetState()
+                        .catch(e => {
+                            console.log(
+                                'Error loading widget state from widgets.json:',
+                                e.message ?? e
+                            );
+                            this._widgetState = null;
+                            this._applyWidgetStateToManager();
+                        });
+                        return GLib.SOURCE_REMOVE;
+                    });
+            });
+        } catch (e) {
+            console.log(
+                'Error monitoring widget state from widgets.json:',
+                e.message ?? e
+            );
+            this._widgetStateMonitor = null;
+            return;
+        }
 
         this._loadWidgetState()
         .catch(e => {
@@ -870,6 +916,9 @@ const Preferences = class {
     }
 
     _getPreMultiplied() {
+        if (this.usingX11)
+            return false;
+
         const scalingEnabled = 'scale-monitor-framebuffer';
 
         try {
@@ -882,6 +931,9 @@ const Preferences = class {
     }
 
     _setPreMultiplied(premultiplied) {
+        if (this.usingX11)
+            return;
+
         const scalingEnabled = 'scale-monitor-framebuffer';
 
         try {
@@ -947,38 +999,23 @@ const Preferences = class {
         if (!this._desktopIconsUtil)
             return;
 
+        this._widgetState = state ?? null;
+
         if (!state)
             return;
 
-        this._pendingWidgetStateSave = {state, cancellable};
+        const file = this._desktopIconsUtil.getWidgetsStateFile();
 
-        if (this._widgetStateSaving)
-            return;
+        // Prevent triggering monitor event while we write the file
+        this._suppressWidgetMonitorEvent = true;
 
-        this._widgetStateSaving = true;
+        await this._desktopIconsUtil.writeJsonFile(file, state, cancellable);
 
-        try {
-            while (this._pendingWidgetStateSave) {
-                const pending = this._pendingWidgetStateSave;
-
-                const file = this._desktopIconsUtil.getWidgetsStateFile();
-
-                // Always write the latest queued full snapshot.
-                // If more changes arrive while writing, the loop will save the
-                // newest one next.
-                // eslint-disable-next-line no-await-in-loop
-                await this._desktopIconsUtil.writeJsonFile(
-                    file,
-                    pending.state,
-                    pending.cancellable
-                );
-
-                if (this._pendingWidgetStateSave === pending)
-                    this._pendingWidgetStateSave = null;
-            }
-        } finally {
-            this._widgetStateSaving = false;
-        }
+        // Allow monitor events after idle
+        GLib.idle_add(GLib.PRIORITY_DEFAULT, () => {
+            this._suppressWidgetMonitorEvent = false;
+            return GLib.SOURCE_REMOVE;
+        });
     }
 
     // Setters
@@ -1000,9 +1037,6 @@ const Preferences = class {
     }
 
     set widgetState(state = null) {
-        if (!state)
-            return;
-
         this._widgetState = state;
         this._saveWidgetState(state).catch(e => {
             console.log(
@@ -1053,6 +1087,8 @@ const Preferences = class {
     }
 
     get fractionalScaling() {
+        if (this.usingX11)
+            return false;
         return this._premultiplied;
     }
 

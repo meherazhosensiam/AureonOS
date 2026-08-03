@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-import {Gio, GLib, DesktopAppInfo} from '../../dependencies/gi.js';
+import {Gio, GLib, Gdk, GdkX11, DesktopAppInfo} from '../../dependencies/gi.js';
 import {_} from '../../dependencies/gettext.js';
 
 export {DesktopIconsUtil};
@@ -37,6 +37,10 @@ const DesktopIconsUtil = class {
         return this.mainApp;
     }
 
+
+    usingX11() {
+        return Gdk.Display.get_default() instanceof GdkX11.X11Display;
+    }
 
     ensureDir(path) {
         const file = Gio.File.new_for_path(path);
@@ -581,7 +585,6 @@ const DesktopIconsUtil = class {
 
     /**
      * Check if a pdf file is encrypted
-     *
      * @param {Gio.File} file a file Gio of pdf file
      * @param {Gio.Cancellable} cancellable gio cancellable
      * @returns boolean
@@ -617,7 +620,6 @@ const DesktopIconsUtil = class {
 
     /**
      * Check if a zip file is encrypted
-     *
      * @param {Gio.File} file a file Gio of zip file
      * @param {Gio.Cancellable} cancellable gio cancellable
      * @returns boolean
@@ -665,7 +667,6 @@ const DesktopIconsUtil = class {
 
     /**
      * Check if a 7z file is encrypted
-     *
      * @param {Gio.File} file a file Gio of 7z file
      * @returns boolean
      */
@@ -971,8 +972,8 @@ const DesktopIconsUtil = class {
     /**
      * Read JSON from a file. Returns parsed object or null on error.
      *
-     * @param {Gio.File} file File to read JSON from.
-     * @param {Gio.Cancellable?} cancellable Optional cancellable for the read.
+     * @param {Gio.File} file
+     * @param {Gio.Cancellable?} cancellable
      * @returns {Promise<object|null>}
      */
     async readJsonFile(file, cancellable = null) {
@@ -995,9 +996,9 @@ const DesktopIconsUtil = class {
      *
      * Mirrors writeTextFileToPath() by ensuring the parent dir via FileUtils.
      *
-     * @param {Gio.File} file File to write JSON into.
-     * @param {object} data Plain object to serialize as JSON.
-     * @param {Gio.Cancellable?} cancellable Optional cancellable for the write.
+     * @param {Gio.File} file
+     * @param {object} data
+     * @param {Gio.Cancellable?} cancellable
      */
     async writeJsonFile(file, data, cancellable = null) {
         const parent = file.get_parent();

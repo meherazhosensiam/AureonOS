@@ -364,15 +364,7 @@ const DesktopIconItem = class {
             return false;
     }
 
-    _onPressButton(
-        actor,
-        nPress,
-        X, Y,
-        x, y,
-        shiftPressed,
-        controlPressed,
-        timestamp = Gdk.CURRENT_TIME
-    ) {
+    _onPressButton(actor, nPress, X, Y, x, y, shiftPressed, controlPressed) {
         const button = actor.get_current_button();
 
         this._buttonPressInitialX = x - this._x1;
@@ -387,8 +379,7 @@ const DesktopIconItem = class {
                 X, Y,
                 x, y,
                 shiftPressed,
-                controlPressed,
-                timestamp
+                controlPressed
             );
         } else if (button === 1) {
             this._doButtonOnePressed(
@@ -423,7 +414,7 @@ const DesktopIconItem = class {
     }
 
     _doButtonThreePressed(
-        button, nPress, X, Y, x, y, shiftPressed, controlPressed, timestamp
+        button, nPress, X, Y, x, y, shiftPressed, controlPressed
     ) {
         if (!this._isSelected)
             this._dragManager.selected(this, this.Enums.Selection.RIGHT_BUTTON);
@@ -436,8 +427,7 @@ const DesktopIconItem = class {
             X, Y,
             x, y,
             shiftPressed,
-            controlPressed,
-            timestamp
+            controlPressed
         );
     }
 

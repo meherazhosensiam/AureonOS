@@ -15,14 +15,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import {Adw, Gio, GLib, Gtk, Gdk} from '../dependencies/gi.js';
+import {Adw, Gio, GLib, Gtk} from '../dependencies/gi.js';
 import {_} from '../dependencies/gettext.js';
 import {WidgetRegistry} from '../dependencies/localFiles.js';
-import {FileUtils} from '../dependencies/localFiles.js';
 import {HtmlWidgetHost, HtmlWidgetHostWithBackend} from '../dependencies/localFiles.js';
-import {PinnedWindowManager} from '../dependencies/localFiles.js';
 import {WebWidgetContext} from '../dependencies/localFiles.js';
-import {WebUtils} from '../dependencies/localFiles.js';
 
 /**
  * WidgetManager
@@ -35,8 +32,6 @@ import {WebUtils} from '../dependencies/localFiles.js';
  *   - We store per-instance:
  *       * monitorIndex
  *       * normX, normY  (0..1, normalized to grid.normalizedWidth/Height)
- *       * pinnedGlobalX, pinnedGlobalY (absolute shell coords for floating
- *         pinned windows; used to survive margin/order changes)
  *       * width, height (absolute pixels, widget-owned)
  *   - On layout changes, we rebuild a map of:
  *       monitorIndex -> { grid, widgetContainer }
@@ -47,30 +42,7 @@ import {WebUtils} from '../dependencies/localFiles.js';
  */
 export {WidgetManager};
 
-function cloneWidgetConfig(config) {
-    if (config === null || config === undefined)
-        return {};
-
-    try {
-        return JSON.parse(JSON.stringify(config));
-    } catch (e) {
-        console.error('WidgetManager: failed to clone widget config:', e);
-        return {};
-    }
-}
-
-function configJson(config) {
-    try {
-        return JSON.stringify(config ?? {});
-    } catch (e) {
-        return null;
-    }
-}
-
-const WIDGETS_STATE_SCHEMA_VERSION = 4;
-const ENTIRE_STRING_LENGTH = -1;
-const appID = 'com.desktop.ding';
-const appPath = GLib.build_filenamev(['/', ...appID.split('.')]);
+const WIDGETS_STATE_SCHEMA_VERSION = 2;
 
 const WidgetManager = class {
     constructor(desktopManager) {
@@ -79,12 +51,6 @@ const WidgetManager = class {
         this._preferences = desktopManager.Prefs;
         this._desktopIconsUtil = desktopManager.DesktopIconsUtil;
         this._widgetRegistry = new WidgetRegistry(this._desktopIconsUtil);
-        this._pinnedWindowManager = new PinnedWindowManager({
-            widgetManager: this,
-            mainApp: desktopManager.mainApp,
-        });
-        this._iconTheme = Gtk.IconTheme.get_for_display(Gdk.Display.get_default());
-        this._iconTheme.add_resource_path(`${appPath}/icons`);
 
         // monitorIndex -> { grid, widgetContainer }
         this._surfaces = new Map();
@@ -102,45 +68,30 @@ const WidgetManager = class {
         //   config,
         // }
         this._instances = new Map();
+        this._selectedWidget = null;
         this._chrome = null;
+        this.closeButton = null;
+        this.prefsButton = null;
         this._selectedInstanceId = null;
         this._webWidgetContext = null;
-        this._textEntryAccelsSuppressedForWidgets = false;
-        this._selectionChromeSuppressed = false;
-        this._pendingPinnedWindowReloadId = 0;
-        this._dbusScreenSaverActiveChangedId = 0;
-        this._downloadCancellable = new Gio.Cancellable();
 
         // When true, suppress emitting stateChanged events
         this._suppressStateEvents = false;
         this._loadStatePromise = null;
         this._pendingLoadState = null;
 
-        this._connectWakeReloadListener();
         this._addActions();
 
         // loadState is handled during startup and by Preferences; avoid
         // overlapping loads during construction.
     }
 
-    clearFromGrids(layoutChange = {}) {
-        const preservePinnedWindows =
-            !!layoutChange?.gridschanged &&
-            !layoutChange?.monitorschanged;
-
+    clearFromGrids() {
         for (const inst of this._instances.values()) {
-            if (preservePinnedWindows &&
-                inst?.pinned &&
-                this._pinnedWindowManager.hasInstance(inst.instanceId))
-                continue;
-
             const parent = inst.actor?.get_parent?.();
             if (parent?.remove)
                 parent.remove(inst.actor);
         }
-
-        if (!preservePinnedWindows)
-            this._pinnedWindowManager.destroyAllWindows();
 
         for (const surface of this._surfaces.values())
             this._teardownSurface(surface);
@@ -149,9 +100,6 @@ const WidgetManager = class {
     }
 
     stopWidgetDisplay() {
-        this._downloadCancellable?.cancel();
-        this._cancelPendingPinnedWindowReload();
-
         for (const surface of this._surfaces.values())
             surface.grid.lowerWidgetContainer();
 
@@ -197,7 +145,7 @@ const WidgetManager = class {
 
         this._rebuildSurfacesFrom(desktops);
         this._detachInstancesWithoutSurface();
-        await this._reattachAllInstances(changeInfo);
+        await this._reattachAllInstances();
         this._stopWebkitIfUnneeded();
     }
 
@@ -206,9 +154,6 @@ const WidgetManager = class {
         if (!surface)
             return;
 
-        this._clearWidgetEditModeForMonitor(monitorIndex);
-        this._attachPinnedInstancesToCorrectLayer(monitorIndex, onTop);
-
         this._updateAddWidgetButtonVisibility(surface, onTop);
         this._updateGridToggleButtonVisibility(surface, onTop);
         this._raiseAddButton(surface);
@@ -216,58 +161,13 @@ const WidgetManager = class {
         this._updateWidgetLayerChange(monitorIndex, onTop);
 
         if (!onTop) {
-            if (surface.gridToggleButton)
+            if (surface.gridToggleButton) {
                 surface.gridToggleButton.set_active(false);
-
+            }
+            
             surface.grid.widgetGridEnabled = false;
             surface.grid.updateOverlay();
         }
-
-        this._syncTextEntryAccelState();
-    }
-
-    restoreWidgetLayerFocus(monitorIndex = null) {
-        if (monitorIndex !== null) {
-            const surface = this._surfaces.get(monitorIndex);
-            surface?.grid?.restoreWidgetLayerFocus?.();
-            return;
-        }
-
-        for (const surface of this._surfaces.values()) {
-            if (!surface?.grid?.isWidgetContainerOnTop?.())
-                continue;
-
-            surface.grid.restoreWidgetLayerFocus?.();
-            return;
-        }
-    }
-
-    schedulePinnedWindowWakeReload(reason = 'window-remap') {
-        if (this._pendingPinnedWindowReloadId)
-            return;
-
-        this._pendingPinnedWindowReloadId = GLib.idle_add(
-            GLib.PRIORITY_DEFAULT_IDLE,
-            () => {
-                this._pendingPinnedWindowReloadId = 0;
-                this._reloadPinnedHtmlWidgetsInWindows(reason)
-                    .catch(e => logError(e));
-                return GLib.SOURCE_REMOVE;
-            }
-        );
-    }
-
-    _connectWakeReloadListener() {
-        this._dbusScreenSaverActiveChangedId =
-            this._desktopManager.DBusUtils.connect(
-                'screen-saver-active-changed',
-                (_dbusUtils, active) => {
-                    if (active)
-                        return;
-
-                    this.schedulePinnedWindowWakeReload('screen-unlock');
-                }
-            );
     }
 
     // =====================================================================
@@ -285,9 +185,6 @@ const WidgetManager = class {
      *     y?: number,
      *     width?: number,         // override defaultWidth/defaultHeight
      *     height?: number,
-     *     initialPinned?: boolean,           // optional initial pinned mode
-     *     inheritConsentFromInstanceId?: string, // optional source instance
-     *     selectAfterCreate?: boolean,           // optional auto-select/focus
      *   }
      *
      * Returns the created instance object or null.
@@ -370,7 +267,7 @@ const WidgetManager = class {
             y,
             width,
             height,
-            cloneWidgetConfig(descriptor?.defaultConfig ?? {}),
+            descriptor?.defaultConfig ?? {},
             kind,
             descriptor
         );
@@ -378,33 +275,12 @@ const WidgetManager = class {
         if (!instance)
             return null;
 
-        const inheritFromId = opts.inheritConsentFromInstanceId;
-        if (typeof inheritFromId === 'string' && inheritFromId.length > 0) {
-            const source = this._instances.get(inheritFromId);
-            if (source && source.widgetId === widgetId) {
-                if (source.webConsent === true)
-                    instance.webConsent = true;
-                if (instance.hasBackend && source.backendConsent === true)
-                    instance.backendConsent = true;
-            }
-        }
-
         const created = await this._ensureInstanceActor(instance);
 
         if (!created)
             return null;
 
-        if (opts.initialPinned === true)
-            instance.pinned = true;
-
-        this._attachInstanceToCorrectLayer(instance);
-
-        const shouldAutoSelect =
-            opts.selectAfterCreate === true &&
-            (surface.grid?.isWidgetContainerOnTop?.() || !instance.pinned);
-
-        if (shouldAutoSelect)
-            this.selectInstance(instance.instanceId);
+        this._positionInstanceActor(instance);
 
         // Persist creation
         this._stateChanged();
@@ -415,7 +291,6 @@ const WidgetManager = class {
     removeInstance(instanceId) {
         this._removeActor(instanceId);
         this._stateChanged();
-        this._stopWebkitIfUnneeded();
     }
 
     deleteSelectedInstance() {
@@ -427,6 +302,8 @@ const WidgetManager = class {
         // Clear selection first so CSS + chrome are detached.
         this.selectInstance(null);
         this.removeInstance(toRemove);
+
+        this._stopWebkitIfUnneeded();
 
         return true;
     }
@@ -467,84 +344,8 @@ const WidgetManager = class {
 
         inst.normX = normX;
         inst.normY = normY;
-        if (inst.pinned) {
-            const [globalX, globalY] =
-                surface.grid.coordinatesLocalToGlobal(
-                    Math.round(x),
-                    Math.round(y)
-                );
-            inst.pinnedGlobalX = globalX;
-            inst.pinnedGlobalY = globalY;
-        }
 
         this._positionInstanceActor(inst);
-    }
-
-    updatePinnedWindowPosition(instanceId, globalX, globalY) {
-        const inst = this._instances.get(instanceId);
-        if (!inst || !inst.pinned)
-            return;
-
-        const roundedGlobalX = Math.round(globalX);
-        const roundedGlobalY = Math.round(globalY);
-
-        if (inst.pinnedGlobalX === roundedGlobalX &&
-            inst.pinnedGlobalY === roundedGlobalY)
-            return;
-
-        inst.pinnedGlobalX = roundedGlobalX;
-        inst.pinnedGlobalY = roundedGlobalY;
-
-        let targetSurface = this._surfaces.get(inst.monitorIndex) ?? null;
-
-        if (!targetSurface?.grid?.coordinatesBelongToThisGridWindow?.(
-            roundedGlobalX,
-            roundedGlobalY
-        )) {
-            for (const surface of this._surfaces.values()) {
-                if (!surface?.grid?.coordinatesBelongToThisGridWindow?.(
-                    roundedGlobalX,
-                    roundedGlobalY
-                ))
-                    continue;
-
-
-                targetSurface = surface;
-                break;
-            }
-        }
-
-        if (!targetSurface?.grid) {
-            this._stateChanged();
-            return;
-        }
-
-        const [localX, localY] =
-            targetSurface.grid._coordinatesGlobalToLocal(
-                roundedGlobalX,
-                roundedGlobalY
-            );
-        const roundedLocalX = Math.round(localX);
-        const roundedLocalY = Math.round(localY);
-        const currentFrame = this.getInstanceFrame(instanceId);
-        const targetMonitorIndex = targetSurface.monitorIndex;
-
-        if (currentFrame &&
-            inst.monitorIndex === targetMonitorIndex &&
-            currentFrame.x === roundedLocalX &&
-            currentFrame.y === roundedLocalY) {
-            this._stateChanged();
-            return;
-        }
-
-
-        inst.monitorIndex = targetMonitorIndex;
-        this.setInstanceFrame(instanceId, roundedLocalX, roundedLocalY);
-
-        if (inst.pinned)
-            this._pinnedWindowManager.refreshInstance(inst);
-
-        this._stateChanged();
     }
 
     /*
@@ -607,54 +408,6 @@ const WidgetManager = class {
         return {x, y, width: w, height: h, clamped};
     }
 
-    getInstanceGlobalFrame(instanceId) {
-        const inst = this._instances.get(instanceId);
-        if (!inst)
-            return null;
-
-        const frame = this.getInstanceFrame(instanceId);
-        if (!frame)
-            return null;
-
-        const surface = this._surfaces.get(inst.monitorIndex);
-
-        if (inst.pinned &&
-            surface?.grid?.coordinatesBelongToThisGridWindow?.(
-                inst.pinnedGlobalX,
-                inst.pinnedGlobalY
-            ) &&
-            Number.isFinite(inst.pinnedGlobalX) &&
-            Number.isFinite(inst.pinnedGlobalY)
-        ) {
-            return {
-                x: inst.pinnedGlobalX,
-                y: inst.pinnedGlobalY,
-                width: frame.width,
-                height: frame.height,
-                clamped: frame.clamped,
-            };
-        }
-
-        if (!surface) {
-            return {
-                x: frame.x,
-                y: frame.y,
-                width: frame.width,
-                height: frame.height,
-                clamped: frame.clamped,
-            };
-        }
-
-        const [x, y] = surface.grid.coordinatesLocalToGlobal(frame.x, frame.y);
-        return {
-            x,
-            y,
-            width: frame.width,
-            height: frame.height,
-            clamped: frame.clamped,
-        };
-    }
-
     get instances() {
         return this._instances;
     }
@@ -663,72 +416,19 @@ const WidgetManager = class {
         return this._instances.get(instanceId) || null;
     }
 
-    getSurfaceWindow(monitorIndex) {
-        const surface = this._surfaces.get(monitorIndex);
-        if (!surface || !surface.grid)
-            return null;
-
-        return surface.grid.getWindow();
-    }
-
-    getMonitorIndexForWindow(window) {
-        if (!window)
-            return null;
-
-        for (const surface of this._surfaces.values()) {
-            if (surface.grid.getWindow() === window)
-                return surface.monitorIndex;
-        }
-
-        const instanceId =
-            this._pinnedWindowManager.getInstanceIdForWindow(window);
-        if (!instanceId)
-            return null;
-
-        const inst = this.getInstance(instanceId);
-        return inst?.monitorIndex ?? null;
-    }
-
-    resolveSurfaceWindow(window) {
-        if (!window)
-            return null;
-
-        for (const surface of this._surfaces.values()) {
-            if (surface.grid.getWindow() === window)
-                return window;
-        }
-
-        const instanceId =
-            this._pinnedWindowManager.getInstanceIdForWindow(window);
-        if (!instanceId)
-            return window;
-
-        const inst = this.getInstance(instanceId);
-        const monitorIndex = inst?.monitorIndex ?? null;
-        if (monitorIndex === null)
-            return window;
-
-        const surfaceWindow = this.getSurfaceWindow(monitorIndex);
-        return surfaceWindow ?? window;
-    }
-
-    resolveSurfaceWindowFromActiveWindow(window = null) {
-        const activeWindow =
-            window ?? this._desktopManager.mainApp.get_active_window();
-        return this.resolveSurfaceWindow(activeWindow);
-    }
-
     getSelectedInstanceId() {
         return this._selectedInstanceId;
     }
 
     clearSelectedInstance() {
         const oldInst = this._instances.get(this._selectedInstanceId);
-        this._updateActorSelectedClass(oldInst, false);
+
+        if (oldInst?.actor) {
+            const ctx = oldInst.actor.get_style_context();
+            ctx.remove_class('ding-widget-selected');
+        }
 
         this._selectedInstanceId = null;
-        this._selectionChromeSuppressed = false;
-        this._clearInvalidWidgetEditModes();
         this._detachChrome();
         this._updateWidgetsSelectionState();
     }
@@ -739,7 +439,8 @@ const WidgetManager = class {
         ) {
             const oldInst = this._instances.get(this._selectedInstanceId);
             if (oldInst?.actor) {
-                this._updateActorSelectedClass(oldInst, false);
+                const ctx = oldInst.actor.get_style_context();
+                ctx.remove_class('ding-widget-selected');
                 this._webWidgetContext?.closePreferencesIfAny();
             }
         }
@@ -747,8 +448,6 @@ const WidgetManager = class {
         this._selectedInstanceId = instanceId || null;
 
         if (!instanceId) {
-            this._selectionChromeSuppressed = false;
-            this._clearInvalidWidgetEditModes();
             this._detachChrome();
             this._updateWidgetsSelectionState();
             this._webWidgetContext?.closePreferencesIfAny();
@@ -758,14 +457,14 @@ const WidgetManager = class {
         const inst = this._instances.get(instanceId);
         if (!inst?.actor || inst._isAddButton || inst._isGridToggleButton) {
             this._selectedInstanceId = null;
-            this._clearInvalidWidgetEditModes();
             this._detachChrome();
             this._updateWidgetsSelectionState();
             this._webWidgetContext?.closePreferencesForInstance();
             return;
         }
 
-        this._updateActorSelectedClass(inst, true);
+        const ctx = inst.actor.get_style_context();
+        ctx.add_class('ding-widget-selected');
 
         this._raiseInstance(inst);
 
@@ -774,19 +473,21 @@ const WidgetManager = class {
 
         this._ensureChrome();
         this._attachChromeToInstance(inst);
-        this._clearInvalidWidgetEditModes();
         this._updateWidgetsSelectionState();
     }
 
     hideSelectionChromeDuringDrag() {
-        this._selectionChromeSuppressed = true;
-
-        if (this._chrome)
-            this._hideAllChromeButtons();
+        if (this._chrome) {
+            for (const btn of this._chrome)
+                btn.hide();
+        }
 
         if (this._selectedInstanceId) {
             const inst = this._instances.get(this._selectedInstanceId);
-            this._updateActorSelectedClass(inst, false);
+            if (inst?.actor) {
+                const ctx = inst.actor.get_style_context();
+                ctx.remove_class('ding-widget-selected');
+            }
         }
     }
 
@@ -794,37 +495,15 @@ const WidgetManager = class {
         if (!instanceId || instanceId !== this._selectedInstanceId)
             return;
 
-        this._selectionChromeSuppressed = false;
-
         const inst = this._instances.get(instanceId);
         if (!inst)
             return;
 
-        this._updateActorSelectedClass(inst, true);
+        const ctx = inst.actor.get_style_context();
+        ctx.add_class('ding-widget-selected');
 
         this._ensureChrome();
         this._attachChromeToInstance(inst);
-    }
-
-    _updateActorSelectedClass(inst, selected) {
-        if (!inst?.actor)
-            return;
-
-        const ctx = inst.actor.get_style_context();
-        if (!selected) {
-            ctx.remove_class('ding-widget-selected');
-            return;
-        }
-
-        const surface = this._surfaces.get(inst.monitorIndex);
-        const widgetContainer = surface?.widgetContainer ?? null;
-        const parent = inst.actor.get_parent?.() ?? null;
-        if (widgetContainer && parent !== widgetContainer) {
-            ctx.remove_class('ding-widget-selected');
-            return;
-        }
-
-        ctx.add_class('ding-widget-selected');
     }
 
     async listAvailableWidgets() {
@@ -871,13 +550,6 @@ const WidgetManager = class {
      *      config: { ... }   // author-defined fields
      *      prefsUri: string|null,
      *      hasPreferences: boolean,
-     *      pinnable: boolean,
-     *      chrome: {
-     *        showCloseButton: boolean,
-     *        showPrefsButton: boolean,
-     *        showMoveButton: boolean,
-     *        showPinButton: boolean,
-     *      },
      *      hasBackend: boolean,
      *      webConsent: boolean|null,
      *      backendConsent: boolean|null,
@@ -906,7 +578,6 @@ const WidgetManager = class {
      *
      * It also has to deal with null, undefined, or missing fields gracefully.
      */
-    // eslint-disable-next-line consistent-return
     async loadState(state) {
         if (this._loadStatePromise) {
             this._pendingLoadState = state;
@@ -961,33 +632,6 @@ const WidgetManager = class {
                     continue;
 
                 try {
-                    let descriptor = null;
-                    try {
-                        // eslint-disable-next-line no-await-in-loop
-                        descriptor = await this._widgetRegistry.getDescriptor(
-                            instData.widgetId
-                        );
-                    } catch (e) {}
-
-                    const resolvedChrome = this._normalizeChromePolicy(
-                        instData.chrome,
-                        descriptor?.chrome
-                    );
-                    const resolvedPrefsUri =
-                        instData.prefsUri ?? descriptor?.prefs ?? null;
-                    const resolvedHasPreferences =
-                        instData.hasPreferences ?? !!resolvedPrefsUri;
-                    const resolvedPinnable =
-                        instData.pinnable ?? descriptor?.pinnable === true;
-                    const resolvedHasBackend =
-                        instData.hasBackend ??
-                        descriptor?.hasBackend ??
-                        !!descriptor?.backend;
-                    const resolvedConfig = cloneWidgetConfig({
-                        ...descriptor?.defaultConfig ?? {},
-                        ...instData.config ?? {},
-                    });
-
                     let instance = this._instances.get(instData.instanceId);
 
                     if (instance) {
@@ -998,24 +642,14 @@ const WidgetManager = class {
                         instance.normY = instData.normY ?? 0;
                         instance.width = instData.width ?? 200;
                         instance.height = instData.height ?? 150;
-                        instance.pinnedGlobalX =
-                            Number.isFinite(instData.pinnedGlobalX)
-                                ? instData.pinnedGlobalX
-                                : null;
-                        instance.pinnedGlobalY =
-                            Number.isFinite(instData.pinnedGlobalY)
-                                ? instData.pinnedGlobalY
-                                : null;
-                        instance.config = resolvedConfig;
-                        instance.prefsUri = resolvedPrefsUri;
-                        instance.hasPreferences = resolvedHasPreferences;
-                        instance.pinnable = resolvedPinnable;
-                        instance.chrome = resolvedChrome;
-                        instance.hasBackend = resolvedHasBackend;
+                        instance.config = instData.config ?? {};
+                        instance.prefsUri = instData.prefsUri ?? null;
+                        instance.hasPreferences =
+                            instData.hasPreferences ?? !!instance.prefsUri;
+                        instance.hasBackend = instData.hasBackend;
                         instance.webConsent = instData.webConsent ?? null;
                         instance.backendConsent =
                             instData.backendConsent ?? null;
-                        instance.pinned = !!instData.pinned;
                     } else {
                         instance = {
                             instanceId: instData.instanceId,
@@ -1026,25 +660,14 @@ const WidgetManager = class {
                             normY: instData.normY ?? 0,
                             width: instData.width ?? 200,
                             height: instData.height ?? 150,
-                            pinnedGlobalX:
-                                Number.isFinite(instData.pinnedGlobalX)
-                                    ? instData.pinnedGlobalX
-                                    : null,
-                            pinnedGlobalY:
-                                Number.isFinite(instData.pinnedGlobalY)
-                                    ? instData.pinnedGlobalY
-                                    : null,
                             actor: null,
-                            config: resolvedConfig,
-                            prefsUri: resolvedPrefsUri,
-                            hasPreferences: resolvedHasPreferences,
-                            pinnable: resolvedPinnable,
-                            chrome: resolvedChrome,
-                            hasBackend: resolvedHasBackend,
+                            config: instData.config ?? {},
+                            prefsUri: instData.prefsUri ?? null,
+                            hasPreferences:
+                                instData.hasPreferences ?? !!instData.prefsUri,
+                            hasBackend: instData.hasBackend ?? false,
                             webConsent: instData.webConsent ?? null,
                             backendConsent: instData.backendConsent ?? null,
-                            pinned: !!instData.pinned,
-                            widgetEditMode: false,
                         };
 
                         this._instances.set(instance.instanceId, instance);
@@ -1054,8 +677,8 @@ const WidgetManager = class {
 
                     const surface = this._surfaces.get(instance.monitorIndex);
                     if (surface) {
-                        const created =
                         // eslint-disable-next-line no-await-in-loop
+                        const created =
                             await this._ensureInstanceActor(instance);
 
                         if (!created)
@@ -1063,7 +686,7 @@ const WidgetManager = class {
 
                         const prev = this._suppressStateEvents;
                         this._suppressStateEvents = true;
-                        this._attachInstanceToCorrectLayer(instance);
+                        this._positionInstanceActor(instance);
                         this._suppressStateEvents = prev;
                     }
                 } catch (e) {
@@ -1105,186 +728,10 @@ const WidgetManager = class {
     updateInstanceConfig(instanceId, newConfig) {
         const inst = this._instances.get(instanceId);
         if (!inst)
-            return false;
+            return;
 
-        const clonedConfig = cloneWidgetConfig(newConfig);
-        const currentJson = configJson(inst.config);
-        const nextJson = configJson(clonedConfig);
-        if (currentJson !== null && nextJson !== null && currentJson === nextJson)
-            return false;
-
-        inst.config = clonedConfig;
+        inst.config = newConfig;
         this._stateChanged();
-        return true;
-    }
-
-    setWidgetEditMode(instanceId, editing) {
-        const inst = this._instances.get(instanceId);
-        if (!inst || inst._isAddButton || inst._isGridToggleButton)
-            return;
-
-        const nextEditing = !!editing;
-        if (!nextEditing) {
-            this._setWidgetEditMode(inst, false);
-            return;
-        }
-
-        if (inst.pinned && this._shouldAttachToDockLayer(inst)) {
-            this._setWidgetEditMode(inst, true);
-            this._pinnedWindowManager.pinInstance(inst)?.present?.();
-            return;
-        }
-
-        const surface = this._surfaces.get(inst.monitorIndex);
-        const widgetLayerOnTop = !!surface?.grid?.isWidgetContainerOnTop?.();
-        const isSelected = this._selectedInstanceId === instanceId;
-        const parent = inst.actor?.get_parent?.();
-        const inContainer = !!surface?.widgetContainer &&
-            parent === surface.widgetContainer;
-
-        if (!widgetLayerOnTop || !isSelected || !inContainer)
-            return;
-
-        this._setWidgetEditMode(inst, true);
-    }
-
-    setInstancePinned(instanceId, pinned) {
-        const inst = this._instances.get(instanceId);
-        if (!inst || inst._isAddButton || inst._isGridToggleButton)
-            return;
-
-        const nextPinned = !!pinned;
-        if (nextPinned && !inst.pinnable)
-            return;
-
-        if (inst.pinned === nextPinned)
-            return;
-
-        if (!nextPinned && inst.widgetEditMode)
-            this._setWidgetEditMode(inst, false);
-
-        if (!nextPinned) {
-            this._pinnedWindowManager.unpinInstance(inst);
-        } else if (!Number.isFinite(inst.pinnedGlobalX) ||
-            !Number.isFinite(inst.pinnedGlobalY)) {
-            const frame = this.getInstanceGlobalFrame(instanceId);
-            if (frame) {
-                inst.pinnedGlobalX = frame.x;
-                inst.pinnedGlobalY = frame.y;
-            }
-        }
-
-        inst.pinned = nextPinned;
-        if (inst.kind === 'html' && inst.actor && inst.host)
-            this._webWidgetContext.updateHtmlWidgetPinned(inst, nextPinned);
-
-        this._attachInstanceToCorrectLayer(inst);
-
-        const surface = this._surfaces.get(inst.monitorIndex);
-        if (!nextPinned &&
-            this._selectedInstanceId === instanceId &&
-            !surface?.grid?.isWidgetContainerOnTop?.())
-            this.clearSelectedInstance();
-
-
-        this._stateChanged();
-    }
-
-    beginPinnedEdit(instanceId, editing = true) {
-        const inst = this._instances.get(instanceId);
-        if (!inst || !inst.pinnable)
-            return;
-
-        this.setWidgetEditMode(instanceId, !!editing);
-    }
-
-    onPinnedWindowCloseRequest(instanceId) {
-        const inst = this._instances.get(instanceId);
-        if (!inst?.pinned || !inst.widgetEditMode)
-            return;
-
-        this.beginPinnedEdit(instanceId, false);
-    }
-
-    beginPinnedWindowMove(instanceId, params = {}) {
-        const inst = this._instances.get(instanceId);
-        if (!inst || !inst.pinned || !inst.pinnable)
-            return;
-
-        this._pinnedWindowManager.beginPinnedWindowMove(instanceId, params);
-    }
-
-    getHostActionSpecsForInstance(instanceId, options = {}) {
-        const inst = this._instances.get(instanceId);
-        if (!inst)
-            return [];
-
-        const chromePolicy = this._normalizeChromePolicy(inst.chrome);
-
-        return this._getChromeButtonSpecs()
-            .filter(spec => spec.visible?.(inst, chromePolicy, options) ?? true)
-            .map(spec => ({
-                id: spec.id,
-                cssName: spec.cssName,
-                iconName: spec.iconName,
-                tooltip: spec.getTooltip?.(inst, options) ?? spec.tooltip ?? '',
-                classes: spec.getClasses?.(inst) ?? [],
-            }));
-    }
-
-    activateHostAction(instanceId, actionId) {
-        const inst = this._instances.get(instanceId);
-        if (!inst)
-            return false;
-
-        this.selectInstance(instanceId);
-
-        switch (actionId) {
-        case 'prefs':
-            this._openPreferencesForSelectedInstance();
-            return true;
-        case 'pin':
-            this.setInstancePinned(instanceId, !inst.pinned);
-            return true;
-        case 'move':
-            this.beginPinnedWindowMove(instanceId);
-            return true;
-        case 'close':
-            this.deleteSelectedInstance();
-            return true;
-        default:
-            return false;
-        }
-    }
-
-    hasContentManagedChrome(instanceId) {
-        const inst = this._instances.get(instanceId);
-        if (!inst)
-            return false;
-
-        const chrome = inst.chrome && typeof inst.chrome === 'object'
-            ? inst.chrome
-            : {};
-
-        return chrome.showCloseButton === false ||
-            chrome.showPrefsButton === false ||
-            chrome.showMoveButton === false ||
-            chrome.showPinButton === false;
-    }
-
-    hasContentManagedPinnedMove(instanceId) {
-        const inst = this._instances.get(instanceId);
-        if (!inst)
-            return false;
-
-        const chrome = inst.chrome && typeof inst.chrome === 'object'
-            ? inst.chrome
-            : {};
-
-        // showMoveButton=false means the widget owns pinned move UI. In that
-        // mode the host suppresses overlay drag and expects widget content to
-        // call beginPinnedWindowMove() from its own control or drag surface.
-        return chrome.showMoveButton === false;
     }
 
     /**
@@ -1388,11 +835,10 @@ const WidgetManager = class {
      *
      * The saved schema is identical to loadState():
      * {
-     *   version: 4,
+     *   version: 1,
      *   instances: [
      *     { instanceId, widgetId, kind, monitorIndex,
-     *       normX, normY, width, height,
-     *       pinnedGlobalX, pinnedGlobalY, config }
+     *       normX, normY, width, height, config }
      *   ]
      * }
      * */
@@ -1416,21 +862,12 @@ const WidgetManager = class {
                 normY: inst.normY,
                 width: inst.width,
                 height: inst.height,
-                pinnedGlobalX: Number.isFinite(inst.pinnedGlobalX)
-                    ? inst.pinnedGlobalX
-                    : null,
-                pinnedGlobalY: Number.isFinite(inst.pinnedGlobalY)
-                    ? inst.pinnedGlobalY
-                    : null,
                 config: inst.config ?? {},
                 prefsUri: inst.prefsUri ?? null,
                 hasPreferences: !!inst.hasPreferences,
-                pinnable: !!inst.pinnable,
-                chrome: this._normalizeChromePolicy(inst.chrome),
                 hasBackend: !!inst.hasBackend,
                 webConsent: inst.webConsent ?? null,
                 backendConsent: inst.backendConsent ?? null,
-                pinned: !!inst.pinned,
             });
         }
 
@@ -1481,37 +918,6 @@ const WidgetManager = class {
             migrated = true;
         }
 
-        if (schemaVersion < 3) {
-            for (const instData of state.instances) {
-                if (!instData || typeof instData !== 'object')
-                    continue;
-
-                instData.pinned = !!instData.pinned;
-            }
-
-            state.version = 3;
-            migrated = true;
-        }
-
-        if (schemaVersion < 4) {
-            for (const instData of state.instances) {
-                if (!instData || typeof instData !== 'object')
-                    continue;
-
-                instData.pinnedGlobalX =
-                    Number.isFinite(instData.pinnedGlobalX)
-                        ? instData.pinnedGlobalX
-                        : null;
-                instData.pinnedGlobalY =
-                    Number.isFinite(instData.pinnedGlobalY)
-                        ? instData.pinnedGlobalY
-                        : null;
-            }
-
-            state.version = 4;
-            migrated = true;
-        }
-
         if (migrated && this._preferences) {
         // Persist the migrated file state as-is (do NOT call exportState() here).
             this._preferences.widgetState = state;
@@ -1551,18 +957,12 @@ const WidgetManager = class {
             normY,
             width,
             height,
-            pinnedGlobalX: null,
-            pinnedGlobalY: null,
             actor: null,
             config,
             kind,
-            hasBackend: descriptor?.hasBackend ?? !!descriptor?.backend,
+            hasBackend: descriptor?.hasBackend ?? !!descriptor?.backend ?? false,
             prefsUri: descriptor?.prefs ?? null,
             hasPreferences: !!descriptor?.prefs,
-            pinnable: descriptor?.pinnable === true,
-            chrome: this._normalizeChromePolicy(null, descriptor?.chrome),
-            pinned: false,
-            widgetEditMode: false,
         };
 
         this._instances.set(instanceId, instance);
@@ -1649,10 +1049,10 @@ const WidgetManager = class {
             surface.gridToggleButton = null;
         }
 
-        const gridToggleButtonInstanceId =
+        const gridToggleButtonInstanceId = 
             this._getGridToggleButtonInstanceId(surface.monitorIndex);
-        const gridToggleInst = gridToggleButtonInstanceId
-            ? this._instances.get(gridToggleButtonInstanceId)
+        const gridToggleInst = gridToggleButtonInstanceId 
+            ? this._instances.get(gridToggleButtonInstanceId) 
             : null;
         if (gridToggleInst?._isGridToggleButton)
             gridToggleInst.actor = null;
@@ -1688,15 +1088,15 @@ const WidgetManager = class {
         button.set_can_focus(false);
         button.set_focus_on_click(false);
         button.set_tooltip_text(_('Add Widget'));
-        button.connect('clicked', () => {
-            this.clearSelectedInstance();
-            this.openAddWidgetDialog(
+        button.connect(
+            'clicked',
+            () => this.openAddWidgetDialog(
                 null,
                 surface.monitorIndex
-            ).catch(logError);
-        });
+            ).catch(logError)
+        );
 
-        const icon = Gtk.Image.new_from_icon_name('ding-list-add-symbolic');
+        const icon = Gtk.Image.new_from_icon_name('list-add-symbolic');
         button.set_child(icon);
 
         button.widgetInstanceId = instanceId;
@@ -1752,15 +1152,14 @@ const WidgetManager = class {
         gridToggleButton.set_can_focus(false);
         gridToggleButton.set_focus_on_click(false);
         gridToggleButton.set_tooltip_text(_('Toggle Widget Grid'));
-
-        const gridIcon = Gtk.Image.new_from_icon_name('ding-view-grid-symbolic');
+        
+        const gridIcon = Gtk.Image.new_from_icon_name('view-grid-symbolic');
         gridToggleButton.set_child(gridIcon);
         gridToggleButton.set_active(false);
 
         gridToggleButton.widgetInstanceId = instanceId;
 
-        gridToggleButton.connect('toggled', btn => {
-            this.clearSelectedInstance();
+        gridToggleButton.connect('toggled', (btn) => {
             surface.grid.widgetGridEnabled = btn.get_active();
             surface.grid.updateOverlay();
         });
@@ -1895,9 +1294,9 @@ const WidgetManager = class {
             ? this._instances.get(addButtonInstanceId)
             : null;
 
-        if (!addButtonInst)
+        if (!addButtonInst) {
             return [0, 0];
-
+        }
 
         const width = grid.normalizedWidth;
         const buttonWidth = inst?.width ?? 48;
@@ -1927,8 +1326,6 @@ const WidgetManager = class {
             if (parent?.remove)
                 parent.remove(inst.actor);
 
-            this._pinnedWindowManager.destroyInstanceWindow(inst.instanceId);
-
             if (inst.host && typeof inst.host.destroy === 'function')
                 inst.host.destroy();
 
@@ -1937,13 +1334,9 @@ const WidgetManager = class {
         }
     }
 
-    async _reattachAllInstances(layoutChange = {}) {
+    async _reattachAllInstances() {
         if (!this._preferences.showDesktopWidgets)
             return;
-
-        const preservePinnedWindows =
-            !!layoutChange?.gridschanged &&
-            !layoutChange?.monitorschanged;
 
         for (const inst of this._instances.values()) {
             const surface = this._surfaces.get(inst.monitorIndex);
@@ -1951,76 +1344,17 @@ const WidgetManager = class {
             if (!surface)
                 continue;
 
-            const preservePinnedWindow =
-                preservePinnedWindows &&
-                inst?.pinned &&
-                this._pinnedWindowManager.hasInstance(inst.instanceId);
-
             // eslint-disable-next-line no-await-in-loop
             const created = await this._ensureInstanceActor(inst);
 
             if (!created)
                 continue;
 
-            if (preservePinnedWindow)
-                this._pinnedWindowManager.refreshInstance(inst);
-            else
-                this._attachInstanceToCorrectLayer(inst);
+            this._positionInstanceActor(inst);
 
             // Use optional chaining because requestRender()
             // currently exists only on HTML hosts.
             inst.host?.requestRender?.().catch(e => logError(e));
-        }
-    }
-
-    _attachPinnedInstancesToCorrectLayer(monitorIndex, suspendFirst = false) {
-        for (const inst of this._instances.values()) {
-            if (inst?._isAddButton || inst?._isGridToggleButton)
-                continue;
-
-            if (inst.monitorIndex !== monitorIndex || !inst.pinned)
-                continue;
-
-            if (suspendFirst)
-                this._pinnedWindowManager.destroyInstanceWindow(inst.instanceId);
-
-            this._attachInstanceToCorrectLayer(inst);
-        }
-    }
-
-    _cancelPendingPinnedWindowReload() {
-        if (!this._pendingPinnedWindowReloadId)
-            return;
-
-        GLib.source_remove(this._pendingPinnedWindowReloadId);
-        this._pendingPinnedWindowReloadId = 0;
-    }
-
-    async _reloadPinnedHtmlWidgetsInWindows(reason = 'window-remap') {
-        if (!this._preferences.showDesktopWidgets)
-            return;
-
-        for (const inst of this._instances.values()) {
-            if (!inst.pinned || inst.kind !== 'html' || !inst.host || !inst.actor)
-                continue;
-
-            const surface = this._surfaces.get(inst.monitorIndex);
-            const widgetContainer = surface?.widgetContainer ?? null;
-            const parent = inst.actor.get_parent() ?? null;
-            if (!parent || parent === widgetContainer)
-                continue;
-
-            try {
-                // eslint-disable-next-line no-await-in-loop
-                await inst.host.reload();
-            } catch (e) {
-                console.error(
-                    'WidgetManager: failed to reload pinned HTML widget after',
-                    reason,
-                    inst.instanceId,
-                    e
-                );
-            }
         }
     }
 
@@ -2069,7 +1403,6 @@ const WidgetManager = class {
                 instanceId: inst.instanceId,
                 widgetId: inst.widgetId,
                 frameRect: frame,
-                mainApp: this._desktopManager.mainApp,
                 widgetRegistry: this._widgetRegistry,
                 webContext: webCtx,
             });
@@ -2163,13 +1496,8 @@ const WidgetManager = class {
         if (parent?.remove)
             parent.remove(inst.actor);
 
-        this._pinnedWindowManager.destroyInstanceWindow(instanceId);
-
         if (inst.host && typeof inst.host.destroy === 'function')
             inst.host.destroy();
-
-        if (this._webWidgetContext)
-            this._webWidgetContext.forgetInstance(instanceId);
 
         if (typeof inst.actor?.destroy === 'function')
             inst.actor.destroy();
@@ -2192,8 +1520,7 @@ const WidgetManager = class {
 
         const {widgetContainer} = surface;
         const {x, y} = frame;
-        const parent = inst.actor.get_parent();
-        const isMove = parent === widgetContainer;
+        const isMove = !!inst.actor.get_parent();
 
         if (frame.clamped || isMove) {
             const [normX, normY] = surface.grid.getNormalizedCoordinates(x, y);
@@ -2210,95 +1537,51 @@ const WidgetManager = class {
 
         if (isMove)
             widgetContainer.move(inst.actor, x, y);
-        else if (!parent)
+        else
             widgetContainer.put(inst.actor, x, y);
-    }
-
-    _shouldAttachToDockLayer(inst) {
-        if (!inst?.pinned)
-            return false;
-
-        const surface = this._surfaces.get(inst.monitorIndex);
-        if (!surface)
-            return false;
-
-        const widgetLayerOnTop = surface.grid.isWidgetContainerOnTop();
-        const result = !widgetLayerOnTop;
-        return result;
-    }
-
-    _attachInstanceToCorrectLayer(inst) {
-        if (!inst?.actor)
-            return;
-
-        // If the instance is selected and we're suppressing selection chrome,
-        // don't do reattachment at all, the widget is being dragged.
-        if (this._selectionChromeSuppressed &&
-            inst.instanceId === this._selectedInstanceId)
-            return;
-
-        if (this._shouldAttachToDockLayer(inst)) {
-            this._detachChromeIfSelectedInstance(inst.instanceId);
-            this._pinnedWindowManager.pinInstance(inst);
-            return;
-        }
-
-        this._pinnedWindowManager.destroyInstanceWindow(inst.instanceId);
-        this._positionInstanceActor(inst);
-
-        if (inst.instanceId === this._selectedInstanceId)
-            this._attachChromeToInstance(inst);
-    }
-
-    _detachChromeIfSelectedInstance(instanceId) {
-        if (this._selectedInstanceId !== instanceId)
-            return;
-
-        this._detachChrome();
     }
 
     _ensureChrome() {
         if (this._chrome)
             return;
 
-        this._chrome = new Map();
+        this.closeButton = new Gtk.Button();
+        this.closeButton.set_name('ding-widget-close-button');
+        this.closeButton.set_can_focus(false);
+        this.closeButton.set_focus_on_click(false);
 
-        for (const spec of this._getChromeButtonSpecs()) {
-            const button = new Gtk.Button();
-            button.set_name(spec.cssName);
-            button.set_can_focus(false);
-            button.set_focus_on_click(false);
-            button.set_child(Gtk.Image.new_from_icon_name(spec.iconName));
+        const img = Gtk.Image.new_from_icon_name('window-close-symbolic');
+        this.closeButton.set_child(img);
 
-            if (spec.tooltip)
-                button.set_tooltip_text(spec.tooltip);
+        this.closeButton.connect('clicked',
+            this.deleteSelectedInstance.bind(this)
+        );
 
-            if (spec.id !== 'move')
-                button.connect('clicked', spec.onClick.bind(this));
-            this._chrome.set(spec.id, {button, spec});
-        }
+        this.prefsButton = new Gtk.Button();
+        this.prefsButton.set_name('ding-widget-prefs-button');
+        this.prefsButton.set_can_focus(false);
+        this.prefsButton.set_focus_on_click(false);
+        this.prefsButton.set_tooltip_text(_('Widget preferences'));
+
+        const prefsImg = Gtk.Image.new_from_icon_name('emblem-system-symbolic');
+        this.prefsButton.set_child(prefsImg);
+
+        this.prefsButton.connect('clicked',
+            this._openPreferencesForSelectedInstance.bind(this)
+        );
+
+        this._chrome = new Set();
+        this._chrome.add(this.closeButton);
+        this._chrome.add(this.prefsButton);
     }
 
     _attachChromeToInstance(inst) {
         if (!this._chrome)
             return;
 
-        // Never attach to an instance that's being dragged.
-        if (this._selectionChromeSuppressed &&
-            inst?.instanceId === this._selectedInstanceId) {
-            this._hideAllChromeButtons();
-            return;
-        }
-
         const surface = this._surfaces.get(inst.monitorIndex);
         if (!surface)
             return;
-
-        const widgetLayerOnTop = surface.grid.isWidgetContainerOnTop();
-        if (!widgetLayerOnTop) {
-            this._hideAllChromeButtons();
-            return;
-        }
 
         const {widgetContainer} = surface;
         const frame = this.getInstanceFrame(inst.instanceId);
@@ -2307,26 +1590,15 @@ const WidgetManager = class {
 
         let allocWidth = frame.width;
         const alloc = inst.actor?.get_allocation?.();
-        if (alloc?.width > 0)
+        if (alloc)
             allocWidth = alloc.width;
 
         const size = 28;
         const gap = 6;
         const margin = 8;
 
-        const chromePolicy = this._normalizeChromePolicy(inst.chrome);
-        const visibleButtons = this._getVisibleChromeButtons(
-            inst,
-            chromePolicy,
-            {pinnedPopup: false}
-        );
-        const buttonCount = visibleButtons.length;
-
-        if (buttonCount <= 0) {
-            this._hideAllChromeButtons();
-            return;
-        }
-
+        const showPrefs = inst.hasPreferences;
+        const buttonCount = showPrefs ? 2 : 1;
         const totalWidth = buttonCount * size + (buttonCount - 1) * gap;
 
         const centerX = frame.x + allocWidth / 2;
@@ -2335,188 +1607,47 @@ const WidgetManager = class {
         let yPos;
         const yPosUp = frame.y - size - margin;
         const yPosDown = frame.y + frame.height + margin;
-        if (yPosUp < margin)
+        if (yPosUp < margin) {
             yPos = yPosDown;
-        else
+        } else {
             yPos = yPosUp;
-
-        this._syncChromeButtonParents(widgetContainer);
-        this._updateChromeButtonsForInstance(inst);
-
-        for (const [index, chromeButton] of visibleButtons.entries()) {
-            const buttonX = buttonsX + index * (size + gap);
-            const parent = chromeButton.button.get_parent();
-
-            if (!parent)
-                widgetContainer.put(chromeButton.button, buttonX, yPos);
-            else
-                widgetContainer.move(chromeButton.button, buttonX, yPos);
-
-            chromeButton.button.show();
         }
 
-        this._hideInactiveChromeButtons(visibleButtons);
+        const prefsOldParent = this.prefsButton.get_parent();
+        if (prefsOldParent && prefsOldParent !== widgetContainer)
+            prefsOldParent.remove(this.prefsButton);
+        const closeOldParent = this.closeButton.get_parent();
+        if (closeOldParent && closeOldParent !== widgetContainer)
+            closeOldParent.remove(this.closeButton);
+
+        if (showPrefs) {
+            if (!this.prefsButton.get_parent())
+                widgetContainer.put(this.prefsButton, buttonsX, yPos);
+            else
+                widgetContainer.move(this.prefsButton, buttonsX, yPos);
+            this.prefsButton.show();
+        } else {
+            this.prefsButton.hide();
+        }
+
+        const closeX = showPrefs ? (buttonsX + size + gap) : buttonsX;
+        if (!this.closeButton.get_parent())
+            widgetContainer.put(this.closeButton, closeX, yPos);
+        else
+            widgetContainer.move(this.closeButton, closeX, yPos);
+        this.closeButton.show();
 
         this._raiseChromeButtons(surface);
-    }
-
-    _resolveChromeProperty(instanceValue, descriptorValue, defaultValue) {
-        if (descriptorValue === false)
-            return false;
-
-        if (typeof instanceValue === 'boolean')
-            return instanceValue;
-
-        if (typeof descriptorValue === 'boolean')
-            return descriptorValue;
-
-        return defaultValue;
-    }
-
-    _normalizeChromePolicy(instanceChrome, descriptorChrome = null) {
-        const instanceInput =
-            instanceChrome && typeof instanceChrome === 'object'
-                ? instanceChrome
-                : {};
-        const descriptorInput =
-            descriptorChrome && typeof descriptorChrome === 'object'
-                ? descriptorChrome
-                : {};
-
-        return {
-            showCloseButton: this._resolveChromeProperty(
-                instanceInput.showCloseButton,
-                descriptorInput.showCloseButton,
-                true
-            ),
-            showPrefsButton: this._resolveChromeProperty(
-                instanceInput.showPrefsButton,
-                descriptorInput.showPrefsButton,
-                true
-            ),
-            showMoveButton: this._resolveChromeProperty(
-                instanceInput.showMoveButton,
-                descriptorInput.showMoveButton,
-                true
-            ),
-            showPinButton: this._resolveChromeProperty(
-                instanceInput.showPinButton,
-                descriptorInput.showPinButton,
-                false
-            ),
-        };
-    }
-
-    _getChromeButtonSpecs() {
-        // Keep host chrome button names in the ding-widget-*-button form.
-        // If a new host chrome button is added here, update
-        // DesktopGrid._isWidgetChromeActor() so input handling continues to
-        // distinguish host chrome from draggable widget actors.
-        return [
-            {
-                id: 'prefs',
-                cssName: 'ding-widget-prefs-button',
-                iconName: 'ding-emblem-system-symbolic',
-                tooltip: _('Widget preferences'),
-                visible: (inst, chromePolicy) =>
-                    !!inst.hasPreferences && !!chromePolicy.showPrefsButton,
-                onClick: this._openPreferencesForSelectedInstance,
-            },
-            {
-                id: 'pin',
-                cssName: 'ding-widget-pin-button',
-                iconName: 'ding-view-pin-symbolic',
-                visible: (inst, chromePolicy) =>
-                    !!inst.pinnable && !!chromePolicy.showPinButton,
-                getTooltip: inst =>
-                    inst.pinned ? _('Unpin widget') : _('Pin widget'),
-                getClasses: inst => inst.pinned ? ['pinned'] : [],
-                update: (button, inst) => {
-                    if (inst.pinned)
-                        button.add_css_class('pinned');
-                    else
-                        button.remove_css_class('pinned');
-
-                    button.set_tooltip_text(
-                        inst.pinned ? _('Unpin widget') : _('Pin widget')
-                    );
-                },
-                onClick: this._togglePinnedForSelectedInstance,
-            },
-            {
-                id: 'move',
-                cssName: 'ding-widget-move-button',
-                iconName: 'ding-move-symbolic',
-                tooltip: _('Reposition widget'),
-                visible: (inst, chromePolicy, options = {}) => {
-                    if (!chromePolicy.showMoveButton)
-                        return false;
-
-                    if (options.pinnedPopup === true)
-                        return !!inst.pinnable && !!inst.pinned;
-
-                    return true;
-                },
-                onClick: this._beginPinnedWindowMoveForSelectedInstance,
-            },
-            {
-                id: 'close',
-                cssName: 'ding-widget-close-button',
-                iconName: 'ding-window-close-symbolic',
-                visible: (_inst, chromePolicy) => !!chromePolicy.showCloseButton,
-                onClick: this.deleteSelectedInstance,
-            },
-        ];
-    }
-
-    _getChromeEntries() {
-        if (!this._chrome)
-            return [];
-
-        return [...this._chrome.values()];
-    }
-
-    _getVisibleChromeButtons(inst, chromePolicy, options = {}) {
-        return this._getChromeEntries().filter(
-            ({spec}) => spec.visible?.(inst, chromePolicy, options) ?? true
-        );
-    }
-
-    _syncChromeButtonParents(widgetContainer) {
-        for (const {button} of this._getChromeEntries()) {
-            const parent = button.get_parent();
-            if (parent && parent !== widgetContainer)
-                parent.remove(button);
-        }
-    }
-
-    _updateChromeButtonsForInstance(inst) {
-        for (const {button, spec} of this._getChromeEntries())
-            spec.update?.(button, inst);
-    }
-
-    _hideInactiveChromeButtons(activeButtons = []) {
-        const active = new Set(activeButtons.map(({button}) => button));
-
-        for (const {button} of this._getChromeEntries()) {
-            if (!active.has(button))
-                button.hide();
-        }
-    }
-
-    _hideAllChromeButtons() {
-        for (const {button} of this._getChromeEntries())
-            button.hide();
     }
 
     _detachChrome() {
         if (!this._chrome)
             return;
 
-        for (const {button} of this._getChromeEntries()) {
-            const parent = button.get_parent();
+        for (const btn of this._chrome) {
+            const parent = btn.get_parent();
             if (parent)
-                parent.remove(button);
+                parent.remove(btn);
         }
     }
 
@@ -2524,29 +1655,17 @@ const WidgetManager = class {
         if (!this._chrome || !surface?.widgetContainer)
             return;
 
-        for (const {button} of this._getChromeEntries()) {
-            const parent = button.get_parent?.();
+        for (const btn of this._chrome) {
+            const parent = btn.get_parent?.();
             if (!parent || parent !== surface.widgetContainer)
                 continue;
 
             try {
-                button.insert_before(parent, null);
+                btn.insert_before(parent, null);
             } catch (e) {
                 console.error('WidgetManager: failed to raise chrome button:', e);
             }
         }
-    }
-
-    _togglePinnedForSelectedInstance() {
-        const selectedId = this._selectedInstanceId;
-        const inst = selectedId
-            ? this._instances.get(selectedId)
-            : null;
-
-        if (!inst)
-            return;
-
-        this.setInstancePinned(selectedId, !inst.pinned);
     }
 
     _openPreferencesForSelectedInstance() {
@@ -2563,14 +1682,6 @@ const WidgetManager = class {
         // Delegate everything to WebWidgetContext
         const webCtx = this._ensureWebWidgetContext();
         webCtx.openPreferencesForInstance(selectedId, inst.prefsUri);
-    }
-
-    _beginPinnedWindowMoveForSelectedInstance() {
-        const selectedId = this._selectedInstanceId;
-        if (!selectedId)
-            return;
-
-        this.beginPinnedWindowMove(selectedId);
     }
 
     _raiseInstance(inst) {
@@ -2614,132 +1725,28 @@ const WidgetManager = class {
     _sendLayerStateToInstance(inst, onTop) {
         // ToDo: GTK Widget layer change;
         if (inst.kind === 'html' && inst.host)
-            this._webWidgetContext.updateHtmlWidgetLayer(inst, onTop);
+            this._webWidgetContext?.updateHtmlWidgetLayer(inst, onTop);
     }
 
     _updateWidgetsSelectionState() {
         for (const inst of this._instances.values()) {
             const selected = inst.instanceId === this._selectedInstanceId;
             // To Do: GTK Widget seleted state
-            if (inst.kind === 'html' && inst.actor && inst.host) {
-                inst.host.setKeyboardFocusable(selected);
-                this._webWidgetContext.updateHtmlWidgetSelected(inst, selected);
-            }
+            if (inst.kind === 'html' && inst.actor && inst.host)
+                this._webWidgetContext?.updateHtmlWidgetSelected(inst, selected);
         }
-    }
-
-    _setWidgetEditMode(inst, editing) {
-        if (!inst)
-            return;
-
-        const nextEditing = !!editing;
-        if (!!inst.widgetEditMode === nextEditing)
-            return;
-
-        inst.widgetEditMode = nextEditing;
-        this._updateWidgetsWidgetEditModeState();
-        this._syncTextEntryAccelState();
-    }
-
-    _canKeepWidgetEditMode(inst) {
-        if (!inst?.widgetEditMode)
-            return false;
-
-        const surface = this._surfaces.get(inst.monitorIndex);
-        const widgetContainer = surface?.widgetContainer ?? null;
-        const parent = inst.actor?.get_parent?.() ?? null;
-
-        if (inst.pinned && parent && parent !== widgetContainer)
-            return true;
-
-        const widgetLayerOnTop = !!surface?.grid?.isWidgetContainerOnTop?.();
-        return widgetLayerOnTop &&
-            this._selectedInstanceId === inst.instanceId;
-    }
-
-    _clearInvalidWidgetEditModes() {
-        let changed = false;
-
-        for (const inst of this._instances.values()) {
-            if (!inst?.widgetEditMode)
-                continue;
-
-            if (this._canKeepWidgetEditMode(inst))
-                continue;
-
-            inst.widgetEditMode = false;
-            changed = true;
-        }
-
-        if (changed)
-            this._updateWidgetsWidgetEditModeState();
-    }
-
-    _clearWidgetEditModeForMonitor(monitorIndex) {
-        let changed = false;
-
-        for (const inst of this._instances.values()) {
-            if (inst.monitorIndex !== monitorIndex || !inst.widgetEditMode)
-                continue;
-
-            if (this._canKeepWidgetEditMode(inst))
-                continue;
-
-            inst.widgetEditMode = false;
-            changed = true;
-        }
-
-        if (changed)
-            this._updateWidgetsWidgetEditModeState();
-    }
-
-    _updateWidgetsWidgetEditModeState() {
-        for (const inst of this._instances.values()) {
-            if (inst.kind === 'html' && inst.actor && inst.host) {
-                this._webWidgetContext.updateHtmlWidgetEditMode(
-                    inst,
-                    !!inst.widgetEditMode
-                );
-            }
-
-            this._pinnedWindowManager.refreshInstance(inst);
-        }
-    }
-
-    _syncTextEntryAccelState() {
-        const layerRaised = [...this._surfaces.values()].some(
-            surface => !!surface?.grid?.isWidgetContainerOnTop?.()
-        );
-        const floatingWidgetEditing = [...this._instances.values()].some(inst => {
-            if (!inst?.widgetEditMode || !inst.pinned || !inst.actor)
-                return false;
-
-            const surface = this._surfaces.get(inst.monitorIndex);
-            const widgetContainer = surface?.widgetContainer ?? null;
-            return inst.actor.get_parent?.() !== widgetContainer;
-        });
-
-        const shouldSuppress = layerRaised || floatingWidgetEditing;
-        if (shouldSuppress === this._textEntryAccelsSuppressedForWidgets)
-            return;
-
-        this._textEntryAccelsSuppressedForWidgets = shouldSuppress;
-        this._desktopManager.mainApp?.activate_action?.(
-            shouldSuppress ? 'textEntryAccelsTurnOff' : 'textEntryAccelsTurnOn',
-            null
-        );
     }
 
     _updateTheme(inst, theme) {
         // To Do: GTK Widget layer change
         if (inst.kind === 'html' && inst.actor && inst.host)
-            this._webWidgetContext.updateHtmlWidgetTheme(inst, theme);
+            this._webWidgetContext?.updateHtmlWidgetTheme(inst, theme);
     }
 
     _updateAnimation(inst, reducedMotion) {
         // To Do : Gtk Widget layer change
         if (inst.kind === 'html' && inst.actor && inst.host)
-            this._webWidgetContext.updateHtmlWidgetAnimation(inst, reducedMotion);
+            this._webWidgetContext?.updateHtmlWidgetAnimation(inst, reducedMotion);
     }
 
     _getLocale() {
@@ -2773,10 +1780,6 @@ const WidgetManager = class {
     computeHostStateForInstance(inst) {
         const actor = inst.actor;
         const selected = inst.instanceId === this._selectedInstanceId;
-        const pinned = !!inst.pinned;
-        const widgetEditMode = !!inst.widgetEditMode;
-        const pinnable = !!inst.pinnable;
-        const hostChromeVisible = !!inst.hostChromeVisible;
 
         const surface = this._surfaces.get(inst.monitorIndex);
         const grid = surface?.grid;
@@ -2789,30 +1792,12 @@ const WidgetManager = class {
 
         return {
             editMode,
-            widgetEditMode,
             selected,
-            pinned,
-            hostChromeVisible,
-            pinnable,
             theme,
             reducedMotion,
             direction,
             locale,
         };
-    }
-
-    updatePinnedHostChromeVisible(instanceId, hostChromeVisible) {
-        const inst = this._instances.get(instanceId);
-        if (!inst)
-            return;
-
-        const nextVisible = !!hostChromeVisible;
-        if (!!inst.hostChromeVisible === nextVisible)
-            return;
-
-        inst.hostChromeVisible = nextVisible;
-        if (inst.kind === 'html' && inst.actor && inst.host)
-            this._webWidgetContext.updateHtmlWidgetHostChromeVisible(inst, nextVisible);
     }
 
     /* ====================================================================
@@ -2870,8 +1855,6 @@ const WidgetManager = class {
             return null;
         }
 
-        this._widgetRegistry.reload();
-
         let widgets;
         try {
             widgets = await this._widgetRegistry.listWidgets();
@@ -2887,54 +1870,25 @@ const WidgetManager = class {
             return nameA.localeCompare(nameB);
         });
 
-        if (Number.isInteger(monitorIndex))
-            parentWindow = this.getSurfaceWindow(monitorIndex) ?? parentWindow;
+        if (!parentWindow)
+            parentWindow = this._desktopManager.mainApp.get_active_window();
 
-        const cancellable = this._getDownloadCancellable();
-
-        const {window, list, addButton, cancelButton, downloadButton} =
-            this._createWidgetPickerWindow(parentWindow, widgets, cancellable);
+        const {window, list, addButton, cancelButton} =
+            this._createWidgetPickerWindow(parentWindow, widgets);
 
         const resultPromise = new Promise(resolve => {
-            let creationInProgress = false;
-            let reopeningAfterDownload = false;
-
             cancelButton.connect('clicked', () => {
                 window.close();
-            });
-
-            downloadButton.connect('clicked', async () => {
-                try {
-                    const didInstall = await this.downloadLatestWidgets(
-                        parentWindow,
-                        cancellable
-                    );
-
-                    if (didInstall) {
-                        reopeningAfterDownload = true;
-                        resolve(null);
-                        window.close();
-                        this.openAddWidgetDialog(parentWindow, monitorIndex)
-                            .catch(logError);
-                    }
-                } catch (e) {
-                    logError(e);
-                }
+                resolve(null);
             });
 
             addButton.connect('clicked', async () => {
-                if (creationInProgress)
-                    return;
-
                 const row = list.get_selected_row();
                 if (!row || !row._widgetId) {
                     window.close();
                     resolve(null);
                     return;
                 }
-
-                creationInProgress = true;
-                window.close();
 
                 let created = null;
                 try {
@@ -2948,6 +1902,7 @@ const WidgetManager = class {
                     );
                 }
 
+                window.close();
                 resolve(created);
             });
 
@@ -2958,18 +1913,7 @@ const WidgetManager = class {
 
             // If user closes via window close button / Esc
             window.connect('close-request', () => {
-                cancellable.cancel();
-
-                if (reopeningAfterDownload)
-                    return false;
-
-                if (!creationInProgress)
-                    resolve(null);
-
-                GLib.idle_add(GLib.PRIORITY_DEFAULT_IDLE, () => {
-                    this.restoreWidgetLayerFocus(monitorIndex);
-                    return GLib.SOURCE_REMOVE;
-                });
+                resolve(null);
                 return false; // allow close
             });
 
@@ -3005,15 +1949,13 @@ const WidgetManager = class {
         const addButton = builder.get_object('add_button');
         /** @type {Gtk.Button} */
         const cancelButton = builder.get_object('cancel_button');
-        /** @type {Gtk.Button} */
-        const downloadButton = builder.get_object('download_button');
 
         if (parentWindow)
             window.set_transient_for(parentWindow);
 
         // Populate rows from registry
-        for (const [index, desc] of widgets.entries()) {
-            const row = this._createWidgetRow(desc, index);
+        for (const desc of widgets) {
+            const row = this._createWidgetRow(desc);
             list.append(row);
         }
 
@@ -3022,42 +1964,22 @@ const WidgetManager = class {
         if (firstRow)
             list.select_row(firstRow);
 
-        return {window, list, addButton, cancelButton, downloadButton};
+        return {window, list, addButton, cancelButton};
     }
 
-    _createWidgetRow(desc, index = 0) {
+    _createWidgetRow(desc) {
         const row = new Gtk.ListBoxRow();
         row._widgetId = desc.id;
-        row.add_css_class('widget-picker-row');
-        if (index % 2 === 1)
-            row.add_css_class('widget-picker-row-alt');
 
         const box = new Gtk.Box({
             orientation: Gtk.Orientation.VERTICAL,
             spacing: 2,
-            hexpand: true,
         });
 
         const titleLabel = new Gtk.Label({
-            label: `<b>${GLib.markup_escape_text(
-                desc.name,
-                ENTIRE_STRING_LENGTH
-            )}</b>`,
-            use_markup: true,
+            label: desc.name || desc.id,
             xalign: 0,
         });
-
-        const descriptionText = desc.description;
-        const descriptionLabel = new Gtk.Label({
-            label: descriptionText,
-            xalign: 0,
-            hexpand: true,
-            halign: Gtk.Align.FILL,
-            wrap: true,
-            wrap_mode: Gtk.WrapMode.WORD_CHAR,
-            max_width_chars: 58,
-        });
-        descriptionLabel.add_css_class('dim-label');
 
         const subtitleParts = [];
 
@@ -3070,9 +1992,11 @@ const WidgetManager = class {
                 subtitleParts.push(desc.kind);
         }
 
-        subtitleParts.push(
-            desc.isUser ? _('User Installed') : _('System Installed')
-        );
+        if (desc.category)
+            subtitleParts.push(desc.category);
+
+        if (desc.isUser)
+            subtitleParts.push(_('User'));
 
         const subtitle = subtitleParts.join(' · ');
 
@@ -3083,7 +2007,6 @@ const WidgetManager = class {
         subtitleLabel.add_css_class('dim-label');
 
         box.append(titleLabel);
-        box.append(descriptionLabel);
         if (subtitle)
             box.append(subtitleLabel);
 
@@ -3091,151 +2014,31 @@ const WidgetManager = class {
         return row;
     }
 
-    async downloadLatestWidgets(parentWindow = null, cancellable = null) {
-        const confirmed = await this._asyncAskYesNo(
-            _('Download Latest Widgets from Repository?'),
-            _(
-                'This will overwrite all widgets in your local widgets folder.'
-            ),
-            false,
-            parentWindow,
-            cancellable
-        ).catch(e => {
-            logError(e);
-            return false;
-        });
-
-        if (!confirmed)
-            return false;
-
-        const appDataDir = this._desktopIconsUtil.getAppUserDataDir();
-        const archiveUrl = this.Enums.WIDGETS_DOWNLOAD_URL;
-        const tempRootDir = appDataDir.get_child(
-            `widgets.download.${Date.now()}.${Math.floor(Math.random() * 1e9)}`
-        );
-        const extractDir = tempRootDir.get_child('extract');
-        const liveDir = appDataDir.get_child('widgets');
-        const backupDir = appDataDir.get_child('widgets.backup');
-
-        try {
-            await FileUtils.recursivelyMakeDir(tempRootDir, cancellable);
-            await FileUtils.recursivelyMakeDir(extractDir, cancellable);
-
-            const archiveData = await WebUtils.downloadBytes(
-                archiveUrl,
-                30,
-                cancellable
-            );
-            const archiveFile = tempRootDir.get_child('widgets.tar.gz');
-            await WebUtils.writeBytesToFile(
-                archiveFile,
-                archiveData.bytes,
-                cancellable
-            );
-            try {
-                await this._desktopManager.autoAr.extractArchiveToFolder(
-                    archiveFile.get_path(),
-                    extractDir,
-                    cancellable
-                );
-            } catch (e) {
-                if (e?.message !== 'AutoAr is not installed')
-                    throw e;
-
-                await WebUtils.extractTarGzArchive(
-                    archiveFile,
-                    extractDir,
-                    cancellable
-                );
-            }
-
-            const sourceWidgetsDir =
-                await FileUtils.findChildDirRecursive(
-                    extractDir,
-                    'widgets',
-                    cancellable
-                );
-            if (!sourceWidgetsDir)
-                throw new Error('Downloaded archive did not contain a widgets folder');
-
-            if (await FileUtils.queryExists(backupDir, cancellable)) {
-                await FileUtils.recursivelyDeleteDir(
-                    backupDir,
-                    true,
-                    cancellable
-                );
-            }
-
-            if (cancellable.is_cancelled())
-                return false;
-
-            if (await FileUtils.queryExists(liveDir))
-                await FileUtils.moveFile(liveDir, backupDir);
-
-            try {
-                await FileUtils.moveFile(sourceWidgetsDir, liveDir);
-            } catch (moveError) {
-                if (await FileUtils.queryExists(backupDir)) {
-                    try {
-                        await FileUtils.moveFile(backupDir, liveDir);
-                    } catch (restoreError) {
-                        console.error(
-                            'downloadLatestWidgets: failed to restore widgets backup:',
-                            restoreError
-                        );
-                    }
-                }
-                throw moveError;
-            } finally {
-                // `widgets.backup` is temporary rollback state and should never linger.
-                if (await FileUtils.queryExists(backupDir))
-                    await FileUtils.recursivelyDeleteDir(backupDir, true);
-            }
-
-            this._widgetRegistry.reload();
-            this._desktopManager.dbusManager?.doNotify(
-                _('Widgets updated'),
-                _('The latest widgets were downloaded and installed.')
-            );
-            return true;
-        } catch (e) {
-            if (e?.matches?.(Gio.IOErrorEnum, Gio.IOErrorEnum.CANCELLED))
-                return false;
-            console.error('downloadLatestWidgets: install failed:', e);
-            this._desktopManager.dbusManager?.doNotify(
-                _('Widgets download failed'),
-                e?.message ?? String(e)
-            );
-            return false;
-        } finally {
-            try {
-                if (await FileUtils.queryExists(tempRootDir))
-                    await FileUtils.recursivelyDeleteDir(tempRootDir, true);
-            } catch (e) {
-                // ignore cleanup failures
-            }
-        }
-    }
-
-    _getDownloadCancellable() {
-        if (!this._downloadCancellable?.is_cancelled?.())
-            return this._downloadCancellable;
-
-        this._downloadCancellable = new Gio.Cancellable();
-        return this._downloadCancellable;
-    }
-
     _addActions() {
         const addWidgetAction = Gio.SimpleAction.new('addWidget', null);
         addWidgetAction.connect('activate', () => {
             const parentWindow =
-                this._desktopManager.getDialogParentWindow();
-            if (!parentWindow)
+                this._desktopManager.mainApp.get_active_window();
+
+            let monitorIndex = null;
+
+            if (parentWindow) {
+                const surface = parentWindow.get_surface();
+                const display = surface?.get_display?.();
+                const monitor = display?.get_monitor_at_surface?.(surface);
+                const monitors = display?.get_monitors?.();
+                const count = monitors?.get_n_items?.() ?? 0;
+
+                for (let i = 0; i < count; i++) {
+                    if (monitors.get_item?.(i) === monitor) {
+                        monitorIndex = i;
+                        break;
+                    }
+                }
+            }
+
+            if (monitorIndex === null)
                 return;
-
-            this.clearSelectedInstance();
-
-            const monitorIndex = this.getMonitorIndexForWindow(parentWindow);
 
             // Ensure widget layers are visible before adding a widget.
             this._desktopManager.windowManager?.raiseWidgetLayers();
@@ -3247,12 +2050,25 @@ const WidgetManager = class {
 
         const showGridAction = Gio.SimpleAction.new('toggleWidgetGrid', null);
         showGridAction.connect('activate', () => {
-            const parentWindow = this._desktopManager.getDialogParentWindow();
-            if (!parentWindow)
-                return;
+            const parentWindow =
+                this._desktopManager.mainApp.get_active_window();
 
-            const parentSurfaceWindow = parentWindow;
-            const monitorIndex = this.getMonitorIndexForWindow(parentSurfaceWindow);
+            let monitorIndex = null;
+
+            if (parentWindow) {
+                const surface = parentWindow.get_surface();
+                const display = surface?.get_display?.();
+                const monitor = display?.get_monitor_at_surface?.(surface);
+                const monitors = display?.get_monitors?.();
+                const count = monitors?.get_n_items?.() ?? 0;
+
+                for (let i = 0; i < count; i++) {
+                    if (monitors.get_item?.(i) === monitor) {
+                        monitorIndex = i;
+                        break;
+                    }
+                }
+            }
 
             if (monitorIndex === null)
                 return;
@@ -3262,73 +2078,40 @@ const WidgetManager = class {
                 this._getGridToggleButtonInstanceId(monitorIndex);
 
             const inst = instanceId ? this._instances.get(instanceId) : null;
-            gridToggleButton = inst && inst.actor ? inst.actor : null;
+            gridToggleButton = inst?.actor ?? null;
 
             if (!gridToggleButton)
                 return;
 
-            this.clearSelectedInstance();
-
             // Ensure widget layers are visible before showingt widget grid.
             this._desktopManager.windowManager?.raiseWidgetLayers();
-            gridToggleButton.activate();
+            gridToggleButton?.activate();
         });
         this._desktopManager.mainApp.add_action(showGridAction);
 
         const closeWidget = Gio.SimpleAction.new('closeWidget', null);
         closeWidget.connect('activate', this.deleteSelectedInstance.bind(this));
         this._desktopManager.mainApp.add_action(closeWidget);
-
-        const updatePinnedWindowPosition = Gio.SimpleAction.new(
-            'updatePinnedWindowPosition',
-            new GLib.VariantType('(sii)')
-        );
-        updatePinnedWindowPosition.connect('activate', (_action, parameter) => {
-            if (!parameter)
-                return;
-
-            const [instanceId, x, y] = parameter.deepUnpack();
-            this.updatePinnedWindowPosition(instanceId, x, y);
-        });
-        this._desktopManager.mainApp.add_action(updatePinnedWindowPosition);
     }
 
     /* =====================================================================
      * Widget Consent UI
      * ===================================================================== */
 
-    _asyncAskYesNo(
-        heading,
-        body,
-        bodyUseMarkup = false,
-        parentWindow = null,
-        cancellable = null
-    ) {
-        if (cancellable?.is_cancelled())
-            return Promise.resolve(false);
-
-        const anchorParent =
-            parentWindow ?? this._desktopManager.getDialogParentWindow();
+    _asyncAskYesNo(heading, body) {
+        const parentWindow = this._desktopManager.mainApp.get_active_window();
         const yesLabel = _('Allow');
         const noLabel = _('Cancel');
 
         return new Promise(resolve => {
             const dlg = new Adw.AlertDialog();
-            let cancelId = 0;
-
-            dlg.set_presentation_mode(Adw.DialogPresentationMode.FLOATING);
-            dlg.set_follows_content_size(false);
-            dlg.set_content_width(500);
-
             dlg.set_heading(heading);
-            dlg.set_body_use_markup(bodyUseMarkup);
             dlg.set_body(body);
             dlg.add_response('no', noLabel);
             dlg.add_response('yes', yesLabel);
             dlg.set_default_response('no');
             dlg.set_close_response('no');
-            if (typeof dlg.set_prefer_wide_layout === 'function')
-                dlg.set_prefer_wide_layout(true);
+            dlg.set_prefer_wide_layout(true);
 
             dlg.set_response_appearance(
                 'yes',
@@ -3352,20 +2135,11 @@ const WidgetManager = class {
             }));
             dlg.add_controller(shortcutController);
 
-            if (cancellable) {
-                cancelId = cancellable.connect(() => {
-                    dlg.close();
-                });
-            }
-
             dlg.connect('response', (_d, response) => {
-                if (cancelId && cancellable)
-                    cancellable.disconnect(cancelId);
-
                 resolve(response === 'yes');
             });
 
-            dlg.present(anchorParent);
+            dlg.present(parentWindow ?? null);
         });
     }
 
@@ -3423,30 +2197,15 @@ const WidgetManager = class {
         const heading = _('Allow web content for {widgetId}?')
             .replace('{widgetId}', widgetId);
         const cspProfile = this._describeCspProfileForHumans();
-        const cspProfileName = GLib.markup_escape_text(
-            cspProfile.name,
-            ENTIRE_STRING_LENGTH
-        );
-        const cspProfileSummary = GLib.markup_escape_text(
-            cspProfile.summary,
-            ENTIRE_STRING_LENGTH
-        );
         const body =
             // eslint-disable-next-line prefer-template
             _('The widget you are adding may load web content from the internet.\n\n') +
             _('This content is subject to the widget security policy:\n\n') +
-            `<span weight="ultrabold">${cspProfileName}</span>\n` +
-            `${cspProfileSummary}`;
-        const parentWindow = this.getSurfaceWindow(inst.monitorIndex);
+            `${cspProfile.name}\n` +
+            `${cspProfile.summary}`;
 
 
-        const answer = await this._asyncAskYesNo(
-            heading,
-            body,
-            true,
-            parentWindow,
-            this._getDownloadCancellable()
-        );
+        const answer = await this._asyncAskYesNo(heading, body);
 
         return answer;
     }
@@ -3474,26 +2233,12 @@ const WidgetManager = class {
             .replace('{widgetId}', widgetId) +
         _('The backend runs with your normal user permissions, just like any other application you start.\n') +
         _('It can access your files, system resources, and the network according to your user account permissions.\n\n') +
-        (argvStr
-            ? `<b>${GLib.markup_escape_text(
-                _('Command:'),
-                ENTIRE_STRING_LENGTH
-            )}</b>\n` +
-              `${GLib.markup_escape_text(
-                  argvStr,
-                  ENTIRE_STRING_LENGTH
-              )}\n\n`
-            : '') +
+        (argvStr ? `${_('Command:\n') + argvStr}\n\n` : '') +
         _('Only allow this for widgets you implicitly trust.');
-        const parentWindow = this.getSurfaceWindow(inst.monitorIndex);
 
         const answer = await this._asyncAskYesNo(
             _('Allow widget backend?'),
-            body,
-            true,
-            parentWindow,
-            this._getDownloadCancellable()
-        );
+            body);
 
         return answer;
     }
