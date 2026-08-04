@@ -1,0 +1,120 @@
+#!/usr/bin/env python3
+
+import gi
+import locale
+import os
+from pathlib import Path
+import sys
+
+marker = Path.home() / ".config" / "aureon" / "welcome-complete"
+if marker.exists():
+    sys.exit(0)
+
+
+gi.require_version("Gtk", "4.0")
+from gi.repository import Gtk, GLib
+
+
+translations = {
+    "en": {
+        "title": "Welcome to AureonOS",
+        "message": "Your secure Linux journey starts here.\n\nExplore, learn and build with AureonOS.",
+        "button": "Get Started"
+    },
+
+    "bn": {
+        "title": "AureonOS-এ স্বাগতম",
+        "message": "আপনার নিরাপদ Linux যাত্রা এখানে শুরু করুন।\n\nAureonOS ব্যবহার করুন, শিখুন এবং তৈরি করুন।",
+        "button": "শুরু করুন"
+    },
+
+    "hi": {
+        "title": "AureonOS में आपका स्वागत है",
+        "message": "आपकी सुरक्षित Linux यात्रा यहां से शुरू होती है।",
+        "button": "शुरू करें"
+    },
+
+    "fr": {
+        "title": "Bienvenue sur AureonOS",
+        "message": "Votre voyage Linux sécurisé commence ici.",
+        "button": "Commencer"
+    },
+
+    "de": {
+        "title": "Willkommen bei AureonOS",
+        "message": "Ihre sichere Linux-Reise beginnt hier.",
+        "button": "Starten"
+    }
+}
+
+
+class AureonWelcome(Gtk.Application):
+
+    def __init__(self):
+        super().__init__(
+            application_id="com.aureonos.welcome"
+        )
+
+
+    def do_activate(self):
+
+        lang = locale.getdefaultlocale()[0]
+        lang = lang.split("_")[0] if lang else "en"
+
+        text = translations.get(
+            lang,
+            translations["en"]
+        )
+
+        window = Gtk.ApplicationWindow(
+            application=self,
+            title=text["title"]
+        )
+
+        window.set_default_size(600, 400)
+
+        box = Gtk.Box(
+            orientation=Gtk.Orientation.VERTICAL,
+            spacing=20
+        )
+
+        box.set_margin_top(40)
+        box.set_margin_bottom(40)
+        box.set_margin_start(40)
+        box.set_margin_end(40)
+
+
+        title = Gtk.Label(
+            label=text["title"]
+        )
+
+        title.set_css_classes(["title-1"])
+
+
+        message = Gtk.Label(
+            label=text["message"]
+        )
+
+        message.set_wrap(True)
+
+
+        button = Gtk.Button(
+            label=text["button"]
+        )
+
+        button.connect(
+            "clicked",
+            lambda x: window.close()
+        )
+
+
+        box.append(title)
+        box.append(message)
+        box.append(button)
+
+        window.set_child(box)
+        window.present()
+
+
+app = AureonWelcome()
+app.run()

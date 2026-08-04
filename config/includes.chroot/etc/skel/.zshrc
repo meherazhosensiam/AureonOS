@@ -19,9 +19,9 @@ setopt AUTO_CD AUTO_PUSHD EXTENDED_HISTORY HIST_IGNORE_DUPS \
 autoload -Uz colors && colors
 autoload -Uz compinit && compinit
 
-PROMPT='%F{39}
-╭─%F{45}󰣇 AUREON%f %F{81}%n@%m%f %F{214}%~%f $(git_prompt_info)
-╰─%F{46}➜%f '
+PROMPT='%F{196}
+╭─󰣇 AUREON %F{196}%n@%m%f %F{214}%~%f $(git_prompt_info)
+╰─%F{196}➜%f '
 
 RPROMPT='%F{244}%D{%H:%M:%S}%f'
 
@@ -69,4 +69,19 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
 alias ls='ls --color=auto'
 alias ll='ls -lah --color=auto'
 alias la='ls -A --color=auto'
-export LS_COLORS='di=1;34:ln=1;36:so=1;35:pi=33:ex=1;32:bd=1;33:cd=1;33:su=37;41:sg=30;43:tw=30;42:ow=34;42:*.jpg=1;35:*.png=1;35:*.gif=1;35:*.mp4=1;31:*.zip=1;91:*.tar=1;91:*.pdf=1;31:*.sh=1;32'
+export LS_COLORS='di=1;31:ln=1;36:so=1;35:pi=33:ex=1;32:bd=1;33:cd=1;33:su=37;41:sg=30;43:tw=30;42:ow=1;31:*.jpg=1;35:*.png=1;35:*.gif=1;35:*.mp4=1;31:*.zip=1;91:*.tar=1;91:*.pdf=1;31:*.sh=1;32'
+
+# Syntax highlighting
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Command autosuggestions
+source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+
+# AureonOS Root Prompt
+if [[ $EUID -eq 0 ]]; then
+    PROMPT='%F{196}
+╭─󰣇 ROOT %F{196}%n@%m%f %F{214}%~%f
+╰─%F{196}#%f '
+fi
+export LS_COLORS='di=01;31:fi=01;37:ln=01;36:ex=01;32:*.sh=01;32:*.png=01;35:*.jpg=01;35:*.pdf=01;31:*.zip=01;91'

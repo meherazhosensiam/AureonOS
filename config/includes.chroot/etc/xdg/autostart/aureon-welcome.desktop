@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Aureon Welcome
+Comment=Welcome to AureonOS
+Exec=/usr/bin/aureon-welcome
+Terminal=false
+StartupNotify=true
+X-GNOME-Autostart-enabled=true
+OnlyShowIn=GNOME;

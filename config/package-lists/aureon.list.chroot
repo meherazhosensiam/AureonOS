@@ -109,6 +109,9 @@ pciutils
 usbutils
 lsof
 rsync
+python3
+python3-gi
+gir1.2-gtk-4.0
 
 ############################
 # ZSH Enhancement
