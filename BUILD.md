@@ -15,7 +15,7 @@ Recommended build machine:
 ## Clone the Repository
 
 ```bash
-git clone https://github.com/meherazhosensiam/AureonOS.git\
+git clone https://github.com/meherazhosensiam/AureonOS.git
 
 cd AureonOS
 ```
