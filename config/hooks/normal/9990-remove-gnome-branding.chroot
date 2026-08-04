@@ -14,6 +14,12 @@ rm -rf /usr/share/pixmaps/faces/*
 rm -f /usr/share/pixmaps/debian-logo.png
 rm -f /usr/share/pixmaps/debian-security.png
 rm -f /usr/share/pixmaps/install-debian.png
+#!/bin/sh
+set -e
+
+find /usr/share/desktop-base \
+  -type d \( -name wallpaper -o -name wallpaper-withlogo -o -name lockscreen \) \
+  -exec rm -rf {} +
 
 echo "Removing Debian installer launcher..."
 
