@@ -12,33 +12,12 @@ Recommended build machine:
 * Multi-core CPU
 * Stable internet connection
 
-## Required Packages
-
-Install the required packages:
-
-```bash
-sudo apt update
-sudo apt install live-build debootstrap squashfs-tools xorriso grub-pc-bin grub-efi-amd64-bin mtools dosfstools rsync git wget curl ca-certificates
-```
-
-Additional packages may be required depending on future project updates.
-
 ## Clone the Repository
 
 ```bash
-git clone https://github.com/meherazhosensiam/AureonOS.git
+git clone https://github.com/meherazhosensiam/AureonOS.git\
+
 cd AureonOS
-```
-## After cloning the Repository
-clean the build environment first to ensure any broken file and configuration are not there
-
-```bash
-sudo lb clean --all
-```
-Then rebuild the configuration structure
-
-```bash
-sudo lb config
 ```
 
 ## Configure
@@ -84,7 +63,7 @@ sudo lb build
 Run the build script:
 
 ```bash
-sudo lb build
+sudo ./build.sh
 ```
 
 
@@ -97,23 +76,10 @@ After a successful build, the generated ISO will appear in the project directory
 Example:
 
 ```
-live-image-amd64.hybrid.iso
+AureonOS.iso
 ```
 
-## Cleaning the Build
-
-To remove previous build files:
-
-```bash
-sudo lb clean
-```
-
-To completely reset the build environment:
-
-```bash
-sudo lb clean --purge
-```
-
+#
 ## Testing
 
 Before publishing a release, test the ISO in a virtual machine.
@@ -141,6 +107,7 @@ Verify:
 
 ```
 AureonOS/
+├── auto/
 ├── config/
 ├── hooks/
 ├── includes/
@@ -159,8 +126,7 @@ AureonOS/
 Run:
 
 ```bash
-sudo lb clean --purge
-sudo lb build
+sudo ./build.sh
 ```
 
 ### Package not found

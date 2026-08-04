@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -e
+lb config noauto \
+    --distribution trixie \
+    --architectures amd64 \
+    --archive-areas "main contrib non-free-firmware non-free" \
+    --binary-images iso-hybrid \
+    --debian-installer live \
+    --iso-volume "AureonOS"
