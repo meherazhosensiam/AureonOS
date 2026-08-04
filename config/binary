@@ -53,7 +53,7 @@ LB_BUILD_WITH_CHROOT="true"
 LB_DEBIAN_INSTALLER="live"
 
 # Set debian-installer suite
-LB_DEBIAN_INSTALLER_DISTRIBUTION="testing"
+LB_DEBIAN_INSTALLER_DISTRIBUTION="none"
 
 # Set debian-installer preseed filename/url
 LB_DEBIAN_INSTALLER_PRESEEDFILE=""
@@ -74,7 +74,7 @@ LB_HDD_PARTITION_START=""
 LB_ISO_APPLICATION="AUREON OS"
 
 # Set iso preparer
-LB_ISO_PREPARER="live-build @LB_VERSION@; https://salsa.debian.org/live-team/live-build"
+LB_ISO_PREPARER="AureonOS Build System"
 
 # Set iso publisher
 LB_ISO_PUBLISHER="AUREON Project"
