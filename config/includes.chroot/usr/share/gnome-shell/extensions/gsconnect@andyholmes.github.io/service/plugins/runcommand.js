@@ -120,7 +120,7 @@ const RunCommandPlugin = GObject.registerClass({
     }
 
     /**
-     * Handle a request to execute the local command with the UUID {@link key}
+     * Handle a request to execute the local command with the UUID @key
      *
      * @param {string} key - The UUID of the local command
      */
@@ -233,7 +233,7 @@ const RunCommandPlugin = GObject.registerClass({
     commands() {}
 
     /**
-     * Send a request to execute the remote command with the UUID {@link key}
+     * Send a request to execute the remote command with the UUID @key
      *
      * @param {string} key - The UUID of the remote command
      */

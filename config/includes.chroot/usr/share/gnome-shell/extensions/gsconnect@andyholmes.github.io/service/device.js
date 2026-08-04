@@ -144,14 +144,6 @@ const Device = GObject.registerClass({
         return name.trim() && /^[^"',;:.!?()[\]<>]{1,32}$/.test(name);
     }
 
-    static sanitizeName(name) {
-        // Remove all prohibited characters
-        const sanitized = name.replaceAll(/["',;:.!?()[\]<>]/g, '');
-        if (sanitized.length < 1)
-            throw new Error('No valid characters in device name!');
-        return sanitized;
-    }
-
     get channel() {
         if (this._channel === undefined)
             this._channel = null;
@@ -531,8 +523,8 @@ const Device = GObject.registerClass({
     }
 
     /**
-     * Get the position of a GMenuItem with {@link actionName} in the top level
-     * of the device menu.
+     * Get the position of a GMenuItem with @actionName in the top level of the
+     * device menu.
      *
      * @param {string} actionName - An action name with scope (eg. device.foo)
      * @returns {number} An 0-based index or -1 if not found
@@ -755,7 +747,7 @@ const Device = GObject.registerClass({
     }
 
     /**
-     * Reject the transfer payload described by {@link packet}.
+     * Reject the transfer payload described by @packet.
      *
      * @param {Core.Packet} packet - A packet
      * @returns {void}

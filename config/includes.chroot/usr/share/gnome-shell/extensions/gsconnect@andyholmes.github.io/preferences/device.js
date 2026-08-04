@@ -267,7 +267,6 @@ export const Panel = GObject.registerClass({
         'sharing', 'sharing-page',
         'desktop-list', 'clipboard', 'clipboard-sync', 'mousepad', 'mpris', 'systemvolume',
         'share', 'share-list', 'receive-files', 'receive-directory',
-        'links', 'links-list', 'launch-urls',
 
         // Battery
         'battery',
@@ -468,7 +467,6 @@ export const Panel = GObject.registerClass({
 
         settings = this.pluginSettings('share');
         this.actions.add_action(settings.create_action('receive-files'));
-        this.actions.add_action(settings.create_action('launch-urls'));
 
         settings = this.pluginSettings('sms');
         this.actions.add_action(settings.create_action('legacy-sms'));

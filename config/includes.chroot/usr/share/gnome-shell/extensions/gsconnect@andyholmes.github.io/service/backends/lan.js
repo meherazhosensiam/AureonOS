@@ -367,12 +367,9 @@ export const ChannelService = GObject.registerClass({
             if (!packet.body.deviceName)
                 throw new Error('missing deviceName');
 
-            // Sanitize invalid device names
-            if (!Device.validateName(packet.body.deviceName)) {
-                const sanitized = Device.sanitizeName(packet.body.deviceName);
-                debug(`Sanitized invalid device name "${packet.body.deviceName}" to "${sanitized}"`);
-                packet.body.deviceName = sanitized;
-            }
+            // Reject invalid device names
+            if (!Device.validateName(packet.body.deviceName))
+                throw new Error(`invalid deviceName "${packet.body.deviceName}"`);
 
             debug(packet);
 
@@ -411,9 +408,9 @@ export const ChannelService = GObject.registerClass({
     /**
      * Broadcast an identity packet
      *
-     * If {@link address] is not %null it may specify an IPv4 or IPv6 address
-     * to send the identity packet directly to, otherwise it will be broadcast
-     * to the default address, 255.255.255.255.
+     * If @address is not %null it may specify an IPv4 or IPv6 address to send
+     * the identity packet directly to, otherwise it will be broadcast to the
+     * default address, 255.255.255.255.
      *
      * @param {string} [address] - An optional target IPv4 or IPv6 address
      */
@@ -762,19 +759,17 @@ export const Channel = GObject.registerClass({
             if (!this.identity.body.deviceName)
                 throw new Error('missing deviceName');
 
-            // Sanitize invalid device names
-            if (!Device.validateName(this.identity.body.deviceName)) {
-                const sanitized = Device.sanitizeName(this.identity.body.deviceName);
-                debug(`Sanitized invalid device name "${this.identity.body.deviceName}" to "${sanitized}"`);
-                this.identity.body.deviceName = sanitized;
-            }
+            // Reject invalid device names
+            if (!Device.validateName(this.identity.body.deviceName))
+                throw new Error(`invalid deviceName "${this.identity.body.deviceName}"`);
 
             this._connection = await this._encryptClient(connection);
 
             // Starting with protocol version 8, the devices are expected to
             // exchange identity packets again after TLS negotiation
-            if (this.identity.body.protocolVersion >= 8)
+            if (this.identity.body.protocolVersion >= 8) {
                 await this._exchangeIdentities();
+            }
         } catch (e) {
             this.close();
             throw e;
@@ -802,8 +797,9 @@ export const Channel = GObject.registerClass({
 
             // Starting with protocol version 8, the devices are expected to
             // exchange identity packets again after TLS negotiation
-            if (this.identity.body.protocolVersion >= 8)
+            if (this.identity.body.protocolVersion >= 8) {
                 await this._exchangeIdentities();
+            }
         } catch (e) {
             this.close();
             throw e;

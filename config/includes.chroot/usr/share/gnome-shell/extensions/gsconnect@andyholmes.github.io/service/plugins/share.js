@@ -71,35 +71,17 @@ const SharePlugin = GObject.registerClass({
     }
 
     handlePacket(packet) {
-        const {filename, text, url} = packet.body;
-
         // TODO: composite jobs (lastModified, numberOfFiles, totalPayloadSize)
-        if (filename !== undefined) {
-            debug(`Remote wants to share file "${filename}".`);
+        if (packet.body.hasOwnProperty('filename')) {
             if (this.settings.get_boolean('receive-files'))
                 this._handleFile(packet);
             else
                 this._refuseFile(packet);
-            return;
+        } else if (packet.body.hasOwnProperty('text')) {
+            this._handleText(packet);
+        } else if (packet.body.hasOwnProperty('url')) {
+            this._handleUri(packet);
         }
-        if (text === undefined && url === undefined)
-            throw new Error('Share request has invalid payload, ignoring.');
-
-        if (this.settings.get_boolean('launch-urls')) {
-            let shared_url = url;
-            if (url === undefined) {
-                const urls = URI.findUrls(text);
-                if (urls.length === 1)
-                    shared_url = urls[0].url;
-            }
-            if (shared_url !== undefined) {
-                debug(`Launching shared URL "${shared_url}".`);
-                return this._handleUri(shared_url);
-            }
-        }
-        const message = text || url;
-        debug('Displaying shared message.');
-        this._handleText(message);
     }
 
     _ensureReceiveDirectory() {
@@ -250,14 +232,15 @@ const SharePlugin = GObject.registerClass({
         }
     }
 
-    _handleUri(uri) {
+    _handleUri(packet) {
+        const uri = packet.body.url;
         Gio.AppInfo.launch_default_for_uri_async(uri, null, null, null);
     }
 
-    _handleText(message) {
+    _handleText(packet) {
         const dialog = new Gtk.MessageDialog({
             text: _('Text Shared By %s').format(this.device.name),
-            secondary_text: URI.linkify(message),
+            secondary_text: URI.linkify(packet.body.text),
             secondary_use_markup: true,
             buttons: Gtk.ButtonsType.CLOSE,
         });

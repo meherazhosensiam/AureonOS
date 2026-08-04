@@ -8,3 +8,4 @@ lb config noauto \
     --binary-images iso-hybrid \
     --debian-installer live \
     --iso-volume "AureonOS"
+LB_BOOTAPPEND_LIVE="boot=live username=aureon"

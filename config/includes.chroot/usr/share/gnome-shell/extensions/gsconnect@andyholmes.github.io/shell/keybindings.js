@@ -6,10 +6,6 @@ import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 import Meta from 'gi://Meta';
 import Shell from 'gi://Shell';
 
-/**
- * @callback KeybindingCallback
- * @returns {void}
- */
 
 /**
  * Keybindings.Manager is a simple convenience class for managing keyboard
@@ -52,8 +48,8 @@ export class Manager {
      * Add a keybinding with callback
      *
      * @param {string} accelerator - An accelerator in the form '<Control>q'
-     * @param {KeybindingCallback} callback - A callback for the accelerator
-     * @returns {number} A non-zero action id on success, or 0 on failure
+     * @param {Function} callback - A callback for the accelerator
+     * @returns {*} A non-zero action id on success, or 0 on failure
      */
     add(accelerator, callback) {
         try {
@@ -69,7 +65,6 @@ export class Manager {
             return action;
         } catch (e) {
             logError(e);
-            return 0;
         }
     }
 

@@ -10,7 +10,6 @@ import GLib from 'gi://GLib';
 
 import Config from '../config.js';
 import {setup, setupGettext} from '../utils/setup.js';
-import {MissingOpensslError} from '../utils/exceptions.js';
 
 
 // Promise Wrappers
@@ -63,22 +62,10 @@ const extensionFolder = GLib.path_get_dirname(serviceFolder);
 setup(extensionFolder);
 setupGettext();
 
-
 if (Config.IS_USER) {
     // Infer libdir by assuming gnome-shell shares a common prefix with gjs;
     // assume the parent directory if it's not there
-    let gir_paths;
-
-    if (GIRepository.Repository.hasOwnProperty('get_search_path')) {
-        // GNOME <= 48 / GIRepository 2.0
-        gir_paths = GIRepository.Repository.get_search_path();
-    } else {
-        // GNOME 49+ / GIRepository 3.0
-        const repo = GIRepository.Repository.dup_default();
-        gir_paths = repo.get_search_path();
-    }
-
-    let libdir = gir_paths.find(path => {
+    let libdir = GIRepository.Repository.get_search_path().find(path => {
         return path.endsWith('/gjs/girepository-1.0');
     }).replace('/gjs/girepository-1.0', '');
 
@@ -123,7 +110,7 @@ globalThis.HAVE_GNOME = GLib.getenv('GSCONNECT_MODE')?.toLowerCase() !== 'cli' &
  * @param {Error|string} message - A string or Error to log
  * @param {string} [prefix] - An optional prefix for the warning
  */
-const _debugCallerMatch = new RegExp(/^([^@]+)@(.*):(\d+):(\d+)$/);
+const _debugCallerMatch = new RegExp(/([^@]*)@([^:]*):([^:]*)/);
 // eslint-disable-next-line func-style
 const _debugFunc = function (error, prefix = null) {
     let caller, message;
@@ -140,9 +127,7 @@ const _debugFunc = function (error, prefix = null) {
         message = `${prefix}: ${message}`;
 
     const [, func, file, line] = _debugCallerMatch.exec(caller);
-    let script = file.replace(Config.PACKAGE_DATADIR, '');
-    if (script.startsWith('file:///'))
-        script = script.slice(8);
+    const script = file.replace(Config.PACKAGE_DATADIR, '');
 
     GLib.log_structured('GSConnect', GLib.LogLevelFlags.LEVEL_MESSAGE, {
         'MESSAGE': `[${script}:${func}:${line}]: ${message}`,
@@ -194,7 +179,7 @@ String.prototype.toPhoneNumber = function () {
  * A simple equality check for phone numbers based on `toPhoneNumber()`
  *
  * @param {string} number - A phone number string to compare
- * @returns {boolean} If `this` and {@link number} are equivalent phone numbers
+ * @returns {boolean} If `this` and @number are equivalent phone numbers
  */
 String.prototype.equalsPhoneNumber = function (number) {
     const a = this.toPhoneNumber();
@@ -241,7 +226,7 @@ Gio.File.rm_rf = function (file) {
 /**
  * Extend GLib.Variant with a static method to recursively pack a variant
  *
- * @param {object} [obj] - May be a GLib.Variant, Array, standard Object or literal.
+ * @param {*} [obj] - May be a GLib.Variant, Array, standard Object or literal.
  * @returns {GLib.Variant} The resulting GVariant
  */
 function _full_pack(obj) {
@@ -297,8 +282,8 @@ GLib.Variant.full_pack = _full_pack;
 /**
  * Extend GLib.Variant with a method to recursively deepUnpack() a variant
  *
- * @param {object} [obj] - May be a GLib.Variant, Array, standard Object or literal.
- * @returns {object} The resulting object
+ * @param {*} [obj] - May be a GLib.Variant, Array, standard Object or literal.
+ * @returns {*} The resulting object
  */
 function _full_unpack(obj) {
     obj = (obj === undefined) ? this : obj;
@@ -353,11 +338,10 @@ GLib.Variant.prototype.full_unpack = _full_unpack;
  * @param {string} keyPath - Absolute path to a private key in PEM format
  * @param {string} commonName - A unique common name for the certificate
  * @returns {Gio.TlsCertificate} A TLS certificate
- * @throws {MissingOpensslError} on missing openssl binary
  */
 Gio.TlsCertificate.new_for_paths = function (certPath, keyPath, commonName = null) {
     if (GLib.find_program_in_path(Config.OPENSSL_PATH) === null) {
-        const error = new MissingOpensslError();
+        const error = new Error();
         error.name = _('OpenSSL not found');
         error.url = `${Config.PACKAGE_URL}/wiki/Error#openssl-not-found`;
         throw error;
