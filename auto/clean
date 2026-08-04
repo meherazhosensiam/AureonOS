@@ -1,0 +1,26 @@
+#!/bin/sh
+
+set -e
+
+echo "========================================"
+echo "       AureonOS Clean Hook"
+echo "========================================"
+
+echo "Removing generated build artifacts..."
+
+rm -f *.iso
+rm -f *.img
+rm -f *.contents
+rm -f *.files
+rm -f *.packages
+rm -f *.manifest
+rm -f *.buildinfo
+rm -f *.changes
+rm -f live-image-*
+
+echo "Removing log files..."
+
+find . -type f -name "*.log" -delete
+find . -type f -name "wget-log*" -delete
+
+echo "Cleanup completed."
