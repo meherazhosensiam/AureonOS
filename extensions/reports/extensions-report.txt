@@ -1,0 +1,350 @@
+AUREON OS - GNOME Shell Extensions Report
+==========================================
+Generated: Fri Sep  4 2026
+Host System: siam-vmwarevirtualplatform
+
+EXTENSIONS FOUND ON HOST SYSTEM
+===============================
+
+SYSTEM-WIDE EXTENSIONS (/usr/share/gnome-shell/extensions/):
+
+1. appindicatorsupport@rgcjonas.gmail.com
+   Name: AppIndicator and KStatusNotifierItem Support
+   Version: 64
+   Path: /usr/share/gnome-shell/extensions/appindicatorsupport@rgcjonas.gmail.com
+   Shell Versions: 45, 46, 47, 48, 49, 50
+   Schema: org.gnome.shell.extensions.appindicator
+   Installed: System-wide
+   Enabled: Yes
+   Active: Yes
+
+2. apps-menu@gnome-shell-extensions.gcampax.github.com
+   Name: Apps Menu
+   Version: N/A
+   Path: /usr/share/gnome-shell/extensions/apps-menu@gnome-shell-extensions.gcampax.github.com
+   Shell Versions: 48
+   Schema: org.gnome.shell.extensions.apps-menu
+   Installed: System-wide
+   Enabled: No
+   Active: No
+
+3. arcmenu@arcmenu.com
+   Name: ArcMenu
+   Version: 73 (69.2)
+   Path: /usr/share/gnome-shell/extensions/arcmenu@arcmenu.com
+   Shell Versions: 45, 46, 47, 48, 49, 50
+   Schema: org.gnome.shell.extensions.arcmenu
+   Installed: System-wide
+   Enabled: Yes
+   Active: Yes
+
+4. auto-move-windows@gnome-shell-extensions.gcampax.github.com
+   Name: Auto Move Windows
+   Version: N/A
+   Path: /usr/share/gnome-shell/extensions/auto-move-windows@gnome-shell-extensions.gcampax.github.com
+   Shell Versions: 48
+   Schema: org.gnome.shell.extensions.auto-move-windows
+   Installed: System-wide
+   Enabled: No
+   Active: No
+
+5. blur-my-shell@aunetx
+   Name: Blur my Shell
+   Version: 72
+   Path: /usr/share/gnome-shell/extensions/blur-my-shell@aunetx
+   Shell Versions: 46, 47, 48, 49, 50
+   Schema: org.gnome.shell.extensions.blur-my-shell
+   Installed: System-wide
+   Enabled: Yes
+   Active: Yes
+
+6. burn-my-windows@schneegans.github.com
+   Name: Burn My Windows
+   Version: 48
+   Path: /usr/share/gnome-shell/extensions/burn-my-windows@schneegans.github.com
+   Shell Versions: 45, 46, 47, 48, 49, 50
+   Schema: org.gnome.shell.extensions.burn-my-windows
+   Installed: System-wide
+   Enabled: Yes
+   Active: Yes
+
+7. caffeine@patapon.info
+   Name: Caffeine
+   Version: 60
+   Path: /usr/share/gnome-shell/extensions/caffeine@patapon.info
+   Shell Versions: 45, 46, 47, 48, 49, 50
+   Schema: org.gnome.shell.extensions.caffeine
+   Installed: System-wide
+   Enabled: Yes
+   Active: Yes
+
+8. clipboard-indicator@tudmotu.com
+   Name: Clipboard Indicator
+   Version: 71
+   Path: /usr/share/gnome-shell/extensions/clipboard-indicator@tudmotu.com
+   Shell Versions: 46, 47, 48, 49, 50
+   Schema: org.gnome.shell.extensions.clipboard-indicator
+   Installed: System-wide
+   Enabled: Yes
+   Active: Yes
+
+9. dash-to-panel@jderose9.github.com
+   Name: Dash to Panel
+   Version: 73
+   Path: /usr/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com
+   Shell Versions: 46, 47, 48, 49, 50
+   Schema: org.gnome.shell.extensions.dash-to-panel
+   Installed: System-wide
+   Enabled: Yes
+   Active: Yes
+
+10. date-menu-formatter@marcinjakubowski.github.com
+   Name: Date Menu Formatter
+   Version: 19
+   Path: /usr/share/gnome-shell/extensions/date-menu-formatter@marcinjakubowski.github.com
+   Shell Versions: 45, 46, 47, 48, 49, 50
+   Schema: org.gnome.shell.extensions.date-menu-formatter
+   Installed: System-wide
+   Enabled: Yes
+   Active: Yes
+
+11. drive-menu@gnome-shell-extensions.gcampax.github.com
+   Name: Removable Drive Menu
+   Version: N/A
+   Path: /usr/share/gnome-shell/extensions/drive-menu@gnome-shell-extensions.gcampax.github.com
+   Shell Versions: 48
+   Schema: org.gnome.shell.extensions.drive-menu
+   Installed: System-wide
+   Enabled: No
+   Active: No
+
+12. gsconnect@andyholmes.github.io
+   Name: GSConnect
+   Version: 72
+   Path: /usr/share/gnome-shell/extensions/gsconnect@andyholmes.github.io
+   Shell Versions: 46, 47, 48, 49, 50
+   Schema: org.gnome.Shell.Extensions.GSConnect
+   Installed: System-wide
+   Enabled: Yes
+   Active: Yes
+
+13. gtk4-ding@smedius.gitlab.com
+   Name: Gtk4 Desktop Icons NG (DING)
+   Version: 129 (100.17)
+   Path: /usr/share/gnome-shell/extensions/gtk4-ding@smedius.gitlab.com
+   Shell Versions: 45, 46, 47, 48, 49
+   Schema: org.gnome.shell.extensions.gtk4-ding
+   Installed: System-wide
+   Enabled: Yes
+   Active: Yes
+
+14. just-perfection-desktop@just-perfection
+   Name: Just Perfection
+   Version: 36
+   Path: /usr/share/gnome-shell/extensions/just-perfection-desktop@just-perfection
+   Shell Versions: 45, 46, 47, 48, 49, 50
+   Schema: org.gnome.shell.extensions.just-perfection
+   Installed: System-wide
+   Enabled: Yes
+   Active: Yes
+
+15. launch-new-instance@gnome-shell-extensions.gcampax.github.com
+   Name: Launch New Instance
+   Version: N/A
+   Path: /usr/share/gnome-shell/extensions/launch-new-instance@gnome-shell-extensions.gcampax.github.com
+   Shell Versions: 48
+   Schema: org.gnome.shell.extensions.launch-new-instance
+   Installed: System-wide
+   Enabled: No
+   Active: No
+
+16. light-style@gnome-shell-extensions.gcampax.github.com
+   Name: Light Style
+   Version: N/A
+   Path: /usr/share/gnome-shell/extensions/light-style@gnome-shell-extensions.gcampax.github.com
+   Shell Versions: 48
+   Schema: org.gnome.shell.extensions.light-style
+   Installed: System-wide
+   Enabled: No
+   Active: No
+
+17. native-window-placement@gnome-shell-extensions.gcampax.github.com
+   Name: Native Window Placement
+   Version: N/A
+   Path: /usr/share/gnome-shell/extensions/native-window-placement@gnome-shell-extensions.gcampax.github.com
+   Shell Versions: 48
+   Schema: org.gnome.shell.extensions.native-window-placement
+   Installed: System-wide
+   Enabled: No
+   Active: No
+
+18. places-menu@gnome-shell-extensions.gcampax.github.com
+   Name: Places Status Indicator
+   Version: N/A
+   Path: /usr/share/gnome-shell/extensions/places-menu@gnome-shell-extensions.gcampax.github.com
+   Shell Versions: 48
+   Schema: org.gnome.shell.extensions.places-menu
+   Installed: System-wide
+   Enabled: No
+   Active: No
+
+19. screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com
+   Name: Screenshot Window Sizer
+   Version: N/A
+   Path: /usr/share/gnome-shell/extensions/screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com
+   Shell Versions: 48
+   Schema: org.gnome.shell.extensions.screenshot-window-sizer
+   Installed: System-wide
+   Enabled: No
+   Active: No
+
+20. system-monitor@gnome-shell-extensions.gcampax.github.com
+   Name: System Monitor
+   Version: N/A
+   Path: /usr/share/gnome-shell/extensions/system-monitor@gnome-shell-extensions.gcampax.github.com
+   Shell Versions: 48
+   Schema: org.gnome.shell.extensions.system-monitor
+   Installed: System-wide
+   Enabled: No
+   Active: No
+
+21. user-theme@gnome-shell-extensions.gcampax.github.com
+   Name: User Themes
+   Version: N/A
+   Path: /usr/share/gnome-shell/extensions/user-theme@gnome-shell-extensions.gcampax.github.com
+   Shell Versions: 48
+   Schema: org.gnome.shell.extensions.user-theme
+   Installed: System-wide
+   Enabled: Yes
+   Active: Yes
+
+22. window-list@gnome-shell-extensions.gcampax.github.com
+   Name: Window List
+   Version: N/A
+   Path: /usr/share/gnome-shell/extensions/window-list@gnome-shell-extensions.gcampax.github.com
+   Shell Versions: 48
+   Schema: org.gnome.shell.extensions.window-list
+   Installed: System-wide
+   Enabled: No
+   Active: No
+
+23. windowsNavigator@gnome-shell-extensions.gcampax.github.com
+   Name: Window Navigator
+   Version: N/A
+   Path: /usr/share/gnome-shell/extensions/windowsNavigator@gnome-shell-extensions.gcampax.github.com
+   Shell Versions: 48
+   Schema: org.gnome.shell.extensions.windowsNavigator
+   Installed: System-wide
+   Enabled: No
+   Active: No
+
+24. window-switcher@tbepdb
+   Name: WindowSwitcher
+   Version: 15
+   Path: /usr/share/gnome-shell/extensions/window-switcher@tbepdb
+   Shell Versions: 45, 46, 47, 48, 49, 50
+   Schema: org.gnome.shell.extensions.window-switcher
+   Installed: System-wide
+   Enabled: Yes
+   Active: Yes
+
+25. workspace-indicator@gnome-shell-extensions.gcampax.github.com
+   Name: Workspace Indicator
+   Version: N/A
+   Path: /usr/share/gnome-shell/extensions/workspace-indicator@gnome-shell-extensions.gcampax.github.com
+   Shell Versions: 48
+   Schema: org.gnome.shell.extensions.workspace-indicator
+   Installed: System-wide
+   Enabled: No
+   Active: No
+
+EMPTY/MISSING METADATA EXTENSIONS (System-wide):
+------------------------------------------------
+26. ding@rastersoft.com - Empty directory, no metadata.json
+27. lockscreen-extension@pratap.fastmail.fm - Empty directory, no metadata.json
+28. perfect-fit@ryliov.work.com - Empty directory, no metadata.json
+29. quick-settings-tweaks@qwreey - Empty directory, no metadata.json
+30. tiling-assistant@leleat-on-github - Empty directory, no metadata.json
+
+LOCAL SYSTEM EXTENSIONS (/usr/local/share/gnome-shell/extensions/):
+-------------------------------------------------------------------
+31. dash-to-panel-aureon@aureon
+   Name: AUREON Dash to Panel TEST
+   Version: 73
+   Path: /usr/local/share/gnome-shell/extensions/dash-to-panel-aureon@aureon
+   Shell Versions: 46, 47, 48, 49, 50
+   Schema: org.gnome.shell.extensions.dash-to-panel
+   Installed: System-wide (local)
+   Enabled: No
+   Active: No
+
+USER EXTENSIONS (~/.local/share/gnome-shell/extensions/):
+---------------------------------------------------------
+32. dash-to-panel-aureon@aureon (duplicate)
+   Name: AUREON Dash to Panel TEST
+   Version: 73
+   Path: ~/.local/share/gnome-shell/extensions/dash-to-panel-aureon@aureon
+   Shell Versions: 46, 47, 48, 49, 50
+   Schema: org.gnome.shell.extensions.dash-to-panel
+   Installed: Per-user
+   Enabled: No
+   Active: No
+
+ENABLED EXTENSIONS (from gsettings):
+====================================
+Enabled UUIDs:
+1. blur-wallpaper@fthx - NOT FOUND ON SYSTEM
+2. blur-my-shell@aunetx - FOUND (system-wide)
+3. dash-in-panel@fthx - NOT FOUND ON SYSTEM
+4. arcmenu@arcmenu.com - FOUND (system-wide)
+5. date-menu-formatter@marcinjakubowski.github.com - FOUND (system-wide)
+6. window-switcher@tbepdb - FOUND (system-wide)
+7. tiling-assistant@leleat-on-github - FOUND but EMPTY (system-wide)
+8. just-perfection-desktop@just-perfection - FOUND (system-wide)
+9. perfect-fit@ryliov.work.com - FOUND but EMPTY (system-wide)
+10. appindicatorsupport@rgcjonas.gmail.com - FOUND (system-wide)
+11. clipboard-indicator@tudmotu.com - FOUND (system-wide)
+12. caffeine@patapon.info - FOUND (system-wide)
+13. quick-settings-tweaks@qwreey - FOUND but EMPTY (system-wide)
+14. ding@rastersoft.com - FOUND but EMPTY (system-wide)
+15. gtk4-ding@smedius.gitlab.com - FOUND (system-wide)
+16. gsconnect@andyholmes.github.io - FOUND (system-wide)
+17. user-theme@gnome-shell-extensions.gcampax.github.com - FOUND (system-wide)
+18. burn-my-windows@schneegans.github.com - FOUND (system-wide)
+19. dash-to-panel@jderose9.github.com - FOUND (system-wide)
+
+ENABLED BUT NOT INSTALLED (MISSING):
+-------------------------------------
+- blur-wallpaper@fthx
+- dash-in-panel@fthx
+
+INSTALLED BUT DISABLED:
+-----------------------
+- apps-menu@gnome-shell-extensions.gcampax.github.com
+- auto-move-windows@gnome-shell-extensions.gcampax.github.com
+- drive-menu@gnome-shell-extensions.gcampax.github.com
+- launch-new-instance@gnome-shell-extensions.gcampax.github.com
+- light-style@gnome-shell-extensions.gcampax.github.com
+- native-window-placement@gnome-shell-extensions.gcampax.github.com
+- places-menu@gnome-shell-extensions.gcampax.github.com
+- screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com
+- system-monitor@gnome-shell-extensions.gcampax.github.com
+- window-list@gnome-shell-extensions.gcampax.github.com
+- windowsNavigator@gnome-shell-extensions.gcampax.github.com
+- workspace-indicator@gnome-shell-extensions.gcampax.github.com
+- dash-to-panel-aureon@aureon (local system + user)
+
+EMPTY EXTENSION DIRECTORIES (No metadata.json):
+------------------------------------------------
+- ding@rastersoft.com
+- lockscreen-extension@pratap.fastmail.fm
+- perfect-fit@ryliov.work.com
+- quick-settings-tweaks@qwreey
+- tiling-assistant@leleat-on-github
+
+These appear to be installed via alternative methods (Flatpak, OS package) or are stub directories.
+
+UUID CONFLICTS:
+---------------
+- dash-to-panel-aureon@aureon exists in both /usr/local/share/gnome-shell/extensions/ and ~/.local/share/gnome-shell/extensions/
+

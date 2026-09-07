@@ -1,0 +1,54 @@
+#!/bin/sh
+set -e
+
+# ============================================================
+# AUREON OS - persistent /tmp hardening
+#
+# The previous approach appended lines to /etc/fstab, which
+# Calamares overwrites during installation, so the hardening was
+# lost on the installed system. Instead we enable systemd's
+# tmp.mount unit with a drop-in. Unit enablement lives in
+# /etc/systemd/system, which IS part of the installed filesystem.
+# ============================================================
+
+UNIT=/lib/systemd/system/tmp.mount
+[ -f /usr/lib/systemd/system/tmp.mount ] && UNIT=/usr/lib/systemd/system/tmp.mount
+
+if [ ! -f "$UNIT" ]; then
+    # Ship our own unit if systemd does not provide one.
+    mkdir -p /etc/systemd/system
+    cat > /etc/systemd/system/tmp.mount <<'EOF'
+[Unit]
+Description=Temporary Directory (/tmp)
+Documentation=man:hier(7)
+Documentation=https://www.freedesktop.org/wiki/Software/systemd/APIFileSystems
+ConditionPathIsSymbolicLink=!/tmp
+DefaultDependencies=no
+Conflicts=umount.target
+Before=local-fs.target umount.target
+After=swap.target
+
+[Mount]
+What=tmpfs
+Where=/tmp
+Type=tmpfs
+Options=mode=1777,strictatime,nosuid,nodev,noexec
+
+[Install]
+WantedBy=local-fs.target
+EOF
+    UNIT=/etc/systemd/system/tmp.mount
+fi
+
+# Drop-in: enforce AUREON mount options regardless of unit source.
+mkdir -p /etc/systemd/system/tmp.mount.d
+cat > /etc/systemd/system/tmp.mount.d/hardening.conf <<'EOF'
+[Mount]
+Options=mode=1777,strictatime,nosuid,nodev,noexec
+EOF
+
+# Enable for both the live session and every future boot.
+mkdir -p /etc/systemd/system/local-fs.target.wants
+ln -sf "$UNIT" /etc/systemd/system/local-fs.target.wants/tmp.mount
+
+echo "[ OK ] /tmp hardened via tmp.mount (nosuid,nodev,noexec)."

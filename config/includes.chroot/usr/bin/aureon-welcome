@@ -98,14 +98,17 @@ class AureonWelcome(Gtk.Application):
         message.set_wrap(True)
 
 
+        def on_done(_):
+            marker.parent.mkdir(parents=True, exist_ok=True)
+            marker.touch()
+            window.close()
+
         button = Gtk.Button(
             label=text["button"]
         )
 
-        button.connect(
-            "clicked",
-            lambda x: window.close()
-        )
+        button.connect("clicked", on_done)
+        window.connect("close-request", lambda *_: (on_done(None), False)[1])
 
 
         box.append(title)

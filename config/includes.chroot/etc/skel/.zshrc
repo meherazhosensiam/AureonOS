@@ -85,3 +85,12 @@ if [[ $EUID -eq 0 ]]; then
 ╰─%F{196}#%f '
 fi
 export LS_COLORS='di=01;31:fi=01;37:ln=01;36:ex=01;32:*.sh=01;32:*.png=01;35:*.jpg=01;35:*.pdf=01;31:*.zip=01;91'
+
+# Syntax highlighting
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Command autosuggestions
+source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# opencode
+export PATH=/home/siam/.opencode/bin:$PATH

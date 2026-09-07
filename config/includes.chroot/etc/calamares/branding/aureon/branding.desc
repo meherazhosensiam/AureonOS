@@ -24,9 +24,10 @@ sidebar: widget
 navigation: widget
 
 images:
-    productLogo:         "logo.png"
-    productIcon:         "logo.png"
-    productWelcome:      "welcome.png"
+    productLogo:         "/usr/share/aureonos/assets/logo.png"
+    productIcon:         "/usr/share/aureonos/assets/logo.png"
+    productWelcome:      "/usr/share/aureonos/assets/logo.png"
+    productBottom:       "/usr/share/aureonos/assets/text-logo.png"
 
 slideshow:               "show.qml"
 

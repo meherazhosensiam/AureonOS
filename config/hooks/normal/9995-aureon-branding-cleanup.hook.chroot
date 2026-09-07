@@ -1,0 +1,49 @@
+#!/bin/sh
+set -e
+
+# ============================================================
+# AUREON OS - branding cleanup
+#
+# Removes user-facing Debian branding from the image. Package
+# metadata, copyright notices and license files are NOT touched.
+# ============================================================
+
+# --- Debian logo pixmaps presented as system identity --------
+for f in \
+    /usr/share/pixmaps/debian-logo.png \
+    /usr/share/pixmaps/debian-logo.svg \
+    /usr/share/pixmaps/debian-logo-16.xpm \
+    /usr/share/pixmaps/debian-swirl.svg \
+    /usr/share/pixmaps/openlogo-nd-50.png \
+    /usr/share/pixmaps/install-debian.png \
+    /usr/share/pixmaps/debian-security.png
+do
+    [ -f "$f" ] && rm -f "$f"
+done
+
+# --- Debian desktop-base menu entries and logos --------------
+rm -f /usr/share/desktop-base/debian-homepage.desktop
+rm -f /usr/share/desktop-base/debian-reference.desktop
+rm -f /usr/share/desktop-base/debian-security.desktop
+rm -rf /usr/share/desktop-base/debian-logos
+
+# --- Default user avatar: Debian swirl in /etc/skel ----------
+rm -f /etc/skel/.face /etc/skel/.face.icon
+
+# --- Background chooser: keep ONLY AUREON entries -------------
+# Every XML in gnome-background-properties that is not ours shows
+# a Debian/GNOME wallpaper inside Settings > Background.
+if [ -d /usr/share/gnome-background-properties ]; then
+    find /usr/share/gnome-background-properties -maxdepth 1 -name '*.xml' ! -name 'aureon*.xml' -delete
+fi
+
+# --- Remove Debian wallpaper images (keep GRUB background) ---
+if [ -d /usr/share/images/desktop-base ]; then
+    find /usr/share/images/desktop-base -type f \
+        ! -name 'desktop-grub.png' \
+        \( -name '*.png' -o -name '*.jpg' -o -name '*.jpeg' -o -name '*.svg' \) -delete
+    # Drop per-theme GRUB scripts pointing at removed artwork.
+    rm -rf /usr/share/images/desktop-base/*.sh
+fi
+
+echo "[ OK ] AUREON branding cleanup applied."

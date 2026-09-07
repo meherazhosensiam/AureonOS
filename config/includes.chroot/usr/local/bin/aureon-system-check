@@ -1,0 +1,141 @@
+#!/bin/bash
+# ============================================================
+#  AUREON OS - System Integrity Check
+#  Verifies that the AUREON customizations survived into the
+#  running system (live session or installed).
+# ============================================================
+
+set -u
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m'
+
+PASS=0
+FAIL=0
+
+ok()   { echo -e "  ${GREEN}[ OK ]${NC} $1"; PASS=$((PASS+1)); }
+bad()  { echo -e "  ${RED}[FAIL]${NC} $1"; FAIL=$((FAIL+1)); }
+warn() { echo -e "  ${YELLOW}[WARN]${NC} $1"; }
+
+section() { echo; echo -e "${YELLOW}== $1 ==${NC}"; }
+
+check_file()    { [ -f "$2" ] && ok "$1" || bad "$1 (missing: $2)"; }
+check_contains(){ grep -q "$3" "$2" 2>/dev/null && ok "$1" || bad "$1 ($2 does not contain '$3')"; }
+check_absent()  { [ ! -e "$2" ] && ok "$1" || bad "$1 (still present: $2)"; }
+
+echo "AUREON OS System Integrity Check"
+echo "================================"
+
+# --- Identity -------------------------------------------------
+section "System Identity"
+if [ -f /etc/os-release ] && grep -q 'PRETTY_NAME="AUREON OS' /etc/os-release; then
+    ok "/etc/os-release identifies as AUREON OS"
+else
+    bad "/etc/os-release is not AUREON-branded"
+fi
+
+HOSTNAME_CUR=$(cat /etc/hostname 2>/dev/null)
+[ "$HOSTNAME_CUR" = "aureonos" ] && ok "hostname = aureonos" \
+    || bad "hostname = '$HOSTNAME_CUR' (expected: aureonos)"
+
+MOTD_OK=$(grep -c "AUREON" /etc/motd 2>/dev/null || true)
+[ "${MOTD_OK:-0}" -gt 0 ] && ok "/etc/motd branded" || warn "/etc/motd missing branding"
+
+# --- Default shell --------------------------------------------
+section "Default Shell"
+SHELL_BIN="/bin/zsh"
+[ -x "$SHELL_BIN" ] && ok "zsh installed" || bad "zsh not installed"
+
+grep -q "^DSHELL=$SHELL_BIN" /etc/adduser.conf 2>/dev/null \
+    && ok "adduser.conf DSHELL=zsh" || bad "adduser.conf DSHELL not zsh"
+grep -q "^SHELL=$SHELL_BIN" /etc/default/useradd 2>/dev/null \
+    && ok "useradd SHELL=zsh" || bad "useradd SHELL not zsh"
+grep -qxF "$SHELL_BIN" /etc/shells 2>/dev/null && ok "zsh in /etc/shells" \
+    || bad "zsh missing from /etc/shells"
+
+CURRENT_SHELL=$(getent passwd "$(id -un)" | cut -d: -f7)
+case "$CURRENT_SHELL" in
+    */zsh) ok "current user shell is zsh" ;;
+    *)     warn "current user shell is '$CURRENT_SHELL' (new users get zsh)" ;;
+esac
+
+# --- GNOME extensions -----------------------------------------
+section "GNOME Shell Extensions"
+EXT_DIR="/usr/share/gnome-shell/extensions"
+ENABLED=$(gsettings get org.gnome.shell enabled-extensions 2>/dev/null || echo "[]")
+MISSING=0
+for uuid in blur-my-shell@aunetx dash-to-panel@jderose9.github.com arcmenu@arcmenu.com \
+            date-menu-formatter@marcinjakubowski.github.com window-switcher@tbepdb \
+            tiling-assistant@leleat-on-github just-perfection-desktop@just-perfection \
+            perfect-fit@ryliov.work.com appindicatorsupport@rgcjonas.gmail.com \
+            clipboard-indicator@tudmotu.com caffeine@patapon.info quick-settings-tweaks@qwreey \
+            gtk4-ding@smedius.gitlab.com gsconnect@andyholmes.github.io \
+            user-theme@gnome-shell-extensions.gcampax.github.com; do
+    if [ ! -d "$EXT_DIR/$uuid" ]; then
+        MISSING=$((MISSING+1))
+        bad "extension directory missing: $uuid"
+        continue
+    fi
+    if [[ "$ENABLED" == *"$uuid"* ]]; then
+        ok "enabled: $uuid"
+    else
+        bad "installed but NOT enabled: $uuid"
+    fi
+done
+[ "$MISSING" -eq 0 ] && true
+
+# --- dconf policy ---------------------------------------------
+section "System Defaults (dconf)"
+DB_DIR="/etc/dconf/db/local.d"
+check_file "defaults keyfile exists" "$DB_DIR/01-aureon-defaults"
+check_absent "dynamic-wallpaper override removed" "$DB_DIR/02-dynamic-wallpaper"
+[ -f /etc/dconf/db/local ] && ok "local dconf database compiled" \
+    || bad "local dconf database not compiled"
+SCHEMA=$(gsettings get org.gnome.desktop.interface color-scheme 2>/dev/null || echo "")
+[ "$SCHEMA" = "'prefer-dark'" ] && ok "dark mode active" \
+    || warn "color-scheme is '$SCHEMA' (system default: prefer-dark)"
+
+# --- Themes & assets ------------------------------------------
+section "Themes and Assets"
+for p in /usr/share/aureonos/assets/logo.png \
+         /usr/share/backgrounds/aureon/light.png \
+         /usr/share/backgrounds/aureon/dark.png \
+         /usr/share/icons/Fluent-red/index.theme \
+         /usr/share/themes/Fluent-red-Dark; do
+    check_file "$(basename "$p")" "$p"
+done
+
+# --- Plymouth --------------------------------------------------
+section "Plymouth"
+grep -q "^Theme=spinner" /etc/plymouth/plymouthd.conf 2>/dev/null \
+    && ok "theme set to spinner" || warn "plymouth theme not explicitly set"
+[ -d /usr/share/plymouth/themes/spinner ] && ok "spinner theme installed" \
+    || bad "spinner theme missing"
+
+# --- Security posture -----------------------------------------
+section "Security Posture"
+command -v ufw >/dev/null 2>&1 && ok "ufw installed" || warn "ufw missing"
+dpkg -s usbguard >/dev/null 2>&1 && ok "usbguard installed" || warn "usbguard missing"
+command -v nft >/dev/null 2>&1 && ok "nftables installed" || warn "nftables missing"
+[ -f /etc/systemd/system/local-fs.target.wants/tmp.mount ] \
+    && ok "/tmp hardened via tmp.mount" || bad "tmp.mount not enabled"
+
+# --- Installer cleanup ----------------------------------------
+section "Installer Cleanup"
+INSTALLED=$(systemd-detect-virt 2>/dev/null)
+if [ "$INSTALLED" != "none" ] && [ -n "$INSTALLED" ]; then
+    # Only meaningful on an installed system
+    check_absent "installer launcher removed" /usr/share/applications/install-aureon.desktop
+    dpkg -s calamares >/dev/null 2>&1 && bad "calamares still installed" \
+        || ok "calamares removed"
+fi
+
+# --- Summary ---------------------------------------------------
+echo
+echo "================================"
+echo -e "Results: ${GREEN}$PASS passed${NC}, ${RED}$FAIL failed${NC}"
+[ "$FAIL" -eq 0 ] && echo -e "${GREEN}All critical checks passed.${NC}" \
+                  || echo -e "${RED}Some checks failed - see output above.${NC}"
+exit "$FAIL"

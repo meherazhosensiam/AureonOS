@@ -1,0 +1,1153 @@
+#Killersparrow1
+
+msgid ""
+msgstr ""
+"Project-Id-Version: 1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-20 15:34+0000\n"
+"PO-Revision-Date: 2025-11-01 09:55+IST\n"
+"Last-Translator: LeoDas <https://github.com/Killersparrow1>\n"
+"Language-Team: Tamil\n"
+"Language: ta\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: target/out/libs/prefs/components.js:57
+msgid "Details"
+msgstr "விவரங்கள்"
+
+#: target/out/libs/prefs/components.js:144
+msgid "This feature marked as experimental"
+msgstr "இந்தச் செயல்பாடு சோதனைக்குரியதாகக் குறிக்கப்பட்டுள்ளது"
+
+#: target/out/libs/prefs/components.js:274
+msgid "Reset to default"
+msgstr "இயல்புநிலைக்கு மீட்டமை"
+
+#: target/out/libs/prefs/components.js:512
+msgid "Theme default"
+msgstr "கருப்பொருள் இயல்புநிலை"
+
+#: target/out/libs/prefs/components.js:853
+msgid "Homepage"
+msgstr "முகப்புப் பக்கம்"
+
+#: target/out/libs/prefs/components.js:859
+#: target/out/libs/prefs/components.js:863 target/out/prefPages/about.js:49
+#: target/out/prefPages/about.js:51 target/out/prefPages/about.js:56
+msgid "License"
+msgstr "உரிமம்"
+
+#: target/out/libs/prefs/components.js:860
+msgid "Loading ..."
+msgstr "ஏற்றுகிறது..."
+
+#: target/out/libs/prefs/components.js:869
+msgid "Affected Files"
+msgstr "பாதிக்கப்பட்ட கோப்புகள்"
+
+#: target/out/libs/prefs/components.js:924
+msgid "Changelog"
+msgstr "மாற்றப் பதிவு"
+
+#: target/out/libs/prefs/components.js:938
+msgid "(Current)"
+msgstr "(தற்போதைய)"
+
+#: target/out/libs/prefs/components.js:969
+#, javascript-format
+msgid "> **Date:** %s"
+msgstr "> **தேதி:** %s"
+
+#: target/out/libs/prefs/components.js:970
+#, javascript-format
+msgid "> **Git Hash:** %s"
+msgstr "> **Git குறியீடு:** %s"
+
+#: target/out/libs/prefs/components.js:971
+#, javascript-format
+msgid "> **Build Number:** %d"
+msgstr "> **உருவாக்க எண்:** %d"
+
+#: target/out/libs/prefs/components.js:1034
+msgid "Padding"
+msgstr "உட்புற இடைவெளி"
+
+#: target/out/libs/prefs/components.js:1038
+msgid "Top"
+msgstr "மேல்"
+
+#: target/out/libs/prefs/components.js:1049
+msgid "Bottom"
+msgstr "கீழ்"
+
+#: target/out/libs/prefs/components.js:1060
+msgid "Left"
+msgstr "இடம்"
+
+#: target/out/libs/prefs/components.js:1071
+msgid "Right"
+msgstr "வலம்"
+
+#: target/out/prefs.js:60
+msgid "Stable"
+msgstr "நிலையான"
+
+#: target/out/prefs.js:63
+msgid "Development"
+msgstr "வளர்ச்சி நிலை"
+
+#: target/out/prefs.js:66
+msgid "Preview"
+msgstr "முன்னோட்டம்"
+
+#: target/out/prefs.js:69
+msgid "(Github Release)"
+msgstr "(கிட்ஹப் வெளியீடு)"
+
+#: target/out/prefs.js:72
+msgid "(Built from source)"
+msgstr "(மூலக் குறியீட்டில் இருந்து கட்டப்பட்டது)"
+
+#: target/out/features/widget/notifications.js:26
+msgid "No Notifications"
+msgstr "அறிவிப்புகள் இல்லை"
+
+#: target/out/features/widget/notifications.js:58
+#: target/out/features/widget/notifications.js:122
+msgid "Clear"
+msgstr "அழி"
+
+#: target/out/features/widget/notifications.js:76
+msgid "Notifications"
+msgstr "அறிவிப்புகள்"
+
+#: target/out/features/widget/notifications.js:105
+#: target/out/features/toggle/dndQuickToggle.js:10
+#: target/out/prefPages/layout.js:345 target/out/prefPages/layout.js:485
+msgid "Do Not Disturb"
+msgstr "தொந்தரவு செய்யாதீர்"
+
+#: target/out/features/widget/media.js:118
+msgid "Unknown title"
+msgstr "அறியப்படாத தலைப்பு"
+
+#: target/out/features/widget/media.js:888
+msgid "Media"
+msgstr "ஊடகம்"
+
+#: target/out/features/widget/volumeMixer.js:105
+msgid "Volume changed"
+msgstr "ஒலி அளவு மாற்றப்பட்டது"
+
+#: target/out/features/widget/volumeMixer.js:463
+msgid "Open volumx mixer"
+msgstr "ஒலி அலவன் பெட்டியைத் திற"
+
+#: target/out/features/widget/volumeMixer.js:480
+msgid "Volume Mixer"
+msgstr "ஒலி அலவன் பெட்டி"
+
+#: target/out/features/widget/weather.js:73
+msgid "Weather"
+msgstr "வானிலை"
+
+#: target/out/features/widget/weather.js:192
+msgid "Location has not been set"
+msgstr "இடம் அமைக்கப்படவில்லை"
+
+#: target/out/features/toggle/unsafeQuickToggle.js:11
+#: target/out/prefPages/layout.js:346 target/out/prefPages/layout.js:496
+msgid "Unsafe Mode"
+msgstr "பாதுகாப்பற்ற முறை"
+
+#: target/out/prefPages/widgets.js:11
+msgid "Handle radius"
+msgstr "கைப்பிடி ஆரம்"
+
+#: target/out/prefPages/widgets.js:12
+msgid "Set this to 0 to use default radius"
+msgstr "இயல்புநிலை ஆரத்தைப் பயன்படுத்த இதை 0 ஆக அமைக்கவும்"
+
+#: target/out/prefPages/widgets.js:18
+msgid "Handle color"
+msgstr "கைப்பிடி வண்ணம்"
+
+#: target/out/prefPages/widgets.js:36
+msgid "Slider style"
+msgstr "சறுக்குபட்டியின் நடை"
+
+#: target/out/prefPages/widgets.js:39
+msgid "Slim"
+msgstr "ஒல்லி"
+
+#: target/out/prefPages/widgets.js:40 target/out/prefPages/layout.js:766
+msgid "Default"
+msgstr "இயல்புநிலை"
+
+#: target/out/prefPages/widgets.js:48 target/out/prefPages/widgets.js:173
+msgid "Background color"
+msgstr "பின்புல வண்ணம்"
+
+#: target/out/prefPages/widgets.js:55
+msgid "Active Background color"
+msgstr "செயலில் உள்ள பின்புல வண்ணம்"
+
+#: target/out/prefPages/widgets.js:62
+msgid "Thickness"
+msgstr "தடிமன்"
+
+#: target/out/prefPages/widgets.js:66
+msgid "Set this to 0 to use default thickness"
+msgstr "இயல்புநிலை தடிமன் பயன்படுத்த இதை 0 ஆக அமைக்கவும்"
+
+#: target/out/prefPages/widgets.js:76
+msgid "Widgets"
+msgstr "சிறுசாளரங்கள்"
+
+#: target/out/prefPages/widgets.js:83 target/out/prefPages/widgets.js:136
+#: target/out/prefPages/widgets.js:162 target/out/prefPages/widgets.js:224
+msgid "Media Widget"
+msgstr "ஊடக சிறுசாளரம்"
+
+#: target/out/prefPages/widgets.js:88
+msgid "Turn on to make the media widget visible on the Quick Settings panel"
+msgstr "விரைவு அமைப்புகள் பலகத்தில் ஊடகச் சிறுசாளரத்தைக் காண இதை இயக்கு"
+
+#: target/out/prefPages/widgets.js:92 target/out/prefPages/widgets.js:280
+#: target/out/prefPages/widgets.js:343
+msgid "Compact mode"
+msgstr "அடக்கு முறை"
+
+#: target/out/prefPages/widgets.js:93
+msgid ""
+"Make Media Controls widget smaller\n"
+"Make it more similar in size to the notification message"
+msgstr ""
+"ஊடகக் கட்டுப்பாட்டுச் சிறுசாளரத்தை சிறியதாக்குக\n"
+"அறிவிப்புச் செய்தியின் அளவிற்கு ஒத்ததாக மாற்றுக"
+
+#: target/out/prefPages/widgets.js:99
+msgid "Control buttons opacity"
+msgstr "கட்டுப்பாட்டு பொத்தான்களின் ஒளிபுகாமை"
+
+#: target/out/prefPages/widgets.js:100
+msgid "Set this to 255 to make opaque, and 0 to make transparent"
+msgstr "ஒளிபுகா செய்ய 255 ஆகவும், வெளிப்படையாக்க 0 ஆகவும் அமைக்கவும்"
+
+#: target/out/prefPages/widgets.js:108
+msgid "Show next button"
+msgstr "அடுத்த பொத்தானைக் காட்டு"
+
+#: target/out/prefPages/widgets.js:109
+msgid "Add next contorl button next to description"
+msgstr "விளக்கத்திற்கு அருகில் அடுத்த கட்டுப்பாட்டு பொத்தானைச் சேர்"
+
+#: target/out/prefPages/widgets.js:115
+msgid "Show previous button"
+msgstr "முந்தைய பொத்தானைக் காட்டு"
+
+#: target/out/prefPages/widgets.js:116
+msgid "Add previous contorl button next to description"
+msgstr "விளக்கத்திற்கு அருகில் முந்தைய கட்டுப்பாட்டு பொத்தானைச் சேர்"
+
+#: target/out/prefPages/widgets.js:122
+msgid "Show pause button"
+msgstr "இடைநிறுத்த பொத்தானைக் காட்டு"
+
+#: target/out/prefPages/widgets.js:123
+msgid "Add pause contorl button next to description"
+msgstr "விளக்கத்திற்கு அருகில் இடைநிறுத்த கட்டுப்பாட்டு பொத்தானைச் சேர்"
+
+#: target/out/prefPages/widgets.js:129 target/out/prefPages/widgets.js:138
+msgid "Show progress bar"
+msgstr "முன்னேற்றப் பட்டியைக் காட்டு"
+
+#: target/out/prefPages/widgets.js:130 target/out/prefPages/widgets.js:139
+msgid "Add progress bar under description"
+msgstr "விளக்கத்தின் கீழ் முன்னேற்றப் பட்டியைச் சேர்"
+
+#: target/out/prefPages/widgets.js:155 target/out/prefPages/widgets.js:164
+msgid "Gradient background"
+msgstr "சாய்வு பின்புலம்"
+
+#: target/out/prefPages/widgets.js:156 target/out/prefPages/widgets.js:169
+msgid ""
+"Use gradient background extracted from cover image\n"
+"May affect performance slightly"
+msgstr ""
+"அட்டைப் படத்திலிருந்து எடுக்கப்பட்ட சாய்வு பின்புலத்தைப் பயன்படுத்துக\n"
+"செயல்திறனை லேசாகப் பாதிக்கலாம்"
+
+#: target/out/prefPages/widgets.js:174
+msgid "Base background color"
+msgstr "அடிப்படை பின்புல வண்ணம்"
+
+#: target/out/prefPages/widgets.js:182
+msgid "Start opacity"
+msgstr "தொடங்கும் ஒளிபுகாமை"
+
+#: target/out/prefPages/widgets.js:183
+msgid "Adjust left side transparency, Set this to 1000 to make opaque"
+msgstr "இடது பக்க வெளிப்படைத்தன்மையைச் சரிசெய், ஒளிபுகா செய்ய இதை 1000 ஆக அமைக்கவும்"
+
+#: target/out/prefPages/widgets.js:190
+msgid "Start color"
+msgstr "தொடக்க வண்ணம்"
+
+#: target/out/prefPages/widgets.js:191
+msgid ""
+"Adjust left side background color mixing, Set this to 1000 to show extracted "
+"color"
+msgstr ""
+"இடது பக்க பின்புல வண்ணக் கலவையைச் சரிசெய், எடுக்கப்பட்ட வண்ணத்தைக் காட்ட இதை 1000 ஆக அமைக்கவும்"
+
+#: target/out/prefPages/widgets.js:198
+msgid "End opacity"
+msgstr "முடியும் ஒளிபுகாமை"
+
+#: target/out/prefPages/widgets.js:199
+msgid "Adjust right side transparency, Set this to 1000 to make opaque"
+msgstr "வலது பக்க வெளிப்படைத்தன்மையைச் சரிசெய், ஒளிபுகா செய்ய இதை 1000 ஆக அமைக்கவும்"
+
+#: target/out/prefPages/widgets.js:206
+msgid "End color"
+msgstr "முடிவு வண்ணம்"
+
+#: target/out/prefPages/widgets.js:207
+msgid ""
+"Adjust right side background color mixing, Set this to 1000 to show "
+"extracted color"
+msgstr ""
+"வலது பக்க பின்புல வண்ணக் கலவையைச் சரிசெய், எடுக்கப்பட்ட வண்ணத்தைக் காட்ட இதை 1000 ஆக அமைக்கவும்"
+
+#: target/out/prefPages/widgets.js:216 target/out/prefPages/widgets.js:226
+msgid "Round clip effect"
+msgstr "வட்ட வடிவ கிளிப் விளைவு"
+
+#: target/out/prefPages/widgets.js:217 target/out/prefPages/widgets.js:231
+msgid "Use round clip effect to make transition more natural"
+msgstr "மாற்றத்தை இயல்பானதாக மாற்ற வட்ட வடிவ கிளிப் விளைவைப் பயன்படுத்துக"
+
+#: target/out/prefPages/widgets.js:234
+msgid "Padding adjustment"
+msgstr "உட்புற இடைவெளி சரிசெய்தல்"
+
+#: target/out/prefPages/widgets.js:236
+msgid ""
+"Adjust clip effect padding, edit this if your theme has a different margin "
+"or padding"
+msgstr ""
+"கிளிப் விளைவின் உட்புற இடைவெளியைச் சரிசெய், உங்கள் கருப்பொருளில் வேறுபட்ட விளிம்பு அல்லது உட்புற இடைவெளி இருந்தால் இதைத் திருத்து"
+
+#: target/out/prefPages/widgets.js:253 target/out/prefPages/widgets.js:318
+#: target/out/prefPages/widgets.js:350
+msgid "Remove shadow"
+msgstr "நிழலை நீக்குக"
+
+#: target/out/prefPages/widgets.js:254
+msgid ""
+"Remove shadow from media message\n"
+"Use if your theme creates unnecessary shadows"
+msgstr ""
+"ஊடகச் செய்தியிலிருந்து நிழலை நீக்குக\n"
+"உங்கள் கருப்பொருள் தேவையற்ற நிழல்களை உருவாக்கினால் பயன்படுத்துக"
+
+#: target/out/prefPages/widgets.js:260
+msgid "Smooth scroll speed"
+msgstr "மென்மையான சுருள் வேகம்"
+
+#: target/out/prefPages/widgets.js:261
+msgid ""
+"Adjust trackpad and trackpoint scroll speed, negative number for invert "
+"direction"
+msgstr ""
+"டிராக்பேட் மற்றும் டிராக்பாயிண்ட் சுருள் வேகத்தைச் சரிசெய், தலைகீழ் திசைக்கு எதிர்மறை எண்ணைப் பயன்படுத்து"
+
+#: target/out/prefPages/widgets.js:271
+msgid "Notifications Widget"
+msgstr "அறிவிப்புச் சிறுசாளரம்"
+
+#: target/out/prefPages/widgets.js:276
+msgid ""
+"Turn on to make the notifications widget visible on the Quick Settings panel"
+msgstr "விரைவு அமைப்புகள் பலகத்தில் அறிவிப்புச் சிறுசாளரத்தைக் காண இதை இயக்கு"
+
+#: target/out/prefPages/widgets.js:281
+msgid "Make notifications smaller"
+msgstr "அறிவிப்புகளை சிறியதாக்குக"
+
+#: target/out/prefPages/widgets.js:287 target/out/prefPages/widgets.js:418
+msgid "Max height"
+msgstr "அதிகபட்ச உயரம்"
+
+#: target/out/prefPages/widgets.js:288
+#, javascript-format
+msgid ""
+"Set maximum height of the Notifications widget, default is %d. Set this to 0 "
+"to disable max height"
+msgstr ""
+"அறிவிப்புச் சிறுசாளரத்தின் அதிகபட்ச உயரத்தை அமை, இயல்புநிலை %d. அதிகபட்ச உயரத்தை முடக்க இதை 0 ஆக அமைக்கவும்"
+
+#: target/out/prefPages/widgets.js:296 target/out/prefPages/widgets.js:441
+msgid "Fade out offset"
+msgstr "மறைந்து போகும் ஆஃப்செட்"
+
+#: target/out/prefPages/widgets.js:297 target/out/prefPages/widgets.js:442
+msgid ""
+"Set position of the fade out effect begins. Set this to 0 to disable fade "
+"out effect. default is 46"
+msgstr ""
+"மறைந்து போகும் விளைவு தொடங்கும் நிலையை அமை. மறைந்து போகும் விளைவை முடக்க இதை 0 ஆக அமைக்கவும். இயல்புநிலை 46"
+
+#: target/out/prefPages/widgets.js:304
+msgid "Auto hide"
+msgstr "தானாக மறை"
+
+#: target/out/prefPages/widgets.js:305
+msgid "Hide the Notifications widget when have no notifications"
+msgstr "அறிவிப்புகள் இல்லாதபோது அறிவிப்புச் சிறுசாளரத்தை மறை"
+
+#: target/out/prefPages/widgets.js:311
+msgid "Use native controls"
+msgstr "சொந்தக் கட்டுப்பாடுகளைப் பயன்படுத்துக"
+
+#: target/out/prefPages/widgets.js:312
+msgid "Use native dnd switch and clear button"
+msgstr "சொந்தமான DND மாற்றி மற்றும் அழி பொத்தானைப் பயன்படுத்துக"
+
+#: target/out/prefPages/widgets.js:319
+msgid ""
+"Remove shadow from notification message\n"
+"Use if your theme creates unnecessary shadows"
+msgstr ""
+"அறிவிப்புச் செய்தியிலிருந்து நிழலை நீக்குக\n"
+"உங்கள் கருப்பொருள் தேவையற்ற நிழல்களை உருவாக்கினால் பயன்படுத்துக"
+
+#: target/out/prefPages/widgets.js:325 target/out/prefPages/widgets.js:427
+msgid "Show scrollbar"
+msgstr "சுருள் பட்டியைக் காட்டு"
+
+#: target/out/prefPages/widgets.js:326
+msgid "Show scrollbar on message list"
+msgstr "செய்தி பட்டியலில் சுருள் பட்டியைக் காட்டு"
+
+#: target/out/prefPages/widgets.js:334
+msgid "Weather Widget"
+msgstr "வானிலை சிறுசாளரம்"
+
+#: target/out/prefPages/widgets.js:339
+msgid "Turn on to make the weather widget visible on the Quick Settings panel"
+msgstr "விரைவு அமைப்புகள் பலகத்தில் வானிலைச் சிறுசாளரத்தைக் காண இதை இயக்கு"
+
+#: target/out/prefPages/widgets.js:344
+msgid "Make weather widget smaller"
+msgstr "வானிலைச் சிறுசாளரத்தை சிறியதாக்குக"
+
+#: target/out/prefPages/widgets.js:351
+msgid ""
+"Remove shadow from weather widget\n"
+"Use if your theme creates unnecessary shadows"
+msgstr ""
+"வானிலைச் சிறுசாளரத்திலிருந்து நிழலை நீக்குக\n"
+"உங்கள் கருப்பொருள் தேவையற்ற நிழல்களை உருவாக்கினால் பயன்படுத்துக"
+
+#: target/out/prefPages/widgets.js:357
+msgid "Click command"
+msgstr "கிளிக் கட்டளை"
+
+#: target/out/prefPages/widgets.js:363
+msgid "Show location"
+msgstr "இடத்தைக் காட்டு"
+
+#: target/out/prefPages/widgets.js:364
+msgid "Show the location label on header"
+msgstr "தலைப்பில் இருப்பிட லேபிளைக் காட்டு"
+
+#: target/out/prefPages/widgets.js:373
+msgid "Forecast interval"
+msgstr "முன்னறிவிப்பு இடைவெளி"
+
+#: target/out/prefPages/widgets.js:374
+msgid "Adjust forecast interval in hour"
+msgstr "மணிநேரத்தில் முன்னறிவிப்பு இடைவெளியைச் சரிசெய்"
+
+#: target/out/prefPages/widgets.js:381
+msgid "Max forecasts"
+msgstr "அதிகபட்ச முன்னறிவிப்புகள்"
+
+#: target/out/prefPages/widgets.js:382
+msgid "Adjust max forecasts"
+msgstr "அதிகபட்ச முன்னறிவிப்புகளைச் சரிசெய்"
+
+#: target/out/prefPages/widgets.js:388 target/out/prefPages/widgets.js:456
+msgid "Volume mixer Widget"
+msgstr "ஒலி அலவன் பெட்டி சிறுசாளரம்"
+
+#: target/out/prefPages/widgets.js:393
+msgid ""
+"Turn on to make the volume mixer widget visible on the Quick Settings panel"
+msgstr "விரைவு அமைப்புகள் பலகத்தில் ஒலி அலவன் பெட்டி சிறுசாளரத்தைக் காண இதை இயக்கு"
+
+#: target/out/prefPages/widgets.js:397
+msgid "Label text"
+msgstr "லேபிள் உரை"
+
+#: target/out/prefPages/widgets.js:398
+msgid "Choose label above slider text source"
+msgstr "சறுக்குபட்டியின் மேல் உள்ள லேபிள் உரை மூலத்தைத் தேர்ந்தெடு"
+
+#: target/out/prefPages/widgets.js:400
+msgid "Both"
+msgstr "இரண்டும்"
+
+#: target/out/prefPages/widgets.js:401
+msgid "Title"
+msgstr "தலைப்பு"
+
+#: target/out/prefPages/widgets.js:402
+msgid "Description"
+msgstr "விளக்கம்"
+
+#: target/out/prefPages/widgets.js:403
+msgid "None"
+msgstr "ஏதுமில்லை"
+
+#: target/out/prefPages/widgets.js:411
+msgid "Label opacity"
+msgstr "லேபிள் ஒளிபுகாமை"
+
+#: target/out/prefPages/widgets.js:412
+msgid ""
+"Adjust label opacity.\n"
+"Set this to 255 to make opaque, and 0 to make transparent"
+msgstr ""
+"லேபிள் ஒளிபுகாமையைச் சரிசெய்.\n"
+"ஒளிபுகா செய்ய 255 ஆகவும், வெளிப்படையாக்க 0 ஆகவும் அமைக்கவும்"
+
+#: target/out/prefPages/widgets.js:419
+#, javascript-format
+msgid ""
+"Set maximum height of the Volume mixer widget, default is %d. Set this to 0 "
+"to disable max height"
+msgstr ""
+"ஒலி அலவன் பெட்டி சிறுசாளரத்தின் அதிகபட்ச உயரத்தை அமை, இயல்புநிலை %d. அதிகபட்ச உயரத்தை முடக்க இதை 0 ஆக அமைக்கவும்"
+
+#: target/out/prefPages/widgets.js:428
+msgid "Show scrollbar on mixer list"
+msgstr "அலவன் பட்டியலில் சுருள் பட்டியைக் காட்டு"
+
+#: target/out/prefPages/widgets.js:434
+msgid "Show stream icon"
+msgstr "ஓடை ஐகானைக் காட்டு"
+
+#: target/out/prefPages/widgets.js:435
+msgid "Show stream icon above mixer sliders"
+msgstr "அலவன் சறுக்குபட்டியின் மேலே ஓடை ஐகானைக் காட்டு"
+
+#: target/out/prefPages/widgets.js:450 target/out/prefPages/widgets.js:458
+msgid "Attach to output slider"
+msgstr "வெளியீட்டு சறுக்குபட்டியுடன் இணை"
+
+#: target/out/prefPages/widgets.js:451 target/out/prefPages/widgets.js:459
+msgid ""
+"Attach volume mixer menu button to output slider. Use if you prefer compact "
+"layout"
+msgstr ""
+"ஒலி அலவன் பெட்டியின் பட்டி பொத்தானை வெளியீட்டு சறுக்குபட்டியுடன் இணை. நீங்கள் அடக்கமான அமைப்பை விரும்பினால் பயன்படுத்துக"
+
+#: target/out/prefPages/widgets.js:468
+msgid "Menu icon"
+msgstr "பட்டி ஐகான்"
+
+#: target/out/prefPages/about.js:12 target/out/prefPages/about.js:32
+msgid "About"
+msgstr "பற்றி"
+
+#: target/out/prefPages/about.js:33
+msgid "Common extension informations"
+msgstr "பொதுவான நீட்டிப்புத் தகவல்கள்"
+
+#: target/out/prefPages/about.js:36 target/out/prefPages/about.js:40
+msgid "Changelogs"
+msgstr "மாற்றப் பதிவுகள்"
+
+#: target/out/prefPages/about.js:37 target/out/prefPages/about.js:41
+msgid "View the change history for this extension"
+msgstr "இந்த நீட்டிப்பின் மாற்ற வரலாற்றைக் காண்க"
+
+#: target/out/prefPages/about.js:50 target/out/prefPages/about.js:57
+msgid "License of codes"
+msgstr "குறியீடுகளின் உரிமம்"
+
+#: target/out/prefPages/about.js:63 target/out/prefPages/about.js:65
+#: target/out/prefPages/about.js:69
+msgid "Contributors"
+msgstr "பங்களிப்பாளர்கள்"
+
+#: target/out/prefPages/about.js:64 target/out/prefPages/about.js:70
+msgid "The creators of this extension"
+msgstr "இந்த நீட்டிப்பை உருவாக்கியவர்கள்"
+
+#: target/out/prefPages/about.js:74
+msgid "More contributors"
+msgstr "மேலும் பங்களிப்பாளர்கள்"
+
+#: target/out/prefPages/about.js:75
+msgid "See more contributors on github"
+msgstr "கிட்ஹப்பில் மேலும் பங்களிப்பாளர்களைக் காண்க"
+
+#: target/out/prefPages/about.js:85
+msgid "Link"
+msgstr "இணைப்பு"
+
+#: target/out/prefPages/about.js:86
+msgid "External links about this extension"
+msgstr "இந்த நீட்டிப்பு குறித்த வெளி இணைப்புகள்"
+
+#: target/out/prefPages/about.js:90
+msgid "Donate via github sponsors"
+msgstr "கிட்ஹப் ஸ்பான்சர்கள் மூலம் நன்கொடை அளி"
+
+#: target/out/prefPages/about.js:91
+msgid "Support development!"
+msgstr "வளர்ச்சிக்கு ஆதரவளி!"
+
+#: target/out/prefPages/about.js:97
+msgid "Rate and comment the extension!"
+msgstr "நீட்டிப்பை மதிப்பிட்டு கருத்துத் தெரிவிக்கவும்!"
+
+#: target/out/prefPages/about.js:102
+msgid "Github Repository"
+msgstr "கிட்ஹப் களஞ்சியம்"
+
+#: target/out/prefPages/about.js:103
+msgid ""
+"Add Star on Repository is helping me a lot!\n"
+"Please, if you found bug from this extension, you can make issue to make me "
+"know that!\n"
+"Or, you can create PR with wonderful features!"
+msgstr ""
+"களஞ்சியத்திற்கு நட்சத்திரம் சேர்ப்பது எனக்கு மிகவும் உதவுகிறது!\n"
+"இந்த நீட்டிப்பில் ஏதேனும் பிழையைக் கண்டால், எனக்குத் தெரியப்படுத்த ஒரு சிக்கலை உருவாக்கலாம்!\n"
+"அல்லது, நீங்கள் அற்புதமான அம்சங்களுடன் ஒரு PR ஐ உருவாக்கலாம்!"
+
+#: target/out/prefPages/about.js:109
+msgid "Add translation to this extension!"
+msgstr "இந்த நீட்டிப்புக்கு மொழிபெயர்ப்பைச் சேர்!"
+
+#: target/out/prefPages/about.js:115
+msgid "Debug"
+msgstr "பிழைநீக்கம்"
+
+#: target/out/prefPages/about.js:116
+msgid "Extension debugging options"
+msgstr "நீட்டிப்பு பிழைநீக்க விருப்பங்கள்"
+
+#: target/out/prefPages/about.js:120
+msgid "Expose environment"
+msgstr "சூழலை வெளிப்படுத்து"
+
+#: target/out/prefPages/about.js:121
+msgid "Expose extension environment to globalThis.qst"
+msgstr "நீட்டிப்புச் சூழலை globalThis.qst க்கு வெளிப்படுத்து"
+
+#: target/out/prefPages/about.js:126
+msgid "Show layout border"
+msgstr "அமைவு எல்லையைக் காட்டு"
+
+#: target/out/prefPages/about.js:127
+msgid "Show layout borders on Quick Settings"
+msgstr "விரைவு அமைப்புகளில் அமைவு எல்லைகளைக் காட்டு"
+
+#: target/out/prefPages/about.js:132
+msgid "Log level"
+msgstr "பதிவு நிலை"
+
+#: target/out/prefPages/about.js:135
+msgid "none"
+msgstr "ஏதுமில்லை"
+
+#: target/out/prefPages/about.js:136
+msgid "error"
+msgstr "பிழை"
+
+#: target/out/prefPages/about.js:137
+msgid "info"
+msgstr "தகவல்"
+
+#: target/out/prefPages/about.js:138
+msgid "debug"
+msgstr "பிழைநீக்கு"
+
+#: target/out/prefPages/toggles.js:12
+msgid "Toggles"
+msgstr "நிலைமாற்றிகள்"
+
+#: target/out/prefPages/toggles.js:19
+msgid "DND Quick Toggle"
+msgstr "DND விரைவு நிலைமாற்றி"
+
+#: target/out/prefPages/toggles.js:20
+msgid "Turn on to add the DND quick toggle on the Quick Settings panel"
+msgstr "விரைவு அமைப்புகள் பலகத்தில் DND விரைவு நிலைமாற்றியைச் சேர்க்க இதை இயக்கு"
+
+#: target/out/prefPages/toggles.js:28
+msgid "DND indicator position"
+msgstr "DND குறிக்காட்டியின் நிலை"
+
+#: target/out/prefPages/toggles.js:29
+msgid "Set DND indicator position"
+msgstr "DND குறிக்காட்டியின் நிலையை அமை"
+
+#: target/out/prefPages/toggles.js:33
+msgid "System Tray"
+msgstr "கணினி தட்டு"
+
+#: target/out/prefPages/toggles.js:34
+msgid "Date Menu Button"
+msgstr "தேதி பட்டி பொத்தான்"
+
+#: target/out/prefPages/toggles.js:41
+msgid "Unsafe Mode Quick Toggle"
+msgstr "பாதுகாப்பற்ற முறை விரைவு நிலைமாற்றி"
+
+#: target/out/prefPages/toggles.js:42
+msgid "Turn on to add the unsafe quick toggle on the Quick Settings panel"
+msgstr "விரைவு அமைப்புகள் பலகத்தில் பாதுகாப்பற்ற முறை விரைவு நிலைமாற்றியைச் சேர்க்க இதை இயக்கு"
+
+#: target/out/prefPages/toggles.js:50
+msgid "Save last session state"
+msgstr "கடைசி அமர்வு நிலையைச் சேமி"
+
+#: target/out/prefPages/toggles.js:51
+msgid "Turn on to save last session unsafe state"
+msgstr "கடைசி அமர்வின் பாதுகாப்பற்ற நிலையைச் சேமிக்க இதை இயக்கு"
+
+#: target/out/prefPages/menu.js:9 target/out/prefPages/menu.js:141
+msgid "Advanced animation style"
+msgstr "மேம்பட்ட அசைவூட்ட நடை"
+
+#: target/out/prefPages/menu.js:13
+msgid "Open Duration"
+msgstr "திறக்கும் நேரம்"
+
+#: target/out/prefPages/menu.js:14
+msgid "Open animation duration in microseconds"
+msgstr "திறக்கும் அசைவூட்டத்தின் நேரம் மைக்ரோ விநாடிகளில்"
+
+#: target/out/prefPages/menu.js:21
+msgid "Close Duration"
+msgstr "மூடும் நேரம்"
+
+#: target/out/prefPages/menu.js:22
+msgid "Close animation duration in microseconds"
+msgstr "மூடும் அசைவூட்டத்தின் நேரம் மைக்ரோ விநாடிகளில்"
+
+#: target/out/prefPages/menu.js:29
+msgid "Grid Content Opacity"
+msgstr "கட்டத்தின் உள்ளடக்கம் ஒளிபுகாமை"
+
+#: target/out/prefPages/menu.js:30
+msgid ""
+"Adjust grid content opacity.\n"
+"Set this to 255 to make opaque, and 0 to make transparent"
+msgstr ""
+"கட்டத்தின் உள்ளடக்கம் ஒளிபுகாமையைச் சரிசெய்.\n"
+"ஒளிபுகா செய்ய 255 ஆகவும், வெளிப்படையாக்க 0 ஆகவும் அமைக்கவும்"
+
+#: target/out/prefPages/menu.js:37
+msgid "Background Blur Radius"
+msgstr "பின்புல மங்கல் ஆரம்"
+
+#: target/out/prefPages/menu.js:38
+msgid ""
+"Adjust background blur radius.\n"
+"Set this to 0 to disable blur effect"
+msgstr ""
+"பின்புல மங்கல் ஆரத்தைச் சரிசெய்.\n"
+"மங்கல் விளைவை முடக்க இதை 0 ஆக அமைக்கவும்"
+
+#: target/out/prefPages/menu.js:45
+msgid "Background Brightness"
+msgstr "பின்புல வெளிச்சம்"
+
+#: target/out/prefPages/menu.js:46
+msgid ""
+"Adjust background brightness.\n"
+"Set this to 1000 to disable brightness control effect.\n"
+"Not impacts on gnome-shell's default dim effect."
+msgstr ""
+"பின்புல வெளிச்சத்தைச் சரிசெய்.\n"
+"வெளிச்சக் கட்டுப்பாட்டு விளைவை முடக்க இதை 1000 ஆக அமைக்கவும்.\n"
+"gnome-shell இன் இயல்புநிலை மங்கலான விளைவைப் பாதிக்காது."
+
+#: target/out/prefPages/menu.js:53
+msgid "Background Opacity"
+msgstr "பின்புல ஒளிபுகாமை"
+
+#: target/out/prefPages/menu.js:54
+msgid ""
+"Adjust background opacity.\n"
+"Set this to 255 to make opaque, and 0 to make transparent"
+msgstr ""
+"பின்புல ஒளிபுகாமையைச் சரிசெய்.\n"
+"ஒளிபுகா செய்ய 255 ஆகவும், வெளிப்படையாக்க 0 ஆகவும் அமைக்கவும்"
+
+#: target/out/prefPages/menu.js:61
+msgid "Background X Scale"
+msgstr "பின்புல X அளவு"
+
+#: target/out/prefPages/menu.js:62
+msgid "Adjust background x scale, 1000 means 1.0 scale"
+msgstr "பின்புல X அளவைச் சரிசெய், 1000 என்பது 1.0 அளவைக் குறிக்கிறது"
+
+#: target/out/prefPages/menu.js:69
+msgid "Background Y Scale"
+msgstr "பின்புல Y அளவு"
+
+#: target/out/prefPages/menu.js:70
+msgid "Adjust background y scale, 1000 means 1.0 scale"
+msgstr "பின்புல Y அளவைச் சரிசெய், 1000 என்பது 1.0 அளவைக் குறிக்கிறது"
+
+#: target/out/prefPages/menu.js:84
+msgid "Menu"
+msgstr "பட்டி"
+
+#: target/out/prefPages/menu.js:91
+msgid "Overlay Mode"
+msgstr "மேல்மூடு முறை"
+
+#: target/out/prefPages/menu.js:92
+msgid "Display toggle, power, and sound menus as overlay"
+msgstr "நிலைமாற்றி, பவர் மற்றும் ஒலி பட்டிகளை மேல்மூடாகக் காட்டு"
+
+#: target/out/prefPages/menu.js:101
+msgid "Overlay Width"
+msgstr "மேல்மூடு அகலம்"
+
+#: target/out/prefPages/menu.js:102
+msgid ""
+"Adjust overlay menu width\n"
+"Set this to 0 to disable adjusting"
+msgstr ""
+"மேல்மூடு பட்டி அகலத்தைச் சரிசெய்\n"
+"சரிசெய்வதை முடக்க இதை 0 ஆக அமைக்கவும்"
+
+#: target/out/prefPages/menu.js:109
+msgid "Overlay Animation Duration"
+msgstr "மேல்மூடு அசைவூட்ட நேரம்"
+
+#: target/out/prefPages/menu.js:110
+msgid ""
+"Custom menu open animation duration in microseconds\n"
+"Set this to 0 to disable custom animation"
+msgstr ""
+"தனிப்பயன் பட்டி திறக்கும் அசைவூட்ட நேரம் மைக்ரோ விநாடிகளில்\n"
+"தனிப்பயன் அசைவூட்டத்தை முடக்க இதை 0 ஆக அமைக்கவும்"
+
+#: target/out/prefPages/menu.js:117
+msgid "Overlay Animation Style"
+msgstr "மேல்மூடு அசைவூட்ட நடை"
+
+#: target/out/prefPages/menu.js:118
+msgid "Custom menu open animation style"
+msgstr "தனிப்பயன் பட்டி திறக்கும் அசைவூட்ட நடை"
+
+#: target/out/prefPages/menu.js:120
+msgid "Flyout"
+msgstr "பறந்து செல்லல்"
+
+#: target/out/prefPages/menu.js:121
+msgid "Dialog"
+msgstr "உரையாடல்"
+
+#: target/out/prefPages/menu.js:130 target/out/prefPages/menu.js:143
+msgid "Animation"
+msgstr "அசைவூட்டம்"
+
+#: target/out/prefPages/menu.js:131
+msgid ""
+"Add menu animation on toggle menu opening and closing\n"
+"To get the best feel, turn on overlay mode"
+msgstr ""
+"நிலைமாற்றி பட்டி திறக்கும் மற்றும் மூடும்போது பட்டி அசைவூட்டத்தைச் சேர்\n"
+"சிறந்த உணர்வைப் பெற, மேல்மூடு முறையை இயக்கு"
+
+#: target/out/prefPages/menu.js:142
+msgid "Adjust speed, blur, scale, and opacity"
+msgstr "வேகம், மங்கல், அளவு மற்றும் ஒளிபுகாமையைச் சரிசெய்"
+
+#: target/out/prefPages/layout.js:25
+msgid "The item not found"
+msgstr "பொருள் காணப்படவில்லை"
+
+#: target/out/prefPages/layout.js:28
+msgid "No changes"
+msgstr "மாற்றங்கள் இல்லை"
+
+#: target/out/prefPages/layout.js:31
+msgid "The same item already exists"
+msgstr "அதே பொருள் ஏற்கனவே உள்ளது"
+
+#: target/out/prefPages/layout.js:40
+#, javascript-format
+msgid "Properties of %s"
+msgstr "%s இன் பண்புகள்"
+
+#: target/out/prefPages/layout.js:47
+msgid "Save"
+msgstr "சேமி"
+
+#: target/out/prefPages/layout.js:64
+msgid "Toggle editor"
+msgstr "நிலைமாற்றி திருத்தி"
+
+#: target/out/prefPages/layout.js:84
+msgid "This option requires full gnome-shell reloading"
+msgstr "இந்த விருப்பத்திற்கு முழுமையான gnome-shell மறுஏற்றம் தேவை"
+
+#: target/out/prefPages/layout.js:160 target/out/prefPages/layout.js:278
+#: target/out/prefPages/layout.js:437 target/out/prefPages/layout.js:672
+msgid "Hide"
+msgstr "மறை"
+
+#: target/out/prefPages/layout.js:232
+#, javascript-format
+msgid "My item #%d"
+msgstr "எனது பொருள் #%d"
+
+#: target/out/prefPages/layout.js:250
+msgid "New Item"
+msgstr "புதிய பொருள்"
+
+#: target/out/prefPages/layout.js:261 target/out/prefPages/layout.js:610
+#: target/out/prefPages/layout.js:737 target/out/prefPages/layout.js:787
+#: target/out/prefPages/layout.js:813
+msgid "Ordering and Hiding"
+msgstr "வரிசைப்படுத்துதல் மற்றும் மறைத்தல்"
+
+#: target/out/prefPages/layout.js:273 target/out/prefPages/layout.js:432
+msgid "Friendly Name"
+msgstr "பயனர் பெயர்"
+
+#: target/out/prefPages/layout.js:283
+msgid "Title Regex (Javascript Regex)"
+msgstr "தலைப்பு ரெஜெக்ஸ் (ஜாஸ்வா ஸ்கிரிப்ட் ரெஜெக்ஸ்)"
+
+#: target/out/prefPages/layout.js:288 target/out/prefPages/layout.js:442
+msgid "Constructor Name"
+msgstr "கட்டுநர் பெயர்"
+
+#: target/out/prefPages/layout.js:294 target/out/prefPages/layout.js:448
+msgid "GType Name"
+msgstr "Gவகை பெயர்"
+
+#: target/out/prefPages/layout.js:302 target/out/prefPages/layout.js:456
+msgid ""
+"This is the comment for easy identification in the settings list. It has no "
+"effect on the behavior of the extension"
+msgstr ""
+"இது அமைப்புகள் பட்டியலில் எளிதாக அடையாளம் காணும் கருத்து. இது நீட்டிப்பின் செயல்பாட்டில் எந்த விளைவையும் ஏற்படுத்தாது"
+
+#: target/out/prefPages/layout.js:307 target/out/prefPages/layout.js:461
+msgid "Javascript constructor name"
+msgstr "ஜாஸ்வா ஸ்கிரிப்ட் கட்டுநர் பெயர்"
+
+#: target/out/prefPages/layout.js:312 target/out/prefPages/layout.js:466
+msgid ""
+"GObject gtype name. You can get this value by calling "
+"GObject.type_name_from_instance"
+msgstr ""
+"GObject gtype பெயர். GObject.type_name_from_instance ஐ அழைப்பதன் மூலம் இந்த மதிப்பை நீங்கள் பெறலாம்"
+
+#: target/out/prefPages/layout.js:342
+msgid "Keyboard Backlight"
+msgstr "விசைப்பலகை பின்புற ஒளி"
+
+#: target/out/prefPages/layout.js:388 target/out/prefPages/layout.js:538
+msgid "Unordered items"
+msgstr "வரிசைப்படுத்தப்படாத பொருள்கள்"
+
+#: target/out/prefPages/layout.js:486
+msgid "Remote Access Applet"
+msgstr "தொலைநிலை அணுகல் ஆப்லெட்"
+
+#: target/out/prefPages/layout.js:487
+msgid "Camera"
+msgstr "புகைப்படக் கருவி"
+
+#: target/out/prefPages/layout.js:488
+msgid "Volume Input"
+msgstr "ஒலி உள்ளீடு"
+
+#: target/out/prefPages/layout.js:489
+msgid "Location"
+msgstr "இருப்பிடம்"
+
+#: target/out/prefPages/layout.js:490
+msgid "Thunderbolt"
+msgstr "தண்டர்போல்ட்"
+
+#: target/out/prefPages/layout.js:492
+msgid "Network"
+msgstr "பிணையம்"
+
+#: target/out/prefPages/layout.js:495
+msgid "Volume Output"
+msgstr "ஒலி வெளியீடு"
+
+#: target/out/prefPages/layout.js:497
+msgid "System (Battery)"
+msgstr "கணினி (மின்கலம்)"
+
+#: target/out/prefPages/layout.js:618
+msgid "Desktop Spacer"
+msgstr "மேசை இடைவெளி"
+
+#: target/out/prefPages/layout.js:629
+msgid "Laptop Spacer"
+msgstr "மடிக்கணினி இடைவெளி"
+
+#: target/out/prefPages/layout.js:641
+msgid "Capture button"
+msgstr "பிடிப்பு பொத்தான்"
+
+#: target/out/prefPages/layout.js:647
+msgid "Settings button"
+msgstr "அமைப்புகள் பொத்தான்"
+
+#: target/out/prefPages/layout.js:653
+msgid "Lock button"
+msgstr "பூட்டு பொத்தான்"
+
+#: target/out/prefPages/layout.js:659
+msgid "Shutdown button"
+msgstr "செயல்தவிர்ப்பு பொத்தான்"
+
+#: target/out/prefPages/layout.js:665
+msgid "Battery button"
+msgstr "மின்கல பொத்தான்"
+
+#: target/out/prefPages/layout.js:711
+msgid "Layout"
+msgstr "அமைப்பு"
+
+#: target/out/prefPages/layout.js:718
+msgid "Quick Toggles Layout"
+msgstr "விரைவு நிலைமாற்றிகள் அமைப்பு"
+
+#: target/out/prefPages/layout.js:719 target/out/prefPages/layout.js:734
+msgid "Adjust quick toggles layout"
+msgstr "விரைவு நிலைமாற்றிகளின் அமைப்பைச் சரிசெய்"
+
+#: target/out/prefPages/layout.js:738
+msgid "Reorder and hide quick toggles"
+msgstr "விரைவு நிலைமாற்றிகளை மறுவரிசைப்படுத்தி மறை"
+
+#: target/out/prefPages/layout.js:745
+msgid "System Indicators"
+msgstr "கணினி குறிக்காட்டிகள்"
+
+#: target/out/prefPages/layout.js:746
+msgid "Adjust system indicators layout and style"
+msgstr "கணினி குறிக்காட்டிகளின் அமைப்பையும் நடையையும் சரிசெய்"
+
+#: target/out/prefPages/layout.js:751
+msgid "Accent screen sharing indicator"
+msgstr "திரைப் பகிர்வு குறிக்காட்டிக்கு உச்சரிப்பைச் சேர்"
+
+#: target/out/prefPages/layout.js:752
+msgid "Use shell accent color on screen sharing indicator"
+msgstr "திரைப் பகிர்வு குறிக்காட்டியில் ஷெல் உச்சரிப்பு வண்ணத்தைப் பயன்படுத்துக"
+
+#: target/out/prefPages/layout.js:757
+msgid "Accent screen recording indicator"
+msgstr "திரைப் பதிவு குறிக்காட்டிக்கு உச்சரிப்பைச் சேர்"
+
+#: target/out/prefPages/layout.js:758
+msgid "Use shell accent color on screen recording indicator"
+msgstr "திரைப் பதிவு குறிக்காட்டியில் ஷெல் உச்சரிப்பு வண்ணத்தைப் பயன்படுத்துக"
+
+#: target/out/prefPages/layout.js:763
+msgid "Privacy indicators style"
+msgstr "தனியுரிமைக் குறிக்காட்டிகளின் நடை"
+
+#: target/out/prefPages/layout.js:764
+msgid "Use monochrome or shell accent color on privarcy indicators"
+msgstr "தனியுரிமைக் குறிக்காட்டிகளில் ஒரே வண்ண அல்லது ஷெல் உச்சரிப்பு வண்ணத்தைப் பயன்படுத்துக"
+
+#: target/out/prefPages/layout.js:767
+msgid "Accent"
+msgstr "உச்சரிப்பு"
+
+#: target/out/prefPages/layout.js:768
+msgid "Monochrome"
+msgstr "ஒரே வண்ணம்"
+
+#: target/out/prefPages/layout.js:777
+msgid "Adjust system indicators"
+msgstr "கணினி குறிக்காட்டிகளைச் சரிசெய்"
+
+#: target/out/prefPages/layout.js:788
+msgid "Reorder and hide system indicators"
+msgstr "கணினி குறிக்காட்டிகளை மறுவரிசைப்படுத்தி மறை"
+
+#: target/out/prefPages/layout.js:795
+msgid "System Items Layout"
+msgstr "கணினிப் பொருட்களின் அமைப்பு"
+
+#: target/out/prefPages/layout.js:800 target/out/prefPages/layout.js:815
+msgid "Adjust system items layout"
+msgstr "கணினிப் பொருட்களின் அமைப்பைச் சரிசெய்"
+
+#: target/out/prefPages/layout.js:804
+msgid "Hide layout box"
+msgstr "அமைவு பெட்டியை மறை"
+
+#: target/out/prefPages/layout.js:805
+msgid "Hide all buttons and layout box"
+msgstr "அனைத்து பொத்தான்கள் மற்றும் அமைவு பெட்டியை மறை"
+
+#: target/out/prefPages/layout.js:814
+msgid "Reorder and hide system items"
+msgstr "கணினிப் பொருட்களை மறுவரிசைப்படுத்தி மறை"
+
+#: target/out/prefPages/layout.js:823
+msgid "Date Menu"
+msgstr "தேதி பட்டி"
+
+#: target/out/prefPages/layout.js:824
+msgid "Adjust Date Menu layout"
+msgstr "தேதி பட்டியில் அமைப்பைச் சரிசெய்"
+
+#: target/out/prefPages/layout.js:828
+msgid "Hide left box"
+msgstr "இடது பெட்டியை மறை"
+
+#: target/out/prefPages/layout.js:829
+msgid ""
+"Hide the left box of the date menu, which contains notifications and media "
+"control"
+msgstr ""
+"தேதி பட்டியின் இடது பெட்டியை மறை, அதில் அறிவிப்புகள் மற்றும் ஊடகக் கட்டுப்பாடு உள்ளன"
+
+#: target/out/prefPages/layout.js:834
+msgid "Hide right box"
+msgstr "வலது பெட்டியை மறை"
+
+#: target/out/prefPages/layout.js:835
+msgid ""
+"Hide the right box of the date menu, which contains calendar, world clock "
+"and weather"
+msgstr ""
+"தேதி பட்டியின் வலது பெட்டியை மறை, அதில் நாள்காட்டி, உலக கடிகாரம் மற்றும் வானிலை உள்ளன"
+
+#: target/out/prefPages/layout.js:840
+msgid "Disable menu"
+msgstr "பட்டியை முடக்கு"
+
+#: target/out/prefPages/layout.js:841
+msgid "Do not open date menu when the date menu button clicked"
+msgstr "தேதி பட்டி பொத்தானைக் கிளிக் செய்யும்போது தேதி பட்டியைத் திறக்க வேண்டாம்"

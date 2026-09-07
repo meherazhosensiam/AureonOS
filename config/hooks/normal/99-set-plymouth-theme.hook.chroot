@@ -1,12 +1,28 @@
 #!/bin/bash
 set -e
 
-# Check if the theme exists first, if not, fallback to bgrt
-if [ -d "/usr/share/plymouth/themes/spinner" ]; then
-    THEME="spinner"
-else
-    THEME="bgrt"
-fi
+# ============================================================
+# AUREON OS - Set Plymouth Boot Theme
+# ============================================================
+# This hook configures the Plymouth boot splash theme and
+# regenerates the initramfs to include the theme.
+#
+# EXECUTION ORDER: Runs during NORMAL hook stage (before live hooks).
+# This runs BEFORE the Fluent GTK theme installation (9800-aureon-theme),
+# but that's fine because Plymouth theme is independent of GTK theme.
+#
+# The theme files are in:
+#   config/includes.chroot/usr/share/plymouth/themes/aureon/
+# These are copied to the chroot during chroot_includes_before_packages
+# stage, so they exist when this hook runs.
+#
+# COMMAND:
+#   plymouth-set-default-theme -R "aureon"
+#   -R, --rebuild-initrd: Regenerate initramfs after setting theme
+# This ensures the initramfs in the live system contains the theme.
+#
+# The theme is also configured for the installed system via
+# Calamares plymouthcfg module (config/includes.chroot/etc/calamares/modules/plymouthcfg.conf)
 
-# Set the theme and update initramfs
-plymouth-set-default-theme -R "$THEME"
+# Set the AUREON theme and update initramfs
+plymouth-set-default-theme -R "aureon"

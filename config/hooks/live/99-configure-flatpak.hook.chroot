@@ -1,0 +1,8 @@
+#!/bin/bash
+set -e
+
+# Configure Flathub as a system-wide remote
+flatpak remote-add --if-not-exists --system flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
+# Also add for the live user
+flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo

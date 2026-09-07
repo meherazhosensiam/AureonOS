@@ -1,0 +1,47 @@
+#!/bin/bash
+set -e
+
+# ============================================================
+# AUREON OS - Remove firmware installer packages
+# ============================================================
+# These packages (firmware-*-installer) attempt to download
+# firmware from the internet during post-install, which fails
+# in the chroot environment (no network/DNS). We remove them
+# after package installation and rely on pre-packaged firmware
+# (firmware-linux, firmware-linux-nonfree, etc.) instead.
+# ============================================================
+
+echo "==> Removing firmware installer packages..."
+
+# List of firmware installer packages that fail in chroot
+INSTALLER_PKGS=(
+    "firmware-b43-installer"
+    "firmware-b43legacy-installer"
+    "firmware-bnx2-installer"
+    "firmware-ipw2x00-installer"
+    "firmware-ivtv-installer"
+    "firmware-iwlwifi-installer"
+    "firmware-libertas-installer"
+    "firmware-myricom-installer"
+    "firmware-netronome-installer"
+    "firmware-netxen-installer"
+    "firmware-qlogic-installer"
+    "firmware-siano-installer"
+    "firmware-zd1211-installer"
+)
+
+for pkg in "${INSTALLER_PKGS[@]}"; do
+    if dpkg -l "$pkg" 2>/dev/null | grep -q '^ii'; then
+        echo "Removing $pkg..."
+        apt-get remove -y --purge "$pkg" || true
+    fi
+done
+
+# Ensure we keep the pre-packaged firmware
+apt-get install -y --no-install-recommends \
+    firmware-linux \
+    firmware-linux-free \
+    firmware-linux-nonfree \
+    2>/dev/null || true
+
+echo "==> Firmware installer packages removed."

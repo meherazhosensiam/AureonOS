@@ -1,0 +1,44 @@
+.dash-in-panel-icon,
+.dash-in-panel-show-apps-button {
+  padding: 0 3px;
+
+  border: 2px solid transparent;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-radius: 6px;
+
+  transition-duration: 150ms;
+}
+
+.dash-in-panel-show-apps-button {
+  margin-right: 16px;
+  margin-left: 0px;
+}
+
+.dash-in-panel-icon:hover,
+.dash-in-panel-show-apps-button:hover {
+  box-shadow: 0 0 0 rgba(142, 142, 142, 0.5);
+}
+
+.dash-in-panel-icon-colored-dot {
+  background-color: -st-accent-color;
+}
+
+.dash-in-panel-focused-app {
+  box-shadow: 0 0 0 rgba(142, 142, 142, 0.5);
+}
+
+.dash-in-panel-colored-focused-app {
+  box-shadow: 0 0 0 st-transparentize(-st-accent-color, 0.5);
+}
+
+.dash-in-panel-demands-attention-app {
+  box-shadow: 0 0 0 st-transparentize(red, 0.3);
+}
+
+.dash-in-panel-separator {
+  margin-right: 8px;
+  margin-left: 8px;
+  width: 1px;
+  background-color: rgba(142, 142, 142, 0.75);
+}

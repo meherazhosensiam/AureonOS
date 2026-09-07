@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<schemalist>
+    <schema path="/org/gnome/shell/extensions/dash-in-panel/" id="org.gnome.shell.extensions.dash-in-panel">
+
+    <key type="b" name="show-overview">
+        <default>false</default>
+        <summary>Show overview at start-up</summary>
+    </key>
+
+    <key type="b" name="show-dash">
+        <default>false</default>
+        <summary>Show dash in overview</summary>
+    </key>
+
+    <key type="b" name="show-activities">
+        <default>false</default>
+        <summary>Show activities indicator</summary>
+    </key>
+
+    <key type="b" name="move-date">
+        <default>true</default>
+        <summary>Move date menu to the right</summary>
+    </key>
+
+    <key type="b" name="center-dash">
+        <default>false</default>
+        <summary>Move dash to the center</summary>
+    </key>
+
+    <key type="b" name="show-label">
+        <default>true</default>
+        <summary>Show app label on hover</summary>
+    </key>
+
+    <key type="b" name="show-running">
+        <default>false</default>
+        <summary>Show only running apps</summary>
+    </key>
+
+    <key type="b" name="dim-dot">
+        <default>false</default>
+        <summary>Dim running app indicator opacity when not on active workspace</summary>
+    </key>
+
+    <key type="b" name="show-apps">
+        <default>true</default>
+        <summary>Show app grid button</summary>
+    </key>
+
+    <key type="b" name="scroll-panel">
+        <default>true</default>
+        <summary>Scroll on panel to change workspace</summary>
+    </key>
+
+    <key type="b" name="click-changed">
+        <default>true</default>
+        <summary>Minimize focus app on click</summary>
+    </key>
+
+    <key type="b" name="cycle-windows">
+        <default>true</default>
+        <summary>Cycle through windows</summary>
+    </key>
+
+    <key type="b" name="colored-dot">
+        <default>true</default>
+        <summary>Colored running indicator</summary>
+    </key>
+
+    <key type="i" name="button-margin">
+        <default>2</default>
+        <summary>App button margin</summary>
+    </key>
+
+    <key type="i" name="panel-height">
+        <default>32</default>
+        <summary>Top panel height</summary>
+    </key>
+
+    <key type="i" name="icon-size">
+        <default>20</default>
+        <summary>Icon size</summary>
+    </key>
+
+    </schema>
+</schemalist>

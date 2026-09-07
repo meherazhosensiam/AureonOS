@@ -1,0 +1,35 @@
+# AUREON OS - GDM Login Screen Settings (System Database: gdm)
+# ==============================================================
+# These settings configure the GDM (GNOME Display Manager) login screen.
+# Applied via the gdm dconf profile which includes system-db:gdm.
+#
+# After modifying this file, run: dconf update
+# (Handled automatically by 9999-aureon-compile-dconf.hook.chroot during build)
+
+[org/gnome/login-screen]
+# Custom logo and background for login screen
+logo='/usr/share/aureonos/assets/logo.png'
+background='/usr/share/backgrounds/aureon/dark.png'
+
+[org/gnome/desktop/interface]
+# Dark theme for login screen
+color-scheme='prefer-dark'
+gtk-theme='Fluent-red-Dark'
+icon-theme='Fluent-red'
+cursor-theme='Fluent-cursors'
+
+[org/gnome/desktop/background]
+# Login screen background (matches lock screen)
+picture-uri='file:///usr/share/backgrounds/aureon/dark.png'
+picture-uri-dark='file:///usr/share/backgrounds/aureon/dark.png'
+
+[org/gnome/desktop/screensaver]
+# Lock screen appearance
+picture-uri='file:///usr/share/backgrounds/aureon/dark.png'
+color-shading-type='solid'
+primary-color='#000000'
+secondary-color='#000000'
+
+[org/gnome/shell/extensions/user-theme]
+# Enable Fluent theme for GDM shell (top bar, etc.)
+name='Fluent-red-Dark'

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<schemalist>
+
+    <schema path="/org/gnome/shell/extensions/blur-wallpaper/" id="org.gnome.shell.extensions.blur-wallpaper">
+
+        <key type="b" name="blur-desktop">
+            <default>true</default>
+            <summary>Blur desktop</summary>
+        </key>
+
+        <key type="b" name="blur-overview">
+            <default>true</default>
+            <summary>Blur overview</summary>
+        </key>
+
+        <key type="b" name="dynamic-blur">
+            <default>true</default>
+            <summary>Dynamic blur</summary>
+        </key>
+
+        <key type="i" name="blur-radius">
+            <default>25</default>
+            <range min="0" max="100"/>
+            <summary>Blur radius (px)</summary>
+        </key>
+
+    </schema>
+
+</schemalist>

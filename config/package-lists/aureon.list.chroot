@@ -62,6 +62,8 @@ gnome-themes-extra
 ############################
 # Fonts
 ############################
+fonts-inter
+fonts-jetbrains-mono
 fonts-dejavu
 fonts-dejavu-core
 fonts-dejavu-extra
@@ -76,9 +78,15 @@ fonts-thai-tlwg
 fonts-indic
 
 ############################
+# Web Browser
+############################
+firefox-esr
+
+############################
 # GNOME Customization
 ############################
 gnome-tweaks
+gnome-shell-extension-user-theme
 dconf-cli
 dconf-editor
 
@@ -130,6 +138,13 @@ plymouth-themes
 ############################
 polkitd
 dbus-user-session
+usbguard
+
+############################
+# Python Tooling (Security Center dependencies)
+############################
+python3-pip
+pipx
 
 ############################
 # Printing

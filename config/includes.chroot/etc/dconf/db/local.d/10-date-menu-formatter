@@ -1,0 +1,3 @@
+[org/gnome/shell/extensions/date-menu-formatter]
+pattern='HH:mm\ndd/MM/yyyy'
+text-align='center'

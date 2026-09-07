@@ -1,10 +1,121 @@
-#!/bin/sh
+#!/usr/bin/env bash
+set -euo pipefail
 
-set -e
+# ============================================================
+# AureonOS - Live-build Architecture Configuration
+# ============================================================
+#
+# This is the single source of truth for the live-build setup.
+# It is invoked automatically by plain "lb config" (live-build
+# executes auto/config with any arguments it was given).
+#
+# Examples:
+#   ./auto/config
+#   ARCH=amd64 ./auto/config
+#   ARCH=armhf ./auto/config
+# ============================================================
+
+# ------------------------------------------------------------
+# Project configuration
+# ------------------------------------------------------------
+
+ARCH="${ARCH:-amd64}"
+DISTRIBUTION="${DISTRIBUTION:-trixie}"
+PROJECT_NAME="${PROJECT_NAME:-AureonOS}"
+ISO_VOLUME="${ISO_VOLUME:-AureonOS}"
+
+# ------------------------------------------------------------
+# Architecture configuration
+# ------------------------------------------------------------
+
+case "$ARCH" in
+
+    amd64)
+        KERNEL_FLAVOUR="amd64"
+        KERNEL_PACKAGE="linux-image-amd64"
+        ;;
+
+    armhf)
+        KERNEL_FLAVOUR="armmp"
+        KERNEL_PACKAGE="linux-image-armmp"
+        ;;
+
+    i386)
+        KERNEL_FLAVOUR="686"
+        KERNEL_PACKAGE="linux-image-686"
+        ;;
+
+    *)
+        echo
+        echo "[ERROR] Unsupported architecture: $ARCH"
+        echo
+        echo "Supported architectures:"
+        echo "  amd64"
+        echo "  armhf"
+        echo "  i386"
+        echo
+        echo "Example:"
+        echo "  ARCH=amd64 ./auto/config"
+        echo
+        exit 1
+        ;;
+esac
+
+# ------------------------------------------------------------
+# Display selected configuration
+# ------------------------------------------------------------
+
+echo
+echo "============================================================"
+echo " AureonOS Live-build Configuration"
+echo "============================================================"
+echo
+echo "[INFO] Project           : $PROJECT_NAME"
+echo "[INFO] Distribution      : $DISTRIBUTION"
+echo "[INFO] Architecture      : $ARCH"
+echo "[INFO] Kernel flavour    : $KERNEL_FLAVOUR"
+echo "[INFO] Kernel package    : $KERNEL_PACKAGE"
+echo "[INFO] ISO volume        : $ISO_VOLUME"
+echo
+echo "============================================================"
+echo
+
+# ------------------------------------------------------------
+# Configure live-build
+#
+# NOTE on --debian-installer none:
+#   AUREON OS installs exclusively through Calamares (which is
+#   part of the live filesystem and unpacks filesystem.squashfs,
+#   so every customization ships to the installed system).
+#   Including Debian Installer would add a second, unbranded
+#   install path that bypasses all AUREON configuration.
+#
+# NOTE on hostname=aureonos in the live boot parameters:
+#   live-build resets /etc/hostname at the end of the chroot
+#   stage; config/includes.chroot/etc/hostname is restored from
+#   includes for the installed system, and this parameter gives
+#   the live session the same identity.
+# ------------------------------------------------------------
+
 lb config noauto \
-    --distribution trixie \
-    --architectures amd64 \
+    --distribution "$DISTRIBUTION" \
+    --architectures "$ARCH" \
     --archive-areas "main contrib non-free-firmware non-free" \
     --binary-images iso-hybrid \
-    --debian-installer live \
-    --iso-volume "AureonOS"
+    --debian-installer none \
+    --mirror-bootstrap "http://deb.debian.org/debian/" \
+    --mirror-chroot "http://deb.debian.org/debian/" \
+    --mirror-binary "http://deb.debian.org/debian/" \
+    --iso-volume "$ISO_VOLUME" \
+    --iso-application "AUREON OS" \
+    --iso-publisher "AUREON OS; https://aureon-os.local" \
+    --linux-packages "linux-image" \
+    --linux-flavours "$KERNEL_FLAVOUR" \
+    --bootappend-live "boot=live components username=aureon user-fullname='AureonOS Live User' hostname=aureonos" \
+    "$@"
+
+echo
+echo "[SUCCESS] Live-build configuration completed."
+echo
+echo "[INFO] Architecture : $ARCH"
+echo "[INFO] Kernel       : $KERNEL_PACKAGE"

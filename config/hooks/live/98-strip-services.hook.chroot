@@ -1,7 +1,11 @@
 #!/bin/bash
-# Stop and disable unnecessary background services
-systemctl disable avahi-daemon.service
-systemctl disable cups.service
-systemctl disable bluetooth.service
-systemctl disable ModemManager.service
-systemctl disable wpa_supplicant.service
+# Stop and disable unnecessary background services.
+#
+# NOTE: wpa_supplicant must NOT be disabled here - NetworkManager
+# requires it for WiFi to work on both the live session and the
+# installed system.
+
+systemctl disable avahi-daemon.service || true
+systemctl disable cups.service || true
+systemctl disable bluetooth.service || true
+systemctl disable ModemManager.service || true

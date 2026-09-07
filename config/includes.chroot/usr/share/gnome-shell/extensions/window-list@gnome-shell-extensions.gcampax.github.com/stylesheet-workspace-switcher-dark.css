@@ -1,0 +1,76 @@
+/*
+ * SPDX-FileCopyrightText: 2011 Erick Pérez Castellanos <erick.red@gmail.com>
+ * SPDX-FileCopyrightText: 2019 Florian Müllner <fmuellner@gnome.org>
+ *
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
+.window-list-workspace-indicator .status-label {
+  padding: 0 8px;
+}
+
+.window-list-workspace-indicator .workspaces-view.hfade {
+  -st-hfade-offset: 20px;
+}
+
+.window-list-workspace-indicator-menu .workspaces-view {
+  max-width: 480px;
+}
+
+.window-list-workspace-indicator .workspaces-box {
+  spacing: 3px;
+}
+
+.window-list-workspace-indicator-menu .workspaces-box {
+  padding: 5px;
+  spacing: 6px;
+}
+
+.window-list-workspace-indicator .workspace-box {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.window-list-workspace-indicator StButton:first-child:ltr > .workspace-box,
+.window-list-workspace-indicator StButton:last-child:rtl > .workspace-box {
+  padding-left: 5px;
+}
+.window-list-workspace-indicator StButton:last-child:ltr > .workspace-box,
+.window-list-workspace-indicator StButton:first-child:rtl > .workspace-box {
+  padding-right: 5px;
+}
+
+.window-list-workspace-indicator-menu .workspace-box {
+  spacing: 6px;
+}
+
+.window-list-workspace-indicator-menu .workspace,
+.window-list-workspace-indicator .workspace {
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: #3f3f3f;
+}
+
+.window-list-workspace-indicator .workspace {
+  width: 52px;
+}
+
+.window-list-workspace-indicator-menu .workspace {
+  height: 80px;
+  width: 160px;
+}
+
+.window-list-workspace-indicator-menu .workspace.active,
+.window-list-workspace-indicator .workspace.active {
+  border-color: #fff;
+}
+
+.window-list-workspace-indicator-window-preview {
+  background-color: #bebebe;
+  border: 1px solid #828282;
+  border-radius: 1px;
+}
+
+.window-list-workspace-indicator-window-preview.active {
+  background-color: #d4d4d4;
+}

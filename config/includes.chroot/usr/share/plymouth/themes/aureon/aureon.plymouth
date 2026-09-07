@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=AUREON OS
+Description=AUREON OS boot splash theme
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/aureon
+ScriptFile=/usr/share/plymouth/themes/aureon/aureon.script

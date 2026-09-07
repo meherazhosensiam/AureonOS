@@ -1,10 +1,22 @@
 #!/bin/bash
-# Automatically create .desktop files for all your tools
-# This ensures they appear in Arc Menu instantly
-TOOLS=("nmap" "wireshark" "burpsuite" "sqlmap")
+# Create .desktop launchers for security tools, but ONLY for the
+# tools that are actually installed on the image. Dead entries in
+# the applications grid are worse than no entries.
+set -u
 
-for tool in "${TOOLS[@]}"; do
-    cat <<EOF > /usr/share/applications/custom-${tool}.desktop
+declare -A TOOLS=(
+    ["nmap"]="nmap"
+    ["wireshark"]="wireshark"
+    ["sqlmap"]="sqlmap"
+    ["burpsuite"]="burpsuite"
+)
+
+for tool in "${!TOOLS[@]}"; do
+    if ! command -v "$tool" >/dev/null 2>&1; then
+        continue
+    fi
+
+    cat <<EOF > "/usr/share/applications/custom-${tool}.desktop"
 [Desktop Entry]
 Name=${tool^^}
 Exec=gnome-terminal -- bash -c "${tool}; exec bash"
@@ -14,3 +26,5 @@ Type=Application
 Categories=Security;
 EOF
 done
+
+exit 0

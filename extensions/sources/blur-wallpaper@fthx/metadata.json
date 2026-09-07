@@ -1,0 +1,17 @@
+{
+  "description": "Blur wallpaper.\n\n Settings: desktop, overview, dynamic, blur intensity.",
+  "name": "Blur Wallpaper",
+  "shell-version": [
+    "46",
+    "47",
+    "48",
+    "49"
+  ],
+  "url": "https://github.com/fthx/blur-wallpaper",
+  "uuid": "blur-wallpaper@fthx",
+  "settings-schema": "org.gnome.shell.extensions.blur-wallpaper",
+  "version": 999,
+  "donations": {
+    "paypal": "fthx75"
+  }
+}

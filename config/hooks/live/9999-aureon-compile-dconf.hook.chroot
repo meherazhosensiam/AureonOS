@@ -1,0 +1,40 @@
+#!/bin/sh
+set -e
+
+# ============================================================
+# AUREON OS - Compile dconf database
+# ============================================================
+# This hook runs late in the live hook sequence (after theme
+# installation and all configuration files are in place) to
+# ensure the compiled dconf database includes all settings.
+#
+# A temporary machine ID is required for dconf update to work
+# inside the chroot. We create one, compile the database, then
+# remove it so the installed system generates its own on first boot.
+# ============================================================
+
+echo "==> Compiling AUREON dconf database..."
+
+# Ensure dconf database directory exists
+mkdir -p /etc/dconf/db
+
+# Generate a temporary machine ID for the build
+rm -f /etc/machine-id /var/lib/dbus/machine-id
+systemd-machine-id-setup
+mkdir -p /var/lib/dbus
+ln -sf /etc/machine-id /var/lib/dbus/machine-id
+
+# Compile the system dconf database
+dconf update
+
+# Compile GSettings schemas for all extensions
+echo "==> Compiling GSettings schemas..."
+glib-compile-schemas /usr/share/glib-2.0/schemas/
+
+# Remove the temporary machine ID so installed systems generate their own
+rm -f /etc/machine-id /var/lib/dbus/machine-id
+touch /etc/machine-id
+
+echo "==> AUREON dconf database compiled successfully."
+
+ls -lh /etc/dconf/db/local

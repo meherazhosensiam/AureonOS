@@ -1,0 +1,3 @@
+[org/gnome/shell/extensions/gsconnect]
+missing-openssl=false
+name='siam-vmwarevirtualplatform'

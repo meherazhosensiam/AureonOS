@@ -1,0 +1,3 @@
+[org/gnome/shell/extensions/lockscreen-extension]
+backgrounds-folder-path='/home/siam/Downloads'
+hide-lockscreen-extension-button=true

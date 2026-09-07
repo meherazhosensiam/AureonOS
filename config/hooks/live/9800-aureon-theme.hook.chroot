@@ -1,11 +1,38 @@
 #!/bin/bash
 set -e
 
+# ============================================================
+# AUREON OS - Install Fluent GTK/Icon/Cursor Themes
+# ============================================================
+# This hook downloads and installs the Fluent theme suite from
+# vinceliuice's GitHub repositories. The themes provide the
+# visual identity for AUREON OS (dark/light variants, red accent).
+#
+# EXECUTION ORDER: Runs during LIVE hook stage (after normal hooks).
+# This is IMPORTANT because:
+# 1. Normal hooks (including 99-set-plymouth-theme) run first
+# 2. This hook installs the GTK/Icon/Cursor themes
+# 3. 9999-aureon-compile-dconf.hook.chroot runs LAST and compiles
+#    the dconf database AFTER themes are installed
+#
+# The dconf settings in 01-aureon-defaults reference:
+#   gtk-theme='Fluent-red-Dark'
+#   icon-theme='Fluent-red'
+#   cursor-theme='Fluent-cursors'
+# These must exist before dconf compilation, otherwise the settings
+# would reference non-existent themes.
+#
+# DEPENDENCIES: git, wget, curl, unzip, sassc, libglib2.0-dev-bin
+# (installed at start of hook)
+#
+# CLEANUP: Removes downloaded source directories after installation
+# to minimize image size.
+
 export DEBIAN_FRONTEND=noninteractive
 
 apt-get update
 
-# Dependencies
+# Dependencies for theme compilation
 apt-get install -y \
     git \
     wget \
@@ -20,15 +47,16 @@ cd /tmp
 ########################################
 # Fluent GTK Theme
 ########################################
-
+# Provides: Fluent-red-Dark, Fluent-red-Light (and other colors)
+# Installed to: /usr/share/themes/
 git clone --depth=1 https://github.com/vinceliuice/Fluent-gtk-theme.git
 
 cd Fluent-gtk-theme
 
-# Install the Dark variant
+# Install the Dark variant (primary for AUREON)
 ./install.sh -t all -c dark -s standard --tweaks blur
 
-# Install the Light variant
+# Install the Light variant (for light mode support)
 ./install.sh -t all -c light -s standard --tweaks blur
 
 cd ..
@@ -36,7 +64,8 @@ cd ..
 ########################################
 # Fluent Icon Theme
 ########################################
-
+# Provides: Fluent-red (and other colors)
+# Installed to: /usr/share/icons/
 git clone --depth=1 https://github.com/vinceliuice/Fluent-icon-theme.git
 
 cd Fluent-icon-theme
@@ -48,16 +77,19 @@ cd ..
 ########################################
 # Fluent Cursor Theme
 ########################################
+# Provides: Fluent-cursors
+# Installed to: /usr/share/icons/
 cd Fluent-icon-theme 
 cd cursors
 ./install.sh
 
 cd ..
+cd ..
 
 ########################################
 # Cleanup
 ########################################
-
+# Remove build directories to save space
 rm -rf \
     Fluent-gtk-theme \
     Fluent-icon-theme \

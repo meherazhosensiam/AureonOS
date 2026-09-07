@@ -1,3 +1,10 @@
+# AUREON OS - ArcMenu Branding Override
+# =====================================
+# Configures ArcMenu to use the AUREON OS logo as the menu button icon.
+# This supplements the main ArcMenu configuration in 01-aureon-defaults.
+#
+# After modifying this file, run: dconf update
+
 [org/gnome/shell/extensions/arc-menu]
 menu-button-icon='Custom'
-menu-button-custom-icon='/usr/share/aureonos/assets/logo.png'
+menu-button-custom-icon='/usr/share/aureonos/assets/logo.svg'

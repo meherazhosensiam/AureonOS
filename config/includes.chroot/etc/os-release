@@ -1,7 +1,11 @@
 PRETTY_NAME="AUREON OS 1.0"
 NAME="AUREON OS"
-VERSION="1.0"
+VERSION="1.0 (trixie)"
 VERSION_ID="1.0"
+VERSION_CODENAME=trixie
 ID=aureon
 ID_LIKE=debian
+HOME_URL="https://aureon-os.local"
+SUPPORT_URL="https://aureon-os.local"
+BUG_REPORT_URL="https://aureon-os.local"
 ANSI_COLOR="1;34"

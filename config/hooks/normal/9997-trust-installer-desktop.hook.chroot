@@ -1,0 +1,23 @@
+#!/bin/sh
+set -e
+
+# ============================================================
+# AUREON OS - Trust installer desktop entry
+# ============================================================
+# Marks the installer .desktop file as trusted so GNOME allows
+# launching it without prompting the user to "Allow Launching".
+# This works for both live and installed systems.
+# ============================================================
+
+DESKTOP_FILE="/usr/share/applications/install-aureon.desktop"
+
+if [ -f "$DESKTOP_FILE" ]; then
+    # Mark as trusted for all users by setting the metadata
+    # This requires glib2.0-bin (gio) to be available
+    if command -v gio >/dev/null 2>&1; then
+        gio set "$DESKTOP_FILE" "metadata::trusted" true 2>/dev/null || true
+        echo "[ OK ] Installer desktop entry marked as trusted"
+    fi
+fi
+
+exit 0

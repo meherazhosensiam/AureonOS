@@ -48,8 +48,12 @@ then
 	# Until calamares-settings-debian 13.0.11 the filename was more generic
 	SOURCES_MEDIA=/usr/sbin/sources-media
 fi
-if [ -e ${SOURCES_MEDIA} ]
+if [ -e "${SOURCES_MEDIA}" ]
 then
-	sed -i -e 's|/run/live/medium|/run/initramfs/live|;s|/run/live|/run/initramfs|' ${SOURCES_MEDIA}
-	sed -i -e "s|RELEASE=\".*\"|RELEASE=\"${LB_PARENT_DISTRIBUTION_CHROOT}\"|" ${SOURCES_MEDIA}
+    # Dracut-live uses /run/initramfs/live.
+    sed -i 's|/run/live/medium|/run/initramfs/live|g' "${SOURCES_MEDIA}"
+    sed -i 's|/run/live|/run/initramfs|g' "${SOURCES_MEDIA}"
+
+    # Use the distribution selected by live-build.
+    sed -i "s|RELEASE=\".*\"|RELEASE=\"${LB_PARENT_DISTRIBUTION_CHROOT}\"|" "${SOURCES_MEDIA}"
 fi

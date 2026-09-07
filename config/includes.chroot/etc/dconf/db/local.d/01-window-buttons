@@ -1,2 +1,13 @@
+# AUREON OS - Window Button Layout
+# ================================
+# Places window controls (minimize, maximize, close) on the right side
+# of the titlebar, consistent with traditional desktop layouts.
+#
+# This overrides the GNOME default (close button only on right).
+# Also configured in 01-aureon-defaults under [desktop/wm/preferences]
+# for redundancy.
+#
+# After modifying this file, run: dconf update
 [org/gnome/desktop/wm/preferences]
 button-layout=':minimize,maximize,close'
+EOF

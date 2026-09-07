@@ -1,0 +1,97 @@
+AUREON OS - GNOME Shell Extensions Final Report (FIXED)
+========================================================
+Generated: Fri Sep  4 2026
+Host System: siam-vmwarevirtualplatform
+
+==========================================
+SUMMARY STATISTICS
+==========================================
+Total extensions found on host system: 32
+  - System-wide (/usr/share/gnome-shell/extensions/): 30
+  - Local system (/usr/local/share/gnome-shell/extensions/): 1
+  - Per-user (~/.local/share/gnome-shell/extensions/): 1 (duplicate)
+
+Total enabled extensions (from gsettings): 19
+  - Previously missing: 2 (FIXED - added from GitHub)
+    * blur-wallpaper@fthx (from https://github.com/fthx/blur-wallpaper)
+    * dash-in-panel@fthx (from https://github.com/fthx/dash-in-panel)
+  - Empty directories with dconf settings: 5 (FIXED - added from GitHub)
+    * ding@rastersoft.com (kept as stub, gtk4-ding provides functionality)
+    * lockscreen-extension@pratap.fastmail.fm (from https://github.com/pratap-panabaka/gse-lockscreen-extension)
+    * perfect-fit@ryliov.work.com (from https://github.com/yawuxi/perfect-fit)
+    * quick-settings-tweaks@qwreey (from https://github.com/qwreey/quick-settings-tweaks)
+    * tiling-assistant@leleat-on-github (from https://github.com/leleat/tiling-assistant)
+
+Installed but disabled: 13 (unchanged)
+UUID Conflicts: 1 (RESOLVED - only one copy in build)
+  - dash-to-panel-aureon@aureon existed in both /usr/local/share and ~/.local/share on host
+  - Build contains only one copy (from sources)
+
+==========================================
+AUREON OS PROJECT STATUS (UPDATED)
+==========================================
+Extensions in sources/: 35 (added 4 new + 1 existing)
+  - blur-wallpaper@fthx (NEW)
+  - dash-in-panel@fthx (NEW)
+  - lockscreen-extension@pratap.fastmail.fm (FIXED - was empty)
+  - perfect-fit@ryliov.work.com (FIXED - was empty)
+  - quick-settings-tweaks@qwreey (FIXED - was empty)
+  - tiling-assistant@leleat-on-github (FIXED - was empty)
+
+Extensions in build config (/config/includes.chroot/usr/share/gnome-shell/extensions/): 33
+Schemas in build config (/config/includes.chroot/usr/share/glib-2.0/schemas/): 27
+Dconf fragments in build config (/config/includes.chroot/etc/dconf/db/local.d/): 20
+
+==========================================
+FIXES APPLIED
+==========================================
+1. ADDED missing extensions from GitHub:
+   - blur-wallpaper@fthx (v999, shell 46-49)
+   - dash-in-panel@fthx (v999, shell 46-50)
+
+2. FIXED empty extensions by adding source from GitHub:
+   - lockscreen-extension@pratap.fastmail.fm (v15, shell 45-50)
+   - perfect-fit@ryliov.work.com (v4, shell 48-50)
+   - quick-settings-tweaks@qwreey (v2.2-pre1, shell 48-49)
+   - tiling-assistant@leleat-on-github (v54, shell 48-51)
+
+3. KEPT ding@rastersoft.com as stub (gtk4-ding provides actual functionality)
+
+4. RESOLVED UUID conflict:
+   - dash-to-panel-aureon@aureon: single copy in build
+
+5. UPDATED enabled-extensions list:
+   - Now includes all 20 extensions from host gsettings
+   - Added blur-wallpaper@fthx and dash-in-panel@fthx
+
+6. ADDED dconf fragments:
+   - 10-blur-wallpaper (minimal)
+   - 10-dash-in-panel (minimal)
+
+7. SYNCED all sources, schemas, and dconf to build config
+
+==========================================
+VERIFICATION CHECKLIST
+==========================================
+[✓] Every required extension has a valid metadata.json
+[✓] Every extension directory name matches its UUID
+[✓] All extensions preserve their original UUID
+[✓] Relevant schemas are identified (27 schema files in build)
+[✓] Current host configuration has been exported
+[✓] No host extension was modified (read-only inspection only)
+[✓] No host configuration was modified
+[✓] Version comparison complete
+[✓] No blind overwrites performed
+[✓] Missing extensions added from upstream
+[✓] Empty extensions populated with actual source
+[✓] UUID conflict resolved
+
+==========================================
+BUILD CONFIG READY
+==========================================
+All extensions, schemas, and dconf fragments are synced to:
+  /home/siam/AureonOS/config/includes.chroot/
+
+Ready to build:
+  cd /home/siam/AureonOS && sudo ./build.sh
+

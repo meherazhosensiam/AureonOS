@@ -1,5 +1,4 @@
-#!/bin/bash
-s#!/bin/sh
+#!/bin/sh
 set -eu
 
 ZSH="/bin/zsh"
@@ -15,7 +14,8 @@ if ! grep -qxF "$ZSH" /etc/shells; then
     echo "$ZSH" >> /etc/shells
 fi
 
-# Set the default shell for adduser
+# Set the default shell for adduser (used by Calamares fallbacks
+# and any future user creation on the installed system).
 if [ -f /etc/adduser.conf ]; then
     if grep -q '^DSHELL=' /etc/adduser.conf; then
         sed -i "s|^DSHELL=.*|DSHELL=$ZSH|" /etc/adduser.conf
@@ -31,11 +31,6 @@ if [ -f /etc/default/useradd ]; then
     else
         echo "SHELL=$ZSH" >> /etc/default/useradd
     fi
-fi
-
-# Change the shell for the live user if present
-if id user >/dev/null 2>&1; then
-    usermod -s "$ZSH" user
 fi
 
 echo "Default shell configured as $ZSH."

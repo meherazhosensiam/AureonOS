@@ -1,0 +1,13 @@
+#!/bin/sh
+
+set -e
+
+DESKTOP="$HOME/Desktop"
+LAUNCHER="/usr/share/applications/install-aureon.desktop"
+
+mkdir -p "$DESKTOP"
+
+if [ -f "$LAUNCHER" ]; then
+    cp "$LAUNCHER" "$DESKTOP/install-aureon.desktop"
+    chmod +x "$DESKTOP/install-aureon.desktop"
+fi

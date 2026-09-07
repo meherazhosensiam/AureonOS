@@ -1,4 +1,0 @@
-#!/bin/bash
-# Increase security for encrypted volumes
-# Ensure cryptsetup uses a high iteration count (harder to brute-force)
-echo "pbkdf_hash = sha512" >> /etc/crypttab

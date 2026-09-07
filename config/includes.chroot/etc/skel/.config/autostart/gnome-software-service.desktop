@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Hidden=true
+Name=gnome-software-service
+X-GNOME-Autostart-enabled=false

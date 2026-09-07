@@ -1,0 +1,51 @@
+desktop-image: "../splash.png"
+title-color: "#ffffff"
+title-font: "DejaVu Sans Regular 16"
+title-text: "AUREON OS"
+message-font: "DejaVu Sans Regular 16"
+terminal-font: "DejaVu Sans Regular 16"
+
+#help bar at the bottom
++ label {
+        top = 100%-50
+        left = 0
+        width = 100%
+        height = 20
+        text = "@KEYMAP_SHORT@"
+        align = "center"
+        color = "#8d8d98"
+	font = "DejaVu Sans Regular 16"
+}
+
+#boot menu
++ boot_menu {
+        left = 10%
+        width = 80%
+        top = 52%
+        height = 48%-80
+        item_color = "#a8a8a8"
+	item_font = "DejaVu Sans Regular 16"
+        selected_item_color= "#ffffff"
+	selected_item_font = "DejaVu Sans Regular 16"
+        item_height = 24
+        item_padding = 4
+        item_spacing = 6
+	icon_width = 0
+	icon_heigh = 0
+	item_icon_space = 0
+}
+
+#progress bar
++ progress_bar {
+        id = "__timeout__"
+        left = 15%
+        top = 100%-80
+        height = 16
+        width = 70%
+        font = "DejaVu Sans Regular 16"
+        text_color = "#ffffff"
+        fg_color = "#e01b37"
+        bg_color = "#1c1420"
+        border_color = "#3d2b33"
+        text = "@TIMEOUT_NOTIFICATION_LONG@"
+}

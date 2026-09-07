@@ -1,0 +1,8 @@
+#!/bin/sh
+set -e
+
+echo "[INFO] Removing old Calamares launcher..."
+
+rm -f /usr/share/applications/calamares-install-debian.desktop
+
+echo "[ OK ] Old Calamares launcher removed."

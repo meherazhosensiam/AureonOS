@@ -1,0 +1,5 @@
+#!/bin/sh
+set -e
+
+plymouth-set-default-theme -R aureon || true
+update-initramfs -u -k all

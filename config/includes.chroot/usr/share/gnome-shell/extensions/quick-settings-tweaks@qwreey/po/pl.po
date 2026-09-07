@@ -1,0 +1,1143 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Adam Lewicki <a.lewicki95@gmail.com>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-20 15:34+0000\n"
+"PO-Revision-Date: 2025-03-13 13:35+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: po\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.4\n"
+
+#: target/out/libs/prefs/components.js:57
+msgid "Details"
+msgstr "Szczegóły"
+
+#: target/out/libs/prefs/components.js:144
+msgid "This feature marked as experimental"
+msgstr "Funkcja eksperymentalna"
+
+#: target/out/libs/prefs/components.js:274
+msgid "Reset to default"
+msgstr "Przywróć ustawienia domyślne"
+
+#: target/out/libs/prefs/components.js:512
+msgid "Theme default"
+msgstr "Domyślnie dla motywu"
+
+#: target/out/libs/prefs/components.js:853
+msgid "Homepage"
+msgstr "Strona główna"
+
+#: target/out/libs/prefs/components.js:859
+#: target/out/libs/prefs/components.js:863 target/out/prefPages/about.js:49
+#: target/out/prefPages/about.js:51 target/out/prefPages/about.js:56
+msgid "License"
+msgstr "Licencje"
+
+#: target/out/libs/prefs/components.js:860
+msgid "Loading ..."
+msgstr "Ładowanie..."
+
+#: target/out/libs/prefs/components.js:869
+msgid "Affected Files"
+msgstr "Uwzględnione pliki"
+
+#: target/out/libs/prefs/components.js:924
+msgid "Changelog"
+msgstr "Dziennik zmian"
+
+#: target/out/libs/prefs/components.js:938
+msgid "(Current)"
+msgstr "(Aktualnie)"
+
+#: target/out/libs/prefs/components.js:969
+#, javascript-format
+msgid "> **Date:** %s"
+msgstr "> **Data:** %s"
+
+#: target/out/libs/prefs/components.js:970
+#, javascript-format
+msgid "> **Git Hash:** %s"
+msgstr "> **Git Hash:** %s"
+
+#: target/out/libs/prefs/components.js:971
+#, javascript-format
+msgid "> **Build Number:** %d"
+msgstr "> **Komplikacja:** %d"
+
+#: target/out/libs/prefs/components.js:1034
+msgid "Padding"
+msgstr "Wypełnienie"
+
+#: target/out/libs/prefs/components.js:1038
+msgid "Top"
+msgstr "U góry"
+
+#: target/out/libs/prefs/components.js:1049
+msgid "Bottom"
+msgstr "Na dole"
+
+#: target/out/libs/prefs/components.js:1060
+msgid "Left"
+msgstr "Po lewej"
+
+#: target/out/libs/prefs/components.js:1071
+msgid "Right"
+msgstr "Po prawej"
+
+#: target/out/prefs.js:60
+msgid "Stable"
+msgstr "Stabilna"
+
+#: target/out/prefs.js:63
+msgid "Development"
+msgstr "Rozwojowa"
+
+#: target/out/prefs.js:66
+msgid "Preview"
+msgstr "Podgląd"
+
+#: target/out/prefs.js:69
+msgid "(Github Release)"
+msgstr "(Wydanie GitHub)"
+
+#: target/out/prefs.js:72
+msgid "(Built from source)"
+msgstr "(Skompilowane ze źródła)"
+
+#: target/out/features/widget/notifications.js:26
+msgid "No Notifications"
+msgstr "Brak powiadomień"
+
+#: target/out/features/widget/notifications.js:58
+#: target/out/features/widget/notifications.js:122
+msgid "Clear"
+msgstr "Wyczyść"
+
+#: target/out/features/widget/notifications.js:76
+msgid "Notifications"
+msgstr "Powiadomienia"
+
+#: target/out/features/widget/notifications.js:105
+#: target/out/features/toggle/dndQuickToggle.js:10
+#: target/out/prefPages/layout.js:345 target/out/prefPages/layout.js:485
+msgid "Do Not Disturb"
+msgstr "Nie przeszkadzać"
+
+#: target/out/features/widget/media.js:118
+msgid "Unknown title"
+msgstr "Nieznany tytuł"
+
+#: target/out/features/widget/media.js:888
+msgid "Media"
+msgstr "Media"
+
+#: target/out/features/widget/volumeMixer.js:105
+msgid "Volume changed"
+msgstr "Zmieniono głośność"
+
+#: target/out/features/widget/volumeMixer.js:463
+msgid "Open volumx mixer"
+msgstr "Otwórz poziomy głośności"
+
+#: target/out/features/widget/volumeMixer.js:480
+msgid "Volume Mixer"
+msgstr "Poziomy głośności"
+
+#: target/out/features/widget/weather.js:73
+msgid "Weather"
+msgstr "Pogoda"
+
+#: target/out/features/widget/weather.js:192
+msgid "Location has not been set"
+msgstr "Nie ustawiono lokalizacji"
+
+#: target/out/features/toggle/unsafeQuickToggle.js:11
+#: target/out/prefPages/layout.js:346 target/out/prefPages/layout.js:496
+msgid "Unsafe Mode"
+msgstr "Tryb niezabezpieczony"
+
+#: target/out/prefPages/widgets.js:11
+msgid "Handle radius"
+msgstr "Promień przytwierdzenia"
+
+#: target/out/prefPages/widgets.js:12
+msgid "Set this to 0 to use default radius"
+msgstr "0 - domyślny prommień"
+
+#: target/out/prefPages/widgets.js:18
+msgid "Handle color"
+msgstr "Kolor przytwierdzenia"
+
+#: target/out/prefPages/widgets.js:36
+msgid "Slider style"
+msgstr "Styl suwaka"
+
+#: target/out/prefPages/widgets.js:39
+msgid "Slim"
+msgstr "Wąski"
+
+#: target/out/prefPages/widgets.js:40 target/out/prefPages/layout.js:766
+msgid "Default"
+msgstr "Domyślny"
+
+#: target/out/prefPages/widgets.js:48 target/out/prefPages/widgets.js:173
+msgid "Background color"
+msgstr "Kolor tła"
+
+#: target/out/prefPages/widgets.js:55
+msgid "Active Background color"
+msgstr "Aktywny kolor tła"
+
+#: target/out/prefPages/widgets.js:62
+msgid "Thickness"
+msgstr ""
+
+#: target/out/prefPages/widgets.js:66
+msgid "Set this to 0 to use default thickness"
+msgstr ""
+
+#: target/out/prefPages/widgets.js:76
+msgid "Widgets"
+msgstr "Widżety"
+
+#: target/out/prefPages/widgets.js:83 target/out/prefPages/widgets.js:136
+#: target/out/prefPages/widgets.js:162 target/out/prefPages/widgets.js:224
+msgid "Media Widget"
+msgstr "Media"
+
+#: target/out/prefPages/widgets.js:88
+msgid "Turn on to make the media widget visible on the Quick Settings panel"
+msgstr "Pokazuj widżet na panelu szybkich ustawień"
+
+#: target/out/prefPages/widgets.js:92 target/out/prefPages/widgets.js:280
+#: target/out/prefPages/widgets.js:343
+msgid "Compact mode"
+msgstr "Tryb kompaktowy"
+
+#: target/out/prefPages/widgets.js:93
+msgid ""
+"Make Media Controls widget smaller\n"
+"Make it more similar in size to the notification message"
+msgstr ""
+"Mały widźet mediów\n"
+"Uczyń go bardziej podobnym do komunikatu powiadomienia"
+
+#: target/out/prefPages/widgets.js:99
+msgid "Control buttons opacity"
+msgstr "Przezroczystość przycików sterowania"
+
+#: target/out/prefPages/widgets.js:100
+msgid "Set this to 255 to make opaque, and 0 to make transparent"
+msgstr "255 - nieprzezroczyste, 0 - przezroczyste"
+
+#: target/out/prefPages/widgets.js:108
+msgid "Show next button"
+msgstr "Przycisk dalej"
+
+#: target/out/prefPages/widgets.js:109
+msgid "Add next contorl button next to description"
+msgstr "Dodaj przycisk 'Dalej' obok opisu"
+
+#: target/out/prefPages/widgets.js:115
+msgid "Show previous button"
+msgstr "Przycisk wstecz"
+
+#: target/out/prefPages/widgets.js:116
+msgid "Add previous contorl button next to description"
+msgstr "Dodaj przycisk 'Wstecz' obok opisu"
+
+#: target/out/prefPages/widgets.js:122
+msgid "Show pause button"
+msgstr "Przycisk wstrzymaj"
+
+#: target/out/prefPages/widgets.js:123
+msgid "Add pause contorl button next to description"
+msgstr "Dodaj przycisk 'Wstrzymaj' obok opisu"
+
+#: target/out/prefPages/widgets.js:129 target/out/prefPages/widgets.js:138
+msgid "Show progress bar"
+msgstr "Pasek postępu"
+
+#: target/out/prefPages/widgets.js:130 target/out/prefPages/widgets.js:139
+msgid "Add progress bar under description"
+msgstr "Dodaj pasek postępu pod opisem"
+
+#: target/out/prefPages/widgets.js:155 target/out/prefPages/widgets.js:164
+msgid "Gradient background"
+msgstr "Gradient tła"
+
+#: target/out/prefPages/widgets.js:156 target/out/prefPages/widgets.js:169
+msgid ""
+"Use gradient background extracted from cover image\n"
+"May affect performance slightly"
+msgstr ""
+"Użyj gradientu tła z okładki\n"
+"Może wpłynąć na wydajność"
+
+#: target/out/prefPages/widgets.js:174
+msgid "Base background color"
+msgstr "Kolor tła"
+
+#: target/out/prefPages/widgets.js:182
+msgid "Start opacity"
+msgstr ""
+
+#: target/out/prefPages/widgets.js:183
+msgid "Adjust left side transparency, Set this to 1000 to make opaque"
+msgstr "Dostosuj przezroczystość po lewej stronie. 1000 oznacza brak przezroczystości"
+
+#: target/out/prefPages/widgets.js:190
+msgid "Start color"
+msgstr ""
+
+#: target/out/prefPages/widgets.js:191
+msgid "Adjust left side background color mixing, Set this to 1000 to show extracted color"
+msgstr "Dostosuj mieszanie koloru po lewej stronie. 1000 oznacza kolor pobrany"
+
+#: target/out/prefPages/widgets.js:198
+msgid "End opacity"
+msgstr ""
+
+#: target/out/prefPages/widgets.js:199
+msgid "Adjust right side transparency, Set this to 1000 to make opaque"
+msgstr "Dostosuj przezroczystość po prawej stronie. 1000 oznacza brak przezroczystości"
+
+#: target/out/prefPages/widgets.js:206
+msgid "End color"
+msgstr ""
+
+#: target/out/prefPages/widgets.js:207
+msgid "Adjust right side background color mixing, Set this to 1000 to show extracted color"
+msgstr "Dostosuj mieszanie koloru po prawej stronie. 1000 oznacza kolor pobrany"
+
+#: target/out/prefPages/widgets.js:216 target/out/prefPages/widgets.js:226
+msgid "Round clip effect"
+msgstr "Zaokrąglenie"
+
+#: target/out/prefPages/widgets.js:217 target/out/prefPages/widgets.js:231
+msgid "Use round clip effect to make transition more natural"
+msgstr "Użyj zaokrąglenia, aby efekt był bardziej naturalny"
+
+#: target/out/prefPages/widgets.js:234
+msgid "Padding adjustment"
+msgstr "Dostosowywanie wypełnienia"
+
+#: target/out/prefPages/widgets.js:236
+msgid "Adjust clip effect padding, edit this if your theme has a different margin or padding"
+msgstr "Dostosuj efekt wypełnienia, jeśli Twój motyw ma inny margines wypełnieia"
+
+#: target/out/prefPages/widgets.js:253 target/out/prefPages/widgets.js:318
+#: target/out/prefPages/widgets.js:350
+msgid "Remove shadow"
+msgstr "Usuń cień"
+
+#: target/out/prefPages/widgets.js:254
+msgid ""
+"Remove shadow from media message\n"
+"Use if your theme creates unnecessary shadows"
+msgstr ""
+"Usuń cień z powiadomień mediów\n"
+"Użyj, jeśli motyw tworzy niepotrzebne cienie"
+
+#: target/out/prefPages/widgets.js:260
+msgid "Smooth scroll speed"
+msgstr "Kontrla prędkości przewijania"
+
+#: target/out/prefPages/widgets.js:261
+msgid "Adjust trackpad and trackpoint scroll speed, negative number for invert direction"
+msgstr "Dostosuj prędkość przewijania panelu dotykowego lub rolki. Wartość ujemna odwraca kierunek"
+
+#: target/out/prefPages/widgets.js:271
+msgid "Notifications Widget"
+msgstr "Powiadomienia"
+
+#: target/out/prefPages/widgets.js:276
+msgid "Turn on to make the notifications widget visible on the Quick Settings panel"
+msgstr "Pokazuj widżet na panelu szybkich ustawień"
+
+#: target/out/prefPages/widgets.js:281
+msgid "Make notifications smaller"
+msgstr "Zmniejsz powiadomienia"
+
+#: target/out/prefPages/widgets.js:287 target/out/prefPages/widgets.js:418
+msgid "Max height"
+msgstr "Maksymalna wysokość"
+
+#: target/out/prefPages/widgets.js:288
+#, javascript-format
+msgid "Set maximum height of the Notifications widget, default is %d. Set this to 0 to disable max height"
+msgstr "Ustaw maksymalną wysokość powiadomienia, domyślnie %d. Wartość 0 - wyłącza"
+
+#: target/out/prefPages/widgets.js:296 target/out/prefPages/widgets.js:441
+msgid "Fade out offset"
+msgstr "Odstęp zanikania"
+
+#: target/out/prefPages/widgets.js:297 target/out/prefPages/widgets.js:442
+msgid "Set position of the fade out effect begins. Set this to 0 to disable fade out effect. default is 46"
+msgstr "Ostaw początek pozycji zanikania. 0 - wyłączenie efektu, domyślnie 46"
+
+#: target/out/prefPages/widgets.js:304
+msgid "Auto hide"
+msgstr "Automatyczne ukrywanie"
+
+#: target/out/prefPages/widgets.js:305
+msgid "Hide the Notifications widget when have no notifications"
+msgstr "Ukryj widźet powiadomień, jeśli ich nie ma"
+
+#: target/out/prefPages/widgets.js:311
+msgid "Use native controls"
+msgstr "Użyj wbudowanej kontroli"
+
+#: target/out/prefPages/widgets.js:312
+msgid "Use native dnd switch and clear button"
+msgstr "Użyj wbudowanego przycisku Nie przeszkadzać i przycisku Wyczyść"
+
+#: target/out/prefPages/widgets.js:319
+msgid ""
+"Remove shadow from notification message\n"
+"Use if your theme creates unnecessary shadows"
+msgstr ""
+"Usuń cień z powiadomień\n"
+"Użyj, jeśli motyw tworzy nieporzebne cienie"
+
+#: target/out/prefPages/widgets.js:325 target/out/prefPages/widgets.js:427
+msgid "Show scrollbar"
+msgstr "Pokaż pasek przewijania"
+
+#: target/out/prefPages/widgets.js:326
+msgid "Show scrollbar on message list"
+msgstr "Pokaż pasek przewijania"
+
+#: target/out/prefPages/widgets.js:334
+msgid "Weather Widget"
+msgstr "Pogoda"
+
+#: target/out/prefPages/widgets.js:339
+msgid "Turn on to make the weather widget visible on the Quick Settings panel"
+msgstr "Pokazuj widźet w panelu szybkich ustawień"
+
+#: target/out/prefPages/widgets.js:344
+msgid "Make weather widget smaller"
+msgstr "Zmienjsz widźet pogody"
+
+#: target/out/prefPages/widgets.js:351
+msgid ""
+"Remove shadow from weather widget\n"
+"Use if your theme creates unnecessary shadows"
+msgstr ""
+"Usuń cień z powiadomień\n"
+"Użyj, jeśli motyw tworzy nieporzebne cienie"
+
+#: target/out/prefPages/widgets.js:357
+msgid "Click command"
+msgstr "Polecenie kliknięcia"
+
+#: target/out/prefPages/widgets.js:363
+msgid "Show location"
+msgstr "Pokaż lokalizację"
+
+#: target/out/prefPages/widgets.js:364
+msgid "Show the location label on header"
+msgstr "Pokaż lokalizację w nagłówku"
+
+#: target/out/prefPages/widgets.js:373
+msgid "Forecast interval"
+msgstr "Odstęp aktualizacji prognozy"
+
+#: target/out/prefPages/widgets.js:374
+msgid "Adjust forecast interval in hour"
+msgstr "Dostisuj odstęp aktualiacji prognozy"
+
+#: target/out/prefPages/widgets.js:381
+msgid "Max forecasts"
+msgstr "Ilość dni"
+
+#: target/out/prefPages/widgets.js:382
+msgid "Adjust max forecasts"
+msgstr "Maksymalna ilość dni"
+
+#: target/out/prefPages/widgets.js:388 target/out/prefPages/widgets.js:456
+msgid "Volume mixer Widget"
+msgstr "Poziomy głośności"
+
+#: target/out/prefPages/widgets.js:393
+msgid "Turn on to make the volume mixer widget visible on the Quick Settings panel"
+msgstr "Pokazuj widźet w panelu szubkich ustawień"
+
+#: target/out/prefPages/widgets.js:397
+msgid "Label text"
+msgstr "Etykieta"
+
+#: target/out/prefPages/widgets.js:398
+msgid "Choose label above slider text source"
+msgstr "Wybierz etykietę pod żródłem treści suwaka"
+
+#: target/out/prefPages/widgets.js:400
+msgid "Both"
+msgstr "Oba"
+
+#: target/out/prefPages/widgets.js:401
+msgid "Title"
+msgstr "Tytuł"
+
+#: target/out/prefPages/widgets.js:402
+msgid "Description"
+msgstr "Opis"
+
+#: target/out/prefPages/widgets.js:403
+msgid "None"
+msgstr "Brak"
+
+#: target/out/prefPages/widgets.js:411
+msgid "Label opacity"
+msgstr "Przezroczystość"
+
+#: target/out/prefPages/widgets.js:412
+msgid ""
+"Adjust label opacity.\n"
+"Set this to 255 to make opaque, and 0 to make transparent"
+msgstr ""
+"Dostosuj przezroczystość etykiety.\n"
+"255 - nieprzezroczyste, 0 - przezroczyste"
+
+#: target/out/prefPages/widgets.js:419
+#, javascript-format
+msgid "Set maximum height of the Volume mixer widget, default is %d. Set this to 0 to disable max height"
+msgstr "Ustaw maksymalną wysokość widźetu, domyslnie %d. Wartość 0 - wyłącza"
+
+#: target/out/prefPages/widgets.js:428
+msgid "Show scrollbar on mixer list"
+msgstr "Pasek przewijania"
+
+#: target/out/prefPages/widgets.js:434
+msgid "Show stream icon"
+msgstr "Ikona strumienia"
+
+#: target/out/prefPages/widgets.js:435
+msgid "Show stream icon above mixer sliders"
+msgstr "Pokaż ikone strumienia nad suwakiem"
+
+#: target/out/prefPages/widgets.js:450 target/out/prefPages/widgets.js:458
+msgid "Attach to output slider"
+msgstr "Załącz do suwaka wyjścia"
+
+#: target/out/prefPages/widgets.js:451 target/out/prefPages/widgets.js:459
+msgid "Attach volume mixer menu button to output slider. Use if you prefer compact layout"
+msgstr "Załącz poziomy głośności do suwaka wyjścia. Uzywaj, jeśli wolisz tryb kompaktowy"
+
+#: target/out/prefPages/widgets.js:468
+msgid "Menu icon"
+msgstr "Ikona menu"
+
+#: target/out/prefPages/about.js:12 target/out/prefPages/about.js:32
+msgid "About"
+msgstr "O programie"
+
+#: target/out/prefPages/about.js:33
+msgid "Common extension informations"
+msgstr "Podstawowe informacje o rozszerzeniu"
+
+#: target/out/prefPages/about.js:36 target/out/prefPages/about.js:40
+msgid "Changelogs"
+msgstr "Dziennik zmian"
+
+#: target/out/prefPages/about.js:37 target/out/prefPages/about.js:41
+msgid "View the change history for this extension"
+msgstr "Wyświetl historię zmian tego rozszerzenia"
+
+#: target/out/prefPages/about.js:50 target/out/prefPages/about.js:57
+msgid "License of codes"
+msgstr "Licencja"
+
+#: target/out/prefPages/about.js:63 target/out/prefPages/about.js:65
+#: target/out/prefPages/about.js:69
+msgid "Contributors"
+msgstr "Współtwórcy"
+
+#: target/out/prefPages/about.js:64 target/out/prefPages/about.js:70
+msgid "The creators of this extension"
+msgstr "Twórcy tego rozszerzenia"
+
+#: target/out/prefPages/about.js:74
+msgid "More contributors"
+msgstr "Więcej współtwórców"
+
+#: target/out/prefPages/about.js:75
+msgid "See more contributors on github"
+msgstr "Więcej na GitHub"
+
+#: target/out/prefPages/about.js:85
+msgid "Link"
+msgstr "Odnośnik"
+
+#: target/out/prefPages/about.js:86
+msgid "External links about this extension"
+msgstr "Odnośniki zewnętrzne"
+
+#: target/out/prefPages/about.js:90
+msgid "Donate via github sponsors"
+msgstr "Dotacje za pomoca sponsorów GitHub"
+
+#: target/out/prefPages/about.js:91
+msgid "Support development!"
+msgstr "Wspomóż twórców!"
+
+#: target/out/prefPages/about.js:97
+msgid "Rate and comment the extension!"
+msgstr "Oceń i skomentuj rozszerzenie!"
+
+#: target/out/prefPages/about.js:102
+msgid "Github Repository"
+msgstr "Repozytorium GitHub"
+
+#: target/out/prefPages/about.js:103
+msgid ""
+"Add Star on Repository is helping me a lot!\n"
+"Please, if you found bug from this extension, you can make issue to make me know that!\n"
+"Or, you can create PR with wonderful features!"
+msgstr ""
+"Dodanie gwiazdki w repozytorium bardzo mi pomaga!\n"
+"Jeśli znalazłeś błąd tego rozszerzenia, możesz zgłosić go, aby powiadomić nas o nim!\n"
+"Lub możesz stworzyć PR ze wspaniałymi funkcjami!"
+
+#: target/out/prefPages/about.js:109
+msgid "Add translation to this extension!"
+msgstr "Dodaj tłumaczenie do tego rozszerzenia!"
+
+#: target/out/prefPages/about.js:115
+msgid "Debug"
+msgstr "Debuguj"
+
+#: target/out/prefPages/about.js:116
+msgid "Extension debugging options"
+msgstr "Opcje"
+
+#: target/out/prefPages/about.js:120
+msgid "Expose environment"
+msgstr "Wystaw środowisko"
+
+#: target/out/prefPages/about.js:121
+msgid "Expose extension environment to globalThis.qst"
+msgstr "Wystaw środowisko na globalThis.qst"
+
+#: target/out/prefPages/about.js:126
+msgid "Show layout border"
+msgstr "Granice układu"
+
+#: target/out/prefPages/about.js:127
+msgid "Show layout borders on Quick Settings"
+msgstr "Pokaż granice ukladu panela szybkich ustawień"
+
+#: target/out/prefPages/about.js:132
+msgid "Log level"
+msgstr "Poziom dziennika zdarzeń"
+
+#: target/out/prefPages/about.js:135
+msgid "none"
+msgstr "brak"
+
+#: target/out/prefPages/about.js:136
+msgid "error"
+msgstr "błąd"
+
+#: target/out/prefPages/about.js:137
+msgid "info"
+msgstr "info"
+
+#: target/out/prefPages/about.js:138
+msgid "debug"
+msgstr "debug"
+
+#: target/out/prefPages/toggles.js:12
+msgid "Toggles"
+msgstr "Przełączniki"
+
+#: target/out/prefPages/toggles.js:19
+msgid "DND Quick Toggle"
+msgstr "Nie przeszkadzać"
+
+#: target/out/prefPages/toggles.js:20
+msgid "Turn on to add the DND quick toggle on the Quick Settings panel"
+msgstr "Włącz przycisk w ustalonej pozycji"
+
+#: target/out/prefPages/toggles.js:28
+msgid "DND indicator position"
+msgstr "Pozycja"
+
+#: target/out/prefPages/toggles.js:29
+msgid "Set DND indicator position"
+msgstr "Ustaw pozycję"
+
+#: target/out/prefPages/toggles.js:33
+msgid "System Tray"
+msgstr "Panel szybkich ustawień"
+
+#: target/out/prefPages/toggles.js:34
+msgid "Date Menu Button"
+msgstr "Menu daty"
+
+#: target/out/prefPages/toggles.js:41
+msgid "Unsafe Mode Quick Toggle"
+msgstr "Tryb niezabezpieczony"
+
+#: target/out/prefPages/toggles.js:42
+msgid "Turn on to add the unsafe quick toggle on the Quick Settings panel"
+msgstr "Włącz przycisk w panelu szybkich ustawień"
+
+#: target/out/prefPages/toggles.js:50
+msgid "Save last session state"
+msgstr "Pamiętaj stan"
+
+#: target/out/prefPages/toggles.js:51
+msgid "Turn on to save last session unsafe state"
+msgstr "Włącz zapamiętywanie ostatniego stanu"
+
+#: target/out/prefPages/menu.js:9 target/out/prefPages/menu.js:141
+msgid "Advanced animation style"
+msgstr "Dostosowywanie"
+
+#: target/out/prefPages/menu.js:13
+msgid "Open Duration"
+msgstr "Czas"
+
+#: target/out/prefPages/menu.js:14
+msgid "Open animation duration in microseconds"
+msgstr "Czas otwarcia w mikrosekundach"
+
+#: target/out/prefPages/menu.js:21
+msgid "Close Duration"
+msgstr "Zamknięcie"
+
+#: target/out/prefPages/menu.js:22
+msgid "Close animation duration in microseconds"
+msgstr "Czas zamkniecia w mikrosekundach"
+
+#: target/out/prefPages/menu.js:29
+msgid "Grid Content Opacity"
+msgstr "Przezroczystość"
+
+#: target/out/prefPages/menu.js:30
+msgid ""
+"Adjust grid content opacity.\n"
+"Set this to 255 to make opaque, and 0 to make transparent"
+msgstr ""
+"Dostosuj przezroczystość zawartości siatki.\n"
+"255 - nieprzeroczyste, 0 - przezroczyste"
+
+#: target/out/prefPages/menu.js:37
+msgid "Background Blur Radius"
+msgstr "Rozmycie"
+
+#: target/out/prefPages/menu.js:38
+msgid ""
+"Adjust background blur radius.\n"
+"Set this to 0 to disable blur effect"
+msgstr ""
+"Dostsuj rozmycie tła.\n"
+"0 - bez rozycia tła"
+
+#: target/out/prefPages/menu.js:45
+msgid "Background Brightness"
+msgstr "Jasność"
+
+#: target/out/prefPages/menu.js:46
+msgid ""
+"Adjust background brightness.\n"
+"Set this to 1000 to disable brightness control effect.\n"
+"Not impacts on gnome-shell's default dim effect."
+msgstr ""
+"1000 - wyłącza zarządzanie jasnością.\n"
+"nie wpływa na domyślny efekt powłoki GNOME."
+
+#: target/out/prefPages/menu.js:53
+msgid "Background Opacity"
+msgstr "Przezroczystość"
+
+#: target/out/prefPages/menu.js:54
+msgid ""
+"Adjust background opacity.\n"
+"Set this to 255 to make opaque, and 0 to make transparent"
+msgstr ""
+"Dostosuj przezroczystość tła.\n"
+"255 - nieprzeroczyste, 0 - przezroczyste"
+
+#: target/out/prefPages/menu.js:61
+msgid "Background X Scale"
+msgstr "Skalowanie w osi X"
+
+#: target/out/prefPages/menu.js:62
+msgid "Adjust background x scale, 1000 means 1.0 scale"
+msgstr "Dostosuj skalowanie w osi X, 1000 oznaza skalę 1.0"
+
+#: target/out/prefPages/menu.js:69
+msgid "Background Y Scale"
+msgstr "Skalowanie w osi Y"
+
+#: target/out/prefPages/menu.js:70
+msgid "Adjust background y scale, 1000 means 1.0 scale"
+msgstr "Dostosuj skalowanie w osi Y, 1000 oznaza skalę 1.0"
+
+#: target/out/prefPages/menu.js:84
+msgid "Menu"
+msgstr "Menu"
+
+#: target/out/prefPages/menu.js:91
+msgid "Overlay Mode"
+msgstr "Tryb nakładania"
+
+#: target/out/prefPages/menu.js:92
+msgid "Display toggle, power, and sound menus as overlay"
+msgstr "Nakładaj na przełączniki, zasilanie oraz wyjścia audio dodatkowe menu"
+
+#: target/out/prefPages/menu.js:101
+msgid "Overlay Width"
+msgstr "Szerokość"
+
+#: target/out/prefPages/menu.js:102
+msgid ""
+"Adjust overlay menu width\n"
+"Set this to 0 to disable adjusting"
+msgstr ""
+"Dostosuj szerokość dodatkowego menu\n"
+"0 - wyłącza"
+
+#: target/out/prefPages/menu.js:109
+msgid "Overlay Animation Duration"
+msgstr "Czas animacji"
+
+#: target/out/prefPages/menu.js:110
+msgid ""
+"Custom menu open animation duration in microseconds\n"
+"Set this to 0 to disable custom animation"
+msgstr ""
+"Czas otwarcia animacji w mikrosekundach\n"
+"0 - wyłącza"
+
+#: target/out/prefPages/menu.js:117
+msgid "Overlay Animation Style"
+msgstr "Styl"
+
+#: target/out/prefPages/menu.js:118
+msgid "Custom menu open animation style"
+msgstr "Rodzaj animacji"
+
+#: target/out/prefPages/menu.js:120
+msgid "Flyout"
+msgstr "Wylatywanie"
+
+#: target/out/prefPages/menu.js:121
+msgid "Dialog"
+msgstr "Okno"
+
+#: target/out/prefPages/menu.js:130 target/out/prefPages/menu.js:143
+msgid "Animation"
+msgstr "Animacja"
+
+#: target/out/prefPages/menu.js:131
+msgid ""
+"Add menu animation on toggle menu opening and closing\n"
+"To get the best feel, turn on overlay mode"
+msgstr ""
+"Dodaj animację do otwierania oraz zamykania menu\n"
+"Włącz tryb nakładania, dla lepszego efektu"
+
+#: target/out/prefPages/menu.js:142
+msgid "Adjust speed, blur, scale, and opacity"
+msgstr "Dostosuj pręszkość, rozycie, skalowanie oraz przezroczystość"
+
+#: target/out/prefPages/layout.js:25
+msgid "The item not found"
+msgstr "NIe znaleziono elementu"
+
+#: target/out/prefPages/layout.js:28
+msgid "No changes"
+msgstr "Brak zmian"
+
+#: target/out/prefPages/layout.js:31
+msgid "The same item already exists"
+msgstr "Taki element już istnieje"
+
+#: target/out/prefPages/layout.js:40
+#, javascript-format
+msgid "Properties of %s"
+msgstr "Właściwości %s"
+
+#: target/out/prefPages/layout.js:47
+msgid "Save"
+msgstr "Zapisz"
+
+#: target/out/prefPages/layout.js:64
+msgid "Toggle editor"
+msgstr "Edytor przełącznika"
+
+#: target/out/prefPages/layout.js:84
+msgid "This option requires full gnome-shell reloading"
+msgstr "Opcja wymaga przeładowania powłoki GNOME"
+
+#: target/out/prefPages/layout.js:160 target/out/prefPages/layout.js:278
+#: target/out/prefPages/layout.js:437 target/out/prefPages/layout.js:672
+msgid "Hide"
+msgstr "Ukryj"
+
+#: target/out/prefPages/layout.js:232
+#, javascript-format
+msgid "My item #%d"
+msgstr "Mój element #%d"
+
+#: target/out/prefPages/layout.js:250
+msgid "New Item"
+msgstr "Nowy element"
+
+#: target/out/prefPages/layout.js:261 target/out/prefPages/layout.js:610
+#: target/out/prefPages/layout.js:737 target/out/prefPages/layout.js:787
+#: target/out/prefPages/layout.js:813
+msgid "Ordering and Hiding"
+msgstr "Ukrywanie i kolejność"
+
+#: target/out/prefPages/layout.js:273 target/out/prefPages/layout.js:432
+msgid "Friendly Name"
+msgstr "Nazwa przełącznika"
+
+#: target/out/prefPages/layout.js:283
+msgid "Title Regex (Javascript Regex)"
+msgstr "Tytuł Regex (JavaScript Regex)"
+
+#: target/out/prefPages/layout.js:288 target/out/prefPages/layout.js:442
+msgid "Constructor Name"
+msgstr "Nazwa"
+
+#: target/out/prefPages/layout.js:294 target/out/prefPages/layout.js:448
+msgid "GType Name"
+msgstr "Nazwa GType"
+
+#: target/out/prefPages/layout.js:302 target/out/prefPages/layout.js:456
+msgid "This is the comment for easy identification in the settings list. It has no effect on the behavior of the extension"
+msgstr "To jest komentarz do łatwej identyfikacji na liście ustawień. Nie ma on wpływu na zachowanie rozszerzenia"
+
+#: target/out/prefPages/layout.js:307 target/out/prefPages/layout.js:461
+msgid "Javascript constructor name"
+msgstr "Nazwa konstruktora JavaScript"
+
+#: target/out/prefPages/layout.js:312 target/out/prefPages/layout.js:466
+msgid "GObject gtype name. You can get this value by calling GObject.type_name_from_instance"
+msgstr "Nazwa typu GObject. Możesz uzyskać tę wartość, wywołując GObject.type_name_from_instance"
+
+#: target/out/prefPages/layout.js:342
+msgid "Keyboard Backlight"
+msgstr "Podświetlenie klawiatury"
+
+#: target/out/prefPages/layout.js:388 target/out/prefPages/layout.js:538
+msgid "Unordered items"
+msgstr "Elementy bez kolejności"
+
+#: target/out/prefPages/layout.js:486
+msgid "Remote Access Applet"
+msgstr "Aplet dostępu zdalnego"
+
+#: target/out/prefPages/layout.js:487
+msgid "Camera"
+msgstr "Aparat"
+
+#: target/out/prefPages/layout.js:488
+msgid "Volume Input"
+msgstr "Wejście audio"
+
+#: target/out/prefPages/layout.js:489
+msgid "Location"
+msgstr "Lokalizacja"
+
+#: target/out/prefPages/layout.js:490
+msgid "Thunderbolt"
+msgstr "Thunderbolt"
+
+#: target/out/prefPages/layout.js:492
+msgid "Network"
+msgstr "Sieć"
+
+#: target/out/prefPages/layout.js:495
+msgid "Volume Output"
+msgstr "Wyjscie audio"
+
+#: target/out/prefPages/layout.js:497
+msgid "System (Battery)"
+msgstr "System (bateria)"
+
+#: target/out/prefPages/layout.js:618
+msgid "Desktop Spacer"
+msgstr "Pusta przestrzeń pulpitu"
+
+#: target/out/prefPages/layout.js:629
+msgid "Laptop Spacer"
+msgstr "Pusta przestrzeń laptopa"
+
+#: target/out/prefPages/layout.js:641
+msgid "Capture button"
+msgstr "Przechwytywanie"
+
+#: target/out/prefPages/layout.js:647
+msgid "Settings button"
+msgstr "Ustawienia"
+
+#: target/out/prefPages/layout.js:653
+msgid "Lock button"
+msgstr "Zablokuj"
+
+#: target/out/prefPages/layout.js:659
+msgid "Shutdown button"
+msgstr "Wyłącz"
+
+#: target/out/prefPages/layout.js:665
+msgid "Battery button"
+msgstr "Bateria"
+
+#: target/out/prefPages/layout.js:711
+msgid "Layout"
+msgstr "Układ"
+
+#: target/out/prefPages/layout.js:718
+msgid "Quick Toggles Layout"
+msgstr "Układ przełączników"
+
+#: target/out/prefPages/layout.js:719 target/out/prefPages/layout.js:734
+msgid "Adjust quick toggles layout"
+msgstr "Dostosuj układ przełączników"
+
+#: target/out/prefPages/layout.js:738
+msgid "Reorder and hide quick toggles"
+msgstr "Zmień kolejność i ukryj"
+
+#: target/out/prefPages/layout.js:745
+msgid "System Indicators"
+msgstr "Wskaźniki systemowe"
+
+#: target/out/prefPages/layout.js:746
+msgid "Adjust system indicators layout and style"
+msgstr "Dostosuj układ oraz styl wskaźników systemowych"
+
+#: target/out/prefPages/layout.js:751
+msgid "Accent screen sharing indicator"
+msgstr "Udostępnianie"
+
+#: target/out/prefPages/layout.js:752
+msgid "Use shell accent color on screen sharing indicator"
+msgstr "Użyj koloru powłoki"
+
+#: target/out/prefPages/layout.js:757
+msgid "Accent screen recording indicator"
+msgstr "Nagrywanie ekranu"
+
+#: target/out/prefPages/layout.js:758
+msgid "Use shell accent color on screen recording indicator"
+msgstr "Użyj koloru powłoki"
+
+#: target/out/prefPages/layout.js:763
+msgid "Privacy indicators style"
+msgstr "Prywatność"
+
+#: target/out/prefPages/layout.js:764
+msgid "Use monochrome or shell accent color on privarcy indicators"
+msgstr "Użyj koloru powłoki"
+
+#: target/out/prefPages/layout.js:767
+msgid "Accent"
+msgstr "Kolor akcentu"
+
+#: target/out/prefPages/layout.js:768
+msgid "Monochrome"
+msgstr "Monochromatyczny"
+
+#: target/out/prefPages/layout.js:777
+msgid "Adjust system indicators"
+msgstr "Dostosuj wskaźniki systemowe"
+
+#: target/out/prefPages/layout.js:788
+msgid "Reorder and hide system indicators"
+msgstr "Zmień i ukryj wskaźniki systemowe"
+
+#: target/out/prefPages/layout.js:795
+msgid "System Items Layout"
+msgstr "Elementy systemowe"
+
+#: target/out/prefPages/layout.js:800 target/out/prefPages/layout.js:815
+msgid "Adjust system items layout"
+msgstr "Dostosuj układ elementów systemowych"
+
+#: target/out/prefPages/layout.js:804
+msgid "Hide layout box"
+msgstr "Elementy systemowe"
+
+#: target/out/prefPages/layout.js:805
+msgid "Hide all buttons and layout box"
+msgstr "Ukryj wszystkie przyciski"
+
+#: target/out/prefPages/layout.js:814
+msgid "Reorder and hide system items"
+msgstr "Zmień kolejność i ukryj elementy"
+
+#: target/out/prefPages/layout.js:823
+msgid "Date Menu"
+msgstr "Data"
+
+#: target/out/prefPages/layout.js:824
+msgid "Adjust Date Menu layout"
+msgstr "Dostosuj układ menu daty"
+
+#: target/out/prefPages/layout.js:828
+msgid "Hide left box"
+msgstr "Lewy panel"
+
+#: target/out/prefPages/layout.js:829
+msgid "Hide the left box of the date menu, which contains notifications and media control"
+msgstr "Ukryj lewy panel, który zawiera powiadomienia oraz sterownie mediami"
+
+#: target/out/prefPages/layout.js:834
+msgid "Hide right box"
+msgstr "Prawy panel"
+
+#: target/out/prefPages/layout.js:835
+msgid "Hide the right box of the date menu, which contains calendar, world clock and weather"
+msgstr "Ukryj prawy panel. który zawiera kalendarz, zegar światowy oraz pogodę"
+
+#: target/out/prefPages/layout.js:840
+msgid "Disable menu"
+msgstr "Wyłącz menu"
+
+#: target/out/prefPages/layout.js:841
+msgid "Do not open date menu when the date menu button clicked"
+msgstr "Nie otwieraj menu po jego kliknięciu"
+
+#~ msgid "Height"
+#~ msgstr "Wysokość"
+
+#~ msgid "Set this to 0 to use default height"
+#~ msgstr "0 - domyślna wysokość"
+
+#~ msgid "Start opaque"
+#~ msgstr "Wyłącz przezroczystość"
+
+#~ msgid "End opaque"
+#~ msgstr "Włącz przezroczystość"
+
+#~ msgid "Hide Notifications"
+#~ msgstr "Przestrzeń powiadomień"
+
+#~ msgid "Hide notifications on the date menu"
+#~ msgstr "Ukryj przestrzeń powiadomień"
+
+#~ msgid "Hide Media Control"
+#~ msgstr "Sterowanie mediami"
+
+#~ msgid "Hide media control on the date menu"
+#~ msgstr "Ukryj sterowanie mediami"

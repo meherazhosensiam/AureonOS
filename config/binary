@@ -7,10 +7,10 @@ LB_IMAGE_TYPE="iso-hybrid"
 LB_BINARY_FILESYSTEM="fat32"
 
 # Set apt/aptitude generic indices
-LB_APT_INDICES="false"
+LB_APT_INDICES="true"
 
 # Set boot parameters
-LB_BOOTAPPEND_LIVE="boot=live components quiet splash"
+LB_BOOTAPPEND_LIVE="boot=live components username=aureon user-fullname='AureonOS Live User' hostname=aureonos"
 
 # Set boot parameters
 LB_BOOTAPPEND_INSTALL=""
@@ -50,10 +50,10 @@ LB_ZSYNC="false"
 LB_BUILD_WITH_CHROOT="true"
 
 # Set debian-installer
-LB_DEBIAN_INSTALLER="live"
+LB_DEBIAN_INSTALLER="none"
 
 # Set debian-installer suite
-LB_DEBIAN_INSTALLER_DISTRIBUTION="none"
+LB_DEBIAN_INSTALLER_DISTRIBUTION="trixie"
 
 # Set debian-installer preseed filename/url
 LB_DEBIAN_INSTALLER_PRESEEDFILE=""
@@ -62,7 +62,7 @@ LB_DEBIAN_INSTALLER_PRESEEDFILE=""
 LB_DEBIAN_INSTALLER_GUI="true"
 
 # Set hdd label
-LB_HDD_LABEL="AUREON_OS"
+LB_HDD_LABEL="DEBIAN_LIVE"
 
 # Set hdd filesystem size
 LB_HDD_SIZE="auto"
@@ -74,10 +74,10 @@ LB_HDD_PARTITION_START=""
 LB_ISO_APPLICATION="AUREON OS"
 
 # Set iso preparer
-LB_ISO_PREPARER="AureonOS Build System"
+LB_ISO_PREPARER="live-build @LB_VERSION@; https://salsa.debian.org/live-team/live-build"
 
 # Set iso publisher
-LB_ISO_PUBLISHER="AUREON Project"
+LB_ISO_PUBLISHER="AUREON OS; https://aureon-os.local"
 
 # Set iso volume (max 32 chars)
 LB_ISO_VOLUME="AureonOS"
@@ -89,7 +89,7 @@ LB_JFFS2_ERASEBLOCK=""
 LB_MEMTEST="none"
 
 # Set loadlin
-LB_LOADLIN="false"
+LB_LOADLIN="true"
 
 # Set win32-loader
 LB_WIN32_LOADER="false"
