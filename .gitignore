@@ -4,3 +4,4 @@ chroot/
 cache/
 *.iso
 *.list
+work/
