@@ -111,7 +111,7 @@ lb config noauto \
     --iso-publisher "AUREON OS; https://aureon-os.local" \
     --linux-packages "linux-image" \
     --linux-flavours "$KERNEL_FLAVOUR" \
-    --bootappend-live "boot=live components username=aureon user-fullname='AureonOS Live User' hostname=aureonos" \
+    --bootappend-live "boot=live components username=aureon user-fullname='AureonOS Live User' hostname=AureonOS \
     "$@"
 
 echo
