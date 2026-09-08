@@ -102,7 +102,7 @@ lb config noauto \
     --architectures "$ARCH" \
     --archive-areas "main contrib non-free-firmware non-free" \
     --binary-images iso-hybrid \
-    --debian-installer none \
+     --debian-installer false \
     --mirror-bootstrap "http://deb.debian.org/debian/" \
     --mirror-chroot "http://deb.debian.org/debian/" \
     --mirror-binary "http://deb.debian.org/debian/" \
