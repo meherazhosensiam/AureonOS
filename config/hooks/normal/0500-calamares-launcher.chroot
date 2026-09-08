@@ -1,4 +1,18 @@
 #!/bin/bash
 set -e
 
-chmod 644 /usr/share/applications/install-aureon.desktop
+DESKTOP="/usr/share/applications/install-aureon.desktop"
+
+cat > "$DESKTOP" <<'EOF'
+[Desktop Entry]
+Name=Install AureonOS
+Comment=Install AureonOS to your computer
+Exec=pkexec calamares
+Icon=system-software-install
+Terminal=false
+Type=Application
+Categories=System;Installer;
+StartupNotify=true
+EOF
+
+chmod 644 "$DESKTOP"
