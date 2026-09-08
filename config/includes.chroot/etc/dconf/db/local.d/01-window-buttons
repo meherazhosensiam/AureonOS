@@ -10,4 +10,4 @@
 # After modifying this file, run: dconf update
 [org/gnome/desktop/wm/preferences]
 button-layout=':minimize,maximize,close'
-EOF
+
