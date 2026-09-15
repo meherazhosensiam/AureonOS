@@ -1,0 +1,2 @@
+# @PROJECT_NAME@ branding for the installed GRUB menu.
+GRUB_DISTRIBUTOR="@PROJECT_NAME@"

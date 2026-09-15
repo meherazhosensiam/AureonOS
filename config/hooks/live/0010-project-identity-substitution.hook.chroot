@@ -1,0 +1,121 @@
+#!/bin/sh
+# ============================================================
+# AUREON OS - Project Identity Substitution Hook
+# ============================================================
+# This hook runs early in the live stage to substitute project
+# identity/version placeholders in template files.
+#
+# It reads the canonical project configuration and replaces
+# placeholders in files matching *.in or *.template patterns.
+# ============================================================
+
+set -e
+
+# Path to canonical config (copied to chroot by live-build includes)
+CONFIG_FILE="/etc/aureon/project.conf"
+
+if [ ! -f "$CONFIG_FILE" ]; then
+    echo "WARNING: Project config not found at $CONFIG_FILE, skipping substitution"
+    exit 0
+fi
+
+# Load canonical configuration
+. "$CONFIG_FILE"
+
+# Derived values
+ISO_VOLUME=$(echo "$PROJECT_NAME" | tr -d ' ')
+BOOT_USERNAME="${PROJECT_USERNAME}"
+HOSTNAME="${PROJECT_ID}"
+
+# Placeholder mappings
+# Format: PLACEHOLDER=value
+substitute_placeholders() {
+    local file="$1"
+    local temp_file="${file}.tmp"
+
+    # Use sed for substitution
+    sed \
+        -e "s|@PROJECT_NAME@|$PROJECT_NAME|g" \
+        -e "s|@PROJECT_ID@|$PROJECT_ID|g" \
+        -e "s|@PROJECT_USERNAME@|$PROJECT_USERNAME|g" \
+        -e "s|@PROJECT_VERSION@|$PROJECT_VERSION|g" \
+        -e "s|@PROJECT_CODENAME@|$PROJECT_CODENAME|g" \
+        -e "s|@PROJECT_DESCRIPTION@|$PROJECT_DESCRIPTION|g" \
+        -e "s|@PROJECT_VENDOR@|$PROJECT_VENDOR|g" \
+        -e "s|@PROJECT_HOME_URL@|$PROJECT_HOME_URL|g" \
+        -e "s|@PROJECT_SUPPORT_URL@|$PROJECT_SUPPORT_URL|g" \
+        -e "s|@PROJECT_BUG_URL@|$PROJECT_BUG_URL|g" \
+        -e "s|@BASE_DISTRIBUTION@|$BASE_DISTRIBUTION|g" \
+        -e "s|@BASE_DISTRIBUTION_CODENAME@|$BASE_DISTRIBUTION_CODENAME|g" \
+        -e "s|@ISO_VOLUME@|$ISO_VOLUME|g" \
+        -e "s|@BOOT_USERNAME@|$BOOT_USERNAME|g" \
+        -e "s|@HOSTNAME@|$HOSTNAME|g" \
+        "$file" > "$temp_file"
+
+    mv "$temp_file" "$file"
+}
+
+# Substitute placeholders in filename
+substitute_filename() {
+    local file="$1"
+    local dir=$(dirname "$file")
+    local base=$(basename "$file")
+    local new_base="$base"
+
+    # Substitute @PROJECT_ID@ in filename
+    new_base=$(echo "$new_base" | sed "s|@PROJECT_ID@|$PROJECT_ID|g")
+
+    if [ "$base" != "$new_base" ]; then
+        mv "$file" "$dir/$new_base"
+        echo "$dir/$new_base"
+    else
+        echo "$file"
+    fi
+}
+
+# Find and process template files
+# We look for files with .in or .template extension
+echo "==> Substituting project identity placeholders..."
+
+# Process files in /etc
+find /etc -type f \( -name "*.in" -o -name "*.template" \) 2>/dev/null | while read -r file; do
+    echo "  Processing: $file"
+    substitute_placeholders "$file"
+    # Rename to remove .in/.template extension
+    new_name="${file%.in}"
+    new_name="${new_name%.template}"
+    if [ "$file" != "$new_name" ]; then
+        mv "$file" "$new_name"
+        file="$new_name"
+    fi
+    # Also substitute placeholders in filename
+    file=$(substitute_filename "$file")
+done
+
+# Process files in /usr
+find /usr -type f \( -name "*.in" -o -name "*.template" \) 2>/dev/null | while read -r file; do
+    echo "  Processing: $file"
+    substitute_placeholders "$file"
+    new_name="${file%.in}"
+    new_name="${new_name%.template}"
+    if [ "$file" != "$new_name" ]; then
+        mv "$file" "$new_name"
+        file="$new_name"
+    fi
+    file=$(substitute_filename "$file")
+done
+
+# Process files in /etc/skel
+find /etc/skel -type f \( -name "*.in" -o -name "*.template" \) 2>/dev/null | while read -r file; do
+    echo "  Processing: $file"
+    substitute_placeholders "$file"
+    new_name="${file%.in}"
+    new_name="${new_name%.template}"
+    if [ "$file" != "$new_name" ]; then
+        mv "$file" "$new_name"
+        file="$new_name"
+    fi
+    file=$(substitute_filename "$file")
+done
+
+echo "==> Project identity substitution complete."

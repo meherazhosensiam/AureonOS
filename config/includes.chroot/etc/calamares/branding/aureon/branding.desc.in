@@ -1,0 +1,40 @@
+---
+componentName:   aureon
+welcomeStyleCalamares: true
+welcomeExpandingLogo: true
+windowExpanding: normal
+windowSize: 800px,580px
+windowPlacement: center
+
+strings:
+    productName:         @PROJECT_NAME@ GNU/Linux
+    shortProductName:    @PROJECT_NAME@
+    version:             @PROJECT_VERSION@
+    shortVersion:        @PROJECT_VERSION@
+    versionedName:       @PROJECT_NAME@ @PROJECT_VERSION@
+    shortVersionedName:  @PROJECT_NAME@ @PROJECT_VERSION@
+    bootloaderEntryName: @PROJECT_NAME@
+    productUrl:          
+    supportUrl:          
+    knownIssuesUrl:      
+    releaseNotesUrl:     
+    donateUrl:           
+
+sidebar: widget
+navigation: widget
+
+images:
+    productLogo:         "/usr/share/@PROJECT_ID@/assets/logo.png"
+    productIcon:         "/usr/share/@PROJECT_ID@/assets/logo.png"
+    productWelcome:      "/usr/share/@PROJECT_ID@/assets/logo.png"
+    productBottom:       "/usr/share/@PROJECT_ID@/assets/text-logo.png"
+
+slideshow:               "show.qml"
+
+style:
+   SidebarBackground:    "#000000"
+   SidebarText:          "#FFFFFF"
+   SidebarTextCurrent:   "#fbfbfb"
+   SidebarBackgroundCurrent: "#d22913"
+
+slideshowAPI: 2

@@ -1,0 +1,28 @@
+#!/bin/sh
+set -e
+
+# ============================================================
+# AUREON OS - Copy Project Config to Chroot
+# ============================================================
+# This hook ensures the project.conf is available in the chroot
+# for the project identity substitution hook.
+# It runs early in the live hook stage (before substitution hook).
+
+# Source is in includes.chroot which should be copied by live-build
+# But if it's not there, copy from the build config
+SRC="/etc/aureon/project.conf"
+if [ ! -f "$SRC" ]; then
+    # Try to find it in the build directory
+    if [ -f "/config/project.conf" ]; then
+        mkdir -p /etc/aureon
+        cp /config/project.conf /etc/aureon/project.conf
+    fi
+fi
+
+# Verify it exists now
+if [ ! -f "/etc/aureon/project.conf" ]; then
+    echo "WARNING: project.conf still not found at /etc/aureon/project.conf"
+    exit 0
+fi
+
+echo "Project config copied to chroot: /etc/aureon/project.conf"

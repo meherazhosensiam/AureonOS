@@ -1,0 +1,33 @@
+#!/bin/bash
+set -e
+
+# ============================================================
+# AUREON OS - Set Plymouth Boot Theme
+# ============================================================
+# This hook configures the Plymouth boot splash theme and
+# regenerates the initramfs to include the theme.
+#
+# EXECUTION ORDER: Runs during LIVE hook stage (after normal hooks).
+# This runs AFTER project identity substitution (0010-project-identity-substitution),
+# so the plymouth template files (*.in) have been processed to their final form.
+#
+# The theme files are in:
+#   config/includes.chroot/usr/share/plymouth/themes/aureon/
+# These are copied to the chroot during chroot_includes_before_packages
+# stage, then processed by the substitution hook to replace placeholders.
+#
+# COMMAND:
+#   plymouth-set-default-theme -R "aureon"
+#   -R, --rebuild-initrd: Regenerate initramfs after setting theme
+# This ensures the initramfs in the live system contains the theme.
+#
+# The theme is also configured for the installed system via
+# Calamares plymouthcfg module (config/includes.chroot/etc/calamares/modules/plymouthcfg.conf)
+
+# Set the AUREON theme and update initramfs
+# Only run if plymouth is installed
+if command -v plymouth-set-default-theme >/dev/null 2>&1; then
+    plymouth-set-default-theme -R "aureon"
+else
+    echo "WARNING: plymouth not installed, skipping theme configuration"
+fi

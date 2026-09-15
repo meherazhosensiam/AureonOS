@@ -33,8 +33,19 @@ set -Eeuo pipefail
 # Configuration
 # ============================================================
 
-PROJECT_NAME="AureonOS"
-VERSION="1.0"
+# Load canonical project configuration
+PROJECT_CONF="${PROJECT_CONF:-$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/config/project.conf}"
+if [[ -f "$PROJECT_CONF" ]]; then
+    # shellcheck source=/dev/null
+    source "$PROJECT_CONF"
+else
+    error "Canonical project configuration not found: $PROJECT_CONF"
+    exit 1
+fi
+
+# Use canonical values (can be overridden by command-line arguments)
+PROJECT_NAME="${PROJECT_NAME:-AureonOS}"
+VERSION="${PROJECT_VERSION:-1.0}"
 
 DEFAULT_ARCH="amd64"
 ARCH="$DEFAULT_ARCH"
@@ -42,9 +53,10 @@ ARCH="$DEFAULT_ARCH"
 # Architecture-specific kernel package.
 KERNEL_PACKAGE=""
 
-DISTRIBUTION="trixie"
+DISTRIBUTION="${BASE_DISTRIBUTION:-trixie}"
 
-ISO_VOLUME="$PROJECT_NAME"
+# Derived values from canonical config
+ISO_VOLUME="${PROJECT_NAME// /}"
 ISO_NAME=""
 
 PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -436,7 +448,7 @@ generate_iso_name() {
 
     if [[ -z "$ISO_NAME" ]]; then
 
-        ISO_NAME="${PROJECT_NAME}-${VERSION}-${ARCH}.iso"
+        ISO_NAME="${PROJECT_ID}-${VERSION}-${ARCH}.iso"
 
     fi
 
@@ -474,28 +486,28 @@ show_help() {
 
     echo
     echo "  -v, --version VERSION"
-    echo "      Set the AureonOS version."
-    echo "      Default: 1.0"
+    echo "      Set the project version."
+    echo "      Default: ${VERSION}"
 
     echo
     echo "  -n, --name NAME"
     echo "      Set the project/ISO name."
-    echo "      Default: AureonOS"
+    echo "      Default: ${PROJECT_NAME}"
 
     echo
     echo "  --iso-name NAME"
     echo "      Set the exact final ISO filename."
-    echo "      Example: --iso-name AureonOS-Custom.iso"
+    echo "      Example: --iso-name ${PROJECT_NAME// /}-Custom.iso"
 
     echo
     echo "  --iso-volume NAME"
     echo "      Set the ISO volume label."
-    echo "      Default: AureonOS"
+    echo "      Default: ${ISO_VOLUME}"
 
     echo
     echo "  --distribution NAME"
     echo "      Debian distribution."
-    echo "      Default: trixie"
+    echo "      Default: ${DISTRIBUTION}"
 
     echo
 

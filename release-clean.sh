@@ -22,26 +22,17 @@
 #
 # ---------------------------------------------------------------------------
 
-# -----------------------------------------------------------------------------
 # Strict mode
-# -----------------------------------------------------------------------------
-# -E : ERR trap is inherited by shell functions, subshells, command substitutions
-# -e : exit immediately on an unhandled non-zero exit status
-# -u : treat unset variables as an error
-# -o pipefail : a pipeline fails if any command within it fails
 set -Eeuo pipefail
 IFS=$'\n\t'
 
-# -----------------------------------------------------------------------------
 # Global constants
-# -----------------------------------------------------------------------------
 readonly SCRIPT_NAME="$(basename "${BASH_SOURCE[0]}")"
-readonly SCRIPT_VERSION="1.0.0"
-readonly PROJECT_ROOT="$(pwd)"
+readonly SCRIPT_VERSION="2.0.0"
+readonly PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 readonly START_TIME="$(date +%s)"
 
-# ANSI colour codes used for status output. Kept centralised so the visual
-# style of the script can be changed in one place.
+# ANSI colour codes
 readonly C_RESET='\033[0m'
 readonly C_BOLD='\033[1m'
 readonly C_RED='\033[1;31m'
@@ -53,23 +44,13 @@ readonly C_CYAN='\033[1;36m'
 readonly C_WHITE='\033[1;37m'
 readonly C_BG_RED='\033[41m'
 
-# File-name patterns considered "generated" and safe to remove.
-# Grouped so statistics can be reported per category.
+# File-name patterns considered "generated" and safe to remove
+readonly ISO_PATTERNS=("*.iso" "*.img" "*.hybrid.iso")
+readonly LOG_PATTERNS=("*.log")
+readonly TMP_PATTERNS=("*.tmp" "*.temp" "*.bak" "*.swp" "*~")
 
-# Final disk images produced by `lb build` (live-build names these after the
-# binary architecture, e.g. live-image-amd64.hybrid.iso). Kept as a glob so
-# other architectures (i386, arm64, ...) are also caught.
-readonly -a ISO_PATTERNS=("*.iso" "*.img" "*.hybrid.iso")
-
-# General-purpose log and temp/backup files that may accumulate during
-# development but should never be committed.
-readonly -a LOG_PATTERNS=("*.log")
-readonly -a TMP_PATTERNS=("*.tmp" "*.temp" "*.bak" "*.swp" "*~")
-
-# live-build bookkeeping/manifest files written to the project root by
-# `lb build`. These are NOT covered by the extension-based patterns above,
-# so they are matched explicitly by name/glob.
-readonly -a LIVEBUILD_ARTIFACT_PATTERNS=(
+# live-build bookkeeping/manifest files written to the project root
+readonly LIVEBUILD_ARTIFACT_PATTERNS=(
     "live-image-*.contents"
     "live-image-*.files"
     "live-image-*.packages"
@@ -79,16 +60,11 @@ readonly -a LIVEBUILD_ARTIFACT_PATTERNS=(
     "chroot.packages.live"
 )
 
-# Build directories that live-build regenerates on every run and that are
-# always safe to purge before a release push.
-readonly -a BUILD_DIRS=("binary" "cache" "chroot" ".build")
+# Build directories that live-build regenerates on every run
+readonly BUILD_DIRS=("binary" "cache" "chroot" ".build")
 
-# Paths that must NEVER be touched by this script, no matter what.
-# These are checked both as exact top-level paths and as path prefixes.
-# This mirrors the real AureonOS project layout: live-build's own
-# auto/config/local directories, the top-level build entry point, all
-# licensing/community documents, and the branding images shipped in the repo.
-readonly -a PROTECTED_PATHS=(
+# Paths that must NEVER be touched by this script
+readonly PROTECTED_PATHS=(
     ".git"
     ".github"
     "auto"
@@ -106,13 +82,11 @@ readonly -a PROTECTED_PATHS=(
     "lockscreen.png"
 )
 
-# -----------------------------------------------------------------------------
-# Runtime state (mutated as the script runs)
-# -----------------------------------------------------------------------------
+# Runtime state
 DRY_RUN=false
 FORCE=false
 
-# Statistics counters.
+# Statistics counters
 STAT_ISO_COUNT=0
 STAT_LOG_COUNT=0
 STAT_TMP_COUNT=0
@@ -120,18 +94,11 @@ STAT_LIVEBUILD_COUNT=0
 STAT_DIR_COUNT=0
 STAT_TOTAL_BYTES=0
 
-# -----------------------------------------------------------------------------
 # Logging helpers
-# -----------------------------------------------------------------------------
-
-# timestamp: prints the current time in HH:MM:SS for step headers.
 timestamp() {
     date '+%H:%M:%S'
 }
 
-# log_info / log_ok / log_warn / log_err
-# Small wrappers that give every message a consistent, colourised, timestamped
-# format. Using functions instead of inline echo keeps formatting DRY.
 log_info() {
     printf "${C_CYAN}[%s]${C_RESET} ${C_WHITE}%s${C_RESET}\n" "$(timestamp)" "$*"
 }
@@ -152,13 +119,7 @@ log_step() {
     printf "\n${C_BLUE}[%s]${C_RESET} ${C_BOLD}${C_MAGENTA}==> %s${C_RESET}\n" "$(timestamp)" "$*"
 }
 
-# -----------------------------------------------------------------------------
 # Signal handling
-# -----------------------------------------------------------------------------
-
-# on_interrupt: triggered on SIGINT (Ctrl+C) / SIGTERM. Ensures the user gets
-# clear feedback instead of a raw shell trace, and exits with the conventional
-# 130 code for "terminated by Ctrl+C".
 on_interrupt() {
     printf "\n"
     log_err "Interrupted by user (Ctrl+C). No further changes will be made."
@@ -166,8 +127,6 @@ on_interrupt() {
     exit 130
 }
 
-# on_error: triggered by the ERR trap for any unhandled command failure.
-# $1 = line number, $2 = exit code of the failing command.
 on_error() {
     local line="$1"
     local code="$2"
@@ -179,10 +138,7 @@ on_error() {
 trap 'on_interrupt' SIGINT SIGTERM
 trap 'on_error ${LINENO} $?' ERR
 
-# -----------------------------------------------------------------------------
-# UI: banner, warning box, usage
-# -----------------------------------------------------------------------------
-
+# UI helpers
 print_banner() {
     printf "${C_CYAN}"
     cat <<'EOF'
@@ -215,12 +171,12 @@ print_warning_box() {
 
       ${PROJECT_ROOT}
 
-    - live-build output directories   (binary/ cache/ chroot/)
+    - live-build output directories   (binary/ cache/ chroot/ .build/)
     - Final disk images                (*.iso, *.img, *.hybrid.iso)
     - live-build manifest files        (live-image-*.contents / .files / .packages,
-                                         binary.modified_timestamps,
-                                         chroot.files, chroot.packages.install,
-                                         chroot.packages.live)
+                                          binary.modified_timestamps,
+                                          chroot.files, chroot.packages.install,
+                                          chroot.packages.live)
     - Log files                        (*.log)
     - Temporary and backup files       (*.tmp, *.temp, *.bak, *.swp, *~)
     - Any resulting empty directories left behind by the cleanup
@@ -267,68 +223,7 @@ EXAMPLES:
 EOF
 }
 
-# -----------------------------------------------------------------------------
-# Argument parsing
-# -----------------------------------------------------------------------------
-
-parse_args() {
-    while [[ $# -gt 0 ]]; do
-        case "$1" in
-            --dry-run)
-                DRY_RUN=true
-                shift
-                ;;
-            --force)
-                FORCE=true
-                shift
-                ;;
-            --help|-h)
-                print_banner
-                print_usage
-                exit 0
-                ;;
-            *)
-                log_err "Unknown option: '$1'"
-                print_usage
-                exit 1
-                ;;
-        esac
-    done
-}
-
-# -----------------------------------------------------------------------------
-# Confirmation
-# -----------------------------------------------------------------------------
-
-confirm_action() {
-    if [[ "${FORCE}" == true ]]; then
-        log_warn "Running with --force: confirmation prompt skipped (CI/CD mode)."
-        return 0
-    fi
-
-    if [[ "${DRY_RUN}" == true ]]; then
-        log_info "Dry-run mode: no confirmation required, nothing will be deleted."
-        return 0
-    fi
-
-    local reply
-    printf "${C_BOLD}${C_YELLOW}Type exactly YES to proceed with permanent deletion: ${C_RESET}"
-    read -r reply
-
-    if [[ "${reply}" != "YES" ]]; then
-        log_err "Confirmation not received. Aborting cleanup — no files were touched."
-        exit 1
-    fi
-
-    log_ok "Confirmation received. Proceeding with cleanup."
-}
-
-# -----------------------------------------------------------------------------
-# Environment / safety checks
-# -----------------------------------------------------------------------------
-
-# is_protected_path: returns 0 (true) if the given relative path (as produced
-# by `find .`) falls under one of the PROTECTED_PATHS entries.
+# Safety checks
 is_protected_path() {
     local candidate="$1"
     candidate="${candidate#./}"
@@ -342,9 +237,6 @@ is_protected_path() {
     return 1
 }
 
-# build_find_prune_args: builds the -not -path arguments used to exclude
-# protected paths from `find` invocations. Centralised here so every removal
-# function stays in sync with PROTECTED_PATHS.
 build_find_prune_args() {
     local -a args=()
     local protected
@@ -369,10 +261,6 @@ check_project_root() {
         exit 1
     fi
 
-    # AureonOS project roots follow the standard live-build layout: a
-    # config/ directory (build configuration) alongside an auto/ directory
-    # (auto/config, auto/build, auto/clean helper scripts). This guards
-    # against accidentally running the cleanup inside an unrelated repo.
     if [[ ! -d "${PROJECT_ROOT}/config" ]] || [[ ! -d "${PROJECT_ROOT}/auto" ]]; then
         log_err "This does not look like the AureonOS project root."
         log_err "Expected to find both 'config/' and 'auto/' directories alongside '.git/'."
@@ -397,37 +285,19 @@ run_preflight_checks() {
     check_project_root
 }
 
-# -----------------------------------------------------------------------------
-# Size / counting helpers
-# -----------------------------------------------------------------------------
-
-# path_size_bytes: prints the size in bytes of a file or the total size of a
-# directory tree. Falls back gracefully if `du` behaves unexpectedly.
+# Size/counting helpers
 path_size_bytes() {
     local target="$1"
-    du -sb -- "${target}" 2>/dev/null | awk '{print $1}' || echo 0
+    # Disable pipefail temporarily because du may exit non-zero on permission errors
+    ( set +o pipefail; du -sb -- "${target}" 2>/dev/null | awk '{print $1; exit}' )
 }
 
-# human_readable_size: converts a byte count into a human-friendly string.
 human_readable_size() {
     local bytes="$1"
     numfmt --to=iec --suffix=B "${bytes}" 2>/dev/null || echo "${bytes}B"
 }
 
-# -----------------------------------------------------------------------------
 # Cleanup: live-build
-# -----------------------------------------------------------------------------
-
-# run_live_build_clean:
-#   `lb clean --purge` is live-build's own purge command and is the primary,
-#   most reliable way to remove binary/, cache/, chroot/, and the
-#   live-image-*.* / chroot.* manifest files it wrote. It is run first.
-#
-#   The explicit pattern- and directory-based removal steps later in main()
-#   are NOT redundant: they act as a verified safety net that (a) still
-#   cleans the repo correctly on machines where live-build isn't installed,
-#   and (b) confirms via `find` that nothing generated was left behind, with
-#   accurate counts/sizes for the final summary either way.
 run_live_build_clean() {
     log_step "Live-build cleanup (primary purge via 'lb clean --purge')"
 
@@ -448,17 +318,7 @@ run_live_build_clean() {
     fi
 }
 
-# -----------------------------------------------------------------------------
-# Cleanup: file patterns (ISO images, logs, temp files)
-# -----------------------------------------------------------------------------
-
-# remove_pattern_group:
-#   $1 = human-readable label for status output
-#   $2 = name of the counter variable to increment (nameref)
-#   $3.. = glob patterns to match (e.g. "*.iso" "*.img")
-#
-# Finds every matching file under the project root (excluding protected
-# paths), reports it, sums its size, and deletes it unless --dry-run is set.
+# Cleanup: file patterns
 remove_pattern_group() {
     local label="$1"
     local -n counter_ref="$2"
@@ -480,7 +340,7 @@ remove_pattern_group() {
     local -a matches=()
     while IFS= read -r -d '' file; do
         matches+=("${file}")
-    done < <(find . -type f "${prune_args[@]}" \( "${name_args[@]}" \) -print0 2>/dev/null)
+    done < <(find . -type f "${prune_args[@]}" \( "${name_args[@]}" \) -print0 2>/dev/null || true)
 
     if [[ ${#matches[@]} -eq 0 ]]; then
         log_info "${label}: nothing to remove."
@@ -492,7 +352,8 @@ remove_pattern_group() {
     local file size
     for file in "${matches[@]}"; do
         size=$(path_size_bytes "${file}")
-        STAT_TOTAL_BYTES=$(( STAT_TOTAL_BYTES + size ))
+        # Use awk for large numbers to avoid bash arithmetic overflow
+        STAT_TOTAL_BYTES=$(awk -v a="${STAT_TOTAL_BYTES}" -v b="${size}" 'BEGIN {print a + b}')
         counter_ref=$(( counter_ref + 1 ))
 
         if [[ "${DRY_RUN}" == true ]]; then
@@ -506,10 +367,7 @@ remove_pattern_group() {
     done
 }
 
-# -----------------------------------------------------------------------------
 # Cleanup: build directories
-# -----------------------------------------------------------------------------
-
 remove_build_directories() {
     log_step "Removing build directories"
 
@@ -526,7 +384,8 @@ remove_build_directories() {
         fi
 
         size=$(path_size_bytes "${PROJECT_ROOT}/${dir}")
-        STAT_TOTAL_BYTES=$(( STAT_TOTAL_BYTES + size ))
+        # Use awk for large numbers to avoid bash arithmetic overflow
+        STAT_TOTAL_BYTES=$(awk -v a="${STAT_TOTAL_BYTES}" -v b="${size}" 'BEGIN {print a + b}')
         STAT_DIR_COUNT=$(( STAT_DIR_COUNT + 1 ))
 
         if [[ "${DRY_RUN}" == true ]]; then
@@ -538,10 +397,7 @@ remove_build_directories() {
     done
 }
 
-# -----------------------------------------------------------------------------
 # Cleanup: leftover empty directories
-# -----------------------------------------------------------------------------
-
 remove_empty_directories() {
     log_step "Removing empty directories left behind by cleanup"
 
@@ -553,15 +409,13 @@ remove_empty_directories() {
     local -a prune_args
     mapfile -t prune_args < <(build_find_prune_args)
 
-    # Run multiple passes: removing a leaf empty directory can turn its
-    # parent into an empty directory too. Iterate until a pass finds none.
     local pass_removed=1
     while [[ "${pass_removed}" -gt 0 ]]; do
         pass_removed=0
         local -a empties=()
         while IFS= read -r -d '' dir; do
             empties+=("${dir}")
-        done < <(find . -mindepth 1 -type d -empty "${prune_args[@]}" -print0 2>/dev/null)
+        done < <(find . -mindepth 1 -type d -empty "${prune_args[@]}" -print0 2>/dev/null || true)
 
         local dir
         for dir in "${empties[@]}"; do
@@ -577,10 +431,7 @@ remove_empty_directories() {
     done
 }
 
-# -----------------------------------------------------------------------------
 # Summary
-# -----------------------------------------------------------------------------
-
 print_summary() {
     local end_time elapsed
     end_time="$(date +%s)"
@@ -608,10 +459,57 @@ print_summary() {
     printf "  ${C_CYAN}git status${C_RESET}\n\n"
 }
 
-# -----------------------------------------------------------------------------
-# Main
-# -----------------------------------------------------------------------------
+# Argument parsing
+parse_args() {
+    while [[ $# -gt 0 ]]; do
+        case "$1" in
+            --dry-run)
+                DRY_RUN=true
+                shift
+                ;;
+            --force)
+                FORCE=true
+                shift
+                ;;
+            --help|-h)
+                print_banner
+                print_usage
+                exit 0
+                ;;
+            *)
+                log_err "Unknown option: '$1'"
+                print_usage
+                exit 1
+                ;;
+        esac
+    done
+}
 
+# Confirmation
+confirm_action() {
+    if [[ "${FORCE}" == true ]]; then
+        log_warn "Running with --force: confirmation prompt skipped (CI/CD mode)."
+        return 0
+    fi
+
+    if [[ "${DRY_RUN}" == true ]]; then
+        log_info "Dry-run mode: no confirmation required, nothing will be deleted."
+        return 0
+    fi
+
+    local reply
+    printf "${C_BOLD}${C_YELLOW}Type exactly YES to proceed with permanent deletion: ${C_RESET}"
+    read -r reply
+
+    if [[ "${reply}" != "YES" ]]; then
+        log_err "Confirmation not received. Aborting cleanup — no files were touched."
+        exit 1
+    fi
+
+    log_ok "Confirmation received. Proceeding with cleanup."
+}
+
+# Main
 main() {
     parse_args "$@"
 

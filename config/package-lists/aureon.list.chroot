@@ -165,6 +165,14 @@ calamares
 calamares-settings-debian
 
 ############################
+# Bootloader (UEFI/GRUB)
+############################
+grub-efi-amd64
+grub-efi-amd64-signed
+shim-signed
+efibootmgr
+
+############################
 # Desktop Integration
 ############################
 xdg-user-dirs

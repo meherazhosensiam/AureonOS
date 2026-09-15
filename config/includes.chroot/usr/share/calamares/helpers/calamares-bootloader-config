@@ -14,13 +14,9 @@ fi
 
 echo "Running bootloader-config..."
 
-if [ -d /sys/firmware/efi/efivars ]; then
-    echo " * Installing grub-efi (uefi)..."
-    DEBIAN_FRONTEND=noninteractive chroot $CHROOT apt-get -y install grub-efi
-else
-    echo " * install grub... (bios)"
-    DEBIAN_FRONTEND=noninteractive chroot $CHROOT apt-get -y install grub-pc
-fi
+# Bootloader packages (grub-efi-amd64, grub-efi-amd64-signed, shim-signed, efibootmgr)
+# are pre-installed in the live system and copied to target via unpackfs.
+# No need to install them here.
 
 # Re-enable os-prober:
 sed -i "s/#GRUB_DISABLE_OS_PROBER=false/# OS_PROBER re-enabled by Debian Calamares installation:\nGRUB_DISABLE_OS_PROBER=false/g" $CHROOT/etc/default/grub

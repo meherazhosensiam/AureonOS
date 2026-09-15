@@ -1,0 +1,35 @@
+#!/bin/sh
+set -e
+
+# ============================================================
+# AUREON OS - Configure GNOME Terminal Profile
+# ============================================================
+# Uses dbus-run-session with dconf write to configure relocatable Terminal profile schema
+# ============================================================
+
+echo "==> Configuring AUREON GNOME Terminal profile..."
+
+# Generate a temporary machine ID for the build
+rm -f /etc/machine-id /var/lib/dbus/machine-id
+systemd-machine-id-setup
+mkdir -p /var/lib/dbus
+ln -sf /etc/machine-id /var/lib/dbus/machine-id
+
+PROFILE_UUID="b1dcc9dd-5262-4d8d-a863-c897e6d979b9"
+PROFILE_PATH="/org/gnome/terminal/legacy/profiles:/:${PROFILE_UUID}/"
+
+# Run dconf commands with a D-Bus session
+dbus-run-session -- sh -c "
+    dconf write \"/org/gnome/terminal/legacy/profiles:/list\" \"['${PROFILE_UUID}']\" &&
+    dconf write \"/org/gnome/terminal/legacy/profiles:/default\" \"'${PROFILE_UUID}'\" &&
+    dconf write \"${PROFILE_PATH}background-color\" \"'rgb(0,0,0)'\" &&
+    dconf write \"${PROFILE_PATH}foreground-color\" \"'rgb(0,255,0)'\" &&
+    dconf write \"${PROFILE_PATH}use-theme-colors\" \"false\" &&
+    dconf write \"${PROFILE_PATH}visible-name\" \"'AUREON'\"
+"
+
+# Remove the temporary machine ID so installed systems generate their own
+rm -f /etc/machine-id /var/lib/dbus/machine-id
+touch /etc/machine-id
+
+echo "==> AUREON GNOME Terminal profile configured successfully."

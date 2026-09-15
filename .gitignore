@@ -1,7 +1,43 @@
+# Live-build output directories
 .build/
 binary/
-chroot/
 cache/
-*.iso
-*.list
+chroot/
 work/
+local/
+logs/
+
+# Build artifacts
+*.iso
+*.img
+*.raw
+*.sha256
+*.md5
+*.list
+*.contents
+*.files
+*.packages
+*.modified_timestamps
+chroot.*
+live-image-*
+
+# Temporary and backup files
+*.log
+*.tmp
+*.temp
+*.bak
+*.swp
+*~
+*.old
+*.orig
+*.rej
+
+# IDE/editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db

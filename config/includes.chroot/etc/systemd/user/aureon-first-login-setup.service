@@ -1,0 +1,12 @@
+[Unit]
+Description=AUREON OS First Login Setup
+After=graphical-session.target
+ConditionPathExists=!%h/.config/aureon-first-login-done
+
+[Service]
+Type=oneshot
+ExecStart=/usr/lib/aureon/aureon-first-login-setup.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=default.target

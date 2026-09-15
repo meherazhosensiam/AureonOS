@@ -9,7 +9,14 @@ set -e
 # This works for both live and installed systems.
 # ============================================================
 
-DESKTOP_FILE="/usr/share/applications/install-aureon.desktop"
+# Load project config for PROJECT_ID
+if [ -f "/etc/aureon/project.conf" ]; then
+    . /etc/aureon/project.conf
+else
+    PROJECT_ID="aureonos"
+fi
+
+DESKTOP_FILE="/usr/share/applications/install-${PROJECT_ID}.desktop"
 
 if [ -f "$DESKTOP_FILE" ]; then
     # Mark as trusted for all users by setting the metadata

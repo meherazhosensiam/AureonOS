@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=@PROJECT_NAME@ Welcome
+Comment=Welcome to @PROJECT_NAME@
+Exec=/usr/bin/@PROJECT_ID@-welcome
+Terminal=false
+StartupNotify=true
+X-GNOME-Autostart-enabled=true
+OnlyShowIn=GNOME;

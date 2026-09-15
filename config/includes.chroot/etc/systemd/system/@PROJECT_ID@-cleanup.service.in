@@ -1,0 +1,6 @@
+[Unit]
+Description=@PROJECT_NAME@ Monthly Junk Cleanup
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/@PROJECT_ID@-cleanup.sh

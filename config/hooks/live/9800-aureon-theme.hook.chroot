@@ -53,11 +53,12 @@ git clone --depth=1 https://github.com/vinceliuice/Fluent-gtk-theme.git
 
 cd Fluent-gtk-theme
 
-# Install the Dark variant (primary for AUREON)
-./install.sh -t all -c dark -s standard --tweaks blur
+# Install ONLY red variants (AUREON brand color)
+# Dark variant (primary for AUREON)
+./install.sh -t red -c dark -s standard --tweaks blur --libadwaita
 
-# Install the Light variant (for light mode support)
-./install.sh -t all -c light -s standard --tweaks blur
+# Light variant (for light mode support)
+./install.sh -t red -c light -s standard --tweaks blur --libadwaita
 
 cd ..
 
@@ -70,21 +71,38 @@ git clone --depth=1 https://github.com/vinceliuice/Fluent-icon-theme.git
 
 cd Fluent-icon-theme
 
-./install.sh --all
+# Install ONLY red variants
+./install.sh red
 
 cd ..
 
 ########################################
 # Fluent Cursor Theme
 ########################################
-# Provides: Fluent-cursors
+# Provides: Fluent-cursors, Fluent-dark-cursors
 # Installed to: /usr/share/icons/
-cd Fluent-icon-theme 
+cd Fluent-icon-theme
 cd cursors
 ./install.sh
+cd ..
+cd ..
 
-cd ..
-cd ..
+########################################
+# Verification
+########################################
+# Verify critical theme directories exist before dconf compilation
+echo "==> Verifying theme installation..."
+for theme in \
+    "/usr/share/themes/Fluent-red-Dark" \
+    "/usr/share/themes/Fluent-red-Light" \
+    "/usr/share/icons/Fluent-red" \
+    "/usr/share/icons/Fluent-cursors"; do
+    if [ ! -d "$theme" ]; then
+        echo "ERROR: Required theme directory missing: $theme"
+        exit 1
+    fi
+    echo "  OK: $theme"
+done
 
 ########################################
 # Cleanup
@@ -95,5 +113,34 @@ rm -rf \
     Fluent-icon-theme \
     fluent-cursor
 
+# Remove any non-red theme variants that may have been installed
+# Keep only Fluent-red-* themes
+for theme_dir in /usr/share/themes/Fluent-*; do
+    case "$(basename "$theme_dir")" in
+        Fluent-red-Dark|Fluent-red-Light)
+            echo "  Keeping: $(basename "$theme_dir")"
+            ;;
+        *)
+            echo "  Removing unused theme: $(basename "$theme_dir")"
+            rm -rf "$theme_dir"
+            ;;
+    esac
+done
+
+# Keep only Fluent-red* icon themes
+for icon_dir in /usr/share/icons/Fluent-*; do
+    case "$(basename "$icon_dir")" in
+        Fluent-red|Fluent-red-dark|Fluent-red-light)
+            echo "  Keeping: $(basename "$icon_dir")"
+            ;;
+        *)
+            echo "  Removing unused icon theme: $(basename "$icon_dir")"
+            rm -rf "$icon_dir"
+            ;;
+    esac
+done
+
 apt-get clean
+apt-get autoremove -y
 rm -rf /var/lib/apt/lists/*
+rm -rf /var/cache/apt/archives/*.deb

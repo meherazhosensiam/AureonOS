@@ -19,10 +19,17 @@ set -euo pipefail
 # Project configuration
 # ------------------------------------------------------------
 
+# Load canonical project configuration
+PROJECT_CONF="${PROJECT_CONF:-$(dirname "$0")/../config/project.conf}"
+if [[ -f "$PROJECT_CONF" ]]; then
+    # shellcheck source=/dev/null
+    source "$PROJECT_CONF"
+fi
+
 ARCH="${ARCH:-amd64}"
-DISTRIBUTION="${DISTRIBUTION:-trixie}"
+DISTRIBUTION="${DISTRIBUTION:-${BASE_DISTRIBUTION:-trixie}}"
 PROJECT_NAME="${PROJECT_NAME:-AureonOS}"
-ISO_VOLUME="${ISO_VOLUME:-AureonOS}"
+ISO_VOLUME="${ISO_VOLUME:-${PROJECT_NAME// /}}"
 
 # ------------------------------------------------------------
 # Architecture configuration
@@ -67,10 +74,12 @@ esac
 
 echo
 echo "============================================================"
-echo " AureonOS Live-build Configuration"
+echo " Project Live-build Configuration"
 echo "============================================================"
 echo
 echo "[INFO] Project           : $PROJECT_NAME"
+echo "[INFO] Project ID        : ${PROJECT_ID}"
+echo "[INFO] Version           : ${PROJECT_VERSION}"
 echo "[INFO] Distribution      : $DISTRIBUTION"
 echo "[INFO] Architecture      : $ARCH"
 echo "[INFO] Kernel flavour    : $KERNEL_FLAVOUR"
@@ -102,16 +111,16 @@ lb config noauto \
     --architectures "$ARCH" \
     --archive-areas "main contrib non-free-firmware non-free" \
     --binary-images iso-hybrid \
-     --debian-installer false \
+    --debian-installer false \
     --mirror-bootstrap "http://deb.debian.org/debian/" \
     --mirror-chroot "http://deb.debian.org/debian/" \
     --mirror-binary "http://deb.debian.org/debian/" \
     --iso-volume "$ISO_VOLUME" \
-    --iso-application "AUREON OS" \
-    --iso-publisher "AUREON OS; https://aureon-os.local" \
+    --iso-application "$PROJECT_NAME" \
+    --iso-publisher "$PROJECT_NAME; $PROJECT_HOME_URL" \
     --linux-packages "linux-image" \
     --linux-flavours "$KERNEL_FLAVOUR" \
-    --bootappend-live "boot=live components username=aureon user-fullname='AureonOS Live User' hostname=AureonOS \
+    --bootappend-live "boot=live components username=${PROJECT_USERNAME} user-fullname='${PROJECT_NAME} Live User' hostname=${PROJECT_ID}" \
     "$@"
 
 echo

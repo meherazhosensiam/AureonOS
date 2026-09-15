@@ -1,18 +1,48 @@
 #!/bin/bash
 set -e
 
-DESKTOP="/usr/share/applications/install-aureon.desktop"
+# ============================================================
+# AUREON OS - Create Calamares Installer Launcher
+# ============================================================
+# Creates the system-wide .desktop file for the Applications menu.
+# Filename uses PROJECT_ID (aureonos) for consistency with cleanup script.
+# Display name uses PROJECT_NAME (AUREON OS).
+# Icon uses the AUREON logo installed at /usr/share/aureonos/assets/logo.png
+# ============================================================
+
+# Load project config for PROJECT_ID
+if [ -f "/etc/aureon/project.conf" ]; then
+    . /etc/aureon/project.conf
+else
+    PROJECT_ID="aureonos"
+fi
+
+DESKTOP="/usr/share/applications/install-${PROJECT_ID}.desktop"
+
+# Ensure icon is available in hicolor theme for reliable lookup
+ICON_SRC="/usr/share/aureonos/assets/logo.png"
+ICON_DEST="/usr/share/icons/hicolor/256x256/apps/install-aureon.png"
+mkdir -p "$(dirname "$ICON_DEST")"
+if [ -f "$ICON_SRC" ]; then
+    cp "$ICON_SRC" "$ICON_DEST"
+fi
 
 cat > "$DESKTOP" <<'EOF'
 [Desktop Entry]
-Name=Install AureonOS
-Comment=Install AureonOS to your computer
-Exec=pkexec calamares
-Icon=system-software-install
-Terminal=false
+Version=1.0
 Type=Application
-Categories=System;Installer;
+Name=Install AUREON OS
+Comment=Install AUREON OS to your hard drive
+Exec=pkexec calamares
+Icon=install-aureon
+Terminal=false
+Categories=System;
 StartupNotify=true
 EOF
 
 chmod 644 "$DESKTOP"
+
+# Update icon cache
+if command -v gtk-update-icon-cache >/dev/null 2>&1; then
+    gtk-update-icon-cache -f -t /usr/share/icons/hicolor 2>/dev/null || true
+fi
